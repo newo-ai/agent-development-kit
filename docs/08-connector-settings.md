@@ -109,8 +109,9 @@ Two more things can change a connector setting:
   `v2v_mode_user_stt` = `elevenlabs`). Existing connectors are not touched.
 - **One-time migrations.** A NAF update can change a value once. Example: NAF 4.7.1 replaced
   `v2v_mode_user_stt` = `None` with `elevenlabs` on every account. Later publishes do not repeat it.
-  If you set `None` again, tell the person that Newo once moved all agents away from it, and test
-  a real call before the agent goes live.
+  The reason was the voice model of that time: Gemini 2.5 native audio recognized callers poorly,
+  so a separate recognizer (ElevenLabs) was safer. This does not apply to newer models; see
+  [section 7](#7-which-speech-recognizer-to-use).
 
 Source: NAF skills `_updateConnectorSettingsNewoVoiceSkill`, `_updateConnectorSettingsNewoChatSkill`,
 `prepare_connectors_newo_voice`, `_migration_4_7_1_v2v_11labs_transcription` (read 2026-11-12).
@@ -125,6 +126,25 @@ Source: NAF skills `_updateConnectorSettingsNewoVoiceSkill`, `_updateConnectorSe
 | A new connector does not work | It may be stopped. `POST /api/v1/integrations/connectors/{connector_id}/run`, then check that its status is `running`. |
 | The value went back after Publish | NAF writes it from an agent setting (section 5). Change the agent setting. |
 | "Only Newo support can change this" | Check first. In the portal, a person can change almost every connector setting in Builder → Integrations → the connector → **Edit Settings**; the same change works through section 3. Real exceptions: deleting things (ask the person to contact support) and read-only settings. |
+
+## 7. Which speech recognizer to use
+
+"User STT Provider" (`v2v_mode_user_stt`) decides who turns the caller's speech into text:
+the voice model itself (`None`, native recognition) or a separate service (`elevenlabs`,
+`deepgram`, `google` and others).
+
+| Voice model (`v2v_mode` + model setting) | Recommended `v2v_mode_user_stt` |
+|---|---|
+| Grok (`grok_v2v_model`, for example `grok-voice-think-fast-3.0`) | **`None`** (native) |
+| Gemini 3.8 (`genai_v2v_model` = `gemini-3.8-live` or newer) | **`None`** (native) |
+| Gemini 2.5 native audio and older Gemini models | `elevenlabs` (the NAF default) |
+
+Why: native recognition in Gemini 2.5 native audio was poor, which is why NAF 4.7.1 moved every
+agent to ElevenLabs. Grok and Gemini 3.8 recognize speech well natively, and the native path is
+recommended for them (source: the Newo voice team, 2026-11-12).
+
+When you switch an agent to Grok or Gemini 3.8, also set `None` on both voice connectors, and
+make a test call in the agent's main language (see section 4).
 
 If something here is wrong or a request behaves differently, trust the platform, tell the person,
 and propose a correction ([CONTRIBUTING.md](../CONTRIBUTING.md)).
