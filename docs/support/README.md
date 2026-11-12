@@ -54,6 +54,11 @@ submit them.
 
 ## NAF change notice
 
+File it as an issue in this repository with the "NAF change notice" template
+(https://github.com/newo-ai/agent-development-kit/issues/new/choose), without customer names or
+personal data. Send private details, such as the account id, through Newo support with the issue
+number. The fields:
+
 Required whenever you modify Newo Agent Framework (NAF) code for an account. See
 [04-naf-change-policy.md](../04-naf-change-policy.md).
 
