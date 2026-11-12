@@ -1,0 +1,32 @@
+name: Learning
+description: Share a case other coding assistants should know about.
+labels: [learning]
+body:
+  - type: markdown
+    attributes:
+      value: "Public repository: no secrets, no personal data, no account IDs or business names. Describe the pattern, not the customer."
+  - type: input
+    id: tags
+    attributes:
+      label: Tags
+      placeholder: "industry/dental, integration/<system>, topic/telephony"
+    validations:
+      required: true
+  - type: textarea
+    id: situation
+    attributes:
+      label: Situation
+    validations:
+      required: true
+  - type: textarea
+    id: tried
+    attributes:
+      label: What worked and what did not
+    validations:
+      required: true
+  - type: textarea
+    id: advice
+    attributes:
+      label: Advice for the next assistant
+    validations:
+      required: true
