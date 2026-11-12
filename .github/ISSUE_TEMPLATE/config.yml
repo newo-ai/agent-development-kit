@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Newo support (account-specific bugs and requests)
+    url: https://help.newo.ai
+    about: Anything about a specific account, phone number, or with customer data goes to Newo support, not to a public issue.

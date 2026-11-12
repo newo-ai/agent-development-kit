@@ -1,0 +1,31 @@
+name: Documentation correction
+description: Something in this repository is wrong, missing or out of date.
+labels: [docs]
+body:
+  - type: markdown
+    attributes:
+      value: "This repository is public. Do not include secrets, personal data or account identifiers."
+  - type: input
+    id: page
+    attributes:
+      label: Page
+      description: Path or link to the page.
+    validations:
+      required: true
+  - type: textarea
+    id: wrong
+    attributes:
+      label: What is wrong or missing
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: How you know
+      description: The request you ran and the response (keys removed), the date, or the source.
+    validations:
+      required: true
+  - type: textarea
+    id: fix
+    attributes:
+      label: Suggested text
