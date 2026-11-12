@@ -16,6 +16,7 @@ does the technical work; you make the decisions.
 
 | I need to... | Read |
 |---|---|
+| See the big picture: the problem, the harness, the feedback loop | [docs/00-how-the-ecosystem-works.md](docs/00-how-the-ecosystem-works.md) |
 | Understand the platform in 10 minutes | [docs/01-platform-concepts.md](docs/01-platform-concepts.md) |
 | Get access: API keys, the browser plugin, Knowledge Studio | [docs/02-access-and-tools.md](docs/02-access-and-tools.md) |
 | Configure or customize an agent (settings first) | [docs/03-configure-and-customize.md](docs/03-configure-and-customize.md) |
