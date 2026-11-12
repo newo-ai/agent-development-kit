@@ -24,6 +24,7 @@ Pages:
 - [conversation-debug.md](conversation-debug.md): transcripts, sessions, logs.
 - [search-debug.md](search-debug.md): wrong or missing answers from the knowledge base.
 - [common-issues.md](common-issues.md): known problems and what to do.
+- [studio-troubleshooting.md](studio-troubleshooting.md): Newo Knowledge Studio problems (building, indexing, testing, connecting).
 
 ## Before you tell the person what went wrong
 
