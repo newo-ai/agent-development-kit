@@ -10,7 +10,7 @@ safely.
 | Claude Code, Codex, Cursor or another assistant with a terminal | the Newo HTTP API or the Newo CLI, with the account's API key in an environment variable | [A](#a-terminal-assistants) |
 | ChatGPT or Claude in the browser | the **Newo plugin** (a custom MCP server) | [B](#b-browser-assistants-the-newo-plugin) |
 | Any assistant, for knowledge only | **Newo Knowledge Studio** | [C](#c-newo-knowledge-studio) |
-| Any MCP client, with sign-in through a Newo account | **Newo Customer MCP server** **(planned)** | [D](#d-newo-customer-mcp-server-planned) |
+| Any MCP client, with sign-in through a Newo account | **Newo Customer MCP server** **(rolling out)** | [D](#d-newo-customer-mcp-server-rolling-out) |
 
 ## A. Terminal assistants
 
@@ -103,16 +103,59 @@ MCP server that gives them tools.
   Access is granted inside Studio. The exact steps change while the feature is rolling out: follow
   the instructions Studio shows, or ask Newo support.
 
-## D. Newo Customer MCP server (planned)
+## D. Newo Customer MCP server (rolling out)
 
-Newo is building an MCP server for customer accounts with sign-in through a Newo account (OAuth),
-so no API key or job id is needed. The planned tools cover:
+An MCP server for customer accounts. The person signs in with their Newo account (OAuth), so no
+API key or job id is needed. It covers:
 - accounts and conversations;
 - logs;
 - project versions and files;
 - activating a version.
 
-Until it is published, use A, B or C. This page will be updated when it ships.
+**Status (November 2026):** in testing on Newo's development environment; production follows.
+Until Newo is listed in the ChatGPT and Claude app directories, each client is set up with
+**Newo's own OAuth client ID**:
+- **Server URL and client ID:** you get both from Newo while the server is rolling out.
+- **Client secret:** stays empty.
+- Newo's sign-in does not support automatic client registration, so in every client choose the
+  option to use your own OAuth client.
+
+**Claude (web, desktop, mobile).** The connector belongs to the account. Add it once on the web
+and it works in every Claude app.
+- **Personal plan:**
+  1. Customize → Connectors → **+ Add** → **Add custom connector**.
+  2. Enter a name and the URL → **Continue** → Authentication: **Sign in now**.
+  3. **Advanced** → OAuth client: **Use your own OAuth client** → client ID → **Add** →
+     **Connect**.
+  4. The Free plan allows one custom connector.
+- **Team or Enterprise:** the Owner adds it in Organization settings → Connectors → **Add** →
+  **Custom** → **Web**, the same way. Members then press **Connect** in Customize → Connectors.
+- **In a chat:** **+** → **Connectors** → turn it on.
+- Authorization settings cannot be edited later: remove the connector and add it again.
+
+**Claude Code.**
+```bash
+claude mcp add --transport http -s user --client-id <client id> --callback-port 8765 newo <server url>
+```
+Then `/mcp` → `newo` → Authenticate, or `claude mcp login newo`.
+
+**ChatGPT (web).**
+1. `chatgpt.com/plugins` → **+** → **Add custom MCP server**.
+2. Name, **Server URL**, Authentication **OAuth** with the client ID.
+3. Tick **I understand and want to continue** → **Create as a plugin**. It stays private to you
+   and is not published to the store.
+4. In a chat, type `@` and pick the server.
+
+ChatGPT asks for confirmation before tools that are not marked read-only. The ChatGPT desktop and
+mobile apps are not documented by OpenAI for this yet.
+
+**Codex** (CLI, IDE extension and ChatGPT desktop share `~/.codex/config.toml`):
+```bash
+codex mcp add newo --url <server url> --oauth-client-id <client id>
+codex mcp login newo
+```
+
+Until the server is in production for your account, use A, B or C.
 
 ## Secrets: the short version
 
