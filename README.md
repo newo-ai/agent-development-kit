@@ -21,6 +21,7 @@ does the technical work; you make the decisions.
 | Get access: API keys, the browser plugin, Knowledge Studio | [docs/02-access-and-tools.md](docs/02-access-and-tools.md) |
 | Configure or customize an agent (settings first) | [docs/03-configure-and-customize.md](docs/03-configure-and-customize.md) |
 | Decide whether to change framework (NAF) code | [docs/04-naf-change-policy.md](docs/04-naf-change-policy.md) |
+| Check an agent's health; decide between a setting (level A) and a scenario change (level B) | [docs/07-health-check.md](docs/07-health-check.md) |
 | Change scenarios (what the agent does for each caller intent) | [docs/05-scenarios.md](docs/05-scenarios.md) |
 | Give the agent knowledge (settings, AKB, Knowledge Studio) | [docs/06-knowledge.md](docs/06-knowledge.md) |
 | Put the agent to work: nights first, then the day (overflow or AI first) | [docs/telephony/go-live.md](docs/telephony/go-live.md) |

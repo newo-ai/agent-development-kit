@@ -16,6 +16,7 @@ the Newo platform. Read this file first. It is short on purpose.
    - "I need a number in Germany / Armenia / ...": [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md).
    - "Connect my CRM / booking system / patient management system": [docs/integrations](docs/integrations/README.md).
    - "The agent said something wrong / switched language / did not book": [docs/debugging](docs/debugging/README.md).
+   - "Check my agent", "why does it say X", "how do I make it do Y": [docs/07-health-check.md](docs/07-health-check.md).
    - "Test it": [docs/testing](docs/testing/README.md).
    - "Add our documents / FAQ / price list": [docs/06-knowledge.md](docs/06-knowledge.md).
 3. Read [learnings/](learnings/README.md) for the same industry or the same integration: other
