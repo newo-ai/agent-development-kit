@@ -35,6 +35,8 @@ The person puts the key into a `.env` file in the project folder **themselves**,
 - First call of every session: `GET /api/v1/customer/profile`. Check that its `idn` is the account
   the person means.
 - Full reference: https://knowledge.newo.ai/agent-setup#api.
+- Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
+  does not change them.
 
 **The CLI.** `npm i -g newo`, then run `newo init` in an empty folder. It writes instructions and
 skills for coding assistants, an empty `.env` and a `.gitignore`. Useful commands:
