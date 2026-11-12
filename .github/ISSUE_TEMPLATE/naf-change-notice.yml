@@ -1,0 +1,66 @@
+name: NAF change notice
+description: You changed Newo Agent Framework (NAF) code for an agent. Required by docs/04-naf-change-policy.md.
+labels: [naf-change]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public repository: no customer names, no personal data, no secrets. Describe the business by industry and pattern.
+        Private details (account id) go to Newo support with this issue's number.
+        A Newo supervisor answers here: generalize into NAF, into an industry template, or not planned.
+  - type: input
+    id: industry
+    attributes:
+      label: Industry
+      placeholder: "dental clinic, restaurant, home services, ..."
+    validations:
+      required: true
+  - type: input
+    id: release
+    attributes:
+      label: NAF release the change is based on
+      placeholder: "5.0.27"
+    validations:
+      required: true
+  - type: dropdown
+    id: autoupdate
+    attributes:
+      label: Automatic updates turned off for this agent
+      options: ["yes", "no"]
+    validations:
+      required: true
+  - type: textarea
+    id: case
+    attributes:
+      label: The case
+      description: What the business needed.
+    validations:
+      required: true
+  - type: textarea
+    id: why
+    attributes:
+      label: Why agent-level customization was not enough
+      description: Settings, knowledge, conversation tools, scenarios, a separate project. What you tried.
+    validations:
+      required: true
+  - type: textarea
+    id: diff
+    attributes:
+      label: What changed
+      description: Files or skills and a short diff, without customer data.
+      render: diff
+    validations:
+      required: true
+  - type: textarea
+    id: tested
+    attributes:
+      label: How it was tested
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: Could this help other businesses?
+      options: ["all industries", "this industry", "probably only this business"]
+    validations:
+      required: true

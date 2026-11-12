@@ -6,7 +6,9 @@ that stream.
 
 ## Rule
 
-**Do not modify NAF unless no other way reaches the customer's goal.** Before you touch NAF code,
+**All changes happen at the level of the agent's own customization.** Modify NAF only in an
+absolutely exceptional case, when no other way reaches the customer's goal. Before you touch NAF
+code,
 check every lower step of the ladder in
 [03-configure-and-customize.md](03-configure-and-customize.md):
 - settings;
@@ -30,12 +32,16 @@ check every lower step of the ladder in
    silently.
 4. **Make the smallest possible change**, test it (sandbox and a real call), and keep a short
    changelog in the partner's repository: which file, what changed and why.
-5. **File a NAF change notice** in the Newo helpdesk
-   ([docs/support](support/README.md#naf-change-notice)). Include:
-   - the case and the reason no setting could do it;
-   - the industry;
-   - the diff, without customer data;
+5. **File a NAF change notice as an issue in this repository**: New issue → "NAF change notice"
+   (https://github.com/newo-ai/agent-development-kit/issues/new/choose). The repository is
+   public, so the issue holds:
+   - the case, described by industry and pattern;
+   - why no agent-level customization could do it;
+   - the diff;
    - how you tested it.
+
+   It must not hold customer names, personal data or secrets. If Newo needs the account id or
+   other private details, send them through Newo support and mention the issue number there.
 
 ## What happens with your notice
 
@@ -47,7 +53,7 @@ A Newo supervisor reviews every NAF change notice and decides:
 | **Generalize into an industry template** | the improvement helps one industry; Newo adds it to that industry's templates. Same as above when it ships. |
 | **Not planned** | Newo thanks you and explains it will not generalize this now. The account stays without automatic updates. When a new NAF release brings improvements you want, migrate yourself: take the new release, re-apply your change, test, publish. |
 
-Newo answers in the helpdesk ticket.
+Newo answers in the issue.
 
 ## Migrating a local change to a new release
 

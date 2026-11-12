@@ -10,7 +10,9 @@ the Newo platform. Read this file first. It is short on purpose.
 2. Identify **what** they want. Typical requests and where to read:
    - "Create an agent", "set up hours, greeting, prices": [docs/03](docs/03-configure-and-customize.md),
      then the [industry page](industries/README.md).
-   - "Keep my phone number", "forward calls after two rings", "SIP": [docs/telephony](docs/telephony/README.md).
+   - "Put the agent to work", "forward calls at night", "forward after two rings": [docs/telephony/go-live.md](docs/telephony/go-live.md).
+     Forward FROM the business number TO the AI phone number (`project_representative_agent_voice_phone_number`).
+   - "Keep my phone number", "SIP": [docs/telephony](docs/telephony/README.md).
    - "I need a number in Germany / Armenia / ...": [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md).
    - "Connect my CRM / booking system / patient management system": [docs/integrations](docs/integrations/README.md).
    - "The agent said something wrong / switched language / did not book": [docs/debugging](docs/debugging/README.md).
@@ -34,10 +36,12 @@ the Newo platform. Read this file first. It is short on purpose.
    health data. Use only what the task needs, keep it on the person's machine or in Newo, and
    never paste it into an issue, a pull request or this repository. Health data (PHI) needs
    extra care: see [docs/integrations/README.md](docs/integrations/README.md#health-data).
-6. **Settings before code.** Almost everything is a setting (attribute). Change the shared
-   framework code (NAF) only when no setting can do it, and then follow
-   [docs/04-naf-change-policy.md](docs/04-naf-change-policy.md): turn off automatic updates,
-   warn the person, and file a NAF change notice.
+6. **Customize the agent, not the framework.** Every change happens at the level of this agent's
+   customization: settings, knowledge, conversation tools, scenarios, or a separate project. Change
+   the shared framework code (NAF) only in an absolutely exceptional case, when there is no other
+   way to reach the goal. Then follow [docs/04-naf-change-policy.md](docs/04-naf-change-policy.md):
+   turn off automatic updates, warn the person, and **file a NAF change notice as an issue in this
+   repository** (template "NAF change notice").
 7. **Check your work.** After a change, read it back and test (sandbox chat or a real call)
    before you say it works.
 8. **Respect real callers.** A phone change (forwarding, SIP, transfers) affects real callers at

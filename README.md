@@ -23,6 +23,7 @@ does the technical work; you make the decisions.
 | Decide whether to change framework (NAF) code | [docs/04-naf-change-policy.md](docs/04-naf-change-policy.md) |
 | Change scenarios (what the agent does for each caller intent) | [docs/05-scenarios.md](docs/05-scenarios.md) |
 | Give the agent knowledge (settings, AKB, Knowledge Studio) | [docs/06-knowledge.md](docs/06-knowledge.md) |
+| Put the agent to work: nights first, then the day (overflow or AI first) | [docs/telephony/go-live.md](docs/telephony/go-live.md) |
 | Keep the business's phone number, forward calls, connect SIP | [docs/telephony/](docs/telephony/README.md) |
 | Get a new phone number (any country) | [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md) |
 | Connect a CRM, a booking system or a patient management system | [docs/integrations/](docs/integrations/README.md) |
