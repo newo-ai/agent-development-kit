@@ -18,6 +18,8 @@ the Newo platform. Read this file first. It is short on purpose.
    - "The agent said something wrong / switched language / did not book": [docs/debugging](docs/debugging/README.md).
    - "Check my agent", "why does it say X", "how do I make it do Y": [docs/07-health-check.md](docs/07-health-check.md).
    - "Test it": [docs/testing](docs/testing/README.md).
+   - "Change the voice model / voice / speech recognizer", any connector setting: [docs/08](docs/08-connector-settings.md).
+     Every setting the portal can change, the API can change. Never say "not possible through the API" before reading that page.
    - "Add our documents / FAQ / price list": [docs/06-knowledge.md](docs/06-knowledge.md).
 3. Read [learnings/](learnings/README.md) for the same industry or the same integration: other
    assistants may have solved your case already.
@@ -54,6 +56,9 @@ the Newo platform. Read this file first. It is short on purpose.
 
 - **Terminal assistants** (Claude Code, Codex, Cursor): the Newo HTTP API with the account's API
   key, or the Newo CLI. See [docs/02-access-and-tools.md](docs/02-access-and-tools.md).
+- **Connector settings** are written with `POST /api/v1/integrations/connectors/{id}/settings`,
+  not `PATCH`. Allowed values come from the platform, not from memory. See
+  [docs/08-connector-settings.md](docs/08-connector-settings.md).
 - **Browser assistants** (ChatGPT, claude.ai): the Newo plugin (a custom MCP server). See the same
   page.
 

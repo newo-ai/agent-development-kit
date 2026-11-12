@@ -24,6 +24,7 @@ does the technical work; you make the decisions.
 | Check an agent's health; decide between a setting (level A) and a scenario change (level B) | [docs/07-health-check.md](docs/07-health-check.md) |
 | Change scenarios (what the agent does for each caller intent) | [docs/05-scenarios.md](docs/05-scenarios.md) |
 | Give the agent knowledge (settings, AKB, Knowledge Studio) | [docs/06-knowledge.md](docs/06-knowledge.md) |
+| Change connector settings (voice model, voice, speech recognizer) through the API | [docs/08-connector-settings.md](docs/08-connector-settings.md) |
 | Put the agent to work: nights first, then the day (overflow or AI first) | [docs/telephony/go-live.md](docs/telephony/go-live.md) |
 | Keep the business's phone number, forward calls, connect SIP | [docs/telephony/](docs/telephony/README.md) |
 | Get a new phone number (any country) | [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md) |

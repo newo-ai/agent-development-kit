@@ -34,6 +34,8 @@ What you need to know before your first request. Details:
 - A **connector** is one configured instance of an integration. For example, the
   `newo_voice_connector` connector belongs to the phone integration; its provider is Twilio,
   Telnyx, Custom SIP or WebSocket.
+- Connector settings (voice model, voice, speech recognizer and others) can be changed through
+  the API. See [08-connector-settings.md](08-connector-settings.md).
 
 ## People and conversations
 
