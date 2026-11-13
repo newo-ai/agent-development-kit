@@ -29,9 +29,10 @@ works for any agent that account can open. Give them the steps for their tool fr
 A work ChatGPT account may have custom MCP servers turned off by its administrator. Use a
 personal account or Claude.
 
-Then the first message:
-> Read https://github.com/newo-ai/agent-development-kit (start with AGENTS.md) and help me with my
-> Newo agent, IDN C_NE_XXXXXXXX.
+Then the first message names the agent's IDN and carries the rules from [AGENTS.md](../../AGENTS.md)
+in short form. Do not rely on a link to this repository: in a chat with the Newo server turned on,
+ChatGPT cannot open web pages (see
+[section D](../02-access-and-tools.md#d-newo-customer-mcp-server)).
 
 ## What a browser assistant cannot do yet
 

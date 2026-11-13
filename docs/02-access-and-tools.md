@@ -150,6 +150,10 @@ what it can do.
 - A **work** ChatGPT account often has custom MCP servers turned off by its administrator. Use a
   personal account or Claude.
 - ChatGPT asks for confirmation before tools that are not marked read-only.
+- **In a chat with a custom MCP server turned on, ChatGPT does not open web pages.** Its page fetch
+  ends with `DisabledError`, also for this repository (seen on 13 November 2026; the same link
+  opens in a chat without the server). Put the rules the assistant needs into the first message,
+  or read the page in a separate chat and paste the text.
 - The ChatGPT desktop and mobile apps are not documented by OpenAI for this yet.
 
 **Claude (web, desktop, mobile).** The connector belongs to the account. Add it once on the web
