@@ -90,6 +90,7 @@ it more reliable for all the others.
 | Piece | Status |
 |---|---|
 | This repository, the agent setup guide, the attribute reference | live |
+| Newo Customer MCP server for ChatGPT and Claude (sign in with a Newo account) | live |
 | Newo plugin for ChatGPT and Claude (create and configure agents from a chat) | live |
 | Newo CLI with V2 support, sandbox and scripted tests | live |
 | Knowledge Studio and its MCP server | live, rolling out |
