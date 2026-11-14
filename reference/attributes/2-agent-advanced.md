@@ -82,7 +82,9 @@ Two-letter ISO country code used for Agent phone-number provisioning (for exampl
 **⚙️ Technical & System Details (Advanced)**
 
 **System Usage:** Used as country context during first-time connector phone-number provisioning and
-to derive the numeric default country dialing code used in user phone normalization/extraction.
+to derive the numeric default country dialing code used in user phone-number validation.
+Phone-number validation also passes it as the base country when it resolves the number of a pooled
+voice or SMS connector.
 
 **Fallbacks:** Initialization reads this from `agent_creator_voice_channel_phone.country_code` when
 available. During phone purchase, Agent Creator phone payload is used directly when present; this
