@@ -279,7 +279,7 @@ managed by Newo.
 | `GET /api/v1/webhooks` | checked | outgoing webhooks: `id`, `idn`, `description`, `connector_idn`, `url`, `command_idns` |
 | `GET /api/v1/webhooks/incoming` | checked | incoming webhooks: `id`, `idn`, `url`, `connector_idn`, `event_idns`, `allowed_ips` |
 | `POST /api/v1/webhooks` | from client code | `{"idn", "url", "connector_idn"}`, plus optional `description` and `command_idns` (any command when `command_idns` is omitted) |
-| `POST /api/v1/webhooks/incoming` | from client code | `{"idn", "connector_idn", "event_idns"}` (`event_idns`: at least one event), plus optional `description`, `allowed_ips` and `response_payload`, returns the URL to give to the outside system |
+| `POST /api/v1/webhooks/incoming` | from client code | `{"idn", "connector_idn", "event_idns"}` (`event_idns`: at least one event), plus optional `description`, `allowed_ips` and `response_payload`; returns only the created webhook's `id`, and the webhook `url` comes from `GET /api/v1/webhooks/incoming` (match the `id`) |
 
 ## AKB
 
@@ -291,11 +291,13 @@ The knowledge base belongs to the persona of the `GeneralManagerAgent` agent in 
 | `GET /api/v1/akb/topics?persona_id={persona_id}&page=1&per=100&order_by=created_at` | checked | `items[].topic`: `topic_name`, `topic_summary`, `topic_facts`, `labels`, `source`, `confidence` |
 | `POST /api/v1/akb/append-manual` | from client code | adds one article: `{"persona_id", "topic_name", "topic_summary", "topic_facts": [...], "confidence": 100, "source": "<who added it>", "labels": [...]}` |
 
-Each item is `{"topic": {...}, "fuzzy_search_fields_score": ...}`. In responses, `labels` is a
-string holding a list (`"['rag_context', ...]"`) and `topic_facts` is a JSON string; parse them
-before use. When adding an article, send both as real JSON arrays. The topics endpoint has no
-working text search; page through and filter locally. Copy the labels of existing topics (they
-include `rag_context`).
+Each item is `{"topic": {...}, "fuzzy_search_fields_score": ...}`. In responses, `labels` and
+`topic_facts` are real JSON arrays of strings; use them directly, no parsing needed. When adding
+an article, send both as real JSON arrays. The topics endpoint also supports filtering and text
+search: filter with `topic_name`, `topic_summary`, `topic_facts` or `topic_labels`, or pass
+`fuzzy_search_query`, `fuzzy_search_fields` (`facts`, `summary`, `name`, `source` are all
+searched by default) and `fuzzy_search_score_threshold` (0 to 1, default 0.3). Copy the labels of
+existing topics (they include `rag_context`).
 
 If `project_attributes_setting_knowledge_source` is `akb_studio`, the agent does not use this
 knowledge base; knowledge is managed in Newo Knowledge Studio. For ordinary owners, adding
