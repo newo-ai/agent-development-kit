@@ -11,8 +11,12 @@
 - Real callers are often named `User`: the name tells you nothing. Use the time and the number.
 - Skip internal personas: `Assessor`, `ConvoAgent`, `vibe_...`, `newo-cli-...`, `setup-test-...`.
   A burst of many calls within minutes with scripted questions is usually an automated test.
-- One actor's history holds all of that person's conversations. Split them by gaps of more than
-  two minutes.
+- One actor's history holds all of that person's conversations. The platform assembles them into
+  sessions from the actor's messages (acts) and ends each one on an inactivity timeout
+  (`project_attributes_setting_conversation_session_timeout_*`): by default 60 seconds after a
+  finished chat or voice conversation, 580 seconds for an unfinished chat, 300 seconds for an
+  unfinished voice call. The next message after a timeout starts a new session; there is no gap
+  rule to apply by hand.
 
 ## Read the logs
 
