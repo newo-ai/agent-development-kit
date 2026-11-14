@@ -1080,16 +1080,18 @@ so onboarding, callbacks, and version-upgrade routines execute in the correct or
 
 **System Usage:** During the full publish/import lifecycle, a missing value is initialized (with
 legacy version handling for older deployments), first-setup operations run while value is `False`,
-then it is set to `True` before post-setup work completes. When Agent Creator disables full
-initialization, publish handling runs the shortened skip-initialization setup before it sends the
-Agent Creator callback, preparing only the minimal connector/webhook state needed for the callback.
-The shortened path does not mark this production setup flag as `True`; repeat skip setup is
-controlled by separate General Manager flow state. Update flows use this flag to avoid production
-first-setup behavior and to run version-specific upgrade routines only for already initialized
-accounts.
+then it is set to `True` before post-setup work completes. To learn whether the whole setup,
+including post-setup, finished, read `project_attributes_private_account_initialization_status`.
+When Agent Creator disables full initialization, publish handling runs the shortened
+skip-initialization setup before it sends the Agent Creator callback, preparing only the minimal
+connector/webhook state needed for the callback. The shortened path does not mark this production
+setup flag as `True`; repeat skip setup is controlled by separate General Manager flow state. Update
+flows use this flag to avoid production first-setup behavior and to run version-specific upgrade
+routines only for already initialized accounts.
 
 **Fallbacks:** If missing, initialization sets it to `False` for first-time setup (or treats some
-legacy upgrades as already initialized using previous-version metadata).
+legacy upgrades as already initialized using previous-version metadata). A previous version with no
+`x.y.z` in its name, such as a fork named `fork_naf`, also marks the account as initialized.
 
 **Dependencies:**
 
@@ -1140,8 +1142,11 @@ Behavior by value:
 
 **System Usage:** When data injection starts, runtime sets this flag to `True` and schedules a
 single `data_injection_timer` event using the configured interval. This prevents repeated
-conversation turns from creating duplicate timers. When data injection is disabled, runtime clears
-retrieved data and resets this flag to `False` on the next flow pass.
+conversation turns from creating duplicate timers. When data injection is disabled, the next
+conversation start or user reply raises the global `refresh_injection_state` event while this flag
+is `True` or retrieved data is not blank; its handler clears retrieved data and resets this flag to
+`False`. Retrieved data that a late webhook response stores after the stop is cleared the same way.
+With the flag `False` and retrieved data blank, no event is raised.
 
 **Fallbacks:** Initialized to `False` during common setup.
 
@@ -1259,8 +1264,9 @@ Published native voice mode returns the current value through `get_business_info
 data injection is enabled. It does not depend on automatic thoughts to deliver this context.
 
 **Fallbacks:** Initialized as a blank placeholder value. If the stored value is blank, injected
-external context is omitted. When data injection is disabled, runtime clears this value back to a
-blank placeholder.
+external context is omitted. When data injection is disabled, the next conversation start or user
+reply clears this value back to a blank placeholder through the global `refresh_injection_state`
+event, including data that a late webhook response stores after the stop.
 
 **Dependencies:**
 
@@ -1787,7 +1793,7 @@ Example value:
 ```txt
 Yours truly,
 Alex Johnson | Front Desk Manager
-Example Tavern
+Menlo Tavern
 ```
 
 ---
@@ -2404,14 +2410,18 @@ Customers can return damaged items within 30 days with proof of purchase. <<<RAG
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** When new text is detected in the append-text source, RAG processing converts that
-input into structured Markdown topic blocks and stores the result here. Topic-creation logic then
-consumes this content, creates AKB topics, and clears this field after successful processing.
+**System Usage:** When new text is detected in the append-text source, RAG processing uses the
+shared conversion instructions to generate a marked article response. Runtime logic saves the
+complete response separately, checks for the required outer markers, extracts their article block
+into this attribute, and then creates AKB topics from its `<<<RAG_TOPIC_SEPARATOR>>>`-delimited
+articles. Topic creation clears this field after processing.
 
 **Fallbacks:** Initialized as a whitespace placeholder during setup. If the reset control is
 triggered, generated topics for this append channel are cleared and this field is reset to an empty
 string before any new ingest run. After successful processing, topic-creation logic also clears this
-field to an empty string. If empty, no topic-creation step is executed.
+field to an empty string. If empty, no topic-creation step is executed. If conversion output omits a
+required article marker, this field stays empty and topic creation is skipped; the complete LLM
+response remains available in the conversion raw-output field for diagnosis.
 
 **Dependencies:**
 
@@ -2421,6 +2431,10 @@ field to an empty string. If empty, no topic-creation step is executed.
   - `project_attributes_rag_knowledge_base_append_text_reset`: Clears existing generated text-append
     topics and resets intermediate processing state.
 - **Logic Interactions:**
+  - `project_attributes_private_rag_knowledge_base_append_conversion_prompt`: Supplies the shared
+    conversion instructions.
+  - `project_attributes_rag_knowledge_base_append_conversion_latest_raw_output`: Retains the
+    complete latest LLM response before article extraction.
   - `project_attributes_rag_knowledge_base_append_text_log`: Updated with raw append requests during
     ingestion for audit/history tracking.
   - `project_business_industry`: Applied as a label dimension when AKB topics are created from this
@@ -2538,14 +2552,18 @@ Refund requests are accepted within 14 days when the product is unused. <<<RAG_T
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** Website append workflows convert accumulated raw website text into structured
-topic blocks and store them here. AKB topic-creation logic then consumes this content, creates
-topics with append-specific labels/source IDs, and clears this field after processing.
+**System Usage:** Website append workflows use the shared conversion instructions to transform
+accumulated raw website text into a marked article response. Runtime logic saves the complete
+response separately, checks for the required outer markers, extracts their article block into this
+attribute, and then creates AKB topics from its `<<<RAG_TOPIC_SEPARATOR>>>`-delimited articles.
+Topic creation assigns append-specific labels and source IDs, then clears this field.
 
 **Fallbacks:** Initialized as a whitespace placeholder during setup. Reset operations clear this
 field to an empty string before new website-ingestion runs, and successful topic creation clears it
 the same way after processing. If this field is empty, AKB topic creation from website-append
-content is skipped.
+content is skipped. If conversion output omits a required article marker, this field stays empty and
+topic creation is skipped; the complete LLM response remains available in the conversion raw-output
+field for diagnosis.
 
 **Dependencies:**
 
@@ -2555,6 +2573,10 @@ content is skipped.
   - `project_attributes_rag_knowledge_base_append_websites_reset`: Clears website-append generated
     topics and resets structured ingestion state.
 - **Logic Interactions:**
+  - `project_attributes_private_rag_knowledge_base_append_conversion_prompt`: Supplies the shared
+    conversion instructions.
+  - `project_attributes_rag_knowledge_base_append_conversion_latest_raw_output`: Retains the
+    complete latest LLM response before article extraction.
   - `project_attributes_rag_knowledge_base_append_websites_log`: Receives append request history
     used for tracking website-ingestion operations.
   - `project_business_industry`: Applied as a label dimension when topics are created from this
@@ -3776,9 +3798,11 @@ actionable directive runway to four sequential steps. Branch cases do not count 
 four-step runway. Both analysis paths use the same conversation context and downstream thoughts
 storage and delivery pipeline.
 
-**Fallbacks:** Initialization sets an empty value to `False` and preserves an existing non-empty
-value. The runtime reader enables tracing only for the exact value `True`; a missing, blank, or any
-other value uses the legacy thoughts analysis.
+**Fallbacks:** Initialization sets an empty value to `True` and preserves an existing non-empty
+value. The registry seeds this flag as `False` for every industry and the 4.11.2 thoughts migration
+also lands on `False`, so tracing stays disabled by default. The runtime reader enables tracing
+only for the exact value `True`; a missing, blank, or any other value uses the legacy thoughts
+analysis.
 
 **Dependencies:**
 
@@ -4247,8 +4271,8 @@ Example value:
 
 **System Usage:** At the start of the language-switch customization migration, the system copies the
 complete existing canvas JSON into this attribute before parsing the canvas or asking the language
-model to classify quoted text. The migration then reviews only custom Introduction, Scenario, and
-Procedure items. An existing non-empty backup is preserved so a retried migration cannot replace the
+model to classify quoted text. The migration then reviews only custom Introduction, Intent Type,
+Scenario, and Procedure items. An existing non-empty backup is preserved so a retried migration cannot replace the
 original snapshot.
 
 The classifier is instructed to select complete direct User-facing wording and leave quotes
