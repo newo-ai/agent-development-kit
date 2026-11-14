@@ -42,7 +42,7 @@ Where to set it:
   - Otherwise give them click-by-click steps for their admin portal.
   - Newo does not need access to their phone system.
 - The target is always the **AI phone number**: read it from
-  `project_representative_agent_voice_phone_number` (or the plugin's `agent_status`). Do not ask
+  `project_representative_agent_voice_phone_number` (or the plugin's `get_customers`). Do not ask
   the owner for it, and do not confuse it with the business number.
 - Always use the AI phone number in international format (E.164, `+14155550123`).
 - The staged rollout (nights, review, then the day) is in [go-live.md](go-live.md).
