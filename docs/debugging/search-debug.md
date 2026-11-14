@@ -66,7 +66,7 @@ Rules:
 When Studio has **no** search request for that conversation turn, the problem is on the agent
 side:
 
-1. `project_attributes_setting_knowledge_source` is `akb_studio` (or `external`): read it.
+1. `project_attributes_setting_knowledge_source` is `akb_studio`: read it.
 2. `project_attributes_setting_akb_studio_search` (or `project_attributes_setting_external_kb`)
    is set. Say "set" or "empty"; never show its value.
 3. The account has the `http` integration with the `http_connector` connector

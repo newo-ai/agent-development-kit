@@ -83,10 +83,9 @@ accounts. On a V2 account, never change skills or publish through the old reques
 `GET /api/v1/account` returns 403 with an account API key; use the profile instead.
 
 The receptionist is the project with `idn` `naf`. Keep its `id`: most requests below need it.
-**Two project ids.** On a V2 account the `naf` project has a V2 `id` (from
-`/api/v3/designer/projects`; use it for attributes) and a different old `id` (from
-`GET /api/v1/designer/projects`). `GET /api/v1/bff/agents/list?project_id=...` needs the **old**
-id; with the V2 id it returns 404.
+**One project id.** On a V2 account, `GET /api/v1/designer/projects` returns the same V2 `id`
+as `/api/v3/designer/projects`: the v1 endpoint serves designer V2 ids to V2 accounts. Use that
+`id` for attributes and for `GET /api/v1/bff/agents/list?project_id=...`.
 
 **Updates from Newo:** `is_auto_update_enabled` in `GET /api/v3/designer/projects` says whether
 Newo updates the agent to new releases automatically; an update replaces changed skill code (see
@@ -136,8 +135,11 @@ project attribute.
 
 **Always send the whole attribute**, not only the value. Read the current object, replace
 `value`, send back these fields: `idn`, `value`, `title`, `description`, `group`, `is_hidden`,
-`possible_values`, `value_type`. A body with only `{"value": ...}` erases the title,
-description and allowed values.
+`possible_values`, `value_type`. For a customer attribute, a body with only `{"value": ...}`
+still resets the other fields: the gateway fills every field you leave out with its default
+(empty `title`, `description`, `group`, `possible_values`; `value_type` `string`) and the update
+overwrites the stored attribute with them. For a project attribute the update is partial:
+fields you leave out keep their stored values.
 
 ```bash
 python3 - <<'PY'
@@ -176,7 +178,7 @@ skill (its `execution_path`).
 
 | Request | Status | Returns |
 |---|---|---|
-| `GET /api/v1/bff/agents/list?project_id={old_project_id}` | checked | agents with their `flows` and `persona`; use it for the persona ids. Needs the old project id (see [Two project ids](#account-and-projects)) |
+| `GET /api/v1/bff/agents/list?project_id={project_id}` | checked | agents with their `flows` and `persona`; use it for the persona ids. Takes the project `id` from [Account and projects](#account-and-projects) |
 | `GET /api/v3/designer/project-versions/{version_id}/export` | from platform docs | the whole version as a ZIP |
 | `POST /api/v3/designer/project-versions/{version_id}/export-url` | from platform docs | a signed URL to download the same ZIP |
 | `POST /api/v3/designer/project-versions/{version_id}/session` | from platform docs | file access to the version in cloud storage: `api_base_url`, `bucket`, `prefix`, `access_token`, permissions (published versions: read only) |
@@ -364,9 +366,8 @@ The knowledge base belongs to the persona of the `GeneralManagerAgent` agent in 
 | `GET /api/v1/akb/topics?persona_id={persona_id}&page=1&per=100&order_by=created_at` | checked | `items[].topic`: `topic_name`, `topic_summary`, `topic_facts`, `labels`, `source`, `confidence` |
 | `POST /api/v1/akb/append-manual` | from client code | adds one article: `{"persona_id", "topic_name", "topic_summary", "topic_facts": [...], "confidence": 100, "source": "<who added it>", "labels": [...]}` |
 
-Each item is `{"topic": {...}, "fuzzy_search_fields_score": ...}`. In responses, `labels` is a
-string holding a list (`"['rag_context', ...]"`) and `topic_facts` is a JSON string; parse them
-before use. When adding an article, send both as real JSON arrays. The topics endpoint has no
+Each item is `{"topic": {...}, "fuzzy_search_fields_score": ...}`. `labels` and `topic_facts`
+are arrays of strings, in responses and when adding an article. The topics endpoint has no
 working text search; page through and filter locally. Copy the labels of existing topics (they
 include `rag_context`).
 

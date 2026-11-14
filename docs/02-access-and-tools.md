@@ -7,7 +7,7 @@ safely.
 
 | The person uses | You reach Newo through | Section |
 |---|---|---|
-| Claude Code, Codex, Cursor or another assistant with a terminal | the Newo HTTP API or the Newo CLI, with the account's API key in an environment variable | [A](#a-terminal-assistants) |
+| Claude Code, Codex, Cursor or another assistant with a terminal | the Newo HTTP API or the Newo CLI, with the account's API key in an environment variable; Claude Code and Codex can also sign in to the **Newo Customer MCP server** | [A](#a-terminal-assistants), or [D](#d-newo-customer-mcp-server) for Claude Code and Codex |
 | ChatGPT or Claude in the browser (or the Claude apps) | the **Newo Customer MCP server**: the person signs in with their Newo account | [D](#d-newo-customer-mcp-server) |
 | ChatGPT or Claude, for an agent the older Newo plugin created in that same chat | the older **Newo plugin** (a custom MCP server without sign-in) | [B](#b-the-older-newo-plugin) |
 | Any assistant, for knowledge only | **Newo Knowledge Studio** | [C](#c-newo-knowledge-studio) |
@@ -134,10 +134,11 @@ what it can do.
 
 - Newo's sign-in does not support automatic client registration. In every client, choose the
   option to use your own OAuth client and enter the client ID above.
-- **Which clients work today:** ChatGPT and Claude (web, desktop, mobile). The client ID does not
-  yet accept a sign-in that returns to a local address (`localhost`), which Claude Code and Codex
-  use. Their sign-in ends with "Callback URL mismatch". Until Newo adds this, terminal assistants
-  use [A](#a-terminal-assistants).
+- **Which clients work today:** ChatGPT and Claude (web, desktop, mobile), and Claude Code and
+  Codex in the terminal. The terminal clients sign in through a local callback: the client is
+  registered as a Native application with the callback `http://localhost:8765/callback`, and the
+  connection commands below use port 8765. Terminal assistants that prefer a key can still use
+  [A](#a-terminal-assistants).
 
 **ChatGPT (web).**
 1. Open https://chatgpt.com/plugins (or **Plugins** in the menu on the left).
@@ -177,7 +178,7 @@ and it works in every Claude app.
 - **In a chat:** **+** → **Connectors** → turn it on.
 - Authorization settings cannot be edited later: remove the connector and add it again.
 
-**Claude Code and Codex** (after Newo enables `localhost` sign-in; until then use A):
+**Claude Code and Codex** (terminal clients; the local callback listens on port 8765):
 ```bash
 claude mcp add --transport http -s user --client-id g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe --callback-port 8765 newo https://api.newo.ai/api/v1/customer-mcp
 ```

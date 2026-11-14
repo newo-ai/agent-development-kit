@@ -61,8 +61,10 @@ Content-Type: application/json
 - This is the request the portal's own **Edit Settings** form sends (seen in the portal code on
   2026-11-12). The form sends every setting of the connector. Sending the full list read in
   step 2, with your values changed, is the safest form.
-- **Do not use** `PATCH /api/v1/integrations/connectors/{connector_id}` for settings. It changes the
-  connector's title and status; settings sent there are ignored even though the answer is `200`.
+- **Do not use** `PATCH /api/v1/integrations/connectors/{connector_id}` for settings. It changes
+  only the connector's title and idn (`connector_idn`); a connector's status (running or stopped)
+  is changed only by the `run` and `stop` requests (section 4). Settings sent to PATCH are
+  ignored even though the answer is `200`.
 - `PUT /api/v1/integrations/connectors/{connector_id}` answers `405 Method Not Allowed`
   (2026-11-12).
 - The voice model itself (Gemini, Grok or OpenAI) is chosen by `v2v_mode`. On a NAF agent, change

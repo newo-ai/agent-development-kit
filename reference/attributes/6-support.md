@@ -19,14 +19,17 @@ technical team during controlled troubleshooting.
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** Publication and import write this value directly from the installed Project's
-`version`. It is a compatibility copy for external systems. The framework reads its current version
-from the Project itself for migration targets, the `modules` payload in `session_ended` events, and
-the `superagentVersion` field in human-in-the-loop (HITL) report requests. Changing this Attribute
-does not change those outputs or the migration target.
+**System Usage:** Publication writes the installed Project's `version` name as is, prefixes and
+suffixes included (`4.16.0-fork`, `v4.16.0`), when that name contains an `x.y.z`. For a name without
+one, such as a fork named `fork_naf`, it writes the previous version name from the publish event as
+is if that name contains an `x.y.z`, and otherwise leaves the value unchanged. It is a compatibility
+copy for external systems. The framework reads its current version from the Project itself for
+migration targets, the `modules` payload in `session_ended` events, and the `superagentVersion`
+field in human-in-the-loop (HITL) report requests. Changing this Attribute does not change those
+outputs or the migration target.
 
-**Fallbacks:** Industry defaults contain a blank placeholder until publication or import supplies
-the installed version.
+**Fallbacks:** Industry defaults contain a blank placeholder until a publication supplies a version
+with an `x.y.z` in its name.
 
 **Dependencies:**
 

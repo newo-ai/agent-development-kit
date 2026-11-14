@@ -192,8 +192,17 @@ country code values.
 **⚙️ Technical & System Details (Advanced)**
 
 **System Usage:** Automatically derived from the alpha-2 country code and injected into explicit
-constraints, transfer, reporting, user-information extraction, and phone-validation prompt schemas
-as the default dialing context.
+constraints, transfer, reporting, and SMS phone-validation prompt schemas as the default dialing
+context. User-information extraction no longer passes it to the model: a phone number the user says
+is validated in NSL. A number without a country code is treated as a number of this country: its
+trunk code (for example, the leading `0`) is removed and the rest must have a national length of
+this country or the national length of the Agent phone number, so a foreign number without `+` that
+has such a length is read as a number of this country. `00` always marks an international number;
+`011` does so only when this field is `1`. A number that matches neither this country nor a number
+with a known country code gets the `not_valid` status, and SMS guarded by that status are blocked.
+When this field is empty, `null`, or an unknown code, every number without `+` or `00` gets
+`not_valid`, so the Agent asks for the number with its country code. A valid number of this country
+is stored with its trunk code, and a number of another country with its country code.
 
 **Fallbacks:** If alpha-2 mapping is unavailable, this field is set to a null-like placeholder.
 System mapping can repopulate it when a valid alpha-2 value is available. Agent Creator phone

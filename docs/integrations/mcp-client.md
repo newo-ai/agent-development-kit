@@ -74,9 +74,10 @@ Example `oauth2_link` arguments:
 
 | `code` | `error_type` | Typical cause |
 |---|---|---|
-| `400` | `bad_request` | missing authorization code or issuer mismatch in the callback; or the provider needs a pre-registered client (below) |
+| `400` | `bad_request` | missing authorization code or issuer mismatch in the callback |
 | `403` | `forbidden` | the person or the provider denied access |
 | `409` | `conflict` | the connector is not an `oauth2` connector |
+| `409` | `client_credentials_required` | the provider needs a pre-registered OAuth client (below) |
 | `410` | `gone` | the person opened the link after it expired: start again |
 | `502` | `bad_gateway` | discovery, client registration or code exchange failed at the provider |
 | `504` | `gateway_timeout` | the provider did not answer in time |
@@ -86,12 +87,14 @@ Example `oauth2_link` arguments:
 
 Newo registers itself with the provider automatically when the provider supports it. If the
 provider supports neither dynamic client registration (DCR) nor client metadata documents (CIMD),
-`oauth2_error` says so:
+`oauth2_start` fails at once with `oauth2_error`, a `409` `client_credentials_required`:
 
 ```json
-[{"name": "code", "value": "400"}, {"name": "error_type", "value": "bad_request"},
- {"name": "reason", "value": "Authorization server supports neither CIMD nor DCR; configure client_id and client_secret from a pre-registered OAuth2 client"}]
+[{"name": "code", "value": "409"}, {"name": "error_type", "value": "client_credentials_required"},
+ {"name": "reason", "value": "This provider requires an OAuth application. Enter its Client ID and Client Secret, then connect again."}]
 ```
+
+When only the client secret is missing, the reason asks for the secret alone.
 
 Then:
 1. The business (or its IT) registers an OAuth app in the other system and gets a client ID and

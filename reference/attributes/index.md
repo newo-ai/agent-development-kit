@@ -5,6 +5,13 @@ Columns: IDN, title (the [A]/[B]/[C] mark is the setup tier: A = basic, B = comm
 C = advanced; [IMPORTANT] marks attributes that change behavior a lot), level, value type.
 Open the group page for the full description, examples and dependencies.
 
+## Chat
+
+Full descriptions: [2-agent.md](2-agent.md) (this attribute stays on the Agent page until a
+dedicated Chat page exists)
+
+- `project_representative_agent_chat_greeting_phrase` | Chat - Greeting Phrase [A] | Customer | string
+
 ## 1. Business
 
 Full descriptions: [1-business.md](1-business.md)
@@ -54,6 +61,9 @@ Full descriptions: [2-agent.md](2-agent.md)
 - `project_representative_agent_voice_speaking_style` | 2-04-A. Agent Tone of Voice / Speaking Style for Voice Channels [A] | Customer | string
 - `project_representative_agent_chat_speaking_style` | 2-04-B. Agent Tone of Voice for Chat Channels [A] | Customer | string
 - `project_representative_agent_chat_formatting_style` | 2-04-C. Agent Chat Formatting Style [A] | Customer | string
+- `project_representative_agent_chat_verbosity` | 2-04-D. Agent Chat Verbosity [A] | Customer | string
+- `project_representative_agent_voice_formatting_style` | 2-04-E. Agent Voice Formatting Style [A] | Customer | string
+- `project_representative_agent_voice_verbosity` | 2-04-F. Agent Voice Verbosity [A] | Customer | string
 - `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_voice` | 2-05-A. Voice - Integration Service - Voice To Voice Provider - GenAI - Voice [A] | Customer | enum
 - `project_attributes_setting_voice_integration_service_voice_to_voice_provider_openai_voice` | 2-05-B. Voice - Integration Service - Voice To Voice Provider - OpenAI - Voice [A] | Customer | enum
 - `project_attributes_setting_voice_integration_service_voice_to_voice_provider_grok_voice` | 2-05-C. Voice - Integration Service - Voice To Voice Provider - Grok - Voice [A] | Customer | enum
@@ -64,7 +74,6 @@ Full descriptions: [2-agent.md](2-agent.md)
 - `project_representative_agent_voice_greeting_phrase_recent_returning_after_transfer` | 2-07-D. Voice - Greeting Phrase - Recent Returning Customer After Call Transfer [A] | Customer | string
 - `project_representative_agent_voice_greeting_phrase_later_returning` | 2-07-E. Voice - Greeting Phrase - Returning Customer [A] | Customer | string
 - `project_representative_agent_voice_greeting_phrase_later_returning_after_transfer` | 2-07-F. Voice - Greeting Phrase - Later Returning Customer After Call Transfer [A] | Customer | string
-- `project_representative_agent_chat_greeting_phrase` | 2-08. Chat - Greeting Phrase [A] | Customer | string
 - `project_representative_agent_gender` | 2-09. Agent Gender [A] | Customer | enum
 - `project_attributes_setting_voice_integration_service_bypass_phone_number` | 2-10. Bypass Phone Number [A] | Customer | string
 - `project_representative_agent_voicemail_detection_behavior_instruction` | 2-11. Voice - Voicemail Detection Behavior Instruction [A] | Customer | string
@@ -102,6 +111,7 @@ Full descriptions: [3-knowledge-base.md](3-knowledge-base.md)
 - `project_attributes_rag_knowledge_base_append_websites` | 3-06-D. RAG - Knowledge Base - Websites [A] | Customer | string
 - `project_attributes_rag_knowledge_base_append_websites_log` | 3-06-E. RAG - Knowledge Base - Websites - Log [A] | Customer | string
 - `project_attributes_rag_knowledge_base_append_websites_reset` | 3-06-F. RAG - Knowledge Base - Websites - Reset [A] | Customer | bool
+- `project_attributes_rag_knowledge_base_append_conversion_latest_raw_output` | 3-06-G. RAG - Knowledge Base - Latest Conversion Raw Output [B] | Customer | string
 
 ## 3. Knowledge Base - Advanced
 

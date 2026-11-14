@@ -59,8 +59,10 @@ business's carrier. Prefer an agent number in the same country ([phone-numbers.m
 
 ## B. SIP registration
 
-Newo connects by **SIP registration** with a username and password (digest). **IP-only SIP
-trunking (no credentials) is not supported.**
+Newo connects by **SIP registration** with a username and password (digest). IP-only trunks are
+also supported: in the **registration-not-required** mode the connector needs only the SIP host
+name, no username or password. The flag may currently have to be enabled by Newo for the project
+(`sip_registration_not_required` on the connector) — ask [support](../support/README.md).
 
 **1. Get from the phone system or SIP provider** (business SIP products give this in their
 onboarding documents or admin portal):
@@ -81,8 +83,11 @@ onboarding documents or admin portal):
 - in the SIP group: host:port, username, password, caller ID, transport.
 
 **The password is typed by the person** in the Newo portal (Builder → Integrations), never in a
-chat. Changing an existing connector through the API is not reliable today: an update can report
-success without saving. Do it in the portal and read it back.
+chat. Changing the connector through the API is reliable on the settings route the portal uses:
+`POST /api/v1/integrations/connectors/{connector_id}/settings`. The generic
+`PATCH /api/v1/integrations/connectors/{connector_id}` route is the one that can report success
+without saving — do not use it for settings. After a change, read the settings back
+(`GET /api/v1/integrations/connectors/{connector_id}/settings`) and confirm.
 
 **4. Allowlisting.**
 - If calls do not arrive or have no audio, Newo may need to allow the provider's SIP and RTP IP
@@ -96,8 +101,10 @@ success without saving. Do it in the portal and read it back.
 - an outbound call if the agent calls out;
 - one transfer to a person.
 
-If the agent receives nothing, the registration may have failed. The API does not show
-registration status today: ask Newo support to check it.
+If the agent receives nothing, the registration may have failed. There is no public API route
+that reads registration status, but the agent's flow is told: Newo sends a `registration_changed`
+connector event with the arguments `status` (`registered` or `failed`) and `provider`. Subscribe
+to connector events in the flow designer to see and react to it.
 
 ## C. Moving the number to Newo (porting)
 

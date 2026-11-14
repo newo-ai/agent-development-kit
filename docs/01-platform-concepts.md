@@ -32,8 +32,9 @@ What you need to know before your first request. Details:
   `email`, `google_calendar`, `http`, `api`, `sandbox` (test chat), `mcp` (external MCP servers)
   and others.
 - A **connector** is one configured instance of an integration. For example, the
-  `newo_voice_connector` connector belongs to the phone integration; its provider is Twilio,
-  Telnyx, Custom SIP or WebSocket.
+  `newo_voice_connector` connector belongs to the phone integration; a voice connector's provider
+  is one of seven: `twilio`, `telnyx`, `sip` (a SIP trunk), `custom_sip`, `webrtc` (for calls in
+  the browser), `websocket` or `csc-telecom` (CSC Telecom).
 - Connector settings (voice model, voice, speech recognizer and others) can be changed through
   the API. See [08-connector-settings.md](08-connector-settings.md).
 

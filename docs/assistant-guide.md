@@ -40,8 +40,10 @@ The owner's first message comes in one of two forms:
   through [Connect the Newo plugin](#connect-the-newo-plugin), then
   [Create the agent](#create-the-agent), then continue below. Everything you write to the owner
   follows [Talking to the owner](#talking-to-the-owner).
-- **The owner already has an agent.** Managing an existing agent from a web chat is not available
-  yet: it needs a sign-in (OAuth) that is being built. Follow
+- **The owner already has an agent.** Managing an existing agent is done through the Newo
+  Customer MCP server: the person signs in once with their Newo account (see
+  [02-access-and-tools.md, section D](02-access-and-tools.md#d-newo-customer-mcp-server)), and you
+  work on the agent through its tools. Follow
   [Agents the owner already had](#agents-the-owner-already-had).
 
 Never invent a `customer_idn` or a phone number, and never tell the owner that one is "on their
@@ -190,9 +192,11 @@ tell the owner that the Newo plugin is not available to them yet and that Newo s
 ## Create the agent
 
 When the owner wants a new agent - also when they created one before, in this chat, in an
-earlier chat or another way: an earlier agent never blocks a new one, there is no limit of one
-agent per owner. If an agent was already created for the same business, ask once whether they
-want a new agent or to keep working on that one.
+earlier chat or another way: an earlier agent never blocks a new one. What can block it is the
+agent quota Newo can set on the owner's account: when the quota is reached, creating another
+agent fails with an agent-quota error. Newo support can raise the quota. If an agent was already
+created for the same business, ask once whether they want a new agent or to keep working on
+that one.
 
 Always create the agent with `create_agent`. Never send the owner to `agent.newo.ai/creator` or
 any other page to create an agent, and never offer such a link: an agent created there is not
@@ -248,9 +252,12 @@ options:
    when you know it, so the form is filled in), sign in with Google and choose
    **Connect my existing Newo agent**. The key is typed into that form only;
    it goes straight to Newo's server and is never shown again.
-2. Changes to the agent's own settings from this chat will become possible once the Newo plugin
-   gets its sign-in (coming soon). Until then, the owner or Newo support makes them in the Newo
-   portal.
+2. Changes to the agent itself go through the Newo Customer MCP server: once the person signs in
+   with their Newo account
+   ([02-access-and-tools.md, section D](02-access-and-tools.md#d-newo-customer-mcp-server)), you
+   can work on the agent's project files and versions, its connectors, its sessions,
+   conversations and logs, and create more agents. Attribute settings are still changed by the
+   owner or Newo support in the Newo portal.
 
 ## Rules (always)
 

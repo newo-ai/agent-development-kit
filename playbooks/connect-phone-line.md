@@ -79,7 +79,9 @@ On Newo:
 
 Test: an inbound call through the PBX route, an outbound test if the agent calls out, and one
 transfer to a person. If the agent does not receive calls, the registration may have failed; Newo
-support can check it (the API does not show registration status today).
+support can check it. There is no public API route that reads registration status, but the
+agent's flow is told: Newo sends a `registration_changed` connector event with the arguments
+`status` (`registered` or `failed`) and `provider`.
 
 ## 4. After it works
 
