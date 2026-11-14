@@ -88,7 +88,7 @@ To create the voice agent for {business}, connect the Newo plugin once (about 2 
 3. Choose the third item, Add custom MCP server (not Create plugin, not Upload plugin archive).
 4. Name: Newo
 5. Connection: keep Server URL and paste: https://api.newo.ai/api/v1/customer-mcp
-6. Authentication: keep OAuth, open its advanced settings and enter the client ID g2t0mUwvyASY6OC9F76xvBSFfZjSyfe (leave the secret empty).
+6. Authentication: keep OAuth, open its advanced settings and enter the client ID g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe and the scopes openid offline_access (leave the secret empty).
 7. Tick I understand and want to continue and click Create as a plugin.
 8. Click Connect and sign in with your Newo account.
 9. Come back to this chat, press + under the message box, turn on Newo and write: Done
@@ -178,7 +178,8 @@ in detail, in ChatGPT:
    - **Connection:** keep **Server URL** selected and paste the Newo Customer MCP server address:
      `https://api.newo.ai/api/v1/customer-mcp`.
    - **Authentication:** keep **OAuth**. In the advanced OAuth settings, enter the client ID
-     `g2t0mUwvyASY6OC9F76xvBSFfZjSyfe` by hand and leave the client secret empty.
+     `g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe` by hand, the scopes `openid offline_access`, and leave
+     the client secret empty.
    - Tick **I understand and want to continue**. The warning that custom MCP servers introduce
      risk is expected for this plugin.
    - Click **Create as a plugin**, then **Connect**, and have the owner sign in on the Newo page
@@ -190,7 +191,8 @@ in detail, in ChatGPT:
    first message there again.
 
 In Claude: Customize → Connectors → **+** → **Add custom connector**, the same server address,
-and sign in. Menu names change from time to time: if what the owner sees differs, ask them
+then under **Advanced** use your own OAuth client and enter the same client ID, and sign in.
+Menu names change from time to time: if what the owner sees differs, ask them
 what is on the screen and guide them from there. If the owner cannot connect the plugin at all,
 tell the owner that the Newo plugin is not available to them yet and that Newo support can help.
 

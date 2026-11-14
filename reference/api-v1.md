@@ -173,7 +173,7 @@ Read [Improve and fix](../playbooks/improve-and-fix.md) before changing code.
 A flow publish makes changed skills live. A project publish of `naf` publishes the project and
 starts the agent's initialization again, which recompiles settings such as working hours, time
 zone, languages and scenarios. Allow 2 to 5 minutes before testing. Errors come back in
-`message` and `reasons`; show them to the owner in plain words.
+`reason` and `errors[].message`; show them to the owner in plain words.
 
 ## Conversations
 
