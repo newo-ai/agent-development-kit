@@ -106,8 +106,11 @@ project attribute.
 
 **Always send the whole attribute**, not only the value. Read the current object, replace
 `value`, send back these fields: `idn`, `value`, `title`, `description`, `group`, `is_hidden`,
-`possible_values`, `value_type`. A body with only `{"value": ...}` erases the title,
-description and allowed values.
+`possible_values`, `value_type`. For a customer attribute, a body with only `{"value": ...}`
+still resets the other fields: the gateway fills every field you leave out with its default
+(empty `title`, `description`, `group`, `possible_values`; `value_type` `string`) and the update
+overwrites the stored attribute with them. For a project attribute the update is partial:
+fields you leave out keep their stored values.
 
 ```bash
 python3 - <<'PY'
