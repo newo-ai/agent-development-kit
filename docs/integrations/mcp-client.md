@@ -5,9 +5,9 @@ system, a practice or patient management system. The agent then calls that serve
 during a conversation.
 
 Do not confuse this with the MCP servers **you** (the coding assistant) connect to:
-- the Newo plugin;
-- Knowledge Studio;
-- the Newo Customer MCP server.
+- the Newo Customer MCP server;
+- the older Newo plugin;
+- Knowledge Studio.
 
 Those are described in [02-access-and-tools.md](../02-access-and-tools.md). This page is about the
 **agent** using an external MCP server while it talks to a caller.

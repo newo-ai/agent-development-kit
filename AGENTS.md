@@ -59,8 +59,9 @@ the Newo platform. Read this file first. It is short on purpose.
 - **Connector settings** are written with `POST /api/v1/integrations/connectors/{id}/settings`,
   not `PATCH`. Allowed values come from the platform, not from memory. See
   [docs/08-connector-settings.md](docs/08-connector-settings.md).
-- **Browser assistants** (ChatGPT, claude.ai): the Newo plugin (a custom MCP server). See the same
-  page.
+- **Browser assistants** (ChatGPT, Claude): the **Newo Customer MCP server**. The person signs in
+  with their Newo account; no key in the chat. Server URL, client ID and steps:
+  [docs/02-access-and-tools.md, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server).
 
 ## 4. Before you finish
 
