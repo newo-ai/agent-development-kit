@@ -334,7 +334,8 @@ delivery; for those, ask the owner to make a real test call.
 | `GET /api/v1/integrations` | checked | integrations: `id`, `idn`, `title`, `description`, `is_disabled`, `connector_settings_descriptions` (which settings a connector takes) |
 | `GET /api/v1/integrations/{integration_id}/connectors` | checked | connectors: `id`, `connector_idn`, `title`, `status` (`running`, ...), `settings` (`[{"idn", "value"}]`) |
 | `GET /api/v1/integrations/{integration_id}/settings` | from client code | integration-level settings |
-| `PUT /api/v1/integrations/connectors/{connector_id}` | from client code | change `title`, `status` or `settings` |
+| `PATCH /api/v1/integrations/connectors/{connector_id}` | from client code | `{"title", "connector_idn"}` (both required); other fields (`status`, `settings`) are ignored, and there is no `PUT` route |
+| `POST /api/v1/integrations/connectors/{connector_id}/settings` | from client code | `[{"idn", "value"}]` - change connector settings |
 | `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "integration_idn", "settings": [{"idn", "value"}]}` |
 
 Connector objects can contain an `api_key` field, and settings such as `sip_password`. Never
@@ -348,8 +349,8 @@ managed by Newo.
 |---|---|---|
 | `GET /api/v1/webhooks` | checked | outgoing webhooks: `id`, `idn`, `description`, `connector_idn`, `url`, `command_idns` |
 | `GET /api/v1/webhooks/incoming` | checked | incoming webhooks: `id`, `idn`, `url`, `connector_idn`, `event_idns`, `allowed_ips` |
-| `POST /api/v1/webhooks` | from client code | `{"connector_idn", "event_idn", "url", "method", "headers", "body_template"}` |
-| `POST /api/v1/webhooks/incoming` | from client code | `{"connector_idn", "event_idn"}`, returns the URL to give to the outside system |
+| `POST /api/v1/webhooks` | from client code | `{"idn", "description": "", "url", "connector_idn", "command_idns": [...]}`; `idn`, `connector_idn`, `url` are required, and any command triggers it when `command_idns` is omitted |
+| `POST /api/v1/webhooks/incoming` | from client code | `{"idn", "description": "", "connector_idn", "event_idns": [...] (at least one), "allowed_ips": [...], "response_payload": {...}}`; returns only the new `id`, and the `url` to give to the outside system comes from `GET /api/v1/webhooks/incoming` |
 
 ## AKB
 
@@ -382,5 +383,8 @@ knowledge through the attribute `project_attributes_rag_knowledge_base_append_te
 - After a publish, allow about two minutes before testing.
 - V2: only whole versions are published, and publishing replaces project attributes (see
   [Publish and activate](#publish)).
-- Changing an existing connector with `PUT`/`PATCH` is not reliable (an update returned success
-  without saving). Read the connector back after any change.
+- Connector updates go through `PATCH /api/v1/integrations/connectors/{connector_id}` and only
+  save `title` and `connector_idn`; anything else in the body is ignored, so an update can return
+  success without saving it. Change `settings` with
+  `POST /api/v1/integrations/connectors/{connector_id}/settings` and read the connector back
+  after any change.
