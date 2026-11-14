@@ -220,9 +220,10 @@ spam-limit enforcement, missing/empty values are treated as an empty list before
 
 - **Primary Settings:**
   - `project_attributes_setting_spam_limit`: Reaching the configured threshold appends the user's
-    phone number to this list.
-  - `project_attributes_setting_voice_integration_service`: Determines which voice integration
-    connector receives the stop-call command.
+    caller ID (detected phone number) to this list.
+  - `project_attributes_setting_voice_integration_service`: Not read on this stop-call path: when a
+    blocked caller is detected, the stop-call command is sent through the integration and connector
+    of the conversation's active actor.
 - **Logic Interactions:**
   - Caller identifier matching normalizes every list entry before comparison: digits and the
     `#`/`*` characters are kept, other characters (including a leading `+`) are dropped, so
@@ -995,8 +996,10 @@ the request and logs configuration guidance.
   - `project_attributes_setting_booking_check_availability_request_http_method`: This advanced
     system configuration controls HTTP method in endpoint/default HTTP fallback branches.
 - **Logic Interactions:**
-  - For `intercom`, data-injection flow prepares/maintains Intercom actor context used by
-    availability requests.
+  - For `intercom`, while data injection is enabled
+    (`project_attributes_setting_data_injection_is_enabled`; any value other than `False`, including
+    empty, counts as enabled), the data-injection flow prepares/maintains Intercom actor context
+    used by availability requests.
   - For industry-specific default routes, additional business prerequisites are validated before
     dispatch.
 ```
@@ -1454,7 +1457,9 @@ Example value:
 
 **System Usage:** During booking submission handling, runtime reads this value and, when non-empty,
 sends it to the user as an urgent instruction message in schema-based booking submission branches
-(including the new default restaurant approach).
+(including the new default restaurant approach). The message is sent uninterruptible with the
+waiting mode kept on: the agent stays on the booking submission step and does not close the
+conversation until the booking system result appears in the `<ActionsStates>` section.
 
 **Fallbacks:** Common default is empty. Many industry initializers set a non-empty default phrase.
 
@@ -1950,7 +1955,8 @@ which approach is primary. With
 attempts can fallback to the old approach.
 
 Data-injection runtime also uses this setting to decide whether Intercom actor context must be
-created/maintained.
+created/maintained; actor-context preparation runs only while data injection is enabled
+(`project_attributes_setting_data_injection_is_enabled`).
 
 **Fallbacks:** Initialized to `default` during common setup.
 
@@ -2093,7 +2099,7 @@ The trigger configuration has to be filled as follows:
       "conditions": {
         "agentPromised": {
           "type": "boolean",
-          "description": "The agent clearly states that they are going to calculate the price right now. So their <LatestConvoAgentAnswer> should contain something like: \"I will calculate the price for you...\", \"Let me calculate the estimate...\", \"Give me a moment, I will calculate...\", etc. Statements of capability (e.g., \"I can calculate\", \"I could estimate\") or conditional offers are NOT firm intentions and must be ignored."
+          "description": "The agent clearly says they are calculating or checking the price or cost right now, e.g. \"Let me calculate the estimate...\" or \"Give me a moment to check what the approximate cost would be...\". Offers such as \"I can calculate\" do not count."
         }
       },
       "useConversationHistory": false
@@ -2346,8 +2352,9 @@ result, and the call is stopped after a fixed delay.
 **Dependencies:**
 
 - **Primary Settings:**
-  - `project_attributes_setting_voice_integration_service`: This advanced system configuration
-    determines which voice connector receives the stop-call command after detection.
+  - `project_attributes_setting_voice_integration_service`: Not read on this stop-call path: after
+    spam/voicemail detection, the stop-call command is sent through the integration and connector of
+    the conversation's active actor.
 - **Logic Interactions:**
   - `project_attributes_setting_spam_limit`: This advanced system configuration independently
     governs repeated sessions labeled as spam at session end; it does not control classification.
@@ -3080,9 +3087,11 @@ Use this when you want phone and SMS interactions to route through the intended 
 number for a user's country and local prefix, or to stay on the same phone number the user already
 called or is currently talking to.
 
-**Note:** Purchasing phone numbers through this attribute is currently supported only with Twilio.
-Purchasing numbers from any other provider is temporarily unavailable because that provisioning path
-has not yet been implemented.
+**Note:** Purchasing phone numbers through this attribute goes through the shared phone-number
+service, which selects the provider that fulfills the purchase: a Twilio-fulfilled number is placed
+in the Twilio SMS connector, while a Telnyx-fulfilled number, for example, is created under the
+`newo_sms` connector. Which providers are actually purchasable is deployment configuration managed
+by Newo: non-Twilio purchasing depends on the providers Newo has enabled for your account.
 
 **How to use:**
 
@@ -4186,7 +4195,7 @@ Example of overriding existing tool - `calculation_tool` and adding new `report_
       "conditions": {
         "agentPromised": {
           "type": "boolean",
-          "description": "The agent clearly states that they are going to calculate the price right now. So their <LatestConvoAgentAnswer> should contain something like: \"I will calculate the price for you...\", \"Let me calculate the estimate...\", \"Give me a moment, I will calculate...\", etc. Statements of capability (e.g., \"I can calculate\", \"I could estimate\") or conditional offers are NOT firm intentions and must be ignored."
+          "description": "The agent clearly says they are calculating or checking the price or cost right now, e.g. \"Let me calculate the estimate...\" or \"Give me a moment to check what the approximate cost would be...\". Offers such as \"I can calculate\" do not count."
         }
       },
       "useConversationHistory": false
@@ -5271,8 +5280,9 @@ until session cleanup; a missing actor leaves the status uncached so later check
 Integrations can explicitly set the canonical persona attribute for non-phone sessions, as Assessor
 does for chat and phone runs.
 
-**Fallbacks:** Defaults to the preseeded assessor voice-number list shown above. If you replace this
-value with `[]`, this project adds no static phone-number-based override.
+**Fallbacks:** Defaults to the preseeded assessor voice-number list (the ten +1-650 test numbers
+seeded by the project registry, `naf/attributes.yaml`), not the example values shown above. If you
+replace this value with `[]`, this project adds no static phone-number-based override.
 
 **Dependencies:**
 
