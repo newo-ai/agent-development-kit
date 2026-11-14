@@ -57,8 +57,10 @@ Test:
 
 ## 3. Way B: the agent as a SIP extension
 
-Newo connects to the business phone system by **SIP registration** (username and password of an
-extension), not by IP trunking.
+Newo connects to the business phone system as a SIP extension, normally by **SIP registration**
+(username and password of an extension). There is also a hostname-only, IP-trunk-style mode:
+when the connector's `sip_registration_not_required` setting is enabled, Newo uses only the SIP
+server host and does not register.
 
 On the business phone system (owner or their IT, or you with their admin access):
 1. Create an extension (SIP user) for the agent.
