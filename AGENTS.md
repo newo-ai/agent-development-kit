@@ -8,6 +8,8 @@ the Newo platform. Read this file first. It is short on purpose.
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
 2. Identify **what** they want. Typical requests and where to read:
+   - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
+     [delivery/](delivery/README.md), the stages from requirements to production.
    - "Create an agent", "set up hours, greeting, prices": [docs/03](docs/03-configure-and-customize.md),
      then the [industry page](industries/README.md).
    - "Put the agent to work", "forward calls at night", "forward after two rings": [docs/telephony/go-live.md](docs/telephony/go-live.md).
