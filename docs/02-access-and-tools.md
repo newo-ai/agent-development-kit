@@ -170,6 +170,9 @@ and it works in every Claude app.
   4. The Free plan allows one custom connector.
 - **Team or Enterprise:** the Owner adds it in Organization settings → Connectors → **Add** →
   **Custom** → **Web**, the same way. Members then press **Connect** in Customize → Connectors.
+  A member who is not an Owner sees **Add custom connector** greyed out, with the note "Ask an
+  organization owner to add this for your team" (seen on 13 November 2026). Do not look for a way
+  around it: ask the Owner.
 - **In a chat:** **+** → **Connectors** → turn it on.
 - Authorization settings cannot be edited later: remove the connector and add it again.
 
