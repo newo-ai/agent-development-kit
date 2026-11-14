@@ -133,8 +133,9 @@ print(urllib.request.urlopen(req).status)
 PY
 ```
 
-For an `enum` attribute the new value must be one of `possible_values`. For a `json` attribute,
-validate the JSON before sending. Read the value back after the change.
+For an `enum` attribute pick the new value from `possible_values` yourself: the platform stores
+any value and does not check the list. For a `json` attribute, validate the JSON before
+sending. Read the value back after the change.
 
 ## Agents, flows and skills
 
@@ -264,7 +265,7 @@ delivery; for those, ask the owner to make a real test call.
 | `GET /api/v1/integrations/{integration_id}/settings` | from client code | integration-level settings |
 | `PATCH /api/v1/integrations/connectors/{connector_id}` | from the API schema | change `title` and `connector_idn`: `{"title", "connector_idn"}` |
 | `POST /api/v1/integrations/connectors/{connector_id}/settings` | from the API schema | change `settings`: `[{"idn", "value"}]` |
-| `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "integration_idn", "settings": [{"idn", "value"}]}` |
+| `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "settings": [{"idn", "value"}]}` |
 
 The connector update changes only `title` and `connector_idn`, never `status` or `settings`.
 `status` changes through `POST /api/v1/integrations/connectors/{connector_id}/run` and
