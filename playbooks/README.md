@@ -4,7 +4,9 @@ Step-by-step tasks for an AI assistant working on one Newo agent with its owner.
 follows the rules of the [assistant guide](../docs/assistant-guide.md#rules-always) and of
 [AGENTS.md](../AGENTS.md#2-rules-always): ask before every change, keep old values, never delete.
 
-A first session usually goes 1 → 2 → 3.
+A first session usually goes 1 → 2 → 3. A whole delivery for a customer — requirements, build,
+test, go-live, operation — runs through the [delivery stages](../delivery/README.md), which say
+when to run which playbook.
 
 | # | Playbook | When | Related pages |
 |---|---|---|---|

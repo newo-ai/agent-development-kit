@@ -1,0 +1,36 @@
+# Acceptance criteria: what the agent must do, agreed with the customer.
+# Stages 02 to 05 work from this file. Keep the ids stable once the customer agreed.
+# No callers' personal data, API keys or passwords in this file.
+
+agent: <agent name>
+agreed_on: YYYY-MM-DD
+
+criteria:
+  - id: AC-001
+    priority: critical            # critical | important | nice-to-have
+    behavior: "During working hours, books an appointment when a caller asks for one"
+    channels: [phone, chat]
+    checks:                       # how it is tested; at least one per criterion
+      - type: scripted            # a scenario file run with `newo test`
+        file: tests/AC-001-booking.yaml
+      - type: call                # a manual phone call; write what to do and what must happen
+        steps: "Call the AI phone number, ask for an appointment tomorrow at 10:00. The test booking appears in the booking system."
+    status: not-tested            # not-tested | pass | fail
+
+  - id: AC-002
+    priority: critical
+    behavior: "Outside working hours, says the business is closed and takes a message"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Call outside working hours. The agent says it is closed; the report with the message arrives."
+    status: not-tested
+
+  - id: AC-003
+    priority: important
+    behavior: "Never gives a price for implants; offers a consultation instead"
+    channels: [phone, chat]
+    checks:
+      - type: scripted
+        file: tests/AC-003-no-implant-price.yaml
+    status: not-tested

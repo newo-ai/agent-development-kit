@@ -1,0 +1,17 @@
+# Secrets
+.env
+.env.*
+*.key
+*.pem
+
+# Per-agent working files and exports: they belong in the partner's own repository
+work/
+exports/
+newo_customers/
+.newo/
+*.zip
+
+# OS and editors
+.DS_Store
+.idea/
+.vscode/

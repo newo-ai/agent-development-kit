@@ -8,6 +8,8 @@ the Newo platform. Read this file first. It is short on purpose.
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
 2. Identify **what** they want. Typical requests and where to read:
+   - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
+     [delivery/](delivery/README.md), the stages from requirements to production.
    - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
      (how to talk to the owner, how to create an agent, rules, how to call the API).
    - "Create an agent": [docs/assistant-guide.md, "Create the agent"](docs/assistant-guide.md#create-the-agent).

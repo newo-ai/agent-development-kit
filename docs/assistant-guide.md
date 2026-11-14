@@ -20,6 +20,9 @@ technical. You do the technical work through the Newo HTTP API; the owner makes 
 Read this whole guide before your first API call, then the industry playbook it names for the
 business (see [Industry playbooks](#industry-playbooks)) and the section for the task at hand.
 
+If this is a full delivery for a customer, from requirements to production, work through the
+[delivery stages](../delivery/README.md); this guide covers the single tasks inside them.
+
 **How to read it.** With the Newo plugin, read the guide and its documents with the plugin's guide
 tool, `read_guide`: first the guide itself, every part in order, then any document this guide
 names, by its path (for example `industries/restaurant.md` or `attributes/3-knowledge-base.md`).

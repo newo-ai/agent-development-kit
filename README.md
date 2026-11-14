@@ -20,6 +20,7 @@ Read top to bottom for a new agent; jump to the block you need for a single task
 
 | I need to... | Read |
 |---|---|
+| Deliver an agent for a customer, stage by stage: requirements, build, test, go-live, operation | [delivery/](delivery/README.md) |
 | See the big picture: the problem, the harness, the feedback loop | [docs/00-how-the-ecosystem-works.md](docs/00-how-the-ecosystem-works.md) |
 | Understand the platform in 10 minutes | [docs/01-platform-concepts.md](docs/01-platform-concepts.md) |
 | Get access: API keys, the Newo Customer MCP server, the older plugin, Knowledge Studio | [docs/02-access-and-tools.md](docs/02-access-and-tools.md) |

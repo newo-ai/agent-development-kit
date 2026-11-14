@@ -1,0 +1,24 @@
+# UAT report: one entry per acceptance-test round with the customer.
+# No customer names or personal data if you share this file with Newo.
+
+agent: <agent name, or "a dental clinic in Germany" when shared>
+industry: <industry>
+
+rounds:
+  - uat_attempt: 1
+    date: YYYY-MM-DD
+    criteria_total: 0
+    criteria_failed: []           # ids, for example [AC-004, AC-011]
+    passed: false                 # true when no critical criterion failed and the customer accepted
+    root_causes:
+      - criterion: AC-004
+        # requirements: the criterion was unclear, missing, or changed after it was agreed
+        # build:        a wrong or missing setting, knowledge, tool or scenario
+        # test:         it was not tested, or the test did not catch it
+        # integration:  the other system behaved differently than expected
+        # telephony:    the phone line, the number, forwarding, SIP, transfers
+        # platform:     a Newo bug or limit (also file a bug report)
+        # other
+        category: build
+        description: ""
+        fix: ""
