@@ -1185,8 +1185,9 @@ employees were specified.
 **Dependencies:**
 
 - **Primary Settings:**
-  - `project_business_industry`: Selects which industry intent map is used. Some industries (for
-    example, Sales) do not define a manager/human request class that references this attribute.
+  - `project_business_industry`: Selects which industry intent map is used. Every industry intent
+    map defines a manager/human request class that references this attribute; only the two generic
+    non-industry templates (`default_itm_wh` / `default_itm_nwh`) omit that class.
   - `project_business_working_hours`: Provides the business schedule used for working-hours-aware
     transfer-vs-relay behavior when working-hours evaluation is enabled.
   - `project_business_working_hour_escalation_phone`: Baseline transfer target during working-hours

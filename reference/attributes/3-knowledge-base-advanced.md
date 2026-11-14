@@ -160,6 +160,11 @@ to treating the location as served.
 
 **Is hidden:** `true`
 
+> **Industry variance:** In the Cleaning industry this attribute is re-registered as a visible
+> `3. Knowledge Base` item titled `3-08. Products & Services - Area Served [A]` instead of the
+> advanced hidden placement shown here; the general and home-service registries keep the placement
+> shown here.
+
 ---
 
 ## `project_attributes_products_and_services_served_zip_codes`
@@ -233,5 +238,11 @@ matching rules.
 **Value type:** `json`
 
 **Is hidden:** `true`
+
+> **Industry variance:** In the Home Service industry this attribute is re-registered as a visible
+> `3. Knowledge Base` item titled `3-07. Products & Services - ZIP Codes Served [B] [IMPORTANT]`,
+> and in the Cleaning industry as a visible `3. Knowledge Base` item titled `3-09. Products &
+> Services - ZIP Codes Served [B]`, instead of the advanced hidden placement shown here; the
+> general registry keeps the placement shown here.
 
 ---

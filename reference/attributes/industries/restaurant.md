@@ -1362,14 +1362,15 @@ private-dining minimum-revenue settings.
 
 **System Usage:** During restaurant revenue-model preparation, runtime reads this value into the
 private-dining configuration context. In the current default `private_dining` model, the
-`average_bill_per_person` constant is still emitted as the literal
-`{{average_bill_per_person_regular_reservation}}` token, so this field is loaded for preparation but
-is not currently applied as the final private-dining per-person constant.
+`average_bill_per_person` constant is resolved from the regular-reservation per-person value
+(`project_attributes_restaurant_bill_average_per_person_regular_reservation`), so this field is
+loaded for preparation but is not currently applied as the final private-dining per-person
+constant.
 
 **Fallbacks:** Initialized to a restaurant default when empty. Runtime loading falls back to
 `project_attributes_restaurant_bill_average_per_person_regular_reservation` when blank, but the
-current default `private_dining` model still keeps the unresolved token for
-`average_bill_per_person`.
+current default `private_dining` model already resolves `average_bill_per_person` from that
+regular-reservation value instead of this field.
 
 **Dependencies:**
 
@@ -1411,8 +1412,8 @@ pricing and typical party behavior.
 
 **System Usage:** Used directly as the per-person constant in `regular_table_booking` revenue
 calculations. In the current default restaurant revenue model implementation, this value is also the
-active per-person constant used in `catering`. The default `private_dining` model does not currently
-resolve this numeric value into its final `average_bill_per_person` constant.
+active per-person constant used in `catering`. The default `private_dining` model also resolves this
+numeric value into its final `average_bill_per_person` constant.
 
 **Fallbacks:** Initialized to a restaurant default when empty. Runtime formula loading also applies
 this as the fallback source for other per-person restaurant attributes while their model constants
@@ -1429,7 +1430,7 @@ are being prepared.
     this value when empty.
   - `project_attributes_restaurant_bill_average_per_person_private_dining`: Blank private-dining
     input falls back to this value during loading, but the current default `private_dining` model
-    does not resolve it into the final per-person constant.
+    resolves this value, not the private-dining field, into the final per-person constant.
   - `project_attributes_setting_asr_average_lead_value`: Used as `zero_default` floor in regular
     reservation revenue outcomes.
 ```

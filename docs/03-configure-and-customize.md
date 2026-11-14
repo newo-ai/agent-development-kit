@@ -28,8 +28,9 @@ Follow the playbook
 
 ## Changing an attribute
 
-- **Send the whole attribute**, not only `{"value": ...}`. A partial body erases the title,
-  description and allowed values. Recipe:
+- **Send the whole attribute**, not only `{"value": ...}`. For a customer attribute a partial
+  body resets the other fields to defaults; for a project attribute the update is partial
+  (fields you leave out keep their stored values). Recipe:
   [API reference, Attributes](../reference/api.md#attributes).
 - **Values are strings.** Booleans are `"True"` / `"False"`. JSON attributes hold JSON serialized
   as a string: validate it before sending.
