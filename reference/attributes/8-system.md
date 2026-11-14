@@ -2049,24 +2049,33 @@ automatically and can be overwritten by runtime workflows. Do not edit this attr
 
 **System Usage:** The migration runtime compares this checkpoint with the last ordered migration
 included in the installed NAF version. Project publication runs pending migrations synchronously.
-Conversation-start recovery sends `generalmanageragent_run_migrations` through the global queue so
-retries are serialized. After each migration finishes, the runtime immediately advances this
+Conversation-start recovery (`conversation_started` from `vapi`, `newo_chat`, and `newo_voice`)
+sends `generalmanageragent_run_migrations` through the global queue, so retries are serialized, only
+when this checkpoint differs from the last ordered migration of the installed version; a current
+checkpoint sends no event. After each migration finishes, the runtime immediately advances this
 checkpoint. When event-driven recovery advances it, the runtime requests a NAF project publication
-to complete initialization work that depends on migrated data. A valid migration request emits
-`generalmanageragent_run_migrations_success` after reaching or confirming the installed version's
-target. Migration implementations must be safe to retry because an interruption after migration side
-effects but before checkpoint persistence can replay the current migration.
+to complete initialization work that depends on migrated data. A migration request emits
+`generalmanageragent_run_migrations_success` only when it applied at least one migration; a request
+that finds the target already reached emits nothing. Migration implementations must be safe to retry
+because an interruption after migration side effects but before checkpoint persistence can replay
+the current migration.
 
 **Fallbacks:** An empty checkpoint is interpreted using account initialization state. Clean accounts
 store the final ordered migration applicable to the installed NAF `x.y.z` version without replaying
 historical migrations. Existing accounts use the publish event's previous version as their baseline
 when supplied, including when it equals the current version. Without a previous version, they use
 the installed Project version and assume historical migrations are complete. This also applies to
-conversation recovery without publish context. If the selected baseline cannot map to the ordered
-migration list, execution stops without advancing the checkpoint. Non-empty values are never
-replaced by initialization fallback; an unrecognized checkpoint also stops migration execution for
-investigation. If the checkpoint already matches or is later than the installed version's target, no
-migration runs.
+conversation recovery without publish context. A version maps to the ordered migration list through
+the first `x.y.z` found anywhere in its name, so `4.16.0-fork` maps like `4.16.0`. A baseline older
+than the first migration starts the whole list. A baseline with no `x.y.z` in its name, such as a
+fork named `fork_naf`, stores the last migration of the installed list: the installed code is
+trusted to contain its migrations. Non-empty values are never replaced by initialization fallback.
+Migrations never block initialization: when the installed version has no `x.y.z` in its name, or the
+checkpoint is not in the installed list, no migration runs, the checkpoint is kept, and
+initialization continues. A checkpoint missing from the list whose version is newer than the
+installed one means an older version is active and is skipped silently; any other missing checkpoint
+(for example one removed from the list) is logged for investigation. If the checkpoint already
+matches or is later than the installed version's target, no migration runs.
 
 **Dependencies:**
 
@@ -3529,12 +3538,15 @@ paths.
 This advanced system configuration selects which formatted-response availability processor is used
 at runtime.
 
-**Best Practice:** Turn this on only when your availability endpoint returns payloads compatible
-with the newer formatted-response structure.
+**Best Practice:** Turn this on when your availability endpoint returns a top-level `availability`
+list of items with `availableTimeSlots`. Other payloads are handed to the legacy processor
+automatically.
 
 Behavior by value:
 
-- **Enabled (`True`)**: Uses the newer formatted-response availability processor.
+- **Enabled (`True`)**: Uses the newer formatted-response availability processor, which matches the
+  requested slot deterministically. It falls back to the legacy processor when the payload or a slot
+  format is not supported.
 - **Disabled (`False`)**: Uses the legacy formatted-response availability processor.
 
 ---
@@ -3547,9 +3559,19 @@ handler in system/project/default availability paths. Intercom-specific availabi
 also uses this flag to choose between the new and legacy formatted-response processors.
 
 **Fallbacks:** Default is `False` during common setup. In system/project/default availability paths,
-if processing type is not `formatted_response`, this flag has no effect. If enabled against an
-incompatible payload shape, availability interpretation can degrade and lead to missing/incorrect
-slot context.
+if processing type is not `formatted_response`, this flag has no effect. When enabled, the new
+processor hands the raw payload to the legacy processor if the payload has no top-level
+`availability` object, a non-empty `availability` or an item's `availableTimeSlots` is not a list,
+or an item is not an object. An empty `availability` of any type (`[]`, `null`, `{}`, `""`) is not a
+fallback: the agent tells the user there are no available slots. When the user asked for a date or a
+time, each slot is also parsed, and a slot in an unsupported format falls back. Supported slot
+formats are times (`14:00`, `2:00PM`, `2PM`, `2:00 PM`) and full date-times such as
+`7/17/2026 2:20PM`; a date-only slot such as `2026-10-28` is unsupported. When the user gave neither
+a date nor a time, the slots are only counted per item and are not parsed. Each fallback writes a
+system log that starts with "Fallback for slot format mismatch", and the ConvoAgent assessment
+counts these logs in the `technical_deterministic_errors.fallback_on_unsupported_slot_format`
+quality metric. On the new path, the processor also stores the payload's `bookingUrls` in the user
+persona attribute `availability_booking_urls`.
 
 **Dependencies:**
 
@@ -3662,9 +3684,8 @@ This advanced system configuration selects the email-delivery pipeline used by t
 all outgoing emails (agent messages, session reports, booking notifications, disaster reports, and
 internal dev alerts).
 
-**Best Practice:** Enable this only once the universal SendGrid Dynamic Template and the backend
-tenant resolution (from / logo / template id / API key) are deployed. Keep it disabled to retain the
-legacy webhook delivery while rolling out.
+**Best Practice:** Keep this enabled. Disable it only to force the legacy webhook delivery for a
+project, for example while troubleshooting the universal SendGrid Dynamic Template.
 
 Behavior by value:
 
@@ -3686,9 +3707,10 @@ the compiled signature, and dispatches `send_template_email` (provider `sendgrid
 it composes `arguments.body ~ _getFooterSkill(...)` and dispatches the legacy `send_email` webhook
 command with `senderName` and `replyTo`.
 
-**Fallbacks:** Default is `False` during common setup. Any value other than the exact value `True`
-(including an unset attribute on an existing project) is treated as disabled, so existing projects
-keep the legacy delivery until the flag is explicitly enabled.
+**Fallbacks:** Default is `True` during common setup, and a migration enables it on existing
+projects. Any value other than the exact value `True` (including an unset attribute) is treated as
+disabled. When enabled, an email still falls back to the legacy delivery if the caller supplies no
+`params_json` or the tenant `email_settings` lack the provider, sender email, or template id.
 
 **Dependencies:**
 
