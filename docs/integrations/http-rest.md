@@ -21,8 +21,8 @@ Test: a sandbox chat or a test call. Then check that the record arrived.
 
 `project_attributes_setting_calendar_event_integration`: `disabled`, `calcom_integration` or
 `google_integration`. Connecting a Google account needs the owner to sign in to Google in the
-Newo portal. If the `google_calendar` connector is missing or not `running`, the owner connects
-it in the portal.
+Newo portal. If the connector under the `google_calendar` integration is missing or not
+`running`, the owner connects it in the portal.
 
 ## 3. Booking settings
 
