@@ -11,6 +11,8 @@ Status of each request in this page:
   guide. Expect it to work, but read the response carefully the first time.
 - **from platform docs**: taken from Newo's Flow Designer V2 API description (November 2026);
   not called while writing this guide.
+- **from the API schema**: taken from the gateway's OpenAPI specification; not called while
+  writing this guide. Read the response carefully the first time.
 
 Rules from [the guide](../docs/assistant-guide.md) apply: ask the owner before every change, never DELETE.
 
@@ -334,8 +336,8 @@ delivery; for those, ask the owner to make a real test call.
 | `GET /api/v1/integrations` | checked | integrations: `id`, `idn`, `title`, `description`, `is_disabled`, `connector_settings_descriptions` (which settings a connector takes) |
 | `GET /api/v1/integrations/{integration_id}/connectors` | checked | connectors: `id`, `connector_idn`, `title`, `status` (`running`, ...), `settings` (`[{"idn", "value"}]`) |
 | `GET /api/v1/integrations/{integration_id}/settings` | from client code | integration-level settings |
-| `PATCH /api/v1/integrations/connectors/{connector_id}` | from client code | `{"title", "connector_idn"}` (both required); other fields (`status`, `settings`) are ignored, and there is no `PUT` route |
-| `POST /api/v1/integrations/connectors/{connector_id}/settings` | from client code | `[{"idn", "value"}]` - change connector settings |
+| `PATCH /api/v1/integrations/connectors/{connector_id}` | from the API schema | `{"title", "connector_idn"}` (both required); other fields (`status`, `settings`) are ignored, and there is no `PUT` route |
+| `POST /api/v1/integrations/connectors/{connector_id}/settings` | from the API schema | `[{"idn", "value"}]` - change connector settings |
 | `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "integration_idn", "settings": [{"idn", "value"}]}` |
 
 Connector objects can contain an `api_key` field, and settings such as `sip_password`. Never
