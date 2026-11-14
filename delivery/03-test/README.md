@@ -36,7 +36,8 @@ to test and in which order.
    [voice tests](../../docs/testing/voice-tests.md#manual). Test one transfer in each direction
    you configured, at a time when someone answers.
 6. **Fix and re-run.** Fix failures at the lowest step of the ladder
-   ([02-build, "Rules"](../02-build/README.md#rules)). After every fix, run **all** scripted
+   ([02-build, "Rules"](../02-build/README.md#rules); the playbook is
+   [improve and fix](../../playbooks/improve-and-fix.md)). After every fix, run **all** scripted
    tests again: a fix for one case can break another.
 7. **Write the report:** [templates/test-report.md](templates/test-report.md). Set `status` for
    each criterion in `acceptance-criteria.yaml`.

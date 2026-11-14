@@ -4,6 +4,8 @@
 smallest amount of customization.
 
 **Needs:** `requirements.md` and `acceptance-criteria.yaml` from [01-discover](../01-discover/README.md).
+If the customer has no agent yet, create it first:
+[assistant guide, "Create the agent"](../../docs/assistant-guide.md#create-the-agent).
 
 **Done when:**
 - every acceptance criterion is covered by a setting, knowledge, a tool or a scenario, and
@@ -21,17 +23,23 @@ smallest amount of customization.
    agent's industry matches the business. The industry cannot be changed later without Newo
    support.
 3. **Fill in the settings** from `requirements.md`: the business, hours and time zone, products
-   and prices, greeting, transfers, FAQ, policies, reports. Follow
-   [docs/03-configure-and-customize.md](../../docs/03-configure-and-customize.md) and put each
+   and prices, greeting, transfers, FAQ, policies, reports. Follow the playbook
+   [finish the configuration](../../playbooks/finish-configuration.md) and
+   [docs/03-configure-and-customize.md](../../docs/03-configure-and-customize.md); what a setting
+   means is in the [attribute reference](../../reference/attributes/index.md). Put each
    kind of content into its own field
    ([one field, one kind of content](../../docs/07-health-check.md#1-one-field-one-kind-of-content)).
 4. **Add knowledge** that does not fit the settings: [docs/06-knowledge.md](../../docs/06-knowledge.md).
-5. **Connect the systems:** [docs/integrations/](../../docs/integrations/README.md). Use the
+5. **Connect the systems:** the playbook
+   [connect external systems](../../playbooks/connect-external-systems.md), with the details in
+   [docs/integrations/](../../docs/integrations/README.md). Use the
    mechanism that needs no code if there is one. Start with tools that only read; add tools that
    book or change something after the reading tools work.
 6. **Set up the phone side** if it is in scope: the number, forwarding or SIP, transfers
-   ([docs/telephony/](../../docs/telephony/README.md)). Do not forward real callers yet; that is
-   [04-launch](../04-launch/README.md).
+   ([docs/telephony/](../../docs/telephony/README.md); playbooks:
+   [get a phone number](../../playbooks/get-phone-number.md),
+   [connect the business phone line](../../playbooks/connect-phone-line.md)). Do not forward real
+   callers yet; that is [04-launch](../04-launch/README.md).
 7. **Change scenarios only for what is left.** Go through the criteria that settings, knowledge
    and tools did not cover, and change the conversation logic for those
    ([docs/05-scenarios.md](../../docs/05-scenarios.md)).

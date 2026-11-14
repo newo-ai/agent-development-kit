@@ -27,7 +27,8 @@ A phone change affects real callers at once. Agree on the time of every step wit
 3. **Go through the go-live checklist:**
    [templates/go-live-checklist.md](templates/go-live-checklist.md).
 4. **Go live in stages:** nights first, review two or three nights with the customer, then the
-   day. The playbook is [docs/telephony/go-live.md](../../docs/telephony/go-live.md).
+   day. The playbook for the first night is [launch at night](../../playbooks/night-launch.md);
+   all the stages are in [docs/telephony/go-live.md](../../docs/telephony/go-live.md).
 5. **Get the customer's sign-off:** [templates/customer-signoff.md](templates/customer-signoff.md).
 6. **Hand over.** Tell the customer:
    - how to switch the forwarding off;

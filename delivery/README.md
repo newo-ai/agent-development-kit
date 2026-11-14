@@ -4,7 +4,8 @@ Use this when a partner delivers an agent **for a customer** and wants a repeata
 to agree first, how to build, how to prove it works, how to go live, and how to keep it healthy.
 
 A business owner who only wants to adjust their own agent does not need the whole process. Go
-straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-customize.md).
+straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-customize.md) or to the
+[playbooks](../playbooks/README.md).
 
 ## The stages
 
@@ -17,8 +18,9 @@ straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-custom
 | [04-launch](04-launch/README.md) | the customer accepted the agent, and it answers real callers | `go-live-checklist.md`, `uat-report.yaml`, `customer-signoff.md` |
 | [05-operate](05-operate/README.md) | calls are reviewed, issues are fixed and do not come back | `weekly-review.md` |
 
-Each stage page says what to do, links to the pages of this repository that explain how, and has
-templates for what it produces.
+Each stage page says what to do, links to the pages and the [playbooks](../playbooks/README.md)
+of this repository that explain how, and has templates for what it produces. A playbook is one
+task on one agent, step by step; a stage says when to run it and what must be true after it.
 
 ## How to use the stages
 

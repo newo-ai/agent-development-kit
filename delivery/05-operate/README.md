@@ -15,8 +15,9 @@ right level, and do not come back.
 Review every call of the first nights ([go-live, stage 2](../../docs/telephony/go-live.md#stage-2-review-two-or-three-nights)),
 then weekly, and again after every change of mode.
 
-1. **Read the conversations** of the period
-   ([conversation-debug.md](../../docs/debugging/conversation-debug.md)). Skip test conversations.
+1. **Read the conversations** of the period: the playbook
+   [review conversations](../../playbooks/review-conversations.md), with the details in
+   [conversation-debug.md](../../docs/debugging/conversation-debug.md). Skip test conversations.
 2. **Sort them:** what callers wanted, what went well, what went wrong. Check each problem
    against the acceptance criteria: a broken criterion, or a new case nobody planned for?
 3. **Write the review:** [templates/weekly-review.md](templates/weekly-review.md). Describe
@@ -26,7 +27,8 @@ then weekly, and again after every change of mode.
 
 ## Fixing an issue
 
-1. **Find the cause** with [the debugging method](../../docs/debugging/README.md): one
+1. **Find the cause** with the playbook [improve and fix](../../playbooks/improve-and-fix.md) and
+   [the debugging method](../../docs/debugging/README.md): one
    conversation, its logs, then classify. Check [common issues](../../docs/debugging/common-issues.md)
    first.
 2. **Fix at the lowest step of the ladder**
