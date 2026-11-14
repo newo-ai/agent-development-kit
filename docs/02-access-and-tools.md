@@ -36,8 +36,9 @@ The person puts the key into a `.env` file in the project folder **themselves**,
   the person means.
 - Full reference: [reference/api.md](../reference/api.md) (Flow Designer V2) and
   [reference/api-v1.md](../reference/api-v1.md) (old designer, V1).
-- Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
-  does not change them.
+- Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's default
+  `newo push` (projects and attributes) does not change them; `newo push --only integrations`,
+  `newo push --all` and `newo push-integrations` do.
 
 **The CLI.** `npm i -g newo`, then run `newo init` in an empty folder. It writes instructions and
 skills for coding assistants, an empty `.env` and a `.gitignore`. Useful commands:

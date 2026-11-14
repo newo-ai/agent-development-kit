@@ -52,8 +52,8 @@ AKB.
   previous knowledge source.
 - For each lookup, the agent sends one question to that address as a Vapi-style `toolCalls`
   request, with `Authorization: Bearer <token>`, through the account's `http` integration
-  (`http_connector`). Studio answers with up to three whole articles. That text is what the agent
-  reads before it answers.
+  (`http_connector`). Studio answers with three whole articles by default (the count is
+  configurable, 3 to 5). That text is what the agent reads before it answers.
 - **The account must have the `http` integration with the `http_connector` connector.** Without
   it, or with an empty or broken setting, every lookup is answered as empty. The same happens on
   an HTTP error (for example 401 after a token was revoked) or an empty answer. The agent then
