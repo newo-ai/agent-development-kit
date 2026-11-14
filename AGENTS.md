@@ -3,7 +3,25 @@
 You are helping a partner or a business owner build, configure, improve or connect an AI agent on
 the Newo platform. Read this file first. It is short on purpose.
 
-## 1. Find your path
+Knowledge base updated 2026-11-14 at commit `57822f5`. Deeper maps: [docs/AGENTS.md](docs/AGENTS.md),
+[reference/AGENTS.md](reference/AGENTS.md).
+
+## 1. Repository map
+
+```
+agent-development-kit/
+├── AGENTS.md        # this file: routing + rules (CLAUDE.md just points here)
+├── docs/            # platform docs: 00-08 topical pages + telephony/, integrations/,
+│                    # debugging/, testing/ — has its own AGENTS.md
+├── reference/       # exact API and attribute formats; 77% of the bytes — has its own AGENTS.md
+├── playbooks/       # step-by-step procedures for one task (finish setup, night launch, ...)
+├── delivery/        # partner delivery process: 01-discover ... 05-operate, with templates
+├── industries/      # industry setup pages (restaurant, dental, home services, ...)
+├── learnings/       # dated case reports from real work; check before hard problems
+└── .github/         # issue templates: docs correction, learning, NAF change notice
+```
+
+## 2. Find your path
 
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
@@ -41,7 +59,7 @@ the Newo platform. Read this file first. It is short on purpose.
    assistants may have solved your case already.
 4. Identify the **industry** and read its page in [industries/](industries/README.md).
 
-## 2. Rules (always)
+## 3. Rules (always)
 
 1. **Ask before every change.** Show the person what will change (old value, new value) in plain
    words and wait for a clear "yes". Reading needs no permission.
@@ -68,7 +86,7 @@ the Newo platform. Read this file first. It is short on purpose.
 9. **Say what you do not know.** If this repository and the platform disagree, trust the platform
    (read the live value, run the request), tell the person, and propose a fix to this repository.
 
-## 3. How you reach the platform
+## 4. How you reach the platform
 
 - **Terminal assistants** (Claude Code, Codex, Cursor): the Newo HTTP API with the account's API
   key, or the Newo CLI. See [docs/02-access-and-tools.md](docs/02-access-and-tools.md).
@@ -79,7 +97,31 @@ the Newo platform. Read this file first. It is short on purpose.
   with their Newo account; no key in the chat. Server URL, client ID and steps:
   [docs/02-access-and-tools.md, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server).
 
-## 4. Before you finish
+Commands (details in [docs/02-access-and-tools.md](docs/02-access-and-tools.md)):
+
+```bash
+npm i -g newo                 # Newo CLI; 4.6.0+ for V2 projects
+newo init                     # once, in an empty folder
+newo pull / newo push         # download / upload the project
+newo sandbox                  # test chat without calling anyone
+newo test <scenario.yaml>     # scripted test; run critical tests three times
+newo logs --session-id <id>   # analytics logs for one session
+curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
+  -H "x-api-key: $NEWO_API_KEY" -H "accept: application/json"   # key -> bearer token
+```
+
+## 5. Gotchas
+
+- V1 or V2 first: `GET /api/v1/customer/settings/name/projects_v2_enabled`. On a V2 account,
+  never change skills or publish through the old V1 requests
+  ([reference/api.md](reference/api.md#which-designer)).
+- `reference/attributes/` files are huge (up to 5,200+ lines). Enter through
+  [reference/attributes/index.md](reference/attributes/index.md) and search; do not read whole
+  files.
+- A fix during testing means rerunning all scripted tests, not only the failed one
+  ([delivery/03-test/README.md](delivery/03-test/README.md)).
+
+## 6. Before you finish
 
 - Tell the person what changed, how to undo it and what to watch.
 - If you found something other assistants should know (a pitfall, a working integration recipe),
