@@ -1,7 +1,7 @@
 # HTTP and REST integrations (no code)
 
 All of these are settings. Read each setting's full description in the
-[attribute reference](https://knowledge.newo.ai/agent-setup/attributes/index.md) before you change
+[attribute reference](../../reference/attributes/index.md) before you change
 it, ask the person before each change, and test.
 
 ## 1. After every conversation: session-ended webhook
@@ -112,7 +112,7 @@ Rules:
 - Check the logs for the request and the response.
 
 Full reference: `project_attributes_settings_platform_tools` in the
-[attribute reference](https://knowledge.newo.ai/agent-setup/attributes/4-agent-behavior-advanced.md).
+[attribute reference](../../reference/attributes/4-agent-behavior-advanced.md).
 
 ## 5. Email and SMS to callers
 

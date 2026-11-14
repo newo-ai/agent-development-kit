@@ -21,3 +21,6 @@ Transfers from the agent back to people: [transfers.md](transfers.md).
 
 **Every phone change affects real callers at once.** Agree on a test window with the person, test
 with a call from another phone, and write down how to undo the change.
+
+Playbooks: [Connect the business phone line](../../playbooks/connect-phone-line.md),
+[Get a phone number](../../playbooks/get-phone-number.md), [Launch at night](../../playbooks/night-launch.md).

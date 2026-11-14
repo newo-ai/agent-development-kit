@@ -8,14 +8,28 @@ the Newo platform. Read this file first. It is short on purpose.
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
 2. Identify **what** they want. Typical requests and where to read:
-   - "Create an agent", "set up hours, greeting, prices": [docs/03](docs/03-configure-and-customize.md),
-     then the [industry page](industries/README.md).
-   - "Put the agent to work", "forward calls at night", "forward after two rings": [docs/telephony/go-live.md](docs/telephony/go-live.md).
+   - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
+     (how to talk to the owner, how to create an agent, rules, how to call the API).
+   - "Create an agent": [docs/assistant-guide.md, "Create the agent"](docs/assistant-guide.md#create-the-agent).
+   - "Set up hours, greeting, prices", "finish the setup": [playbooks/finish-configuration.md](playbooks/finish-configuration.md),
+     [docs/03](docs/03-configure-and-customize.md), then the [industry page](industries/README.md).
+   - What a setting means, its format, examples: [reference/attributes/index.md](reference/attributes/index.md).
+   - The exact API request: [reference/api.md](reference/api.md) (Flow Designer V2) or
+     [reference/api-v1.md](reference/api-v1.md) (old designer).
+   - "Put the agent to work", "forward calls at night", "forward after two rings": [playbooks/night-launch.md](playbooks/night-launch.md),
+     [docs/telephony/go-live.md](docs/telephony/go-live.md).
      Forward FROM the business number TO the AI phone number (`project_representative_agent_voice_phone_number`).
-   - "Keep my phone number", "SIP": [docs/telephony](docs/telephony/README.md).
-   - "I need a number in Germany / Armenia / ...": [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md).
-   - "Connect my CRM / booking system / patient management system": [docs/integrations](docs/integrations/README.md).
-   - "The agent said something wrong / switched language / did not book": [docs/debugging](docs/debugging/README.md).
+   - "Keep my phone number", "SIP": [playbooks/connect-phone-line.md](playbooks/connect-phone-line.md),
+     [docs/telephony](docs/telephony/README.md).
+   - "I need a number in Germany / Armenia / ...": [playbooks/get-phone-number.md](playbooks/get-phone-number.md),
+     [docs/telephony/phone-numbers.md](docs/telephony/phone-numbers.md).
+   - "Connect my CRM / booking system / patient management system": [playbooks/connect-external-systems.md](playbooks/connect-external-systems.md),
+     [docs/integrations](docs/integrations/README.md).
+   - "How did the calls go?": [playbooks/review-conversations.md](playbooks/review-conversations.md).
+   - "The agent said something wrong / switched language / did not book": [playbooks/improve-and-fix.md](playbooks/improve-and-fix.md),
+     [docs/debugging](docs/debugging/README.md).
+   - "The agent does not know X", Knowledge Studio does not work: [docs/debugging/search-debug.md](docs/debugging/search-debug.md),
+     [docs/debugging/studio-troubleshooting.md](docs/debugging/studio-troubleshooting.md).
    - "Check my agent", "why does it say X", "how do I make it do Y": [docs/07-health-check.md](docs/07-health-check.md).
    - "Test it": [docs/testing](docs/testing/README.md).
    - "Change the voice model / voice / speech recognizer", any connector setting: [docs/08](docs/08-connector-settings.md).

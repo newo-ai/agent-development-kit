@@ -34,7 +34,8 @@ The person puts the key into a `.env` file in the project folder **themselves**,
   and retry once.
 - First call of every session: `GET /api/v1/customer/profile`. Check that its `idn` is the account
   the person means.
-- Full reference: https://knowledge.newo.ai/agent-setup#api.
+- Full reference: [reference/api.md](../reference/api.md) (Flow Designer V2) and
+  [reference/api-v1.md](../reference/api-v1.md) (old designer, V1).
 - Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
   does not change them.
 
@@ -71,7 +72,7 @@ MCP server without sign-in that gives them tools.
 - **ChatGPT:** Plugins → black **Add** button → **Add custom MCP server** (the third item). Paste
   the address, set authentication to **No authentication**, tick the confirmation, then
   **Create as a plugin**. Back in the chat, turn on Newo with **+**. Step-by-step with pictures:
-  [agent setup guide, "Connect the Newo plugin"](https://knowledge.newo.ai/agent-setup#guide-connect-the-newo-plugin).
+  [agent setup guide, "Connect the Newo plugin"](assistant-guide.md#connect-the-newo-plugin).
 - **Claude:** Customize → Connectors → **+** → **Add custom connector**, the same address, no
   authentication.
 - A **work** ChatGPT account often has custom MCP servers turned off by its administrator. Use a
@@ -103,6 +104,9 @@ MCP server without sign-in that gives them tools.
 
   Access is granted inside Studio. The exact steps change while the feature is rolling out: follow
   the instructions Studio shows, or ask Newo support.
+- **Debugging with it:** the search-debug loop and the tool names are in
+  [debugging/search-debug.md](debugging/search-debug.md#4-the-same-loop-through-the-knowledge-studio-mcp-server);
+  Studio problems in [debugging/studio-troubleshooting.md](debugging/studio-troubleshooting.md).
 
 ## D. Newo Customer MCP server
 

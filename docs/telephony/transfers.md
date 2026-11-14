@@ -14,7 +14,7 @@ The agent can transfer a call to a person: a manager, the front desk, a departme
 | `project_attributes_setting_custom_transfer_call_enabled` | a custom transfer handled by your own logic (advanced) |
 
 Read the full descriptions in the
-[attribute reference](https://knowledge.newo.ai/agent-setup/attributes/index.md) before changing
+[attribute reference](../../reference/attributes/index.md) before changing
 them.
 
 ## How a transfer works

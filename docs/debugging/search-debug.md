@@ -37,5 +37,46 @@ Typical fixes:
 4. Make the change in a **copy** of the knowledge version, test the same questions on that copy,
    then publish. A published version can be rolled back.
 
-Through Knowledge Studio's MCP server, a coding assistant can do steps 1 to 4 itself. See
-[02-access-and-tools.md](../02-access-and-tools.md#c-newo-knowledge-studio).
+## 4. The same loop through the Knowledge Studio MCP server
+
+A coding assistant connected to `https://app.knowledge.newo.ai/mcp`
+([02-access-and-tools.md, C](../02-access-and-tools.md#c-newo-knowledge-studio)) can do steps 1 to
+3 itself. Tool names as of November 2026:
+
+| Step | Tools |
+|---|---|
+| Check access and the workspace | `whoami`, `get_workspace_status`, `list_versions` |
+| Find the agent's search request | `list_search_requests` (by time), then `get_search_request` (question, returned articles and positions) |
+| See why the ranking came out this way | `explain_search` (every candidate, score, why it was dropped) |
+| Try the question yourself | `search`; look up articles with `find_articles`, `get_article` |
+| See what callers ask that the knowledge does not cover | `list_gaps` |
+| Fix in a copy | `make_copy`, then `edit_article`, `add_asked_as` (caller wording), `exclude_source` |
+| Rebuild and test the copy | `start_rebuild`, `get_job`; `run_autotest`, `get_autotest_report`, `compare_versions` |
+| Try the copy without touching production | `publish_test` (a separate test endpoint) |
+| Go live or go back | `publish_version`, `rollback`: these only **request** the switch; the owner approves it in Studio |
+
+Rules:
+- Ask the person before every change, as everywhere in this kit.
+- Some read-only search and explain calls use paid tokens: read-only does not mean free.
+- Never show the search token, and never copy callers' personal data from search requests into
+  tickets, issues or learnings.
+
+## 5. The agent side: did the question reach the search service?
+
+When Studio has **no** search request for that conversation turn, the problem is on the agent
+side:
+
+1. `project_attributes_setting_knowledge_source` is `akb_studio` (or `external`): read it.
+2. `project_attributes_setting_akb_studio_search` (or `project_attributes_setting_external_kb`)
+   is set. Say "set" or "empty"; never show its value.
+3. The account has the `http` integration with the `http_connector` connector
+   (`GET /api/v1/integrations`, see [reference/api.md](../../reference/api.md#integrations-and-connectors)).
+4. Read that session's logs ([reference/api.md, Logs](../../reference/api.md#logs)). Check:
+   - Did the agent look something up at all on that turn?
+   - Was the answer empty? An empty answer can mean an HTTP error, such as 401 after the token
+     was revoked.
+5. If the token was revoked or the index moved, publish again from Studio. Do not edit the setting
+   by hand.
+
+Studio itself does not work (building, testing, publishing, connecting): see
+[studio-troubleshooting.md](studio-troubleshooting.md).
