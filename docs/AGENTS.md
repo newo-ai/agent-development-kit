@@ -1,6 +1,6 @@
 # docs/ — platform documentation hub
 
-Earned its own file: score 10 (33 files, 7 subdirectories, 113 inbound links — the most
+Earned its own file: score 10 (34 files, 7 subdirectories — the most
 referenced directory). Topical platform docs; one-task procedures live in ../playbooks/, exact
 formats in ../reference/.
 
@@ -15,7 +15,7 @@ formats in ../reference/.
 - `06-knowledge.md` — AKB, Knowledge Studio, search services, personal-data rules
 - `07-health-check.md` — level A/B review procedure and reporting
 - `08-connector-settings.md` — read, write and verify connector settings
-- `assistant-guide.md` — long-form guide for working with an owner (top hub, ~27 inbound refs)
+- `assistant-guide.md` — long-form guide for working with an owner (top hub)
 - `debugging/` — conversation logs, search answers, Studio troubleshooting, common issues
 - `telephony/` — forwarding, go-live, phone numbers, transfers, WebSocket voice API
 - `integrations/` — HTTP/REST and MCP procedures, PMS appointment example
@@ -48,8 +48,11 @@ formats in ../reference/.
 
 ## ANTI-PATTERNS
 
-- `PATCH` on connector settings reports success but silently ignores the settings — always
-  `POST /api/v1/integrations/connectors/{id}/settings` ([08](08-connector-settings.md)).
+- No `PATCH` for connector settings: the settings path accepts only `GET` and `POST`
+  (`PATCH` returns `405`), and `PATCH /api/v1/integrations/connectors/{id}` (connector
+  `title` and `connector_idn` only) reports success while silently dropping any settings
+  fields — always write settings with `POST /api/v1/integrations/connectors/{id}/settings`
+  ([08](08-connector-settings.md)).
 - Level B fields: edit in Workflow Builder / Vibe mode, never through the API; never build a
   parallel structure next to the existing one ([07](07-health-check.md)).
 - Never answer a settings question from memory — read the live value ([08](08-connector-settings.md)).

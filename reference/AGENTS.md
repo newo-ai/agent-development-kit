@@ -1,6 +1,6 @@
 # reference/ — exact API and attribute formats
 
-Earned its own file: score 10 (28 files, 77% of the repository's bytes, 100 inbound links).
+Earned its own file: score 10 (28 files, 64% of the repository's bytes).
 Guides and procedures live in ../docs/ and ../playbooks/; this tree is the source of exact
 formats.
 
@@ -42,6 +42,6 @@ formats.
 
 ## HOTSPOTS (search inside, do not read whole files)
 
-- attributes/4-agent-behavior-advanced.md — 5,200+ lines
-- attributes/8-system.md — 1,400+; 2-agent.md — 1,300+; 1-business.md — 1,100+;
-  attributes/index.md — 320+
+- attributes/8-system.md — 5,300+ lines
+- attributes/4-agent-behavior-advanced.md — 5,200+; 2-agent.md — 1,500+;
+  1-business.md — 1,200+; attributes/index.md — 370+
