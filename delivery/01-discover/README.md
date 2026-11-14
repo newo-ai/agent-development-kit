@@ -32,7 +32,8 @@ Everything later (build, test, acceptance, go-live) is measured against them.
 4. **Check that every criterion can be tested.** For each one, note how: a scripted chat test, a
    phone call, or a check in the other system. If you cannot say how to test it, rewrite it.
 5. **Check that the platform can do it.** For each criterion, find the lowest step of the ladder
-   that delivers it ([docs/03-configure-and-customize.md](../../docs/03-configure-and-customize.md)).
+   that delivers it — a setting before knowledge, knowledge before a tool, a tool before a
+   scenario ([docs/03-configure-and-customize.md](../../docs/03-configure-and-customize.md)).
    Tell the person early about anything that needs a scenario change, an integration with code,
    or something only Newo can do (a phone number in a certain country, SIP allowlisting:
    [support](../../docs/support/README.md#operations-request)).
