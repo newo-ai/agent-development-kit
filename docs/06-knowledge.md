@@ -59,19 +59,14 @@ AKB.
   an HTTP error (for example 401 after a token was revoked) or an empty answer. The agent then
   says it cannot confirm the detail.
 
-**Other search services (rolling out)**
-- `project_attributes_setting_external_kb` describes any search service with the same request
-  shape, as JSON:
-  - `service`: a short name, shown in logs;
-  - `url`;
-  - `token`, optional; a secret;
-  - `tool_name`, default `search_knowledge`;
-  - `arguments`: fixed values the service expects;
-  - `call_id`: `session` (default), or `persona:<field>` to send a caller field such as a
-    telephony call id.
-- Logs of these lookups are tagged `[EXTERNAL_KB:<service>]`.
-- Fill it only with a working endpoint, then set the knowledge source to `external`. Try
-  `akb_external_shadow` first to compare answers without callers hearing them.
+**Other search services.** `project_attributes_setting_external_kb` is a second, hidden
+knowledge-service connection in the same JSON shape (`service`, the endpoint, the access
+credential, `tool_name`). Newo Knowledge Studio Publish writes it together with
+`project_attributes_setting_akb_studio_search` — with `service` set to `akb_studio` — before it
+sets the knowledge source to `akb_studio`, because an installed agent can prefer this setting.
+Never edit it by hand: it is written by Studio and contains a private access token. External
+APIs for the `edmo` and `akb_edmo_shadow` knowledge sources use
+`project_attributes_setting_edmo_kb_shadow` instead (see the table above).
 
 **Studio's search endpoint for other platforms.** Studio gives every published index a search
 address for other voice and chat platforms too. The **Connect** screen shows the snippet for each
