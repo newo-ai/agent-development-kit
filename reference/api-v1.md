@@ -13,6 +13,8 @@ Status of each request in this page:
   (November 2026).
 - **from client code**: taken from the official Newo CLI source; not called while writing this
   guide. Expect it to work, but read the response carefully the first time.
+- **from the API schema**: taken from the gateway's OpenAPI specification; not called while
+  writing this guide. Read the response carefully the first time.
 
 Rules from [the guide](../docs/assistant-guide.md) apply: ask the owner before every change, never DELETE.
 
@@ -257,8 +259,13 @@ delivery; for those, ask the owner to make a real test call.
 | `GET /api/v1/integrations` | checked | integrations: `id`, `idn`, `title`, `description`, `is_disabled`, `connector_settings_descriptions` (which settings a connector takes) |
 | `GET /api/v1/integrations/{integration_id}/connectors` | checked | connectors: `id`, `connector_idn`, `title`, `status` (`running`, ...), `settings` (`[{"idn", "value"}]`) |
 | `GET /api/v1/integrations/{integration_id}/settings` | from client code | integration-level settings |
-| `PUT /api/v1/integrations/connectors/{connector_id}` | from client code | change `title`, `status` or `settings` |
+| `PATCH /api/v1/integrations/connectors/{connector_id}` | from the API schema | change `title` and `connector_idn`: `{"title", "connector_idn"}` |
+| `POST /api/v1/integrations/connectors/{connector_id}/settings` | from the API schema | change `settings`: `[{"idn", "value"}]` |
 | `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "integration_idn", "settings": [{"idn", "value"}]}` |
+
+The connector update changes only `title` and `connector_idn`, never `status` or `settings`.
+`status` changes through `POST /api/v1/integrations/connectors/{connector_id}/run` and
+`POST /api/v1/integrations/connectors/{connector_id}/stop`.
 
 Connector objects can contain an `api_key` field, and settings such as `sip_password`. Never
 show them to the owner or anyone else.
@@ -271,8 +278,8 @@ managed by Newo.
 |---|---|---|
 | `GET /api/v1/webhooks` | checked | outgoing webhooks: `id`, `idn`, `description`, `connector_idn`, `url`, `command_idns` |
 | `GET /api/v1/webhooks/incoming` | checked | incoming webhooks: `id`, `idn`, `url`, `connector_idn`, `event_idns`, `allowed_ips` |
-| `POST /api/v1/webhooks` | from client code | `{"connector_idn", "event_idn", "url", "method", "headers", "body_template"}` |
-| `POST /api/v1/webhooks/incoming` | from client code | `{"connector_idn", "event_idn"}`, returns the URL to give to the outside system |
+| `POST /api/v1/webhooks` | from client code | `{"idn", "url", "connector_idn"}`, plus optional `description` and `command_idns` (any command when `command_idns` is omitted) |
+| `POST /api/v1/webhooks/incoming` | from client code | `{"idn", "connector_idn", "event_idns"}` (`event_idns`: at least one event), plus optional `description`, `allowed_ips` and `response_payload`, returns the URL to give to the outside system |
 
 ## AKB
 
