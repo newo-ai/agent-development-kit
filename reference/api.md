@@ -162,7 +162,8 @@ print(urllib.request.urlopen(req).status)
 PY
 ```
 
-For an `enum` attribute the new value must be one of `possible_values`. For a `json` attribute,
+For an `enum` attribute, send a value from `possible_values` — the platform does not validate
+the new value and accepts values outside the list. For a `json` attribute,
 validate the JSON before sending. Read the value back after the change.
 
 Attribute requests are the same in V1 and V2; in V2 use the project `id` from
@@ -248,7 +249,7 @@ To return to Newo's automatic updates, or to update to the latest release once:
 (from platform docs). `null` follows every release; a version string pins one. This is also an
 activation: the same attribute rules apply. Do it only when the owner agrees.
 
-Errors come back in `message` and `reasons`; show them to the owner in plain words.
+Errors come back in `reason` and `errors[].message`; show them to the owner in plain words.
 
 ## Conversations
 
@@ -340,7 +341,7 @@ delivery; for those, ask the owner to make a real test call.
 | `GET /api/v1/integrations/{integration_id}/settings` | from client code | integration-level settings |
 | `PATCH /api/v1/integrations/connectors/{connector_id}` | from the API schema | `{"title", "connector_idn"}` (both required); other fields (`status`, `settings`) are ignored, and there is no `PUT` route |
 | `POST /api/v1/integrations/connectors/{connector_id}/settings` | from the API schema | `[{"idn", "value"}]` - change connector settings |
-| `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "integration_idn", "settings": [{"idn", "value"}]}` |
+| `POST /api/v1/integrations/{integration_id}/connectors` | from client code | `{"title", "connector_idn", "settings": [{"idn", "value"}]}` (the integration comes from the path) |
 
 Connector objects can contain an `api_key` field, and settings such as `sip_password`. Never
 show them to the owner or anyone else.
@@ -367,9 +368,10 @@ The knowledge base belongs to the persona of the `GeneralManagerAgent` agent in 
 | `POST /api/v1/akb/append-manual` | from client code | adds one article: `{"persona_id", "topic_name", "topic_summary", "topic_facts": [...], "confidence": 100, "source": "<who added it>", "labels": [...]}` |
 
 Each item is `{"topic": {...}, "fuzzy_search_fields_score": ...}`. `labels` and `topic_facts`
-are arrays of strings, in responses and when adding an article. The topics endpoint has no
-working text search; page through and filter locally. Copy the labels of existing topics (they
-include `rag_context`).
+are arrays of strings, in responses and when adding an article. The topics endpoint has a text
+search: `fuzzy_search_query` searches `fuzzy_search_fields` (`facts`, `summary`, `name`,
+`source`, all four by default) with `fuzzy_search_score_threshold` (`0.0`–`1.0`, default `0.3`).
+Copy the labels of existing topics (they include `rag_context`).
 
 If `project_attributes_setting_knowledge_source` is `akb_studio`, the agent does not use this
 knowledge base; knowledge is managed in Newo Knowledge Studio. For ordinary owners, adding
