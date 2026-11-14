@@ -115,7 +115,7 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 - V1 or V2 first: `GET /api/v1/customer/settings/name/projects_v2_enabled`. On a V2 account,
   never change skills or publish through the old V1 requests
   ([reference/api.md](reference/api.md#which-designer)).
-- `reference/attributes/` files are huge (up to 5,400+ lines). Enter through
+- `reference/attributes/` files are huge (up to 5,300+ lines). Enter through
   [reference/attributes/index.md](reference/attributes/index.md) and search; do not read whole
   files.
 - A fix during testing means rerunning all scripted tests, not only the failed one
