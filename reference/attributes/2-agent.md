@@ -549,6 +549,183 @@ keep chat output consistent.
 
 ---
 
+## `project_representative_agent_chat_verbosity`
+
+
+**Title:** 2-04-D. Agent Chat Verbosity [A]
+
+**Description:**
+
+````md
+Controls how long the Agent's replies should be in chat channels. Leave it empty to keep the
+standard reply length.
+
+**Pro-Tip:** Increase the limits only when users need longer answers, for example step-by-step
+instructions or detailed policy explanations. Word limits are guidance for the model, not a hard
+cap: it will not count words exactly, so check the real reply length in a test chat after changing
+this value.
+
+**Examples:**
+
+```txt
+- Give a brief answer/question first, then provide more details if requested.
+- New topics: <= 50 words.
+- If the user requests more details: <= 100 words.
+```
+
+---
+
+**⚙️ Technical & System Details (Advanced)**
+
+**System Usage:** On chat channels (every channel except phone and web calls), this value becomes
+the length rules at the start of the `VERBOSITY` part of the explicit constraints (the mandatory
+rules section of the prompt). It is used in two places: the prompt that writes the Agent's reply,
+and the internal conversation-analysis step that plans the Agent's next move, so both follow the
+same length rules. It replaces only the length rules; the "ask only one question at a time" rule and
+the rules for connecting the user with a manager stay unchanged. Phone and web calls use the
+separate voice verbosity setting instead.
+
+**Fallbacks:** Default common initialization sets an empty value. When the value is empty, the Agent
+uses the built-in chat length rules (a brief answer first, short replies for new topics, and
+somewhat longer replies when the user asks for details).
+
+**Dependencies:**
+
+- **Logic Interactions:**
+  - `project_representative_agent_chat_formatting_style`: Shapes chat replies (lists, markdown,
+    sentence structure); keep it consistent with the length rules.
+  - `project_representative_agent_voice_verbosity`: Plays the same role for phone and web calls and
+    does not affect chat channels.
+````
+
+**Level:** `Customer`
+
+**Group:** `2. Agent`
+
+**Value type:** `string`
+
+---
+
+## `project_representative_agent_voice_formatting_style`
+
+
+**Title:** 2-04-E. Agent Voice Formatting Style [A]
+
+**Description:**
+
+````md
+Controls how the Agent shapes its spoken replies on phone and web calls: lists, sentence structure,
+markdown, and emojis. Leave it empty to keep the standard voice formatting rules.
+
+**Pro-Tip:** Keep these rules short and explicit, one rule per line. Remember that every reply is
+spoken aloud, so avoid rules that only make sense on a screen. Test the result on a real call: the
+voice model treats these rules as guidance and may not follow every one of them every time.
+
+**Examples:**
+
+```txt
+- Do not use any lists (numbered or bulleted) when communicating information.
+- Prefer two or three short sentences over one long one. Do not compress an explanation into a single sentence.
+- Do not use markdown formatting.
+- Do not use hashtags.
+- Do not use emojis.
+```
+
+---
+
+**⚙️ Technical & System Details (Advanced)**
+
+**System Usage:** On phone and web-call conversations, this value becomes the `FORMATTING` part of
+the output-format section of the Agent's response prompt (the rules that tell the model how to shape
+each reply). It replaces only the formatting rules; the date, time, link, currency, phone number,
+and digit pronunciation rules that follow it stay unchanged. Chat channels use the separate chat
+formatting style instead.
+
+**Fallbacks:** Default common initialization sets an empty value. When the value is empty, the Agent
+uses the built-in voice formatting rules (no lists, short single-sentence summaries, no markdown,
+hashtags, or emojis).
+
+**Dependencies:**
+
+- **Primary Settings:**
+  - `project_representative_agent_voice_speaking_style`: Tone of voice and formatting rules are
+    applied together when the voice response prompt is built.
+- **Logic Interactions:**
+  - `project_representative_agent_voice_verbosity`: Sets reply length on voice calls; keep both
+    values consistent (for example, longer length limits together with "two or three short
+    sentences").
+  - `project_representative_agent_chat_formatting_style`: Plays the same role for chat channels and
+    does not affect voice calls.
+````
+
+**Level:** `Customer`
+
+**Group:** `2. Agent`
+
+**Value type:** `string`
+
+---
+
+## `project_representative_agent_voice_verbosity`
+
+
+**Title:** 2-04-F. Agent Voice Verbosity [A]
+
+**Description:**
+
+````md
+Controls how long the Agent's spoken replies should be on phone and web calls. Leave it empty to
+keep the standard short replies.
+
+**Pro-Tip:** Increase the limits only when callers need longer answers, for example when the Agent
+must read a fixed compliance message or walk the caller through step-by-step instructions. Word
+limits are guidance for the voice model, not a hard cap: it will not count words exactly, so check
+the real reply length on a test call after changing this value.
+
+**Examples:**
+
+```txt
+- Give a brief answer/question first, then provide more details if requested.
+- New topics: <= 35 words.
+- If the user requests more details: <= 70 words.
+```
+
+---
+
+**⚙️ Technical & System Details (Advanced)**
+
+**System Usage:** On phone and web-call conversations, this value becomes the length rules at the
+start of the `VERBOSITY` part of the explicit constraints (the mandatory rules section of the
+prompt). It is used in two places: the prompt that writes the Agent's reply, and the internal
+conversation-analysis step that plans the Agent's next move, so both follow the same length rules.
+It replaces only the length rules; the business-name pronunciation rule, the "ask only one question
+at a time" rule, and the repetition-prevention rules that follow it stay unchanged. Chat channels
+keep their own built-in length rules.
+
+**Fallbacks:** Default common initialization sets an empty value. When the value is empty, the Agent
+uses the built-in voice length rules (a brief answer first, short replies for new topics, and
+somewhat longer replies when the caller asks for details).
+
+**Dependencies:**
+
+- **Logic Interactions:**
+  - `project_representative_agent_voice_formatting_style`: Shapes sentence structure on voice calls;
+    with longer length limits, replace the single-sentence rule there so longer replies stay easy to
+    follow.
+  - `project_business_name_phonetic`: Its pronunciation rule is added right after these length rules
+    and is not replaced by this value.
+  - `project_representative_agent_chat_verbosity`: Plays the same role for chat channels and does
+    not affect phone or web calls.
+````
+
+**Level:** `Customer`
+
+**Group:** `2. Agent`
+
+**Value type:** `string`
+
+---
+
 ## `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_voice`
 
 
@@ -721,16 +898,25 @@ provisioning instead of manually editing this field.
 **⚙️ Technical & System Details (Advanced)**
 
 **System Usage:** Resolved from the active voice integration phone source during
-representative-agent default preparation, then consumed by user-information extraction and
-phone-channel fallback procedures (for example, email gathering). First-time phone purchase writes
-the provisioned number here before linking it to voice and SMS connectors. When an existing voice
-connector already owns an AI phone number, setup synchronizes that connector number back to this
-attribute instead of buying another number. Agent Creator setup can restrict first-time phone
-purchase to specific provider IDs and a provider-side phone group before the number is bought.
-During Agent Creator reinitialization, the existing number is preserved as long as the requested
-country code is unchanged; if the reinitialization request specifies a different country code, the
-previously provisioned number is dropped and a new number is bought in the new country. It may be
-refreshed later during phone-attachment synchronization.
+representative-agent default preparation, then consumed by phone-number validation and phone-channel
+fallback procedures (for example, email gathering). When a user says a phone number without a
+country code, validation accepts it as a local number, with or without the leading trunk code, if
+its digit count is a national length of the Agent country or the national length of this number (its
+digits minus the Agent country code), so a mobile number is accepted for a landline Agent. A foreign
+number without `+` that has such a length is therefore read as a local number. A longer number is
+resolved by its country-code prefix; anything else gets the `not_valid` status, and every SMS
+guarded by that status is blocked until the user gives a valid number. A number that equals the
+caller ID or confirms the stored number is kept without validation. When this field is empty,
+validation falls back to the number of the voice connector; without either, only the national
+lengths of the Agent country code are used. A pooled voice or SMS connector uses its own number
+instead. First-time phone purchase writes the provisioned number here before linking it to voice and
+SMS connectors. When an existing voice connector already owns an AI phone number, setup synchronizes
+that connector number back to this attribute instead of buying another number. Agent Creator setup
+can restrict first-time phone purchase to specific provider IDs and a provider-side phone group
+before the number is bought. During Agent Creator reinitialization, the existing number is preserved
+as long as the requested country code is unchanged; if the reinitialization request specifies a
+different country code, the previously provisioned number is dropped and a new number is bought in
+the new country. It may be refreshed later during phone-attachment synchronization.
 
 **Fallbacks:** If phone-source lookup returns empty or unavailable, the system stores `null` as a
 placeholder until a valid number is synchronized. During Agent Creator-driven provisioning, number
@@ -1093,7 +1279,7 @@ template composed from the business and Agent names.
 ## `project_representative_agent_chat_greeting_phrase`
 
 
-**Title:** 2-08. Chat - Greeting Phrase [A]
+**Title:** Chat - Greeting Phrase [A]
 
 **Description:**
 
@@ -1133,7 +1319,7 @@ representative-agent setup usually populates a localized default if still empty.
 
 **Level:** `Customer`
 
-**Group:** `2. Agent`
+**Group:** `Chat`
 
 **Value type:** `string`
 

@@ -322,6 +322,10 @@ directions, and generated email report bodies suppress transcript and recording 
 
 **Is hidden:** `true`
 
+> **Industry variance:** In the Beauty and Dental industries this attribute is registered as a
+> visible `1. Business` item titled `1-16. HIPAA Mode [A]` instead of the advanced hidden placement
+> shown here; the other industry registries keep the placement shown here.
+
 ---
 
 ## `project_attributes_static_additional_business_context`
