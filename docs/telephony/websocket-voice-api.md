@@ -115,7 +115,9 @@ x-api-key: <websocket_webhook_api_key>
 - **Your response:** any `2xx` means the transfer was accepted, and Newo sends `{"type": "transfer"}`
   on the call socket. Treat it like `end-call` and route the call on your side.
 - **Failure:** any other status, an error, or a webhook that is not configured. Then no `transfer`
-  frame is sent, the call continues with the agent, and the agent is not told the transfer failed.
+  frame is sent and the call continues with the agent. The agent's flow is still told: it receives
+  a `transfer_call_error` event with the failure reason (`transfer_call_success` after an accepted
+  transfer), and the flow waiting on the transfer is released to continue.
 
 ## Notes for coding assistants
 
