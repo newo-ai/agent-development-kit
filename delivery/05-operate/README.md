@@ -53,9 +53,10 @@ a change in behavior, or after a release you know about:
 
 ## What is not available yet
 
-Health scores and quality metrics from Newo that a partner can read for their own agents are
-**(planned)**. Until then, the review above is the measure: calls reviewed, issues found, issues
-that came back.
+Health scores for agents are **(planned)**. Performance metrics are available already: the
+Report page (the dashboard) in the Newo customer portal shows, over a chosen date range,
+sessions, leads, revenue, opportunity value, and breakdowns by channel and type. The review
+above is still the measure for quality: calls reviewed, issues found, issues that came back.
 
 ## Share what you learned
 
