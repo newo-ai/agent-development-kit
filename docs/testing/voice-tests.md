@@ -22,7 +22,7 @@ After the call, read its transcript and logs ([debugging](../debugging/README.md
 
 `project_attributes_setting_test_mode` and the test phone number settings let the agent treat
 calls from listed numbers as tests, where the integration supports it. Read the descriptions in
-the [attribute reference](https://knowledge.newo.ai/agent-setup/attributes/index.md) before using
+the [attribute reference](../../reference/attributes/index.md) before using
 them, and switch test mode off when done.
 
 ## Automated voice tests
@@ -45,4 +45,4 @@ The `assessor` project you may see on an account belongs to this.
 
 Before full launch, forward the business line to the agent for a few hours outside business
 hours, then review every call. Playbook:
-[Launch at night](https://knowledge.newo.ai/agent-setup#night-launch).
+[Launch at night](../../playbooks/night-launch.md).

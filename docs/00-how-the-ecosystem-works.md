@@ -51,8 +51,7 @@ knowledge. This repository gives them that knowledge, and the tools let them act
 ```mermaid
 flowchart LR
     O[Business owner or partner] -- decides --> AI[AI coding assistant<br/>Claude Code · Codex · Cursor · ChatGPT · Claude]
-    ADK[This repository<br/>playbooks · policies · learnings] --> AI
-    G[Agent setup guide + attribute reference<br/>knowledge.newo.ai] --> AI
+    ADK[This repository<br/>guide · playbooks · policies · learnings<br/>API and attribute reference] --> AI
     AI -- API · CLI · plugin --> NP[Newo platform]
     AI -- MCP --> KS[Knowledge Studio]
     AI -- vendor API or MCP --> EXT[Phone system · CRM · PMS]
@@ -90,6 +89,7 @@ it more reliable for all the others.
 | Piece | Status |
 |---|---|
 | This repository, the agent setup guide, the attribute reference | live |
+| Newo Customer MCP server for ChatGPT and Claude (sign in with a Newo account) | live |
 | Newo plugin for ChatGPT and Claude (create and configure agents from a chat) | live |
 | Newo CLI with V2 support, sandbox and scripted tests | live |
 | Knowledge Studio and its MCP server | live, rolling out |

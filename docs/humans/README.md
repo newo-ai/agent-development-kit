@@ -17,14 +17,14 @@ pick and set up an AI assistant.
 - **Never ask for keys or passwords in the chat.** Tell the owner where to type them: the `.env`
   file on their machine, the Newo portal, or a Newo form.
 
-More: [agent setup guide, "Talking to the owner"](https://knowledge.newo.ai/agent-setup#guide-talking-to-the-owner).
+More: [agent setup guide, "Talking to the owner"](../assistant-guide.md#talking-to-the-owner).
 
 ## Which AI assistant for which person
 
 | Person | Recommended | Why |
 |---|---|---|
-| Owner with no technical background | **ChatGPT or Claude in the browser** with the Newo plugin | no installation; create the agent and configure it from a chat |
-| Owner or office manager who can install an app | **Claude desktop app** | the same plugin, plus files on their computer |
+| Owner with no technical background | **ChatGPT or Claude in the browser** with the Newo Customer MCP server | no installation; sign in with the Newo account and configure the agent from a chat |
+| Owner or office manager who can install an app | **Claude desktop app** | the same connector, plus files on their computer |
 | Partner, agency, developer | **Claude Code, Codex or Cursor** with the Newo CLI and this repository | full API, code, tests, many accounts, version control |
 
 Setup per tool: [tools.md](tools.md).

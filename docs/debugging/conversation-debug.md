@@ -5,7 +5,7 @@
 - **API:** `GET /api/v1/bff/conversations/user-personas?page=1&per=50` lists people who talked to
   the agent, most recent first, with their actors. Then
   `GET /api/v1/chat/history?user_actor_id=<actor>` returns the messages, newest first. See
-  [API reference, Conversations](https://knowledge.newo.ai/agent-setup#api-conversations).
+  [API reference, Conversations](../../reference/api.md#conversations).
 - **CLI:** `newo conversations`, or `newo conversations --session-id <uuid>` for one session's
   transcript.
 - Real callers are often named `User`: the name tells you nothing. Use the time and the number.

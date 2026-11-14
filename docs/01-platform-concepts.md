@@ -1,7 +1,7 @@
 # Platform concepts
 
 What you need to know before your first request. Details:
-[agent setup guide, "The agent in one page"](https://knowledge.newo.ai/agent-setup#guide-the-agent-in-one-page).
+[agent setup guide, "The agent in one page"](assistant-guide.md#the-agent-in-one-page).
 
 ## The account
 
@@ -20,7 +20,7 @@ What you need to know before your first request. Details:
   data and behavior switches; project attributes are few.
 - Every attribute has an `idn`, a `value` (always a string), a `title`, a `description`, a `group`
   and a `value_type`.
-- **The reference of every attribute**: https://knowledge.newo.ai/agent-setup/attributes/index.md.
+- **The reference of every attribute**: [reference/attributes/index.md](../reference/attributes/index.md).
   Read the description before you change one.
 - `private` in a name does **not** mean secret. It marks developer settings.
 - **Do not change** read-only settings, the groups `8. System`, `7. Customer Account` and
@@ -62,7 +62,7 @@ Accounts are moving to Flow Designer V2 one by one (from November 2026).
 - **V2:** agent code is a set of **files in a project version**. Only a whole version can be
   published, and publishing replaces the project's own attributes with the values stored in the
   version.
-- **Details:** [API reference, "Which designer"](https://knowledge.newo.ai/agent-setup#api-which-designer).
+- **Details:** [API reference, "Which designer"](../reference/api.md#which-designer).
 
 ## Updates from Newo
 

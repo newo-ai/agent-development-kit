@@ -16,32 +16,24 @@ Give the person the steps for their tool in one message.
 5. Keep the folder in a private git repository if the partner manages many agents. Never commit
    `.env`.
 
-## Claude in the browser or the Claude desktop app
+## ChatGPT or Claude (browser, desktop, mobile)
 
-1. Customize → Connectors → **+** → **Add custom connector**.
-2. Paste the Newo plugin address (from Newo Voice Creator or Newo support). Choose no
-   authentication.
-3. In a chat, turn the connector on and describe the business. Or paste the first message Newo
-   Voice Creator gives.
-
-## ChatGPT in the browser
-
-1. Plugins → black **Add** button → **Add custom MCP server** (third item).
-2. Name: Newo. Server URL: the plugin address. Authentication: **No authentication**.
-3. Tick the confirmation and click **Create as a plugin**.
-4. In the chat, press **+** and turn on Newo.
-5. Work in the **same** chat for that agent; it keeps the agent's access for 180 days.
+The person connects the **Newo Customer MCP server** once and signs in with their Newo account. It
+works for any agent that account can open. Give them the steps for their tool from
+[02-access-and-tools.md, section D](../02-access-and-tools.md#d-newo-customer-mcp-server):
+- the server URL `https://api.newo.ai/api/v1/customer-mcp`;
+- authentication **OAuth** with Newo's client ID `g2t0mUwvyASY6OC9F76xvNBSFfZjSyfe`, secret empty;
+- **ChatGPT:** Plugins → black **Add** button → **Add custom MCP server**;
+- **Claude:** Customize → Connectors → **+ Add** → **Add custom connector**.
 
 A work ChatGPT account may have custom MCP servers turned off by its administrator. Use a
-personal account or the Claude desktop app.
+personal account or Claude.
 
-Pictures and exact wording:
-[agent setup guide, "Connect the Newo plugin"](https://knowledge.newo.ai/agent-setup#guide-connect-the-newo-plugin).
+Then the first message names the agent's IDN and carries the rules from [AGENTS.md](../../AGENTS.md)
+in short form. Do not rely on a link to this repository: in a chat with the Newo server turned on,
+ChatGPT cannot open web pages (see
+[section D](../02-access-and-tools.md#d-newo-customer-mcp-server)).
 
-## What the browser plugin cannot do yet
+## What a browser assistant cannot do yet
 
-- **Connect an agent created outside the plugin.** Use a terminal assistant, or Knowledge Studio
-  for knowledge.
 - **Run voice tests.** Ask Newo for an Assessor run.
-
-Both are planned with the Newo Customer MCP server.

@@ -52,3 +52,6 @@ Practice and patient management systems hold health data (PHI). Before connectin
 - read only what the conversation needs. Do not copy health data into logs, issues, pull requests,
   learnings or chat messages;
 - debugging tools for accounts under a health-data agreement may show metadata only.
+
+Playbook: [Connect external systems](../../playbooks/connect-external-systems.md) (reports, webhooks,
+calendar, booking systems, email and SMS, conversation tools, MCP servers).

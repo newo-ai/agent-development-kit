@@ -31,7 +31,7 @@ closing time) until opening.
    - reports after each conversation go to the owner, so no caller is lost;
    - whether night bookings are real or test-only.
 
-   Details: [Launch at night](https://knowledge.newo.ai/agent-setup#night-launch).
+   Details: [Launch at night](../../playbooks/night-launch.md).
 2. **Forward the business number to the AI phone number for the night window.**
    - unconditional forwarding at closing time, switched off at opening; or
    - a time-based rule in the phone system that does it every day.
