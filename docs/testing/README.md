@@ -17,3 +17,7 @@ A good habit:
    (prices, after hours, transfers, booking, a caller who switches language).
 2. Keep them as `newo test` scenarios in the partner's repository.
 3. Run them after every change.
+
+Playbooks: [Finish the configuration, 4. Test](../../playbooks/finish-configuration.md#4-test),
+[Launch at night](../../playbooks/night-launch.md), [Review conversations](../../playbooks/review-conversations.md).
+Requests: [reference/api.md, Sandbox](../../reference/api.md#sandbox).

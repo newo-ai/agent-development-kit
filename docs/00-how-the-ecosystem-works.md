@@ -51,8 +51,7 @@ knowledge. This repository gives them that knowledge, and the tools let them act
 ```mermaid
 flowchart LR
     O[Business owner or partner] -- decides --> AI[AI coding assistant<br/>Claude Code · Codex · Cursor · ChatGPT · Claude]
-    ADK[This repository<br/>playbooks · policies · learnings] --> AI
-    G[Agent setup guide + attribute reference<br/>knowledge.newo.ai] --> AI
+    ADK[This repository<br/>guide · playbooks · policies · learnings<br/>API and attribute reference] --> AI
     AI -- API · CLI · plugin --> NP[Newo platform]
     AI -- MCP --> KS[Knowledge Studio]
     AI -- vendor API or MCP --> EXT[Phone system · CRM · PMS]

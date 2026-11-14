@@ -16,7 +16,7 @@ Most requests stop at step 1 or 2.
 ## First session with a new agent
 
 Follow the playbook
-[Finish the configuration](https://knowledge.newo.ai/agent-setup#finish-configuration):
+[Finish the configuration](../playbooks/finish-configuration.md):
 1. Read all attributes once and save them to a local file.
 2. With the owner, verify the essentials **first**:
    - products and services, and what is not offered;
@@ -30,7 +30,7 @@ Follow the playbook
 
 - **Send the whole attribute**, not only `{"value": ...}`. A partial body erases the title,
   description and allowed values. Recipe:
-  [API reference, Attributes](https://knowledge.newo.ai/agent-setup#api-attributes).
+  [API reference, Attributes](../reference/api.md#attributes).
 - **Values are strings.** Booleans are `"True"` / `"False"`. JSON attributes hold JSON serialized
   as a string: validate it before sending.
 - `enum` attributes accept only `possible_values`.
@@ -46,7 +46,7 @@ Follow the playbook
   attributes with the values stored in it. Save them first
   (`GET /api/v1/designer/projects/{id}/export_attributes`), compare after, and restore with
   `import_attributes` if needed. See
-  [API reference, Publish](https://knowledge.newo.ai/agent-setup#api-publish).
+  [API reference, Publish](../reference/api.md#publish).
 - The first call within about two minutes after a publish may still run the previous version.
 
 ## Multi-location businesses and partners with many accounts

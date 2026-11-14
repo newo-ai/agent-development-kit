@@ -3,7 +3,7 @@
 ## Sandbox chat through the API
 
 The recipe is in the
-[API reference, Sandbox](https://knowledge.newo.ai/agent-setup#api-sandbox):
+[API reference, Sandbox](../../reference/api.md#sandbox):
 1. Find the `sandbox` integration and a `running` sandbox connector.
 2. Create a test persona and an actor.
 3. Send a message.

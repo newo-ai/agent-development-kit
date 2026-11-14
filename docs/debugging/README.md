@@ -26,6 +26,13 @@ Pages:
 - [common-issues.md](common-issues.md): known problems and what to do.
 - [studio-troubleshooting.md](studio-troubleshooting.md): Newo Knowledge Studio problems (building, indexing, testing, connecting).
 
+Playbooks:
+- [Review conversations](../../playbooks/review-conversations.md): collect, judge and report on real calls.
+- [Improve and fix](../../playbooks/improve-and-fix.md): from a symptom to a tested change, with a table of typical causes.
+
+Requests: [reference/api.md](../../reference/api.md) (conversations, logs, sandbox);
+[reference/api-v1.md](../../reference/api-v1.md) for accounts on the old designer.
+
 ## Before you tell the person what went wrong
 
 - Separate what you saw in the logs from what you think caused it.
