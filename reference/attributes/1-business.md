@@ -20,11 +20,11 @@ pronunciation, also fill in the Business Phonetic Name.
 **Examples:**
 
 ```txt
-Example Tavern
+Menlo Tavern
 ```
 
 ```txt
-Example Orthodontics - Downtown
+Image Orthodontics - Pacific Heights
 ```
 
 ---
@@ -462,10 +462,11 @@ drive logic for call transfer behavior and booking/meeting availability checks. 
 the raw working-schedule prompt context when derived schedule fields are unavailable.
 
 **Fallbacks:** On first initialization, the system attempts to populate this from Agent Creator
-business info. If empty, compiled schedule artifacts are cleared. When structured
-working-hours-object cache is unavailable, runtime status checks fall back to LLM evaluation over
-the derived working-schedule and calendar context. If all derived schedule text fields are empty,
-shared schedule-context builders fall back to this raw text.
+business info. If empty, compiled schedule artifacts are cleared. When the structured
+compiled-schedule cache (`project_attributes_private_dynamic_schedule_compiled`) is unavailable,
+runtime status checks fall back to LLM evaluation over the derived working-schedule and calendar
+context. If all derived schedule text fields are empty, shared schedule-context builders fall back
+to this raw text.
 
 **Dependencies:**
 

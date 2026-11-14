@@ -229,6 +229,7 @@ Full descriptions: [4-agent-behavior-advanced.md](4-agent-behavior-advanced.md)
 - `project_attributes_setting_session_ended_on_conversation_ended_enabled` | Conversation - End Session on Conversation End [C] | Customer | bool
 - `project_attributes_setting_session_ended_full_processing_enabled` | Conversation - Session Ended - Full Processing Enabled [C] [IMPORTANT] | Customer | bool
 - `project_attributes_setting_session_ended_reset_persona_attributes` | Conversation - Session Ended - Reset Persona Attributes [C] | Customer | bool
+- `project_attributes_setting_waiting_mode_fallback_base_instruction` | Conversation - Waiting Mode - Fallback Base Instruction [C] | Customer | string
 - `project_attributes_setting_waiting_mode_fallback_instruction` | Conversation - Waiting Mode - Fallback Instruction [C] | Customer | string
 - `project_attributes_setting_waiting_mode_timeout` | Conversation - Waiting Mode - Timeout [C] | Customer | number
 - `project_attributes_setting_test_mode_phone_numbers_static` | Project - Testing - Test Mode Phone Numbers Static [C] [IMPORTANT] | Project | json
@@ -307,6 +308,7 @@ Full descriptions: [8-system.md](8-system.md)
 - `project_attributes_setting_shadow_metrics_enabled` | Assessment - Shadow Metrics - Enabled [C] | Customer | bool
 - `project_attributes_private_dynamic_booking_check_availability_payload_schema_compiled` | Booking - Check Availability - Schema Compiled [C] | Customer | json
 - `project_attributes_private_dynamic_booking_schema_compiled` | Dynamic - Booking Schema Compiled [C] | Customer | json
+- `project_attributes_private_account_initialization_status` | Account - Initialization Status [C] | Customer | enum
 - `project_attributes_private_account_initialized_first_time` | Account - Initialized First Time [C] | Customer | bool
 - `project_attributes_private_data_injection_is_timer_running` | Data Injection - Timer Is Running [C] | Customer | bool
 - `project_attributes_private_data_injection_payload` | Data Injection - Payload [C] | Customer | json
@@ -327,6 +329,7 @@ Full descriptions: [8-system.md](8-system.md)
 - `project_attributes_private_dynamic_products_and_services` | Dynamic (LLM or non-LLM-based) - Products & Services [C] | Customer | string
 - `project_attributes_private_dynamic_prompt_calendar` | Dynamic (LLM-based) - Prompt Calendar [C] | Customer | string
 - `project_attributes_private_dynamic_prompt_calendar_created_at` | Dynamic - Prompt Calendar Creation Date [C] | Customer | string
+- `project_attributes_private_rag_knowledge_base_append_conversion_prompt` | RAG - Knowledge Base - Append - Conversion Prompt [C] | Customer | string
 - `project_attributes_private_dynamic_rag_knowledge_base_append_text_structured` | Dynamic (LLM-based) - RAG - Knowledge Base - Text - Structured [C] | Customer | string
 - `project_attributes_private_dynamic_rag_knowledge_base_append_websites_text` | Dynamic (LLM-based) - RAG - Knowledge Base - Websites - Text [C] | Customer | string
 - `project_attributes_private_dynamic_rag_knowledge_base_append_websites_text_structured` | Dynamic (LLM-based) - RAG - Knowledge Base - Websites - Text - Structured [C] | Customer | string
@@ -359,12 +362,12 @@ Full descriptions: [8-system.md](8-system.md)
 - `project_attributes_private_dynamic_workflow_builder_canvas_library_custom` | Dynamic - Workflow Builder - Canvas Library - Custom [C] | Customer | json
 - `project_attributes_setting_external_reply_type` | Conversation - External Reply Type Handling [C] | Customer | enum
 - `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_functions` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) [C] | Customer | json
-- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime | Customer | json
-- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_functions_description` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) | Customer | string
-- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions_description` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime | Customer | string
-- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_functions_enabled` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Enabled | Customer | bool
-- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions_enabled` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime | Customer | bool
-- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_set_turn_message_context_type` | Voice - Integration Service - Voice To Voice Provider - GenAI - Set Turn Message Context | Customer | enum
+- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime [C] | Customer | json
+- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_functions_description` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Description [C] | Customer | string
+- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions_description` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime Description [C] | Customer | string
+- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_functions_enabled` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Enabled [C] | Customer | bool
+- `project_attributes_private_dynamic_voice_integration_service_voice_to_voice_provider_genai_functions_enabled` | Voice - Integration Service - Voice To Voice Provider - GenAI - Functions (Tools) Runtime Enabled [C] | Customer | bool
+- `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_set_turn_message_context_type` | Voice - Integration Service - Voice To Voice Provider - GenAI - Set Turn Message Context Type [C] | Customer | enum
 - `project_attributes_setting_voice_integration_service_voice_to_voice_provider_genai_set_turn_message_type` | Voice - Integration Service - Voice To Voice Provider - GenAI - Set Turn Message Type [C] | Customer | enum
 - `project_attributes_setting_init_attributes_metadata_enabled` | Project - Init - Setting-Up Attributes Metadata - Enabled [C] | Project | bool
 - `project_attributes_setting_init_on_auto_update_enabled` | Project - Init - Initialization Process On Auto-Update - Enabled [C] | Project | bool

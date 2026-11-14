@@ -81,7 +81,11 @@ as support-oriented account context storage.
 **Dependencies:**
 
 - **Logic Interactions:**
-  - None in current runtime flows; this remains an operator-facing notes field.
+  - `project_business_non_working_hour_escalation_phone`: When the `Regular Transfer` scenario is
+    absent from the non-working-hours intent-type map, the GeneralManagerAgent migration
+    `_migration_2_6_7_call_transfer_phone` clears that phone and appends a note recording the
+    cleared value to this notes field. Apart from that migration writer, no runtime flow writes
+    this attribute; it remains an operator-facing notes field.
 ```
 
 **Level:** `Customer`
