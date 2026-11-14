@@ -41,7 +41,8 @@ The person puts the key into a `.env` file in the project folder **themselves**,
 
 **The CLI.** `npm i -g newo`, then run `newo init` in an empty folder. It writes instructions and
 skills for coding assistants, an empty `.env` and a `.gitignore`. Useful commands:
-- `newo pull` / `newo push` — agent code; works for Flow Designer V2.
+- `newo pull` / `newo push` — download / upload the projects and the customer attributes (the
+  agent's code and settings); works for Flow Designer V2.
 - `newo sandbox` — test chat.
 - `newo test <scenario.yaml>` — scripted chat tests.
 - `newo logs --session-id <id>` — the logs of one conversation.
