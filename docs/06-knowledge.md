@@ -38,8 +38,8 @@ search service. The setting `project_attributes_setting_knowledge_source` choose
 |---|---|
 | `akb` or empty (default) | the agent's own settings and AKB |
 | `akb_studio` | the Newo Knowledge Studio search index. Studio writes this value when it publishes. Changes to the AKB or to the knowledge-base text settings no longer reach the agent. |
-| `external` **(rolling out)** | another search service, configured in `project_attributes_setting_external_kb`; the AKB is not read |
-| `akb_external_shadow` **(rolling out)** | the AKB answers; every question is also sent to the external service and only logged, to compare both |
+| `edmo` | only the external API configured in `project_attributes_setting_edmo_kb_shadow`; the AKB is not read |
+| `akb_edmo_shadow` | the AKB answers; every question is also sent to the external API and only logged, to compare both |
 
 If the setting is missing on an account, its NAF release has no search services yet: it uses the
 AKB.

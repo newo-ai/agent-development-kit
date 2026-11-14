@@ -640,3 +640,61 @@ state. Use the website log as your replay source.
 **Value type:** `bool`
 
 ---
+
+## `project_attributes_rag_knowledge_base_append_conversion_latest_raw_output`
+
+
+**Title:** 3-06-G. RAG - Knowledge Base - Latest Conversion Raw Output [B]
+
+**Description:**
+
+```md
+This field shows the complete LLM response from the latest text or website knowledge-base conversion
+attempt. Use it to review conversion quality and investigate missing or incorrectly structured
+topics.
+
+**Note:** The system updates this field automatically. Editing it does not modify already-created
+AKB (Agent Knowledge Base) topics or change future conversions.
+
+**Best Practice:** Review this output after append processing completes. Copy any diagnostic content
+you need before using either append reset control, because both resets clear this snapshot.
+
+---
+
+**⚙️ Technical & System Details (Advanced)**
+
+**System Usage:** Each completed LLM generation for non-empty text or website input overwrites this
+field with the full generated response. The system extracts content between
+`<<<KNOWLEDGE_BASE_ARTICLES_START>>>` and `<<<KNOWLEDGE_BASE_ARTICLES_END>>>` for topic creation.
+This field is a latest-response diagnostic snapshot, not an append-only history and not the direct
+source used to create AKB topics.
+
+**Fallbacks:** Initialization creates this field with an empty placeholder. An explicit text or
+website append reset clears the snapshot. Empty converter input leaves the existing snapshot
+unchanged. If generation does not complete, the latest successfully captured response remains
+available. If a generated response omits either article marker or has no content between them, the
+system generates the response once more and overwrites this field with it. If the second response
+fails the same way, it remains stored here for diagnosis, while structured output stays empty and
+topic creation is skipped.
+
+**Dependencies:**
+
+- **Primary Settings:**
+  - `project_attributes_rag_knowledge_base_append_text`: A completed text conversion replaces the
+    snapshot with its full generated response.
+  - `project_attributes_rag_knowledge_base_append_websites`: A completed website conversion replaces
+    the snapshot with its full generated response.
+- **Logic Interactions:**
+  - `project_attributes_rag_knowledge_base_append_text_reset`: Clears this shared diagnostic
+    snapshot when text-appended knowledge is explicitly reset.
+  - `project_attributes_rag_knowledge_base_append_websites_reset`: Clears this shared diagnostic
+    snapshot when website-appended knowledge is explicitly reset.
+```
+
+**Level:** `Customer`
+
+**Group:** `3. Knowledge Base`
+
+**Value type:** `string`
+
+---
