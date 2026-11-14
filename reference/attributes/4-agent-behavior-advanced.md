@@ -208,8 +208,9 @@ Both formats are accepted, but include full country code for every entry.
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** On voice-call start, the system checks whether the caller external ID exactly
-matches any item in this array. If matched, it triggers a stop-call command for the active voice
+**System Usage:** On voice-call start, each entry in this array is normalized (characters other
+than digits and `#`/`*` are dropped, including a leading `+`) and the caller external ID is compared
+against the normalized entries. If matched, it triggers a stop-call command for the active voice
 integration.
 
 **Fallbacks:** Initialized as an empty array. If empty, no proactive blocking is applied. During
@@ -223,7 +224,11 @@ spam-limit enforcement, missing/empty values are treated as an empty list before
   - `project_attributes_setting_voice_integration_service`: Determines which voice integration
     connector receives the stop-call command.
 - **Logic Interactions:**
-  - Caller identifier matching is exact string comparison (no normalization at runtime).
+  - Caller identifier matching normalizes every list entry before comparison: digits and the
+    `#`/`*` characters are kept, other characters (including a leading `+`) are dropped, so
+    `+12223334444` and `12223334444` block the same caller. Spam-limit enforcement applies the
+    same normalization to the caller's number and the stored entries before its already-blocked
+    check.
 ````
 
 **Level:** `Customer`
@@ -261,9 +266,11 @@ Behavior by value:
 **⚙️ Technical & System Details (Advanced)**
 
 **System Usage:** Evaluated at session end. If session type contains `spam`, the persona-level
-`spam_counter` is incremented. When threshold is reached, the system appends the user's phone to
-`project_attributes_setting_blocked_phone_numbers`, sends a system log, and resets the counter.
-Non-spam sessions reset the counter to zero.
+`spam_counter` is incremented. When threshold is reached, the system sends a system log, then
+text-messages the caller (`sms_worker_send_sms`: "You have been blocked from contacting us due to
+repeated spam calls. If you believe this is a mistake, please contact us via email."), then
+appends the caller's detected phone number to `project_attributes_setting_blocked_phone_numbers`,
+and resets the counter. Non-spam sessions reset the counter to zero.
 
 **Fallbacks:** Initialized with a default numeric threshold during account setup. Automatic blocking
 is skipped for temporal personas and for sessions where a usable phone number is unavailable.
@@ -1385,9 +1392,13 @@ Behavior by value:
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** During availability request preparation, this value is used to evaluate whether
-the requested date is inside the allowed booking window. If out of range, runtime sends an urgent
-user message and stops before dispatching availability request.
+**System Usage:** During availability request preparation, a value greater than zero enables a
+deterministic, code-side booking-window check. When the availability payload includes
+`additionalValidation.isWithinBookingWindow`, runtime compares the requested ISO date
+(`YYYY-MM-DD`) with today's date in the project time zone advanced by this many days; if the
+requested date is past the window end, runtime sends an urgent user message and stops before
+dispatching the availability request. An empty or zero value applies no booking-window limit at
+all.
 
 **Fallbacks:** Initialized to `30` in common default settings.
 
@@ -1397,9 +1408,13 @@ user message and stops before dispatching availability request.
   - `project_attributes_setting_booking_check_availability_enabled`: This advanced system
     configuration must be enabled for availability-window validation to be executed.
   - `project_attributes_setting_booking_check_availability_payload_schema_template`: This advanced
-    system configuration feeds the compiled availability schema, including
-    `additionalValidation.isWithinBookingWindow`, which carries the booking-window evaluation
-    result.
+    system configuration feeds the compiled availability schema, which includes
+    `additionalValidation.isWithinBookingWindow` when the tool enables the advance-days check. With
+    a positive booking window, runtime decides the window verdict in code; the model-filled
+    `isWithinBookingWindow` value is consulted only when the requested date is not an ISO
+    `YYYY-MM-DD` date or the project time zone does not match a named `Area/City` zone.
+  - `project_business_time_zone`: The code-side booking-window comparison computes today's date
+    in this time zone.
 - **Logic Interactions:**
   - `project_attributes_setting_booking_check_availability_working_hours_status`: Working-hours
     validation runs as a separate gate in the same availability flow.
@@ -5125,8 +5140,9 @@ Suggest to the user that you will relay the information to the manager, and they
 **⚙️ Technical & System Details (Advanced)**
 
 **System Usage:** On `waiting_mode_fallback` trigger, runtime builds a fallback instruction by
-prepending a standard apology/recovery prefix to this setting value, then sends the response through
-the active channel path.
+prepending the base instruction from
+`project_attributes_setting_waiting_mode_fallback_base_instruction` to this setting value, then
+sends the response through the active channel path.
 
 **Fallbacks:** Initialized in common defaults to a generic manager-relay fallback phrase.
 
@@ -5135,6 +5151,9 @@ the active channel path.
 - **Primary Settings:**
   - `project_attributes_setting_waiting_mode_timeout`: Defines when this fallback instruction is
     activated.
+  - `project_attributes_setting_waiting_mode_fallback_base_instruction`: Base instruction placed
+    before this setting value; if it is empty at runtime, a built-in generic apology is used
+    instead.
 - **Logic Interactions:**
   - `waiting_mode_fallback`: Timer event that triggers fallback delivery.
   - `project_attributes_setting_voice_integration_service_voice_mode`: `voice-to-voice` and
@@ -5175,8 +5194,14 @@ Behavior by value:
 
 **⚙️ Technical & System Details (Advanced)**
 
-**System Usage:** When waiting mode is activated, runtime sends `set_timer` with
-`timerName="waiting_mode_fallback"` and `eventIdn="waiting_mode_fallback"` using this interval.
+**System Usage:** When waiting mode is activated, runtime pauses the follow-up (`DisableFollowUp`)
+and sends `set_timer` with `timerName="waiting_mode_fallback"` and
+`eventIdn="waiting_mode_fallback"` using this interval. At the timeout the paused follow-up is
+resumed, and on phone and webcall channels it is re-armed with
+`project_attributes_setting_follow_up_timer_voice_interval_agent_speech_ended`, since no fallback
+message follows when an earlier message already ended the waiting mode. Only a follow-up paused by
+the waiting mode (follow-up state `disabled_auto`) is re-armed; one disabled manually (for example
+by a live operator or an SMS reply) stays disabled.
 
 **Fallbacks:** Initialized to `60` in common defaults. Runtime also falls back to `60` when this
 field is empty at activation time.
@@ -5189,6 +5214,8 @@ field is empty at activation time.
 - **Logic Interactions:**
   - `convoagent_activate_waiting_mode`: Entry point that starts waiting-mode timer scheduling.
   - Follow-up timers are disabled while waiting mode is activated to prevent competing prompts.
+  - `convoagent_update_followup`: System event that re-arms a waiting-mode-paused follow-up on
+    phone and webcall channels after the fallback fires (`reason="waiting_mode_fallback"`).
 ```
 
 **Level:** `Customer`
