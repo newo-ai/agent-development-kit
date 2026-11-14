@@ -56,8 +56,8 @@ do not use it, tell them it is now exposed and that Newo support can replace it.
 The owner runs a business; they are not a developer. Everything you write must be easy to follow.
 
 - Write in the owner's language, in short messages, in plain words.
-- Never show the owner tool names (`create_agent`, `agent_status`, `newo_request`), and never say
-  MCP, API, JSON, endpoint or job id. Say "the Newo plugin", "I'm creating your agent", "your
+- Never show the owner tool names (`create_agent`, `get_run`), and never say
+  MCP, API, JSON, endpoint or run id. Say "the Newo plugin", "I'm creating your agent", "your
   agent is ready".
 - If the Newo plugin is not connected in this chat, your first reply is ONE message with all the
   steps below as a numbered list. Do not split them over several messages and do not wait for
@@ -103,7 +103,7 @@ When the agent is ready, one message:
 ```
 Your agent for {business} is ready.
 Call it: {phone number, as a tel: link, for example +1 650 000 0000}
-Talk to it in the browser: {browser link}
+Manage it in the Newo Portal: {portal link}
 Next, I can help you set it up: hours, services, which calls to forward to you, booking. What would you like to start with?
 ```
 
@@ -145,8 +145,10 @@ For a standard setup these settings are enough.
 ## Connect the Newo plugin
 
 Web chat assistants cannot send API requests on their own. The Newo plugin (an MCP server) gives
-you three tools: `create_agent`, `agent_status` and `newo_request`. These names are for you only:
-never show them to the owner. First check whether you have them. If you do, skip this section.
+you its tools: `create_agent` (create an agent from the business's website or Google Maps link),
+`get_run` (follow the creation run), `get_customers`, `send_message`, `search_conversations` and
+more. These names are for you only: never show them to the owner. First check whether you have
+them. If you do, skip this section.
 
 If you do not, give the owner all the steps in one message, as shown in
 [Talking to the owner](#talking-to-the-owner). The steps in detail, in ChatGPT:
@@ -211,36 +213,30 @@ connected to this chat, and you could not configure it afterwards.
    language and a name for the agent.
 2. Show the owner these details in a short list and ask for a clear "yes" before you create
    anything.
-3. Call `create_agent`. It returns a job id at once; the platform then reads the website and
-   builds the agent, which usually takes about a minute or two. Tell the owner so, in plain words
-   ("I'm creating your agent, it takes a minute or two"), without naming any tool.
-4. Keep the owner informed while it is being built. Call `agent_status` with the job id and
-   `known_steps` set to the "Steps so far" number of the previous answer: each call waits up to
-   20 seconds and returns as soon as the next step arrives (reading the website, business
-   recognized, key details collected, account created, agent ready, access connected). After
-   each new step, tell the owner that step in one short line, then call `agent_status` again.
-   Between steps you may ask what they want the agent to do: which phone system, CRM, calendar
-   or booking system and other tools it should work with. When it says **ready**, it gives the
-   new agent's `customer_idn`, its phone number and a link to talk to it in the browser. Give
-   the owner both in one message, as shown in [Talking to the owner](#talking-to-the-owner): the
-   phone number as a `tel:` link and the browser link (it opens a page with a Talk button and
-   asks for the microphone). Never show a "Call" button that is not a real link.
-5. The plugin connects its own access to the new agent; the owner never needs an API key for
-   it. When `agent_status` says the plugin has access, call `newo_request` with the job id
-   (`job_id`) instead of a key and continue with
-   [Starting the conversation](#starting-the-conversation). Never ask the owner for an API key.
-   If `agent_status` says the access did not arrive, tell the owner the agent is created and works
-   (give them its phone number and browser link), and that Newo support will connect this chat's
-   access; do not ask for a key.
+3. Call `create_agent` with the business's website or Google Maps link. The platform reads the
+   website and builds the agent, which usually takes about a minute or two. Tell the owner so, in
+   plain words ("I'm creating your agent, it takes a minute or two"), without naming any tool.
+4. The call waits for the result (up to about three minutes). If it comes back `running`, call
+   `get_run` with its `run_id` again until the state is `created`, `error` or `unknown`, and keep
+   the owner informed in the meantime. While it is being built you may ask what they want the
+   agent to do: which phone system, CRM, calendar or booking system and other tools it should
+   work with. When the state is **created**, it gives the new agent's `customer_idn`, its test
+   phone number (`test_phone_number`) and its link in the Newo Portal (`portal_url`). Give the
+   owner the phone number and the portal link in one message, as shown in
+   [Talking to the owner](#talking-to-the-owner): the phone number as a `tel:` link. Never show
+   a "Call" button that is not a real link.
+5. The plugin works with the owner's signed-in Newo account; the owner never needs an API key
+   for it. Continue with [Starting the conversation](#starting-the-conversation) using the
+   plugin's tools. Never ask the owner for an API key.
 
-If `create_agent` or `agent_status` returns an error or times out, call `agent_status` (or
-`create_agent` again with the same email and website, which returns the same job) before telling
-the owner anything: the agent may already be created. Never tell the owner a tool is
-"unavailable".
+If `create_agent` or `get_run` returns an error or times out, call `get_run` with the same
+`run_id` before telling the owner anything. If the state is `unknown`, the agent may already be
+created: check `get_customers` before calling `create_agent` again — every call creates another
+customer and buys a phone number. Never tell the owner a tool is "unavailable".
 
-If `create_agent` says an agent was already requested today for this email address and
-business, that is the same job: use it, never call again just to "try again". Only if the owner
-says they want a separate new agent, call `create_agent` again with `new_agent` set to true.
+`create_agent` is not idempotent: every call creates a new customer and buys a new phone
+number. Never call it again just to "try again"; follow the result of the run you started, and
+only start another one when the owner truly wants a separate new agent.
 
 ## Agents the owner already had
 
@@ -295,9 +291,10 @@ options:
 
 ## How to call the API
 
-With the Newo plugin, `newo_request` does everything in this section for you: pass `job_id` for
-an agent created with `create_agent`. Without the plugin (developers with a shell only; the key
-lives in an environment variable on their machine, never in the chat):
+With the Newo plugin, its tools cover the common actions for you (`get_customers`,
+`send_message`, `search_conversations`, `search_logs`, connectors, sessions). For anything a
+plugin tool does not cover, and for developers with a shell only (the key lives in an
+environment variable on their machine, never in the chat):
 
 Base URL: `https://app.newo.ai`. Every call needs a short-lived access token, obtained from the
 API key:
