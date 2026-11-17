@@ -19,7 +19,23 @@ them anywhere except back to the owner.
    `datetime` and split them into conversations where two messages are more than two minutes
    apart. `is_agent: true` is the agent; the text is `payload.text`.
 
-## 2. Judge each conversation
+## 2. Check the transcript before you judge the agent
+
+Read a few of the caller's lines first and ask one question: **is this the language the caller
+actually spoke?** If the caller's turns are phonetic nonsense, or in a language the business does
+not serve, the speech recognizer is set to the wrong language, and everything downstream — names,
+dates, fields, the report, the summary — is built on noise.
+
+When that is what you see, stop judging the agent's behavior. Almost every "the agent invents
+things" complaint on such a call is the transcript, not the agent, and no prompt change will fix
+it. Go to [connector settings, section 8](../docs/08-connector-settings.md#8-which-language-the-recognizer-listens-for),
+fix the recognition language, and review conversations recorded after that.
+
+The agent may still *speak* the right language while this happens: in voice-to-voice the model
+hears the raw audio, so only the text side is broken. The session metric `asrRecognition` can read
+`100.0` on a completely garbled transcript; it does not detect this.
+
+## 3. Judge each conversation
 
 For each conversation, write down:
 
@@ -38,7 +54,7 @@ caller, so also read `levels=error` for the minutes of the call without the acto
 Errors in the agent's own logic (not caused by a setting) are for Newo support: collect the
 time, the error message and the skill name, and give them to the owner to forward.
 
-## 3. Report to the owner
+## 4. Report to the owner
 
 Keep it short:
 

@@ -351,11 +351,24 @@ The full list of requests, with examples and known limits, is in [API reference]
 
 ## How changes take effect
 
-- Most text settings (greeting, business story, FAQ, products, transfer criteria) are read at
-  the start of each new conversation. Test with a new conversation after the change.
-- Settings that are compiled when the project starts (working hours, time zone, languages,
-  voice settings, scenarios) need a **project publish** of `naf` (see [API reference](../reference/api.md#publish)).
-  Publishing restarts the agent's initialization; wait 2 to 5 minutes before testing.
+There are three levels, not two. Knowing which one a setting is on tells you what to do after
+changing it, and which conversations can be used to judge the result.
+
+| Level | What it takes | Examples |
+|---|---|---|
+| Read **every turn** | nothing: live as soon as it is saved | speaking style, persona, business context, additional global instruction |
+| Read **when a conversation starts** | nothing: test with a **new** conversation | greeting, business story, FAQ, products, transfer criteria, report settings |
+| **Compiled when the project starts** | a **project publish** of `naf` ([API reference](../reference/api.md#publish)), then 2 to 5 minutes | working hours, time zone, languages, scenarios and the canvas |
+
+- Whichever level it is, **reading the setting back proves only that it was stored.** To prove
+  the agent is using it, find your new text in the logs of a live conversation: see
+  [Prove a change is live](../playbooks/improve-and-fix.md#prove-a-change-is-live). Take the
+  timestamp from there: conversations that started earlier ran on the old settings, and judging
+  a fix by one of them is the most common way to reach a wrong conclusion.
+- **Publishing is not free on Flow Designer V2.** If the `naf` project has
+  `is_auto_update_enabled: true` and a `registry_idn`, publishing your own copy takes the account
+  off Newo's updates. Check first and ask the owner: see
+  [When to publish, and when not to](../playbooks/improve-and-fix.md#when-to-publish-and-when-not-to).
 - **Flow Designer V2** (accounts move to it from 9 November 2026; check with
   [Which designer](../reference/api.md#which-designer)): only a whole project version is published, and
   publishing activates it and replaces the `naf` project's own attributes with the values stored

@@ -12,6 +12,15 @@ If you are a person: point your coding assistant at this repository (for example
 https://github.com/newo-ai/agent-development-kit and help me set up my Newo agent"). The assistant
 does the technical work; you make the decisions.
 
+> [!IMPORTANT]
+> **Use a desktop or terminal coding assistant.** Claude Code, Codex, Cursor and the ChatGPT and
+> Claude desktop apps can read this repository. **A browser chat with a Newo MCP server turned on
+> cannot**: in that mode ChatGPT's page fetch is disabled, so it never sees these playbooks and
+> answers from memory instead. Until the Newo plugin and connector are published in the OpenAI and
+> Claude stores — the published versions will carry these playbooks and practices with them — the
+> browser is the weaker place to work. See
+> [Which assistant to use](docs/02-access-and-tools.md#which-assistant-to-use).
+
 ## Map
 
 Read top to bottom for a new agent; jump to the block you need for a single task.
