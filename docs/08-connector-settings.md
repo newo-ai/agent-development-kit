@@ -31,8 +31,9 @@ Examples (read on 2026-11-12):
 `None` is a real value, written as the string `"None"`. It means "no separate recognizer": the
 voice model hears the caller itself.
 
-These examples were read on 2026-11-12. The live catalog can hold more than the examples —
-always read the current `possible_values` from the API, never rely on memory.
+These examples and the marked default were read on 2026-11-12. The live catalog can hold
+more than the examples, and the default can change between platform releases — always read the
+current `possible_values` and default from the API, never rely on memory.
 
 If `possible_values_only` is `true`, send exactly one of the listed strings.
 
