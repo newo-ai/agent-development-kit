@@ -12,7 +12,7 @@ work from this file.
 
 ## Before you start
 
-- Read `work/<agent-name>/requirements.md`. If it does not exist, run
+- Read `work/<agent-name>/requirements.md`. If it does not exist, offer to run
   [gather-requirements](../gather-requirements/SKILL.md) first.
 - Read [good and weak criteria](../../delivery/01-discover/examples/good-vs-weak-criteria.md).
 - If the file already exists and the customer agreed to it, **do not renumber**. Add new ids after
@@ -50,7 +50,7 @@ work from this file.
 
 ## Next
 
-[check-feasibility](../check-feasibility/SKILL.md).
+Ask whether to continue with [check-feasibility](../check-feasibility/SKILL.md).
 
 ## Example
 

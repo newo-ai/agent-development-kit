@@ -22,9 +22,9 @@ Record the call only with consent. The recording and transcript stay on the part
 
 | Question | Why we ask | Goes to |
 |---|---|---|
-| What made you look at an AI agent now? | Finds the real objective: missed calls, staff time, after-hours revenue | SOW section 1 |
-| Six months from now, how would you know it worked? | Turns hopes into measurable objectives | SOW section 1 |
-| How many calls a month, and when are they missed? | Sizing; nights-first launch | Channels |
+| What made you look at an AI agent now? | Finds the real objective: missed calls, staff time, after-hours revenue | Acceptance: Objectives |
+| Six months from now, how would you know it worked? | Turns hopes into measurable objectives | Acceptance: Objectives |
+| How many calls a month, and when are they missed? | Sizing; nights-first launch | Channels; SOW cover (volume) |
 
 ## 2. Calls today
 
@@ -49,7 +49,7 @@ Record the call only with consent. The recording and transcript stay on the part
 | Question | Why we ask | Goes to |
 |---|---|---|
 | Which systems hold bookings, orders, patients or customer records? | Integration scope | Systems |
-| Does each have an MCP server, a REST API, or only a web interface? | Decides whether the agent can act in it, or only send a link or capture | Systems |
+| Can other tools connect to it — does it have an API? Does each have an MCP server, a REST API, or only a web interface? | Decides whether the agent can act in it, or only send a link or capture | Systems |
 | Who can create credentials or authorize access? | The most common cause of delay | Systems |
 | Is there a test or sandbox account? | A test booking in a live system is a real booking | Systems; Open questions and risks |
 | Who gets a summary after each conversation, and how? | Reports and notifications | After a conversation |

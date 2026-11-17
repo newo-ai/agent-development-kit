@@ -12,11 +12,12 @@ Stage: [01-discover](../../delivery/01-discover/README.md), step 6. Produces
 
 Partners often go straight to the SOW. That is fine. What matters is that the SOW ends up with
 **testable acceptance criteria**, because testing, UAT and sign-off are measured against them.
-Missing criteria are the most common cause of rework.
+In our delivery experience, missing criteria are the most common cause of rework.
 
 | What exists in `work/<agent-name>/` | Path |
 |---|---|
 | `requirements.md` and `acceptance-criteria.yaml` | **Full path**: go to "Steps" |
+| Only `requirements.md` | **Draft the criteria** from it (fast-path steps 2 to 5, marked as draft), then "Steps" |
 | Neither, or only notes, an email or a website | **Fast path**: do "Fast path" first, then "Steps" |
 
 ## Fast path: SOW first
@@ -34,13 +35,17 @@ Do not send the partner to other skills. Collect what is needed inside this skil
    and the acceptance criteria (section 11) directly. Follow the rules in
    [good and weak criteria](../../delivery/01-discover/examples/good-vs-weak-criteria.md): one
    observable behavior each, a priority, a check. Include every "never" and every handoff.
-3. **Mark them as draft.** Section 11 says: "Draft criteria, to be confirmed by the customer
-   before signature." Unknowns go to section 10 or the risks, never into the SOW as guesses.
-4. **Write the two files the later stages need**, after the person approves: a short
-   `requirements.md` (only the sections you have answers for, the rest under "Open questions") and
-   `acceptance-criteria.yaml` with the same ids as section 11. Without them, testing and UAT have
-   nothing to read.
-5. Continue with "Steps" below, skipping what is already done.
+3. **Mark them as draft.** Add the line "Draft criteria, to be confirmed by the customer before
+   signature" to section 11, and remove it when the customer confirms. Unknowns go to section 10
+   (Customer inputs) or requirements.md's "Open questions and risks", never into the SOW as
+   guesses.
+4. **Show the use cases and criteria** from steps 2 and 3. Wait for a "yes" before writing.
+5. **Write the two files the later stages need**: a short
+   `requirements.md` (only the sections you have answers for, the rest under "Open questions and
+   risks") and `acceptance-criteria.yaml` with the same ids as section 11. Set "Confirmed by the
+   customer: no" and leave `agreed_on` empty until the customer confirms. Without them, testing
+   and UAT have nothing to read.
+6. Continue with "Steps" below, skipping what is already done.
 
 ## Steps
 
@@ -49,8 +54,9 @@ Do not send the partner to other skills. Collect what is needed inside this skil
    [dental and ortho](../../delivery/01-discover/templates/sow-dental-ortho.md),
    [IVR and call routing](../../delivery/01-discover/templates/sow-ivr.md),
    [support](../../delivery/01-discover/templates/sow-support.md), or none (core template alone).
-2. **Copy** [sow-core.md](../../delivery/01-discover/templates/sow-core.md) to
-   `work/<agent-name>/sow.md`. Paste the vertical section in place of section 3B.
+2. **Start the draft in chat** from
+   [sow-core.md](../../delivery/01-discover/templates/sow-core.md): paste the vertical section in
+   place of section 3B. No file is written before the "yes" at the show step.
 3. **Fill the cover and section 1** from `requirements.md`: the business, locations, channels,
    languages, systems, target go-live. Write the objectives so they can be measured.
 4. **Fill section 2 (stages)** from the vertical section. Keep only the stages in scope.
@@ -60,13 +66,21 @@ Do not send the partner to other skills. Collect what is needed inside this skil
 7. **Section 8 (out of scope).** Start from the vertical section's list. Add anything
    `feasibility.md` moved to a later phase.
 8. **Section 9 (compliance).** If health data is involved, the BAA comes before any system access.
-9. **Section 11 (acceptance).** Every critical criterion by id; the vertical's test-call count,
-   pass threshold and critical failures. Say how acceptance is given: by the customer's reply to
-   one email is enough (see [collect-signoff](../collect-signoff/SKILL.md)).
-10. **Commercial terms** (section 14) stay `[PARTNER TO FILL]`. Never add prices.
-11. **Show the draft.** List anything you could not fill and every criterion still marked draft.
+9. **Fill sections 10 and 12.** Section 10 (customer inputs) from the vertical section's Customer
+   inputs and the tester and go-live date in `requirements.md`'s "Acceptance". Section 12
+   (timeline) from `project-plan.md` when it exists; until then, list it as unfilled at the show
+   step.
+10. **Section 11 (acceptance).** Every critical criterion by id; the vertical's acceptance rule
+    (for example its test-call count, pass threshold and critical failures). Say how acceptance
+    is given: by the customer's reply to one email is enough (see
+    [collect-signoff](../collect-signoff/SKILL.md)).
+11. **Commercial terms** (section 14) stay `[PARTNER TO FILL]`. Never add prices.
+12. **Show the draft.** List anything you could not fill and every criterion still marked draft.
     Wait for a "yes" before writing.
-12. **Offer a Word copy** with [export-docx](../export-docx/SKILL.md).
+13. **Write the file** to `work/<agent-name>/sow.md`. If `sow.md` already exists, keep a copy of
+    the old version first ([AGENTS.md](../../AGENTS.md), rule 3) and change only what the person
+    approved.
+14. **Offer a Word copy** with [export-docx](../export-docx/SKILL.md).
 
 ## Done when
 

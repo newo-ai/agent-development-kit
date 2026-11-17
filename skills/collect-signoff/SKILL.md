@@ -28,16 +28,19 @@ business, the partner writes everything and the customer only replies "approved"
 1. **Check the basis.** The last UAT round passed ([run-uat](../run-uat/SKILL.md)) and the go-live
    checklist is done. Do not ask for approval while a critical criterion fails.
 2. **Fill `customer-signoff.md`** from the files: criteria tested and passed, UAT rounds, go-live
-   mode, known limitations (including anything moved to a later phase).
+   mode, known limitations (including anything moved to a later phase). Show the filled file;
+   wait for the partner's "yes" before writing it.
 3. **Set up "After go-live" for who really runs it.** For most small businesses the partner runs
    the agent: the partner reviews calls, makes changes and keeps the switch-off steps. The customer
    needs only two things: whom to call, and how to stop calls going to the agent in an emergency
    (one line, in plain words). If the customer manages it themselves, give them the full list.
-4. **Draft the approval request** ([draft-customer-comms](../draft-customer-comms/SKILL.md),
-   template 7). Short form: three or four lines with the known limitations and "reply 'approved'
-   to confirm". Show it; the partner sends.
-5. **Record the answer.** When the customer replies, write the date and the reply ("approved by
-   email on YYYY-MM-DD") in the confirmation section. No signature is needed for the short form.
+4. **Draft the day-launch email** ([draft-customer-comms](../draft-customer-comms/SKILL.md),
+   template 7). Short form: template 7 trimmed - keep the known limitations and the
+   "reply 'approved'" ask; drop the full-form sentence. If template 7 was already sent at day
+   launch, record the reply to that email instead. Show it; the partner sends.
+5. **Record the answer.** When the customer replies, write it in the confirmation section:
+   "approved by email on YYYY-MM-DD by (name, role)". Quote the reply or save the email. No
+   signature is needed for the short form.
 6. **Hand over** with template 8, written for the customer's real role.
 
 ## Done when

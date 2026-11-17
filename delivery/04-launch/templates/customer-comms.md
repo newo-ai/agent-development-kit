@@ -3,7 +3,7 @@
 Emails a partner sends to the customer during a delivery. Used by
 [draft-customer-comms](../../../skills/draft-customer-comms/SKILL.md). The partner reviews and
 sends every email; nothing is sent automatically. Replace every `[bracket]`. Never put passwords,
-keys or callers' personal data in an email.
+keys or callers' personal data in these template emails.
 
 ## 1. Kickoff
 
@@ -12,11 +12,11 @@ keys or callers' personal data in an email.
 Hi [name], thanks for today's call. Here is what we agreed:
 
 - The agent will [main job].
-- First go-live: [stage 1], target [date], starting with nights.
+- First go-live: [first go-live mode, for example nights], target [date], starting with nights.
 - What we need from you by [date]: [inputs].
 
 I will send the requirements summary for you to confirm by [date].
-[name], [partner]
+[partner contact], [partner]
 
 ## 2. Requirements for confirmation
 
@@ -38,12 +38,12 @@ statement of work and the list of behaviors we will test together before go-live
 
 ## 4. Invitation to the acceptance test
 
-**Subject:** Ready for you to test: [business] AI agent
+**Subject:** Ready for you to test: [Business] AI agent
 
-Hi [name], the agent is ready for your testing. Please call [AI phone number] or use [chat link]
-and try each item on the attached checklist. Mark each one pass or fail with a short note. There
-are [N] items, about [time]. Please finish by [date]. If something fails, we fix it and send you
-only the failed items to retest.
+Hi [name], the agent is ready for your testing. Please call [AI phone number] or use
+[chat link, if chat is set up] and try each item on the attached checklist. Mark each one pass
+or fail with a short note. There are [N] items, about [time]. Please finish by [date]. If
+something fails, we fix it and send you only the failed items to retest.
 
 ## 5. Results of a test round
 
@@ -64,7 +64,7 @@ We will review the first [2 to 3] nights with you on [date] before moving to day
 
 **Subject:** Your AI agent is live: please confirm
 
-The night review went well: [one line]. From [date] the agent will [answer after [N] rings /
+The night review went well: [one line]. From [date] the agent will [answer after N rings, or
 answer first].
 
 What it does: [two or three lines]. What it does not do yet: [known limitations].
@@ -88,6 +88,9 @@ Customer runs it: add how to switch the forwarding off, who reviews calls and ho
 to request a change.
 
 ## 9. Reply to a change request
+
+This reply is only for additions outside the current scope; a defect in what was agreed goes
+through the normal fix flow.
 
 **Subject:** Your change request: [title]
 

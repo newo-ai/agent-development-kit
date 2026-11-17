@@ -9,7 +9,7 @@ Ask after the [discovery call guide](discovery-call-guide.md). Answers feed
 |---|---|
 | General, orthodontic, pediatric, multi-specialty? How many locations and providers? | Routing and provider mapping |
 | Which appointment types can a new patient book (exam, cleaning, ortho consult)? How long is each? | Booking link (stage 3) or booking in the PMS (stage 4) |
-| What is the same-day cutoff? Who decides on same-day emergencies? | Emergency criteria |
+| Hours per location, non-working days and time zone? What languages do callers use? What is the same-day cutoff? Who decides on same-day emergencies? | Hours behavior, language switching, emergency criteria |
 | What intake is needed before booking (date of birth, insurance, referral)? | Intake fields |
 
 ## Emergencies and clinical limits

@@ -1,6 +1,6 @@
 ---
 name: draft-customer-comms
-description: Draft an email from the partner to their customer for any delivery moment - kickoff, requirements confirmation, weekly status, UAT invitation, UAT results, night launch, day launch and sign-off, handover, change request - filled from the project files. Drafts only; never sends. Use when a partner says "write the update to the customer", "email the customer", "status update".
+description: Draft an email from the partner to their customer for any delivery moment - kickoff, requirements confirmation, weekly status, UAT invitation, UAT results, night launch, day launch and approval, handover, change request - filled from the project files. Drafts only; never sends. Use when a partner says "write the update to the customer", "email the customer", "status update".
 ---
 
 # Draft customer communication
@@ -13,10 +13,12 @@ Produces a draft in the chat or in `work/<agent-name>/comms/`.
 1. **Pick the template** from
    [customer-comms.md](../../delivery/04-launch/templates/customer-comms.md):
    1 kickoff · 2 requirements for confirmation · 3 weekly status · 4 UAT invitation ·
-   5 UAT round results · 6 night launch · 7 day launch and sign-off · 8 handover ·
+   5 UAT round results · 6 night launch · 7 day launch and approval · 8 handover ·
    9 change request reply.
 2. **Fill it from the project files** (`requirements.md`, `sow.md`, `project-plan.md`,
-   `uat-report.yaml`). Do not invent dates, numbers or names. Leave `[brackets]` where the files
+   `uat-report.yaml`); at launch, also from the go-live agreement (`go-live-checklist.md`'s
+   "Agreed with the customer" section: the launch schedule) and `test-report.md`'s known
+   limitations. Do not invent dates, numbers or names. Leave `[brackets]` where the files
    do not have the answer, and list them.
 3. **Keep it short and in the partner's voice.** Plain words, no internal terms (no "attribute",
    "NAF", "scenario").

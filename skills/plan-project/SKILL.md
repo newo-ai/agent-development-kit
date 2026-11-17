@@ -6,7 +6,8 @@ description: Build a dated project plan back from the go-live date, plus the par
 # Plan the project
 
 Stage: [01-discover](../../delivery/01-discover/README.md). Optional for the customer, but the
-partner checklist is worth doing on every project: most delays come from requests sent late.
+partner checklist is worth doing on every project: in our delivery experience, most delays come
+from requests sent late.
 Produces `work/<agent-name>/project-plan.md` from
 [the template](../../delivery/01-discover/templates/project-plan.md).
 
@@ -53,6 +54,7 @@ will be ready on the 4th". Update the row, then re-check which milestones are at
 - Every applicable checklist row has an owner, a sent date or "not sent", and an ETA or "asked".
 - Every milestone has an owner and a date, and the ones waiting on a late request are marked.
 - G2 and G3 are marked.
+- The plan and all drafts contain no keys, passwords or callers' personal data.
 
 ## Next
 

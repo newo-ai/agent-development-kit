@@ -23,6 +23,7 @@ together.
 6. Your website, price list or menu, FAQ, and any call scripts your team uses.
 7. Whether you want to keep your current phone number.
 8. Who will test the agent before it goes live, and the date you would like to go live.
+9. What languages your callers use.
 
 Please do not send passwords or API keys by email. We will set up access securely when we need it.
 

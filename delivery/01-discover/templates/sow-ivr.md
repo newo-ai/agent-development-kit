@@ -10,7 +10,7 @@ menu with an agent that understands the reason for the call and routes it. Trans
 |---|---|
 | Current phone menu | [Attach the menu tree or describe it] |
 | Phone system and carrier | [Cloud PBX / on-premise PBX / SIP trunk / carrier] |
-| Destinations | [Number of departments and queues] |
+| Destinations | [Departments and queues, with their numbers] |
 | Volume | [Calls per month; peak hour] |
 | Transfer method | [Warm / cold; SIP REFER; DTMF to an extension] |
 

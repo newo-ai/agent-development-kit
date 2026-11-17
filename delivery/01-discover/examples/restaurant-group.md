@@ -30,11 +30,11 @@ Nothing here comes from a real customer.
 criteria:
   - id: AC-001
     priority: critical
-    behavior: "Books a reservation for 2 to 8 guests through Reserve with Google with the right location, date, time and party size, and confirms by SMS"
+    behavior: "Books a reservation for 2 to 8 guests through Reserve with Google with the right location, date, time and party size"
     channels: [phone]
     checks:
       - type: call
-        steps: "Ask for 4 guests on Saturday at 19:30 at the second location. The booking appears in the Google Business Profile; the SMS arrives."
+        steps: "Ask for 4 guests on Saturday at 19:30 at the second location. The agent books through the venue's Reserve with Google link; the confirmation states the location, date, time and party size."
     status: not-tested
 
   - id: AC-002
@@ -57,11 +57,11 @@ criteria:
 
   - id: AC-004
     priority: critical
-    behavior: "Switches to Spanish when the caller speaks Spanish, and completes a booking in Spanish"
+    behavior: "Switches to Spanish when the caller speaks Spanish"
     channels: [phone]
     checks:
       - type: call
-        steps: "Call and speak Spanish from the first sentence. The booking completes; the SMS is in Spanish."
+        steps: "Call and speak Spanish from the first sentence. The agent answers in Spanish."
     status: not-tested
 
   - id: AC-006
@@ -72,7 +72,29 @@ criteria:
       - type: call
         steps: "Six testers call within the same minute."
     status: not-tested
+
+  - id: AC-013
+    priority: critical
+    behavior: "Confirms a new reservation by SMS"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Ask for 4 guests on Saturday at 19:30 at the second location. The SMS confirmation arrives."
+    status: not-tested
+
+  - id: AC-014
+    priority: critical
+    behavior: "Completes a booking in Spanish when the caller speaks Spanish"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Call and speak Spanish from the first sentence and book a table. The booking completes; the SMS is in Spanish."
+    status: not-tested
 ```
+
+The full list has 14 criteria; AC-005 and AC-007 to AC-012 cover hours, directions and parking,
+menu questions, takeout capture, changes to an existing reservation, no guaranteed tables, and
+prices not on the menu.
 
 ## 4. SOW (extract)
 

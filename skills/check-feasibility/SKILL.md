@@ -34,7 +34,7 @@ Stage: [01-discover](../../delivery/01-discover/README.md), step 5. Produces
 5. **Risks to schedule.** A scenario change, custom code or a missing test account each adds time.
    Mark them.
 6. **Later phases.** Criteria that cannot be delivered now: propose moving them to a later phase,
-   and say which file to change (`sow.md` section 8, the criterion's status).
+   and record each in the "Moved to a later phase" table (`sow.md` section 8).
 7. **Show the table.** Wait for a "yes" before writing the file or drafting any request.
 
 ## Done when
@@ -52,4 +52,4 @@ Stage: [01-discover](../../delivery/01-discover/README.md), step 5. Produces
 
 ## Next
 
-[draft-sow](../draft-sow/SKILL.md).
+Ask whether to continue with [draft-sow](../draft-sow/SKILL.md).

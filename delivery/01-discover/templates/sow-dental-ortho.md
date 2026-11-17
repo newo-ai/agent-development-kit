@@ -11,7 +11,7 @@ Paste into section 3B of [sow-core.md](sow-core.md). Industry setup:
 | Practice type | [General / orthodontic / group / multi-specialty] |
 | Practice management system (PMS) | [Name]. Needed for part B. |
 | Online booking link | [URL]. Needed for stage 3. |
-| BAA | [Signed / not yet]. Required before part B. |
+| BAA | [Signed / not yet]. Required before part B. Until it is signed, part A works from what callers say only: no PMS authorization, test account or live PMS data. |
 
 ## Stages
 
@@ -71,7 +71,7 @@ New-patient booking comes first because it needs no patient-record matching.
 
 ## Compliance gate
 
-No PMS authorization, test account or live data before the BAA is signed. Transcripts used for
+No PMS authorization, test account or live PMS data before the BAA is signed. Transcripts used for
 review are redacted before they leave the customer's or partner's systems.
 
 ## Acceptance rule

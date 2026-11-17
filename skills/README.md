@@ -5,9 +5,10 @@ with a `SKILL.md` in the [Agent Skills](https://agentskills.io) format: front ma
 and a `description` (what it does and when to use it), then the procedure.
 
 Skills work from this repository. Paths inside a skill, such as
-`delivery/01-discover/templates/sow-core.md`, are relative to the repository root. The files a
-skill produces belong to the partner and go in the partner's own folder, for example
-`work/<agent-name>/`, never into this repository ([delivery/README.md](../delivery/README.md#where-the-files-go)).
+`delivery/01-discover/templates/sow-core.md`, are relative to the repository root. Markdown
+links are relative to the SKILL.md file. The files a skill produces belong to the partner and
+go in the partner's own folder, for example `work/<agent-name>/`, never into this repository
+([delivery/README.md](../delivery/README.md#where-the-files-go)).
 
 ## The skills
 
@@ -21,7 +22,7 @@ skill produces belong to the partner and go in the partner's own folder, for exa
 | 01-discover | [check-discovery-gate](check-discovery-gate/SKILL.md) | A pass or fail report | Before building |
 | [04-launch](../delivery/04-launch/README.md) | [run-uat](run-uat/SKILL.md) | `uat-report.yaml` | The test report says "ready" |
 | 04-launch | [prepare-go-live](prepare-go-live/SKILL.md) | `go-live-checklist.md`, a launch schedule | UAT passed |
-| 04-launch | [draft-customer-comms](draft-customer-comms/SKILL.md) | An email draft | Any stage, to update the customer |
+| Any | [draft-customer-comms](draft-customer-comms/SKILL.md) | An email draft | Any stage, to update the customer |
 | 04-launch | [collect-signoff](collect-signoff/SKILL.md) | `customer-signoff.md` (short form: an email reply), handover | Live in the agreed mode |
 | Any | [export-docx](export-docx/SKILL.md) | A `.docx` copy of a markdown file | The customer needs a Word document |
 

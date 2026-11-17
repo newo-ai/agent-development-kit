@@ -29,7 +29,8 @@ agent-development-kit/
 2. Identify **what** they want. Typical requests and where to read:
    - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
      [delivery/](delivery/README.md), the stages from requirements to production.
-   - "Start discovery", "write the SOW", "acceptance criteria", "start UAT", "get sign-off": the
+   - "Start discovery", "write the SOW", "acceptance criteria", "check feasibility", "plan the
+     project", "start UAT", "prepare go-live", "email the customer", "get sign-off": the
      matching skill in [skills/](skills/README.md).
    - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
      (how to talk to the owner, how to create an agent, rules, how to call the API).

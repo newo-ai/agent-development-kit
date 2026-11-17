@@ -5,7 +5,7 @@ description: Turn discovery call notes, a call transcript, the business's websit
 
 # Gather requirements
 
-Stage: [01-discover](../../delivery/01-discover/README.md), step 2. Produces
+Stage: [01-discover](../../delivery/01-discover/README.md), steps 1 and 2. Produces
 `work/<agent-name>/requirements.md` from
 [the template](../../delivery/01-discover/templates/requirements.md).
 
@@ -37,7 +37,7 @@ Stage: [01-discover](../../delivery/01-discover/README.md), step 2. Produces
 4. **List what goes to a person** and what the agent must never do or say. These become critical
    acceptance criteria later, so be specific: "never quote a price for implants", not "be careful
    with prices".
-5. **Check every system.** For each system named, record the four answers from
+5. **Check every system.** For each system named, record the answers from
    [integrations, "Ask first"](../../docs/integrations/README.md#ask-first): MCP server, REST API or
    web only; who grants access; whether a test account exists. A missing test account is a risk.
 6. **Check compliance.** Health data? Then read
@@ -65,7 +65,7 @@ Stage: [01-discover](../../delivery/01-discover/README.md), step 2. Produces
 ## Next
 
 [write-acceptance-criteria](../write-acceptance-criteria/SKILL.md), once the customer confirms the
-requirements.
+requirements. When they do, set "Confirmed by the customer: yes" in `requirements.md`.
 
 ## Example
 

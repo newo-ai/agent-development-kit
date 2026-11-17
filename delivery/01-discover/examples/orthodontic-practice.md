@@ -36,11 +36,11 @@ agreed_on: YYYY-MM-DD
 criteria:
   - id: AC-001
     priority: critical
-    behavior: "After hours, sends the free-consult booking link by SMS to a caller who wants to start treatment, and captures name and phone"
+    behavior: "After hours, sends the free-consult booking link by SMS to a caller who wants to start treatment"
     channels: [phone]
     checks:
       - type: call
-        steps: "Call after 17:00 and ask to start braces. The SMS with the link arrives; the summary email arrives."
+        steps: "Call after 17:00 and ask to start braces. The SMS with the link arrives."
     status: not-tested
 
   - id: AC-002
@@ -54,7 +54,7 @@ criteria:
 
   - id: AC-003
     priority: critical
-    behavior: "For a poking wire or loose bracket, gives the approved self-care steps and captures a callback request"
+    behavior: "For a poking wire or loose bracket, gives the approved self-care steps"
     channels: [phone]
     checks:
       - type: scripted
@@ -81,11 +81,11 @@ criteria:
 
   - id: AC-006
     priority: important
-    behavior: "After hours, captures a reschedule request with name, date of birth and preferred times, and states the 24-hour notice policy"
+    behavior: "After hours, captures a reschedule request with name, date of birth and preferred times"
     channels: [phone]
     checks:
       - type: call
-        steps: "Call after hours. The summary has the three fields; the policy was said."
+        steps: "Call after hours and ask to reschedule. The summary has the three fields."
     status: not-tested
 
   - id: AC-009
@@ -96,16 +96,43 @@ criteria:
       - type: scripted
         file: tests/AC-009-privacy.yaml
     status: not-tested
+
+  - id: AC-013
+    priority: critical
+    behavior: "After hours, captures the name and phone of a caller who wants to start treatment"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Call after 17:00 and ask to start braces. The summary email arrives with the name and phone."
+    status: not-tested
+
+  - id: AC-014
+    priority: critical
+    behavior: "For a poking wire or loose bracket, captures a callback request"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Call about a poking wire. The summary email arrives with the callback request."
+    status: not-tested
+
+  - id: AC-015
+    priority: important
+    behavior: "After hours, states the 24-hour notice policy when a caller asks to reschedule"
+    channels: [phone]
+    checks:
+      - type: call
+        steps: "Call after hours and ask to reschedule. The agent states the 24-hour notice policy."
+    status: not-tested
 ```
 
-The full list has 12 criteria; AC-007, AC-008, AC-010 to AC-012 cover insurance plans, hours and
+The full list has 15 criteria; AC-007, AC-008, AC-010 to AC-012 cover insurance plans, hours and
 address per location, and the recording disclosure.
 
 ## 4. Feasibility (extract of `feasibility.md`)
 
 | Criterion | Step | Confidence | Note |
 |---|---|---|---|
-| AC-001 | setting + SMS | documented | Booking link as a setting; SMS is standard |
+| AC-001, AC-013 | setting + SMS | documented | Booking link and summary email as settings; SMS is standard |
 | AC-002, AC-003 | knowledge | documented | The approved scripts are customer inputs |
 | AC-004 | setting | documented | Critical; run three times in tests |
 | AC-005 | setting | documented | The transfer number must not be the public number |

@@ -35,7 +35,10 @@ Objectives, written so they can be measured after go-live:
 
 The agent goes live in its simplest useful form and gains capabilities stage by stage. Each stage
 is a go-live point; the customer can stay on any stage while the next is built. The vertical
-section lists the stages.
+section lists the stages. When the vertical marks stages as part A and part B, part B acts
+inside the system named on its cover (restaurant: the POS; dental: the PMS) and its customer
+inputs list what part B needs, including sign-offs such as a BAA; part A is everything else.
+Stages marked "elected" are optional upgrades the customer chooses.
 
 | Stage | What the agent does | Value at go-live | Criteria |
 |---|---|---|---|
@@ -59,8 +62,10 @@ scope.
 
 ### 3B. Vertical section
 
-[Paste the vertical section: stages, session types, inputs, starter criteria, exclusions,
-acceptance rule.]
+[Paste every section of the vertical file: stages, session types, inputs, starter criteria,
+exclusions, acceptance rule, and anything else it carries (routing map, telephony checks,
+workflow baseline, escalation boundary, handoff package, compliance gate). Its cover additions
+go into the cover table at the top, not here.]
 
 ## 4. Knowledge and content
 
@@ -113,7 +118,9 @@ number. The handoff carries what the caller already said.
 
 ## 9. Data and compliance
 
-- Health data (PHI): [yes / no]. If yes, a BAA is signed before any system access or live data.
+- Health data (PHI): [yes / no]. If yes, a BAA between the customer and the Newo platform
+  ([health data rules](../../../docs/integrations/README.md#health-data)), plus a customer-partner
+  BAA if the partner processes PHI, is signed before any system access or live system data.
 - Personal data under GDPR, CCPA or similar: a data processing agreement where it applies.
 - Call recording and consent wording: [confirmed by the customer].
 - Credentials are shared through [secure method], never by email or chat.
@@ -135,11 +142,18 @@ change, not a defect.
 
 - `acceptance-criteria.yaml` lists every behavior, its priority and its check. Ids stay fixed once
   agreed.
+- Copy the starter criteria in section 3B into `acceptance-criteria.yaml` and adapt them; renumber
+  to fit the agent's file.
 - Before UAT, [Partner] runs [__] test calls and chats per stage, covering every use case in
   working and after hours.
 - The customer tests each criterion and records pass or fail. Each round is one UAT attempt.
+- [2] UAT rounds are included in this SOW; further rounds are a written change request (section
+  13).
 - A stage is accepted when every critical criterion passes, at least [95]% of all criteria pass,
   and the customer signs off.
+- Acceptance is complete by [date].
+- After sign-off, [Partner] monitors the agent for [__] business days. Defects in the agreed
+  scope are fixed at no charge; anything else is a change request (section 13).
 - Critical failures: [a wrong booking or order, a failed escalation, an invented price or policy,
   a safety assurance, a dropped caller with no capture].
 
@@ -164,7 +178,8 @@ updated criteria file and timeline.
 
 ## 14. Commercial terms
 
-[PARTNER TO FILL: fees, billing, term.]
+[PARTNER TO FILL: fees, billing, term, termination, liability, ownership of the configuration
+and content.]
 
 ## 15. Sign-off
 
@@ -185,3 +200,6 @@ updated criteria file and timeline.
 | 8 | Vertical section; `feasibility.md` (later phases) |
 | 9 | `requirements.md`: Compliance |
 | 11 | `acceptance-criteria.yaml` |
+
+Before sending the SOW to the customer: delete this table, the paste instructions, and every
+repository link.

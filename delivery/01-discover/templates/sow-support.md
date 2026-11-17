@@ -11,6 +11,17 @@ requests itself and hands off the rest with full context.
 | Volume | Inbound calls [/month], chats [/month], outbound [/month, only if in scope] |
 | Ticketing or CRM | [Name or none] |
 
+## Stages
+
+| Stage | What the agent does | Criteria |
+|---|---|---|
+| 1 | Triage and routing: greet, identify the caller and reason, follow the escalation map, hand off with the full package | [ ] |
+| 2 | Answers and troubleshooting from the approved knowledge, confirming the result | [ ] |
+| 3, elected | Ticketing or CRM lookup: finds the caller and open cases, routes or acts as authorized | [ ] |
+
+Triage and handoff run from stage 1 with no system connection; stage 2 puts the approved
+knowledge to work; stage 3 needs a ticketing or CRM connection.
+
 ## Workflow baseline
 
 | # | Workflow | Customer-specific setting |
@@ -74,5 +85,5 @@ the agent escalated.
 ## Acceptance rule
 
 A labelled test set built from the customer's transcripts, covering each workflow, escalation and
-knowledge gap. Minimum: every critical criterion passes; overall pass rate [ ]%. Critical
+knowledge gap. Minimum: every critical criterion passes; overall pass rate [95]%. Critical
 failures: a missed critical escalation, an invented answer, a false "resolved", a lost handoff.

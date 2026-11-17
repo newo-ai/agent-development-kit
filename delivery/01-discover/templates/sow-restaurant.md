@@ -21,8 +21,8 @@ Paste into section 3B of [sow-core.md](sow-core.md). Industry setup: [industries
 | 3 | A | Books new reservations through Reserve with Google. Sends the reservation link when a deposit is needed or the widget cannot book. Transfers or captures changes, large parties and catering | [ ] |
 | 4 | A, elected | Books new reservations in the reservation platform against live availability, deposits and booking rules | [ ] |
 | 5 | A, elected | Finds existing guests and reservations; books, changes and cancels | [ ] |
-| 6 | B, elective | Takes simple takeout orders from the live POS menu; returns order id and pickup time | [ ] |
-| 7 | B, elective | Full ordering: dayparts, modifiers, combos, prepayment, transfer above the complexity limit | [ ] |
+| 6 | B, elected | Takes simple takeout orders from the live POS menu; returns order id and pickup time | [ ] |
+| 7 | B, elected | Full ordering: dayparts, modifiers, combos, prepayment, transfer above the complexity limit | [ ] |
 
 The agent books from stage 3 with no integration. Stages 4 and 5 upgrade how it books.
 
@@ -54,8 +54,6 @@ The agent books from stage 3 with no integration. Stages 4 and 5 upgrade how it 
 
 ## Starter criteria
 
-Copy into `acceptance-criteria.yaml` and adapt. Renumber to fit the agent's file.
-
 | Priority | Behavior |
 |---|---|
 | critical | Answers in the configured language and switches when the caller switches |
@@ -72,6 +70,7 @@ Copy into `acceptance-criteria.yaml` and adapt. Renumber to fit the agent's file
 
 - Setting up the Google Business Profile or the booking widget itself
 - Deposits or card on file through the widget path
+- Card numbers spoken to the agent; prepayment happens through a payment link sent by SMS
 - Delivery dispatch and marketplaces
 - Loyalty, gift cards, CRM and marketing tools; outbound campaigns
 - Allergen, dietary or food-safety assurances

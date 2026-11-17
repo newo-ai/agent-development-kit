@@ -54,7 +54,7 @@ Worked examples (fictional): [orthodontic practice](examples/orthodontic-practic
    Tell the person early about anything that needs a scenario change, an integration with code,
    or something only Newo can do (a phone number in a certain country, SIP allowlisting:
    [support](../../docs/support/README.md#operations-request)).
-6. **Get the customer's agreement** on the requirements, the criteria and the scope.
+6. **Draft the SOW and get the customer's agreement** on the requirements, the criteria and the scope.
 
 ## Statement of work
 

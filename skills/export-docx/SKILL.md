@@ -5,12 +5,13 @@ description: Make a Word (.docx) copy of a markdown delivery file such as sow.md
 
 # Export to Word
 
-Produces `<file>.docx` next to the markdown file. The markdown file stays the source; edit it, then
-export again.
+Stage: any. Produces `<file>.docx` next to the markdown file. The markdown file stays the
+source; edit it, then export again.
 
 ## Steps
 
-1. **Check the file** has no `[brackets]` left, or tell the person which remain.
+1. **Check the file** has no `[brackets]` and no unfilled placeholders (dates, "total / passed",
+   unchosen mode options) left, or tell the person which remain.
 2. **Use the tool that is available**, in this order, and ask before installing anything:
    - Pandoc: `pandoc work/<agent-name>/sow.md -o work/<agent-name>/sow.docx`. If the partner has a
      branded Word template: add `--reference-doc=<template.docx>`.

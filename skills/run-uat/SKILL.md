@@ -18,24 +18,25 @@ Stage: [04-launch](../../delivery/04-launch/README.md), steps 1 and 2. Produces
 ## Steps
 
 1. **Make the customer's checklist.** One line per criterion, in plain words, with what to do and
-   what should happen. Critical ones first. Add how to reach the agent: the AI phone number, the
-   chat link. Show it; wait for a "yes".
+   what should happen. Critical ones first. Add how to reach the agent: the AI phone number (read
+   it from the setting, not from memory), and the chat link if chat is in scope. Show it; wait
+   for a "yes", then write the checklist to `work/<agent-name>/uat-checklist.md`.
 2. **Agree who tests.** Best: the customer tests, because they know their callers. Many small
    businesses will not. Then use the partner-led option: the partner runs the checklist, and the
    customer listens to a short live demo or to recordings of the critical criteria and says yes
    or no. Record who tested in the round. Either way the customer decides pass or fail on the
    critical criteria. Offer the invitation email
-   ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 4) or the demo invite.
-3. **Record the round.** When results come back, add a round to `uat-report.yaml`:
-   `uat_attempt`, date, `tested_by`, total, failed ids, and `passed` (true only when no critical criterion
-   failed and the customer accepts).
+   ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 4).
+3. **Record the round.** When results come back, show the round, wait for a "yes", then add it
+   to `uat-report.yaml`: `uat_attempt`, date, `tested_by`, `criteria_total`, `criteria_failed`,
+   and `passed` (true only when no critical criterion failed and the customer accepts).
 4. **Classify each failure** with the template's categories: `requirements`, `build`, `test`,
    `integration`, `telephony`, `platform`, `other`. One sentence of description and the fix.
    A `platform` cause is also a bug report ([docs/support/](../../docs/support/README.md#bug-report)).
 5. **Fix and retest.** After fixes, run all scripted tests again
    ([03-test](../../delivery/03-test/README.md)), then ask the customer to retest only the failed
-   criteria. That is a new `uat_attempt`.
-6. **Show the report** before writing it.
+   criteria. That is a new `uat_attempt`. Offer the UAT round-results email
+   ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 5).
 
 ## Done when
 
