@@ -9,6 +9,23 @@ Everything later (build, test, acceptance, go-live) is measured against them.
 - the customer agreed on scope and on how they will accept the agent (in a statement of work, or
   in writing).
 
+## Skills and resources
+
+Each step below has a skill that runs it ([skills/](../../skills/README.md)), and resources the
+skills and people use:
+
+| Step | Skill | Resources |
+|---|---|---|
+| 1 to 2 | [gather-requirements](../../skills/gather-requirements/SKILL.md) | [intake email](templates/intake-email.md), [discovery call guide](question-banks/discovery-call-guide.md), question banks for [dental and ortho](question-banks/dental-ortho.md), [restaurant](question-banks/restaurant.md), [IVR and support](question-banks/ivr-support.md) |
+| 3 to 4 | [write-acceptance-criteria](../../skills/write-acceptance-criteria/SKILL.md) | [good and weak criteria](examples/good-vs-weak-criteria.md) |
+| 5 | [check-feasibility](../../skills/check-feasibility/SKILL.md) | [feasibility.md](templates/feasibility.md) |
+| 6 | [draft-sow](../../skills/draft-sow/SKILL.md), [export-docx](../../skills/export-docx/SKILL.md) | [SOW core](templates/sow-core.md) with a section for [restaurant](templates/sow-restaurant.md), [dental and ortho](templates/sow-dental-ortho.md), [IVR](templates/sow-ivr.md), [support](templates/sow-support.md) |
+| Plan | [plan-project](../../skills/plan-project/SKILL.md) | [project-plan.md](templates/project-plan.md) |
+| Exit | [check-discovery-gate](../../skills/check-discovery-gate/SKILL.md) | The "Done when" list above |
+
+Worked examples (fictional): [orthodontic practice](examples/orthodontic-practice.md),
+[restaurant group](examples/restaurant-group.md).
+
 ## Steps
 
 1. **Collect what already exists.** The business's website, price list, opening hours, call

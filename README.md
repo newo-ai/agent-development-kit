@@ -71,6 +71,7 @@ Read top to bottom for a new agent; jump to the block you need for a single task
 |---|---|
 | Every API request (Flow Designer V2), the old designer (V1) | [reference/api.md](reference/api.md), [reference/api-v1.md](reference/api-v1.md) |
 | All playbooks in one list | [playbooks/](playbooks/README.md) |
+| Run a delivery task as a skill (requirements, criteria, SOW, plan, UAT, go-live, sign-off) | [skills/](skills/README.md) |
 | Report a bug or request something from Newo | [docs/support/](docs/support/README.md) |
 | Learn from other assistants' cases, or share yours | [learnings/](learnings/README.md) |
 

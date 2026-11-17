@@ -22,6 +22,8 @@ Each stage page says what to do, links to the pages and the [playbooks](../playb
 of this repository that explain how, and has templates for what it produces. A playbook is one
 task on one agent, step by step; a stage says when to run it and what must be true after it.
 
+Stages 01-discover and 04-launch have skills that run each step: see [skills/](../skills/README.md).
+
 ## How to use the stages
 
 1. **Find the stage you are in.** Ask the person, or look at what already exists: is there a list
