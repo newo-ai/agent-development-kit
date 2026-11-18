@@ -17,8 +17,11 @@ Stage: [04-launch](../../delivery/04-launch/README.md), steps 1 and 2. Produces
 
 ## Steps
 
-1. **Make the customer's checklist.** One line per criterion, in plain words, with what to do and
-   what should happen. Critical ones first. Add how to reach the agent: the AI phone number (read
+1. **Make the customer's checklist.** One line per criterion, in plain words: what to do or say,
+   **Correct if** (what should happen) and **Wrong if** (what counts as a failure). Critical ones
+   first. Include the [baseline criteria](../../delivery/01-discover/templates/baseline-criteria.md)
+   the customer agreed to; they already carry both lines. Attach `call-flow.md` so the customer
+   sees what each call should do. Add how to reach the agent: the AI phone number (read
    it from the setting, not from memory), and the chat link if chat is in scope. Show it; wait
    for a "yes", then write the checklist to `work/<agent-name>/uat-checklist.md`.
 2. **Agree who tests.** Best: the customer tests, because they know their callers. Many small

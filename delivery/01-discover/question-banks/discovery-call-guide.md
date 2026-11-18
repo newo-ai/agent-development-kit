@@ -32,6 +32,8 @@ Record the call only with consent. The recording and transcript stay on the part
 |---|---|---|
 | What are the five most common reasons people call? | These become the use cases | What the agent handles |
 | For each: what does your team do, step by step? What does "done" look like? | Each "done" becomes an acceptance criterion | What the agent handles |
+| For each: should a person take it right away, should we take details for a callback, or can the agent answer it? | Decides how the agent handles each reason, and the call flow the customer confirms | What the agent handles |
+| For each: who should get the summary? | Every handled request needs a recipient | What the agent handles; After a conversation |
 | Which calls are handled differently after hours? | Working hours and after hours differ in almost every agent | What goes to a person |
 | Do you have call scripts, or recordings with personal data removed? | Real phrasing makes better tests | Facts the agent needs |
 
@@ -40,6 +42,7 @@ Record the call only with consent. The recording and transcript stay on the part
 | Question | Why we ask | Goes to |
 |---|---|---|
 | When must a caller reach a person? Who, at what number, in and after hours? | The escalation map. A transfer number must not be the public number | What goes to a person |
+| At what hours will someone actually pick up a transfer? What if nobody does? | Often shorter than opening hours; outside them the agent must not promise to connect | What goes to a person |
 | What counts as urgent? | Urgent handling is usually critical | What goes to a person |
 | What must the agent never say or promise? | "Never" rules are often the most important criteria | What the agent must never do or say |
 | May the agent quote prices? Which ones? | An invented price is a critical failure | Facts the agent needs |

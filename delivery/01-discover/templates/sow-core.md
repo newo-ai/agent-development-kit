@@ -17,7 +17,7 @@ the project, never in this repository. No callers' personal data, API keys or pa
 | Languages | [Per location] |
 | Systems to connect | [Calendar, booking, PMS, POS, CRM, ticketing] or "none in this SOW" |
 | Target go-live | [Date], nights first (section 6) |
-| Linked files | `requirements.md`, `acceptance-criteria.yaml`, `project-plan.md` |
+| Linked files | `requirements.md`, `acceptance-criteria.yaml`, `project-plan.md`, `call-flow.md` |
 
 ## 1. Summary and objectives
 
@@ -51,14 +51,16 @@ Stages marked "elected" are optional upgrades the customer chooses.
 ### 3A. Use cases
 
 Every use case lists the acceptance criteria that prove it. A use case without criteria is not in
-scope.
+scope. "How" is one of three ways: puts them through to a person, takes details and passes them
+on, or answers itself. The customer's plain-language version is the call flow
+(`call-flow.md`), attached to this SOW.
 
-| Id | What the caller wants | Working hours | After hours | Criteria |
-|---|---|---|---|---|
-| UC-01 | [New appointment / reservation / order] | [Book / transfer] | [Book / send link / capture] | [AC-001, AC-002] |
-| UC-02 | [Change or cancel] | [ ] | [ ] | [ ] |
-| UC-03 | [General questions] | [Answer from knowledge] | [Same] | [ ] |
-| UC-04 | [Speak to a person] | [Transfer to …] | [Message to …] | [ ] |
+| Id | What the caller wants | How | Working hours | After hours | Report to | Criteria |
+|---|---|---|---|---|---|---|
+| UC-01 | [New appointment / reservation / order] | [Answers itself / takes details] | [Book / transfer] | [Book / send link / capture] | [ ] | [AC-001, AC-002] |
+| UC-02 | [Change or cancel] | [ ] | [ ] | [ ] | [ ] | [ ] |
+| UC-03 | [General questions] | [Answers itself] | [Answer from knowledge] | [Same] | [ ] | [ ] |
+| UC-04 | [Speak to a person] | [Puts them through] | [Transfer to …] | [Message to …] | [ ] | [ ] |
 
 ### 3B. Vertical section
 
@@ -105,6 +107,9 @@ a real booking.
 | Urgent or emergency | [ ] | [ ] | [ ] |
 | Complaint | [ ] | [ ] | [ ] |
 
+Transfers are answered [days and hours]; outside them the agent takes details and does not promise
+to connect. If nobody answers a transfer: [take details and send to …].
+
 Transfer numbers are lines where a person answers, never the public business number or the AI
 number. The handoff carries what the caller already said.
 
@@ -144,7 +149,7 @@ change, not a defect.
 - `acceptance-criteria.yaml` lists every behavior, its priority and its check. Ids stay fixed once
   agreed.
 - Copy the starter criteria in section 3B into `acceptance-criteria.yaml` and adapt them; renumber
-  to fit the agent's file.
+  to fit the agent's file. Add the [baseline criteria](baseline-criteria.md) that apply.
 - Before UAT, [Partner] runs [__] test calls and chats per stage, covering every use case in
   working and after hours.
 - The customer tests each criterion and records pass or fail. Each round is one UAT attempt.

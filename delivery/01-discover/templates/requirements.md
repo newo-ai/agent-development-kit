@@ -20,9 +20,12 @@ No callers' personal data, API keys or passwords in this file.
 
 ## What the agent handles
 
-For each case: what the caller wants, what the agent does, and what "done" looks like.
+For each case: what the caller wants, how the agent handles it, what "done" looks like, and
+who gets the report. How the agent handles it is one of three ways: **puts them through** to a
+person, **takes details and passes them on**, or **answers itself** from approved information.
 
-1.
+1. [What the caller wants] · [puts through / takes details / answers itself] · done when: [ ] ·
+   report to: [ ]
 2.
 3.
 
@@ -31,6 +34,8 @@ For each case: what the caller wants, what the agent does, and what "done" looks
 - Which cases, and to which number or email:
 - During working hours:
 - Outside working hours:
+- Hours someone actually answers a transfer (often shorter than opening hours):
+- If nobody answers a transfer:
 
 ## What the agent must never do or say
 
