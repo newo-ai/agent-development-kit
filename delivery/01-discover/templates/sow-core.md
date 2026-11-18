@@ -118,9 +118,10 @@ number. The handoff carries what the caller already said.
 
 ## 9. Data and compliance
 
-- Health data (PHI): [yes / no]. If yes, a BAA between the customer and the Newo platform
-  ([health data rules](../../../docs/integrations/README.md#health-data)), plus a customer-partner
-  BAA if the partner processes PHI, is signed before any system access or live system data.
+- Health data (PHI): [yes / no]. If yes, the business associate agreements the customer's
+  compliance requires (confirm which parties sign with the customer and Newo:
+  [health data rules](../../../docs/integrations/README.md#health-data)) are signed before any
+  system access or live system data.
 - Personal data under GDPR, CCPA or similar: a data processing agreement where it applies.
 - Call recording and consent wording: [confirmed by the customer].
 - Credentials are shared through [secure method], never by email or chat.
@@ -152,8 +153,9 @@ change, not a defect.
 - A stage is accepted when every critical criterion passes, at least [95]% of all criteria pass,
   and the customer signs off.
 - Acceptance is complete by [date].
-- After sign-off, [Partner] monitors the agent for [__] business days. Defects in the agreed
-  scope are fixed at no charge; anything else is a change request (section 13).
+- After sign-off, [Partner] monitors the agent for [__] business days. [PARTNER TO CHOOSE: how
+  defects in the agreed scope are handled, for example fixed at no charge, or per section 14];
+  anything else is a change request (section 13).
 - Critical failures: [a wrong booking or order, a failed escalation, an invented price or policy,
   a safety assurance, a dropped caller with no capture].
 

@@ -12,7 +12,7 @@ keys or callers' personal data in these template emails.
 Hi [name], thanks for today's call. Here is what we agreed:
 
 - The agent will [main job].
-- First go-live: [first go-live mode, for example nights], target [date], starting with nights.
+- First go-live: [first go-live mode, for example nights only], target [date].
 - What we need from you by [date]: [inputs].
 
 I will send the requirements summary for you to confirm by [date].
@@ -43,7 +43,7 @@ statement of work and the list of behaviors we will test together before go-live
 Hi [name], the agent is ready for your testing. Please call [AI phone number] or use
 [chat link, if chat is set up] and try each item on the attached checklist. Mark each one pass
 or fail with a short note. There are [N] items, about [time]. Please finish by [date]. If
-something fails, we fix it and send you only the failed items to retest.
+something fails, we fix it and send you only the items to retest.
 
 ## 5. Results of a test round
 
