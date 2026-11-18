@@ -6,19 +6,31 @@ possible risk.
 **Needs:** a test report that says "ready" ([03-test](../03-test/README.md)).
 
 **Done when:**
-- the customer tested the agent against the acceptance criteria and accepted it;
+- the customer's acceptance test passed (customer-run, or partner-run with the customer's yes on
+  the critical criteria);
 - the go-live checklist is complete;
 - the agent answers real callers in the agreed mode, and the customer knows how to switch it off.
 
 A phone change affects real callers at once. Agree on the time of every step with the person
 ([AGENTS.md](../../AGENTS.md), rule 8).
 
+## Skills and resources
+
+| Step | Skill | Resources |
+|---|---|---|
+| 1 to 2 | [run-uat](../../skills/run-uat/SKILL.md) | [uat-report.yaml](templates/uat-report.yaml) |
+| 3 to 4 | [prepare-go-live](../../skills/prepare-go-live/SKILL.md) | [go-live-checklist.md](templates/go-live-checklist.md) |
+| 5 to 6 | [collect-signoff](../../skills/collect-signoff/SKILL.md), [export-docx](../../skills/export-docx/SKILL.md) | [customer-signoff.md](templates/customer-signoff.md) |
+| Any | [draft-customer-comms](../../skills/draft-customer-comms/SKILL.md) | [customer-comms.md](templates/customer-comms.md): eight emails from kickoff to handover, plus a change-request reply |
+
 ## Steps
 
 1. **Acceptance test by the customer (UAT).**
    - Give the customer the list of criteria in plain words, and how to reach the agent: the AI
      phone number, the chat link.
-   - The customer tests each criterion and says pass or fail. Do not test for them.
+   - The customer tests each criterion and says pass or fail. Do not test for them. If the
+     customer will not test (common for small businesses), use the partner-led option in
+     [run-uat](../../skills/run-uat/SKILL.md): the customer still decides on the critical criteria.
    - Record the round in [templates/uat-report.yaml](templates/uat-report.yaml): which criteria
      failed and why.
 2. **Fix what failed, then repeat.** Fix, run all scripted tests again

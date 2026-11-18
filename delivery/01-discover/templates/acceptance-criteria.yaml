@@ -15,6 +15,8 @@ criteria:
         file: tests/AC-001-booking.yaml
       - type: call                # a manual phone call; write what to do and what must happen
         steps: "Call the AI phone number, ask for an appointment tomorrow at 10:00. The test booking appears in the booking system."
+      - type: system              # a check in the other system; write what appears there and who confirms it
+        steps: "Whoever reads the bookings opens the booking system and confirms the test booking is there with the right date and time."
     status: not-tested            # not-tested | pass | fail
 
   - id: AC-002

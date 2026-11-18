@@ -65,6 +65,7 @@ For each system (calendar, booking, CRM, practice or patient management, orderin
 
 - Who tests for the customer:
 - How they will judge the agent:
+- Objectives: what made them look at an AI agent now, and how they will know it worked:
 - Wanted go-live date:
 
 ## Open questions and risks

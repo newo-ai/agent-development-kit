@@ -16,6 +16,7 @@ agent-development-kit/
 ├── reference/       # exact API and attribute formats; 77% of the bytes — has its own AGENTS.md
 ├── playbooks/       # step-by-step procedures for one task (finish setup, night launch, ...)
 ├── delivery/        # partner delivery process: 01-discover ... 05-operate, with templates
+├── skills/          # SKILL.md procedures per delivery task (discover, launch); see skills/README.md
 ├── industries/      # industry setup pages (restaurant, dental, home services, ...)
 ├── learnings/       # dated case reports from real work; check before hard problems
 └── .github/         # issue templates: docs correction, learning, NAF change notice
@@ -28,6 +29,9 @@ agent-development-kit/
 2. Identify **what** they want. Typical requests and where to read:
    - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
      [delivery/](delivery/README.md), the stages from requirements to production.
+   - "Start discovery", "write the SOW", "acceptance criteria", "check feasibility", "plan the
+     project", "start UAT", "prepare go-live", "email the customer", "get sign-off": the
+     matching skill in [skills/](skills/README.md).
    - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
      (how to talk to the owner, how to create an agent, rules, how to call the API).
    - "Create an agent": [docs/assistant-guide.md, "Create the agent"](docs/assistant-guide.md#create-the-agent).

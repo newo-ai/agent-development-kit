@@ -7,7 +7,8 @@ industry: <industry>
 rounds:
   - uat_attempt: 1
     date: YYYY-MM-DD
-    criteria_total: 0
+    tested_by: customer          # customer | partner, customer reviewed
+    criteria_total: 0             # a retest round keeps the full count; criteria_failed lists anything that failed again
     criteria_failed: []           # ids, for example [AC-004, AC-011]
     passed: false                 # true when no critical criterion failed and the customer accepted
     root_causes:

@@ -12,7 +12,7 @@ straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-custom
 | Stage | Done when | It produces |
 |---|---|---|
 | Setup | the Newo CLI is installed and the assistant can read the account | nothing to keep. See [docs/02-access-and-tools.md](../docs/02-access-and-tools.md): `npm i -g newo`, then `newo init` |
-| [01-discover](01-discover/README.md) | the customer agreed on what the agent must do, in statements that can be tested | `requirements.md`, `acceptance-criteria.yaml` |
+| [01-discover](01-discover/README.md) | the customer agreed on what the agent must do, in statements that can be tested | `requirements.md`, `acceptance-criteria.yaml`, `feasibility.md`, `sow.md`, `project-plan.md` |
 | [02-build](02-build/README.md) | the agent is configured, passes the health check, and answers the critical cases in a sandbox chat | `build-notes.md` |
 | [03-test](03-test/README.md) | every acceptance criterion has a check, and every critical one passes | test scenarios, `test-report.md` |
 | [04-launch](04-launch/README.md) | the customer accepted the agent, and it answers real callers | `go-live-checklist.md`, `uat-report.yaml`, `customer-signoff.md` |
@@ -21,6 +21,8 @@ straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-custom
 Each stage page says what to do, links to the pages and the [playbooks](../playbooks/README.md)
 of this repository that explain how, and has templates for what it produces. A playbook is one
 task on one agent, step by step; a stage says when to run it and what must be true after it.
+
+Stages 01-discover and 04-launch have skills that run each step: see [skills/](../skills/README.md).
 
 ## How to use the stages
 
