@@ -135,7 +135,7 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
   forms apply only in the browser, so nothing checks your text. Do it by hand:
   1. Open the form you need in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) and write every
      field's `label` as a `### ` heading with your answer below it; fill all fields marked
-     `required: true`.
+     `required: true`. Add the form's `labels` with `--label`.
   2. End the body with this line (the same statement as the form's required Privacy box), and
      only if it is true:
 
