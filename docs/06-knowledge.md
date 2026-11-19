@@ -38,8 +38,7 @@ search service. The setting `project_attributes_setting_knowledge_source` choose
 |---|---|
 | `akb` or empty (default) | the agent's own settings and AKB |
 | `akb_studio` | the Newo Knowledge Studio search index. Studio writes this value when it publishes. Changes to the AKB or to the knowledge-base text settings no longer reach the agent. |
-| `edmo` | only the external API configured in `project_attributes_setting_edmo_kb_shadow`; the AKB is not read |
-| `akb_edmo_shadow` | the AKB answers; every question is also sent to the external API and only logged, to compare both |
+| other values | customer-specific external knowledge services that Newo sets up; not for general use |
 
 If the setting is missing on an account, its NAF release has no search services yet: it uses the
 AKB.
@@ -64,9 +63,8 @@ knowledge-service connection in the same JSON shape (`service`, the endpoint, th
 credential, `tool_name`). Newo Knowledge Studio Publish writes it together with
 `project_attributes_setting_akb_studio_search` — with `service` set to `akb_studio` — before it
 sets the knowledge source to `akb_studio`, because an installed agent can prefer this setting.
-Never edit it by hand: it is written by Studio and contains a private access token. External
-APIs for the `edmo` and `akb_edmo_shadow` knowledge sources use
-`project_attributes_setting_edmo_kb_shadow` instead (see the table above).
+Never edit it by hand: it is written by Studio and contains a private access token. Customer-specific
+external knowledge services (see the table above) use their own setting instead.
 
 **Studio's search endpoint for other platforms.** Studio gives every published index a search
 address for other voice and chat platforms too. The **Connect** screen shows the snippet for each
