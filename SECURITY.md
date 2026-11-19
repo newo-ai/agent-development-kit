@@ -28,10 +28,15 @@ Do not open a public issue or pull request for any of these.
 
 1. Treat it as compromised right away, even if you delete the comment or commit: it may already
    be cached or copied.
-2. Ask Newo support at https://help.newo.ai to replace the key.
-3. Report it privately as above, so a maintainer can remove it from the repository history.
+2. Revoke or rotate it now, where it was issued: a key or token from another system (a CRM, a
+   booking or payment system) in that system; a Newo API key with help from Newo support at
+   https://help.newo.ai. Do not wait for this repository to be cleaned up: until the old value is
+   revoked, it still works.
+3. Report it privately as above, with a link to where it was published, so a maintainer can remove
+   it from there: the file and its history, or the issue, pull request or comment.
 
 ## What to include
 
-The page or file, what is wrong, and what could happen. No secrets, and no callers' personal data:
+Where the problem is: the page or file, or a link to the issue, pull request or comment. Then what
+is wrong and what could happen. Never repeat the exposed value, and no callers' personal data:
 describe the pattern instead.
