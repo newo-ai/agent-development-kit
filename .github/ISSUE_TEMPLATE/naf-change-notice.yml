@@ -64,3 +64,10 @@ body:
       options: ["all industries", "this industry", "probably only this business"]
     validations:
       required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: "This issue contains no secrets (API keys, tokens, passwords), no personal data of callers or customers, and no account IDs or business names."
+          required: true
