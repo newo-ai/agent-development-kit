@@ -130,3 +130,17 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 - If you found something other assistants should know (a pitfall, a working integration recipe),
   propose a learning: [learnings/README.md](learnings/README.md).
 - If you found a platform bug, file it: [docs/support/README.md](docs/support/README.md).
+- **Filing an issue in this repository from a terminal** (`gh issue create`, the API): the issue
+  forms apply only in the browser, so nothing checks your text. Do it by hand:
+  1. Open the form you need in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) and write every
+     field's `label` as a `### ` heading with your answer below it; fill all fields marked
+     `required: true`. Add the form's `labels` with `--label`.
+  2. End the body with this line (the same statement as the form's required Privacy box), and
+     only if it is true:
+
+     ```text
+     - [x] This issue contains no secrets (API keys, tokens, passwords), no personal data of callers or customers, and no account IDs or business names.
+     ```
+
+  3. Show the person the title and body and wait for a "yes" before you create it. The
+     repository is public: what you post may be copied before it is deleted.
