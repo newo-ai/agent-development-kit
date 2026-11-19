@@ -27,14 +27,16 @@ them, and switch test mode off when done.
 
 ## Automated voice tests
 
-Newo tests agents with **Assessor**: simulated callers follow a written scenario, and each call is
-judged. Assessor is set up per account, and partners cannot set it up themselves yet. The
-`assessor` project you may see on an account belongs to it. First find out which case you are in:
+**Assessor** runs automated tests: simulated callers follow a written scenario, and each call is
+judged. The customer or partner sets it up on their own account; Newo does not run it for them.
+It is not documented publicly yet, so only some customers know about it, usually because Newo
+told them. The `assessor` project you may see on an account belongs to it. First find out which
+case you are in:
 
-- **Assessor is set up for this account**, and Newo told the partner how to run it: run the
-  scenarios through it, then read the transcripts and logs of the calls it made.
-- **It is not** (the usual case for partners today): do not plan the project around it, do not
-  promise it to the customer, and do not ask Newo for a run. Test voice with the steps below.
+- **The person already uses Assessor on this account**: run the scenarios through it, then read
+  the transcripts and logs of the calls it made.
+- **They do not**: do not plan the project around it and do not promise it to the customer. Test
+  voice with the steps below.
 
 If you are not sure, ask the person; do not guess from the `assessor` project alone.
 
@@ -45,7 +47,8 @@ Without Assessor, test voice with:
 - the night launch below, and a review of every call.
 
 Write voice scenarios the same way as chat tests: who the caller is, what they want, what must
-happen (a booking, a transfer, a correct answer) and what must not. The same scenarios work in Assessor where it is set up.
+happen (a booking, a transfer, a correct answer) and what must not. The same scenarios work in Assessor
+where the account uses it.
 
 ## Night launch: the real-caller test
 

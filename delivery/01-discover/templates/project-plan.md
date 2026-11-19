@@ -19,7 +19,7 @@ empty until the request is sent; then write "asked" until they give one, never a
 | R2 | Number porting | Newo support | The business moves its number to Newo | | | Partner | 13 | |
 | R3 | SIP / RTP IP allowlisting | Newo support | Connecting a PBX or SIP trunk | | | Partner | 9 | |
 | R4 | Outbound calling or SMS enabled on the account | Newo support | The agent calls or texts out | | | Partner | 9 | |
-| R5 | Assessor test runs ([when](../../../docs/testing/voice-tests.md#automated-voice-tests)) | Partner | Newo set Assessor up for this account; otherwise leave out | | | Partner | 10 | |
+| R5 | Assessor test runs ([when](../../../docs/testing/voice-tests.md#automated-voice-tests)) | Partner / customer | The customer or partner already uses Assessor on this account; otherwise leave out | | | Partner | 10 | |
 | R6 | Test agent or test account on the Newo platform | Partner / Newo | Always | | | Partner | 7 | |
 | R7 | API credentials or MCP access: [system] | Vendor / customer IT | Per system in scope | | | Customer | 8 | |
 | R8 | Test or sandbox account: [system] | Vendor | Per system the agent writes to | | | Customer | 8 | |
