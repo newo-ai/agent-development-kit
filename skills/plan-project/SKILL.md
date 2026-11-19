@@ -23,10 +23,11 @@ Produces `work/<agent-name>/project-plan.md` from
    template and keep every row that applies to this agent. For each, find it in the files:
    - **Newo support requests** (only Newo can do them; use the
      [operations request](../../docs/support/README.md#operations-request) format): a phone number
-     in a country, porting a number, SIP or RTP IP allowlisting. Plan Assessor runs only if the customer or partner already uses Assessor on this account
-     ([voice tests](../../docs/testing/voice-tests.md#automated-voice-tests)). If the agent
-     makes outbound calls or sends SMS, ask Newo whether outbound needs enabling on the account.
-   - **Platform set-up the partner does**: the test agent, connectors, knowledge.
+     in a country, porting a number, SIP or RTP IP allowlisting. If the agent makes outbound
+     calls or sends SMS, ask Newo whether outbound needs enabling on the account.
+   - **Platform set-up the partner does**: the test agent, connectors, knowledge. Plan Assessor
+     runs only if the customer or partner already uses Assessor on this account
+     ([voice tests](../../docs/testing/voice-tests.md#automated-voice-tests)).
    - **Vendor and customer access**: API credentials or MCP access per system, a test account,
      the BAA for health data, the Google Business Profile, carrier or PBX changes for forwarding.
 2. **Draft every request** that is not sent yet (the operations request text, the email to the
