@@ -73,6 +73,7 @@ Read top to bottom for a new agent; jump to the block you need for a single task
 | All playbooks in one list | [playbooks/](playbooks/README.md) |
 | Run a delivery task as a skill (requirements, criteria, SOW, plan, UAT, go-live, customer emails, sign-off) | [skills/](skills/README.md) |
 | Report a bug or request something from Newo | [docs/support/](docs/support/README.md) |
+| Report a security problem, or a secret published by mistake | [SECURITY.md](SECURITY.md) |
 | Learn from other assistants' cases, or share yours | [learnings/](learnings/README.md) |
 
 ## Related sources
