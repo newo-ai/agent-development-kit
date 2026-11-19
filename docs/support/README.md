@@ -35,17 +35,15 @@ For things only Newo can do:
 - allowlist SIP/RTP IP addresses;
 - a phone number in a country;
 - porting a number;
-- an Assessor test run;
 - checking a SIP registration.
 
 ```text
 Type: Operations request
 Account idn: C_XX_EXAMPLE
-Request: allowlist IPs | phone number | porting | Assessor run | SIP registration check | other
+Request: allowlist IPs | phone number | porting | SIP registration check | other
 Details:
   - IP allowlist: provider name, SIP signaling IPs, RTP IPs
   - Phone number: country, type (local/national/mobile/toll-free), area code, calls or calls+SMS, demo or production
-  - Assessor run: scenarios (attach), channel (voice/chat), number of runs
 Deadline: ...
 ```
 

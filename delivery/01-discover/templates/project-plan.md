@@ -19,7 +19,7 @@ empty until the request is sent; then write "asked" until they give one, never a
 | R2 | Number porting | Newo support | The business moves its number to Newo | | | Partner | 13 | |
 | R3 | SIP / RTP IP allowlisting | Newo support | Connecting a PBX or SIP trunk | | | Partner | 9 | |
 | R4 | Outbound calling or SMS enabled on the account | Newo support | The agent calls or texts out | | | Partner | 9 | |
-| R5 | Assessor test run | Newo support | Agreed for this project | | | Partner | 10 | |
+| R5 | Assessor test runs ([when](../../../docs/testing/voice-tests.md#automated-voice-tests)) | Partner / customer | The customer or partner already uses Assessor on this account; otherwise leave out | | | Partner | 10 | |
 | R6 | Test agent or test account on the Newo platform | Partner / Newo | Always | | | Partner | 7 | |
 | R7 | API credentials or MCP access: [system] | Vendor / customer IT | Per system in scope | | | Customer | 8 | |
 | R8 | Test or sandbox account: [system] | Vendor | Per system the agent writes to | | | Customer | 8 | |
@@ -36,13 +36,13 @@ empty until the request is sent; then write "asked" until they give one, never a
 | 1 | 01-discover | Discovery call held; notes saved | Partner | | | | |
 | 2 | 01-discover | Requirements confirmed by the customer | Customer | 1 | | | |
 | 3 | 01-discover | Acceptance criteria agreed; every criterion has a check | Both | 2 | | | |
-| 4 | 01-discover | Feasibility checked; Newo support requests R1 to R5 sent | Partner | 3 | | | |
+| 4 | 01-discover | Feasibility checked; Newo support requests R1 to R4 sent | Partner | 3 | | | |
 | 5 | 01-discover | SOW signed; plan and test approach in place | Both | 4 | G2 | | |
 | 6 | 01-discover | Customer inputs R7 to R13 requested | Partner | 5 | | | |
 | 7 | 02-build | Agent configured; health check passes | Partner | 6, R1, R6, R12, R13 | | | |
 | 8 | 02-build | Integrations connected to test accounts | Partner | 6, R7 to R10 | | | |
 | 9 | 02-build | Smoke test passes on every channel | Partner | 7, 8, R3, R4 | G3 | | |
-| 10 | 03-test | Scripted tests run (critical ones three times); report says ready | Partner | 9 | | | |
+| 10 | 03-test | Scripted tests run (critical ones three times); report says ready | Partner | 9, R5 | | | |
 | 11 | 04-launch | UAT round 1 | Customer or Partner | 10 | | | |
 | 12 | 04-launch | Fixes; UAT round 2 on failed criteria plus passed criteria affected by the fixes | Both | 11 | | | |
 | 13 | 04-launch | Night launch, in the agreed phone-change window | Both | 12, R2, R11 | | | |

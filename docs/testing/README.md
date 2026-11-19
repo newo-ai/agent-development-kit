@@ -7,7 +7,7 @@ Test after every change, before you tell the person it works.
 | **Sandbox chat** | what the agent says: knowledge, rules, scenarios, tool calls | [text-tests.md](text-tests.md) |
 | **Scripted chat tests** (`newo test`) | the same, repeatable, for regressions and CI | [text-tests.md](text-tests.md#scripted-tests-newo-test) |
 | **Voice tests**: browser call, phone call | voice, speech recognition, latency, how numbers and dates are spoken, transfers, the phone line | [voice-tests.md](voice-tests.md) |
-| **Automated voice tests** (Newo Assessor) | many simulated callers with judged outcomes | [voice-tests.md](voice-tests.md#automated-voice-tests) |
+| **Automated voice tests** (Newo Assessor) | only where the customer or partner already uses Assessor on the account | [voice-tests.md](voice-tests.md#automated-voice-tests) |
 
 **The sandbox does not test** the phone line, the voice, transfers, SMS delivery or behavior
 that depends on the call (silence, interruptions, background noise). Those need a call.

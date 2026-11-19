@@ -27,19 +27,28 @@ them, and switch test mode off when done.
 
 ## Automated voice tests
 
-Newo runs automated end-to-end tests with **Assessor**:
-1. Simulated callers talk to the agent by voice or text, following a written scenario.
-2. Each call is judged against expected outcomes.
-3. You get a report with verdicts, transcripts and recordings.
+**Assessor** runs automated tests: simulated callers follow a written scenario, and each call is
+judged. The customer or partner sets it up on their own account; Newo does not run it for them.
+It is not documented publicly yet, so only some customers know about it, usually because Newo
+told them. The `assessor` project you may see on an account belongs to it. First find out which
+case you are in:
 
-The `assessor` project you may see on an account belongs to this.
+- **The person already uses Assessor on this account**: run the scenarios through it, then read
+  the transcripts and logs of the calls it made.
+- **They do not**: do not plan the project around it and do not promise it to the customer. Test
+  voice with the steps below.
 
-- Partners can ask Newo for an Assessor run, or for access to run it. Open a request
-  ([support](../support/README.md#operations-request)) with the scenarios you want tested.
-- Write scenarios the same way as chat tests: who the caller is, what they want, what must happen
-  (a booking, a transfer, a correct answer) and what must not.
+If you are not sure, ask the person; do not guess from the `assessor` project alone.
 
-**(Planned)** Starting a test call and reading its result through the Newo Customer MCP server.
+Without Assessor, test voice with:
+- the manual calls above, with the checklist;
+- `newo test` scenarios for everything that does not need a call
+  ([text tests](text-tests.md#scripted-tests-newo-test));
+- the night launch below, and a review of every call.
+
+Write voice scenarios the same way as chat tests: who the caller is, what they want, what must
+happen (a booking, a transfer, a correct answer) and what must not. The same scenarios work in Assessor
+where the account uses it.
 
 ## Night launch: the real-caller test
 
