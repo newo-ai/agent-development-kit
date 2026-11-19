@@ -24,12 +24,16 @@ Examples (read on 2026-11-12):
 
 | Portal label (group) | `idn` | `possible_values` |
 |---|---|---|
-| Model (Voice to Voice: Grok) | `grok_v2v_model` | `grok-voice-think-fast-1.0`, `grok-voice-think-fast-2.0`, `grok-voice-think-fast-3.0` |
+| Model (Voice to Voice: Grok) | `grok_v2v_model` | `grok-voice-think-fast-1.0`, `grok-voice-think-fast-2.0` (default), `grok-voice-think-fast-3.0`, `grok-voice-3.0`, `grok-voice-latest` |
 | Voice (Voice to Voice: Grok) | `grok_v2v_voice` | `ara`, `leo`, `eve`, ... (28 voices) |
 | User STT Provider (Voice To Voice) | `v2v_mode_user_stt` | `openai_transcriber`, `deepgram`, `google`, `tencent`, `elevenlabs`, `None` |
 
 `None` is a real value, written as the string `"None"`. It means "no separate recognizer": the
 voice model hears the caller itself.
+
+These examples and the marked default were read on 2026-11-12. The live catalog can hold
+more than the examples, and the default can change between platform releases — always read the
+current `possible_values` and default from the API, never rely on memory.
 
 If `possible_values_only` is `true`, send exactly one of the listed strings.
 

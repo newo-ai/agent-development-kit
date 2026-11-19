@@ -26,7 +26,7 @@ Availability - Link (URL)" setting to improve identification accuracy.
 **Examples:**
 
 ```txt
-Example Tavern
+Menlo Tavern
 ```
 
 ```txt
@@ -431,7 +431,7 @@ Use this especially when:
 
 Examples:
 
-- `https://maps.app.goo.gl/<your-place-link>`
+- `https://maps.app.goo.gl/e14ZDSGkr3ps534x7`
 - `https://api.yourhotel.com/availability`
 
 To capture a Google Maps business link, open the property in Google Maps, choose `Share`, and copy

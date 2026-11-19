@@ -38,8 +38,8 @@ search service. The setting `project_attributes_setting_knowledge_source` choose
 |---|---|
 | `akb` or empty (default) | the agent's own settings and AKB |
 | `akb_studio` | the Newo Knowledge Studio search index. Studio writes this value when it publishes. Changes to the AKB or to the knowledge-base text settings no longer reach the agent. |
-| `external` **(rolling out)** | another search service, configured in `project_attributes_setting_external_kb`; the AKB is not read |
-| `akb_external_shadow` **(rolling out)** | the AKB answers; every question is also sent to the external service and only logged, to compare both |
+| `edmo` | only the external API configured in `project_attributes_setting_edmo_kb_shadow`; the AKB is not read |
+| `akb_edmo_shadow` | the AKB answers; every question is also sent to the external API and only logged, to compare both |
 
 If the setting is missing on an account, its NAF release has no search services yet: it uses the
 AKB.
@@ -52,26 +52,21 @@ AKB.
   previous knowledge source.
 - For each lookup, the agent sends one question to that address as a Vapi-style `toolCalls`
   request, with `Authorization: Bearer <token>`, through the account's `http` integration
-  (`http_connector`). Studio answers with up to three whole articles. That text is what the agent
-  reads before it answers.
+  (`http_connector`). Studio answers with three whole articles by default (the count is
+  configurable, 3 to 5). That text is what the agent reads before it answers.
 - **The account must have the `http` integration with the `http_connector` connector.** Without
   it, or with an empty or broken setting, every lookup is answered as empty. The same happens on
   an HTTP error (for example 401 after a token was revoked) or an empty answer. The agent then
   says it cannot confirm the detail.
 
-**Other search services (rolling out)**
-- `project_attributes_setting_external_kb` describes any search service with the same request
-  shape, as JSON:
-  - `service`: a short name, shown in logs;
-  - `url`;
-  - `token`, optional; a secret;
-  - `tool_name`, default `search_knowledge`;
-  - `arguments`: fixed values the service expects;
-  - `call_id`: `session` (default), or `persona:<field>` to send a caller field such as a
-    telephony call id.
-- Logs of these lookups are tagged `[EXTERNAL_KB:<service>]`.
-- Fill it only with a working endpoint, then set the knowledge source to `external`. Try
-  `akb_external_shadow` first to compare answers without callers hearing them.
+**Other search services.** `project_attributes_setting_external_kb` is a second, hidden
+knowledge-service connection in the same JSON shape (`service`, the endpoint, the access
+credential, `tool_name`). Newo Knowledge Studio Publish writes it together with
+`project_attributes_setting_akb_studio_search` — with `service` set to `akb_studio` — before it
+sets the knowledge source to `akb_studio`, because an installed agent can prefer this setting.
+Never edit it by hand: it is written by Studio and contains a private access token. External
+APIs for the `edmo` and `akb_edmo_shadow` knowledge sources use
+`project_attributes_setting_edmo_kb_shadow` instead (see the table above).
 
 **Studio's search endpoint for other platforms.** Studio gives every published index a search
 address for other voice and chat platforms too. The **Connect** screen shows the snippet for each

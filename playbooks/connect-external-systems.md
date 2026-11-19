@@ -41,9 +41,12 @@ Calendar). Related settings: meeting duration, setup phrase, working-hours check
 (`project_attributes_setting_meeting_...`).
 
 Connecting a Google account requires the owner to sign in to Google, which happens in the Newo
-portal, not through this API. If the `google_calendar` connector
+portal, not through this API. If the connector under the `google_calendar` integration
 (`GET /api/v1/integrations`, then its connectors) is missing or not `running`, ask the owner to
-connect Google Calendar in the portal or to contact Newo support.
+connect Google Calendar in the portal or to contact Newo support. `google_calendar` is the
+integration's `idn`, not the connector's: the connector's `idn` is chosen when the connector
+is created, and Newo's calendar skills send their `create_event` command to a connector named
+`calendar`.
 
 ## Booking systems
 
@@ -110,9 +113,10 @@ Rules:
 ### MCP servers
 
 The Newo platform can also connect to other systems' **MCP servers** (Integrations → MCP
-Integration Service → Add connector). A connector has a URL and one of three authorization
-types: headers, a bearer key (JWT), or OAuth2. With OAuth2, the owner signs in to the other
-system once to give access. The connector's `idn` is how the agent's code refers to it.
+Integration Service → Add connector). A connector has a URL and one of four authorization
+types: none (the default), headers, a bearer key (JWT), or OAuth2. With OAuth2, the owner
+signs in to the other system once to give access. The connector's `idn` is how the agent's code
+refers to it.
 
 Today an MCP connector is used from skill **code** (a structured generation call that lists the
 connector), not from the conversation tools setting above. This is a code change: read

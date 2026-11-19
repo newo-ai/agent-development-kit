@@ -34,7 +34,8 @@ Follow the playbook
   [API reference, Attributes](../reference/api.md#attributes).
 - **Values are strings.** Booleans are `"True"` / `"False"`. JSON attributes hold JSON serialized
   as a string: validate it before sending.
-- `enum` attributes accept only `possible_values`.
+- `enum` attributes: send values from `possible_values`. The platform stores what you send —
+  out-of-list values are not rejected, so a wrong value stays until it is fixed.
 - Read the value back after the change.
 
 ## When a change takes effect

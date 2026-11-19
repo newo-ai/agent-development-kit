@@ -135,7 +135,8 @@ If this attribute is empty, your support-log workspace link has not been set yet
 Suggested setup flow:
 
 1. Open your template source folder (read-only), for example
-   your template folder.
+   <a href="https://drive.google.com/drive/folders/1WDyVbQ6-uNPv3R9b3krzK0glCpt5nyio" target="_blank">TEMPLATES
+   folder</a>.
 2. Choose the industry-relevant template.
 3. Create a copy for your workspace.
 4. Share it with your team and support stakeholders.

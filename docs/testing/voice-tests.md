@@ -2,8 +2,9 @@
 
 ## Manual
 
-- **Browser call:** agents created through the Newo plugin get a link to talk to the agent in the
-  browser (`agent_status` returns it). It is good for quick checks without a phone.
+- **Test-number call:** agents created through the Newo plugin get a dedicated test phone number
+  (`create_agent` and `get_run` return it as `test_phone_number`). It is good for quick checks
+  without touching the business number.
 - **Phone call** to the agent's number or to the business number, if forwarding or SIP is set up.
   This is the only test of the real phone path.
 

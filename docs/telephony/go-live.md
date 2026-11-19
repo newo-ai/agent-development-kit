@@ -8,11 +8,11 @@ for every business that keeps its own phone number.
 | Name | What it is | Where to find it |
 |---|---|---|
 | **Business number** | the number customers already call (mobile, landline, PBX) | the owner knows it |
-| **AI phone number** | the number Newo gave the agent when it was created. Calls to it are answered by the agent | the setting `project_representative_agent_voice_phone_number` ("Agent Phone Number (AI Phone)"); the plugin's `agent_status` also returns it |
+| **AI phone number** | the number Newo gave the agent when it was created. Calls to it are answered by the agent | the setting `project_representative_agent_voice_phone_number` ("Agent Phone Number (AI Phone)"); the plugin's `get_customers` also returns it |
 
 **Forwarding always goes FROM the business number TO the AI phone number.**
 
-- **Read the AI phone number yourself** from the setting (or `agent_status`) before you talk about
+- **Read the AI phone number yourself** from the setting (or `get_customers`) before you talk about
   forwarding. Do not ask the owner for it, and do not confuse it with the business number the
   owner gave you.
 - If the setting is empty, the agent has no number yet: tell the owner and Newo support.

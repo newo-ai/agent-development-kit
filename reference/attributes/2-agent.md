@@ -389,15 +389,17 @@ language settings here.
 By default, we recommend using the following style:
 
 ```txt
-Friendly professional, super welcoming. Speak energetic and fast.
-From the second turn onward, naturally include "uhh", "umm", or "hmm" in roughly every third response.
+Talk the way people actually talk: relaxed, warm, a little casual, with a natural smile. Vary your rhythm like a real person: some phrases a bit quicker, small natural pauses, not every sentence the same shape. Stress only the one word in a phrase that carries the meaning, the way people do in casual speech; do not stress every word or the end of each phrase. A light, soft laugh is okay when the moment is genuinely friendly or funny.
+Speak with a native word stress and sentence melody of the language you are using.
+From the second turn onward, naturally include "uhh", "uhm", or "hmm" in roughly every 4th response.
 ```
 
 If you'd like to add a specific accent - for example, Australian - you can specify it like this:
 
 ```txt
-Friendly professional, super welcoming. Speak energetic and fast.
-From the second turn onward, naturally include "uhh", "umm", or "hmm" in roughly every third response.
+Talk the way people actually talk: relaxed, warm, a little casual, with a natural smile. Vary your rhythm like a real person: some phrases a bit quicker, small natural pauses, not every sentence the same shape. Stress only the one word in a phrase that carries the meaning, the way people do in casual speech; do not stress every word or the end of each phrase. A light, soft laugh is okay when the moment is genuinely friendly or funny.
+Speak with a native word stress and sentence melody of the language you are using.
+From the second turn onward, naturally include "uhh", "uhm", or "hmm" in roughly every 4th response.
 
 You speak with Australian accent.
 ```
@@ -930,10 +932,11 @@ or the group filter is empty, purchase continues without those restrictions.
   - `project_attributes_setting_voice_integration_service`: Determines which connector source is
     used to resolve the number.
 - **Logic Interactions:**
-  - `project_representative_agent_voice_phone_alpha2_code`: Used with this number in phone parsing
-    logic.
-  - `project_representative_agent_voice_phone_country_code`: Used with this number in phone parsing
-    logic.
+  - `project_representative_agent_voice_phone_alpha2_code`: Used with this number to resolve the
+    number of a pooled connector during phone-number validation.
+  - `project_representative_agent_voice_phone_country_code`: Removed from the start of this number
+    to get its national length, which a user's local number may have in addition to the national
+    lengths of the Agent country.
   - `project_attributes_setting_voice_integration_service_bypass_phone_number`: Compared during
     bypass/autofill logic to avoid direct self-routing to the Agent's AI line. If a different public
     number forwards to this AI line outside SuperAgent, that forwarding can still create the same

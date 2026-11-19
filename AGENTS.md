@@ -13,7 +13,7 @@ agent-development-kit/
 ├── AGENTS.md        # this file: routing + rules (CLAUDE.md just points here)
 ├── docs/            # platform docs: 00-08 topical pages + telephony/, integrations/,
 │                    # debugging/, testing/ — has its own AGENTS.md
-├── reference/       # exact API and attribute formats; 77% of the bytes — has its own AGENTS.md
+├── reference/       # exact API and attribute formats; 64% of the bytes — has its own AGENTS.md
 ├── playbooks/       # step-by-step procedures for one task (finish setup, night launch, ...)
 ├── delivery/        # partner delivery process: 01-discover ... 05-operate, with templates
 ├── skills/          # SKILL.md procedures per delivery task (discover, launch); see skills/README.md
@@ -119,7 +119,7 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 - V1 or V2 first: `GET /api/v1/customer/settings/name/projects_v2_enabled`. On a V2 account,
   never change skills or publish through the old V1 requests
   ([reference/api.md](reference/api.md#which-designer)).
-- `reference/attributes/` files are huge (up to 5,200+ lines). Enter through
+- `reference/attributes/` files are huge (up to 5,300+ lines). Enter through
   [reference/attributes/index.md](reference/attributes/index.md) and search; do not read whole
   files.
 - A fix during testing means rerunning all scripted tests, not only the failed one
