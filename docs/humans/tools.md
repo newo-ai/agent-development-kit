@@ -36,4 +36,5 @@ ChatGPT cannot open web pages (see
 
 ## What a browser assistant cannot do yet
 
-- **Run voice tests.** Ask Newo for an Assessor run.
+- **Run voice tests.** Call the agent from a browser or a phone ([voice tests](../testing/voice-tests.md#manual));
+  automated voice tests run only on accounts that already use Assessor.
