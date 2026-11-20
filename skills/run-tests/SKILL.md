@@ -30,21 +30,24 @@ Show the plan; write the files after a "yes".
 - **Scripted:** `newo test tests/<file>.yaml --json`. Read the JSON, not only the exit code:
   exit 1 covers a failed turn, a timeout, skipped turns and a setup error alike. Do not save the
   JSON in `work/`: it holds the conversation text.
-- **Calls:** you cannot call. Give the person each call check's `steps`, ask when they called,
-  then find the conversation (`newo conversations`) and read its logs.
+- **Calls:** you cannot call. Give the person each call check's `steps`, ask when and from which
+  number they called, then find that conversation (`newo conversations`) and read its logs. If
+  more than one conversation matches, the check is not tested.
 - **Assessor** only if the account already uses it
   ([voice tests](../../docs/testing/voice-tests.md#automated-voice-tests)).
 - After a publish, wait 2 to 5 minutes before testing.
 
 ## 3. Judge what happened, not what was said
 
-- **Pass:** what the criterion asks for happened. "I booked it for you" is not a booking: the
-  booking is in the other system, or the run's logs show the tool ran and succeeded
+- **Pass:** what the criterion asks for happened. "I booked it for you" is not a booking. If
+  the criterion has a `system` check, only the other system counts: the booking, the record, the
+  SMS is there. Otherwise the run's logs must show the tool ran and succeeded
   (`newo logs --session-id <id>`; the tool is named in `build-notes.md`, "Covered by"). Logs
   arrive late: look again after a minute before you say the tool did not run.
 - **Fail:** the agent answered, and the answer or the result is wrong.
 - **Not tested:** a timeout, a skipped turn, an error of the test tool, no logs. Not a fail of the
-  agent: run it again. If it repeats, look in the logs; an empty reply with no error often means
+  agent: run it again, but if the check books or sends something, first look whether the first
+  run already did it, so it does not happen twice. If it repeats, look in the logs; an empty reply with no error often means
   a change was not published.
 - Repeat calls from the same phone reuse the caller: wait about five minutes between them, or a
   result may carry over from the previous call.
@@ -55,7 +58,8 @@ Keep the `session_id` of every failure; never copy conversation text into a file
 
 Find the cause ([debugging](../../docs/debugging/README.md)) and fix it with the partner's "yes"
 ([improve and fix](../../playbooks/improve-and-fix.md), [02-build rules](../../delivery/02-build/README.md#rules)).
-Then run all scripted tests again.
+Then run all scripted tests again, the failed check on its own channel, and the call or system
+checks the fix can affect (a transfer fix: every transfer).
 
 ## 5. Report
 
