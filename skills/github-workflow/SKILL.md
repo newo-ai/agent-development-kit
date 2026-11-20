@@ -1,6 +1,6 @@
 ---
 name: github-workflow
-description: Open an issue or a pull request in this repository in the one style every reviewer expects. Decide issue or pull request, remove private data, fill the form or the template, and get the person's "yes" before anything is posted. Use when a partner or an assistant wants to report a mistake in these docs, share a learning, file a NAF change notice, or propose a change: "open an issue", "open a PR", "fix this page", "share what we learned".
+description: Open an issue or a pull request in this repository in the one style every reviewer expects. Decide issue or pull request, remove private data, fill the form or the template, and get the person's "yes" before anything is posted. Use when a partner or an assistant wants to report a mistake in these docs, share a learning, file a NAF change notice, or propose a change, for example "open an issue", "open a PR", "fix this page", "share what we learned".
 ---
 
 # Issues and pull requests in this repository
@@ -59,7 +59,8 @@ in plain words, for example "Opening hours example uses the wrong day format".
 3. **Check the change.** Every link you added or moved opens, and every heading it points to
    exists. A new skill has front matter with `name` and `description` and a row in
    [skills/README.md](../README.md). Files a partner produces for a customer (`work/<agent-name>/`)
-   never go into this repository.
+   never go into this repository. Run `python3 scripts/check.py`: it checks links, headings,
+   skill front matter, and keys, emails and account IDs.
 4. **Commit.** Add files by name, never `git add -A`, and read `git diff --staged` first. The
    commit's author name and email become public; use the GitHub noreply address if that matters.
 5. **Title** like the history in `git log`: `<type>: <what changes>`, starting lowercase, no period
