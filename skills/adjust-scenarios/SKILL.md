@@ -27,12 +27,16 @@ it in the portal.
    gets its settings first (where to transfer, what to send), and the card only if the trigger
    also has to change. If nothing is left, stop: no scenario change is needed. After launch, with
    no build notes, the partner's request is the criterion.
-2. **Read the canvas** and keep a dated copy: read (never write)
+2. **The same account everywhere.** Check the account you read (`newo profile`, or
+   `GET /api/v1/customer/profile`) and say its name back. The partner edits and publishes in a
+   separate portal session: before each edit and each publish, ask them to confirm the portal
+   shows that same account.
+3. **Read the canvas** and keep a dated copy: read (never write)
    `project_attributes_private_dynamic_workflow_builder_canvas` and `project_attributes_scenario`.
    If the copy does not show which cards are library and which are custom, ask the partner to look
    in the Workflow Builder. The copy is how a card's old text is typed back; nothing restores it
    through the API.
-3. **Real callers and test data.** After the publish the change reaches every conversation. On an
+4. **Real callers and test data.** After the publish the change reaches every conversation. On an
    account that already takes real calls or chats, agree the time with the partner (rules 8 and 10
    in [AGENTS.md](../../AGENTS.md)). For a criterion that books or sends something, follow the
    test-data rule in [build-agent](../build-agent/SKILL.md#3-build-one-change-at-a-time).
@@ -41,10 +45,13 @@ it in the portal.
 
 For one criterion at a time:
 
-1. **Proof first.** Have a new sandbox conversation that should meet the criterion
-   ([text tests](../../docs/testing/text-tests.md)). If the agent already does it, no change.
-   If not, keep the `session_id` and find in its logs where the conversation went wrong
-   (`newo logs --session-id <id>`).
+1. **Proof first.** Check the criterion where it happens: a new sandbox conversation for chat
+   behavior ([text tests](../../docs/testing/text-tests.md)); a test call by the partner for
+   phone behavior such as transfers or interruptions, which the sandbox cannot show
+   ([voice tests](../../docs/testing/voice-tests.md)); and the other system for a booking or a
+   message. If the agent already does it, no change. If not, keep the `session_id` and find in
+   its logs where the conversation went wrong (`newo logs --session-id <id>`). Use the same
+   check after the change.
 2. **Smallest change.** Change the card that already handles this, before you add a new one.
    Never build a second structure next to the existing one, and never put behavior into a field
    meant for facts. One card per change.
@@ -68,16 +75,20 @@ exceptional case in [docs/04](../../docs/04-naf-change-policy.md).
 ## 3. Check it
 
 1. **Read it back:** the canvas shows the card changed and marked custom.
-2. **Test it:** a new sandbox conversation for the criterion. Judge by the conversation. Its logs
-   may also show the new text in the instructions the agent ran with
-   ([docs/05](../../docs/05-scenarios.md#how-to-change-a-scenario)); logs can arrive a minute
-   late, and missing text alone is not a fail.
+2. **Test it** with the same check as in the proof, in a new conversation. Judge by what happened.
+   Its logs may also show the new text in the instructions the agent ran with
+   ([docs/05](../../docs/05-scenarios.md#how-to-change-a-scenario)); logs can arrive a minute late,
+   and missing text alone is not a fail.
 3. **Check what it can touch:** repeat the smoke test for every critical criterion that goes
-   through the same or a neighboring intent, and every transfer if the card routes calls. The
-   full rerun of all scripted tests comes in [03-test](../../delivery/03-test/README.md).
-4. **On a fail,** find the cause in the logs and change the text, or ask the partner to put the
-   old text back. The card may stay custom even then; only Newo support can say whether it can
-   follow library updates again. Three failures the same way: stop and show the partner.
+   through the same or a neighboring intent, and every transfer if the card routes calls. During
+   the build the full rerun of scripted tests comes in [03-test](../../delivery/03-test/README.md);
+   after launch, if the agent has scripted tests, rerun them all
+   ([run-tests](../run-tests/SKILL.md)) before you call the fix done.
+4. **On a fail,** find the cause in the logs and change the text, or ask the partner to put the old
+   text back. Putting it back is a change too: it works only after a publish (step 2), then check
+   that the old behavior is back. The card may stay custom even then; only Newo support can say
+   whether it can follow library updates again. Three failures the same way: stop and show the
+   partner.
 5. **Write it down** in `build-notes.md`: the criterion, the card, the new text, the test
    `session_id`s, and "custom card: no library updates".
 
