@@ -84,11 +84,3 @@ in plain words, for example "Opening hours example uses the wrong day format".
   button. If GitHub shows a conflict, the button is not there: use **Resolve conflicts** on the
   pull request page for a simple one, or ask the reviewer for help. Never force-push a branch
   somebody else works on.
-
-## Newo team
-
-In addition: every pull request has a task in Jira project ABP, under its epic, linked to the
-Product Delivery task for the same work. Name the branch `<type>/abp-<n>-<short-name>`, end each
-commit with `Refs: ABP-<n>`, and put the pull request link in the task. Update your own branch by
-rebasing (`git rebase origin/main`, `git push --force-with-lease`), not by merging `main` into it.
-Never copy ticket text into this public repository.
