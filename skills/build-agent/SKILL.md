@@ -38,7 +38,9 @@ time; collect the rest under "Open questions".
 4. **One folder per account.** Keep each customer account's files (`.env`, `newo pull`, the copy
    of the settings) in its own folder and run `newo` only there. Never swap the key inside a
    folder: the CLI keeps using the old account's sign-in for a while. If the check in item 3 shows
-   the wrong account, stop, clear the folder's `.newo/`, and check again.
+   the wrong account, stop. Delete only the sign-in file, `.newo/<account idn>/tokens.json` (or
+   `.newo/tokens.json`), and check again. Never delete the whole `.newo/`: it also holds what
+   `newo push` needs to match your files to the platform.
 5. **The agent exists.** If not, create it first:
    [assistant guide, "Create the agent"](../../docs/assistant-guide.md#create-the-agent).
 6. **Designer version.** `GET /api/v1/customer/settings/name/projects_v2_enabled`. On V2 never
@@ -91,7 +93,9 @@ systems (read-only tools first), the phone side without forwarding real callers,
 For every change:
 
 1. Show the old value and the new value in plain words. Wait for "yes".
-2. Check the account again (`newo profile` or `GET /api/v1/customer/profile`).
+2. Check the account again, the same way the change will be made: `newo profile` from the same
+   folder before a CLI change; `GET /api/v1/customer/profile` with the same token before an API
+   change. One check does not prove the other.
 3. Make the change. For a setting, send the whole attribute, not only the value
    ([docs/03](../../docs/03-configure-and-customize.md#changing-an-attribute)).
 4. Read it back.
@@ -104,8 +108,13 @@ In addition to the 02-build rules:
   Tell the partner first that it switches on the whole version and restarts the agent for 2 to 5
   minutes, wait for "yes", then follow the [safe order](../../reference/api.md#publish): save the
   project's attributes, publish, compare, restore.
-- **Test mode is a change too.** It fakes bookings, SMS and email. Turning it on or off needs a
-  "yes" and a line in `build-notes.md`.
+- **Test mode is a change too.** Turning it on or off needs a "yes" and a line in
+  `build-notes.md`. It stops real bookings, SMS and email only where the integration supports it
+  ([integrations](../../docs/integrations/README.md)).
+- **Before a smoke test that books or changes something in another system,** have one of: the
+  system's test account; confirmation that test mode covers that action on that channel; or the
+  live-test procedure agreed in discovery (for example, a real booking cancelled after each round).
+  Otherwise test only what reads.
 - **`newo push` only adds knowledge articles.** Pushing an edited downloaded knowledge file adds
   all its articles again. Leave downloaded knowledge files unedited unless you mean to add
   articles.
