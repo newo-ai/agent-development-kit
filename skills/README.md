@@ -8,7 +8,8 @@ Skills work from this repository. Paths inside a skill, such as
 `delivery/01-discover/templates/sow-core.md`, are relative to the repository root. Markdown
 links are relative to the SKILL.md file. The files a skill produces belong to the partner and
 go in the partner's own folder, for example `work/<agent-name>/`, never into this repository
-([delivery/README.md](../delivery/README.md#where-the-files-go)).
+([delivery/README.md](../delivery/README.md#where-the-files-go)). The one exception is
+[github-workflow](github-workflow/SKILL.md), which proposes changes to this repository itself.
 
 ## The skills
 
@@ -25,6 +26,7 @@ go in the partner's own folder, for example `work/<agent-name>/`, never into thi
 | Any | [draft-customer-comms](draft-customer-comms/SKILL.md) | An email draft | Any stage, to update the customer |
 | 04-launch | [collect-signoff](collect-signoff/SKILL.md) | `customer-signoff.md` (short form: an email reply), handover | Live in the agreed mode |
 | Any | [export-docx](export-docx/SKILL.md) | A `.docx` copy of a markdown file | The customer needs a Word document |
+| Any | [github-workflow](github-workflow/SKILL.md) | An issue or a pull request in this repository | Reporting a mistake, sharing a learning, a NAF change notice, proposing a change |
 
 The order in 01-discover:
 
