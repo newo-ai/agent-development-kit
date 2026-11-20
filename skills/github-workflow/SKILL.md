@@ -1,6 +1,6 @@
 ---
 name: github-workflow
-description: Open an issue or a pull request in this repository in the one style every reviewer expects. Decide issue or pull request, remove private data, fill the form or the template, and get the person's "yes" before anything is posted. Use when a partner or an assistant wants to report a mistake in these docs, share a learning, file a NAF change notice, or propose a change: "open an issue", "open a PR", "fix this page", "share what we learned".
+description: Open an issue or a pull request in this repository in the one style every reviewer expects. Decide issue or pull request, remove private data, fill the form or the template, and get the person's "yes" before anything is posted. Use when a partner or an assistant wants to report a mistake in these docs, share a learning, file a NAF change notice, or propose a change, for example "open an issue", "open a PR", "fix this page", "share what we learned".
 ---
 
 # Issues and pull requests in this repository

@@ -5,13 +5,15 @@ Run from the repository root: python3 scripts/check.py
 Exit code 0 when everything passes, 1 when something is reported. Standard library only.
 """
 import re
+import subprocess
 import sys
 import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SKIP_DIRS = {".git", "node_modules", "work", "exports", "newo_customers"}
-TEXT_SUFFIXES = {".md", ".yml", ".yaml", ".json", ".txt", ".py", ".sh", ".html"}
+# Files that hold credentials and must never be tracked, whatever they contain.
+SECRET_PATHS = re.compile(r"(^|/)(\.env(\.(?!example$)[^/]+)?|[^/]+\.(pem|key|p12|pfx))$")
 
 LINK = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 HEADING = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
@@ -41,10 +43,29 @@ ALLOWED_EMAILS = {"noreply@anthropic.com"}
 ALLOWED_EMAIL_DOMAINS = ("@newo.ai", "@users.noreply.github.com")
 
 
-def files(suffixes):
-    for path in sorted(ROOT.rglob("*")):
-        if path.is_file() and path.suffix in suffixes and not (set(path.relative_to(ROOT).parts) & SKIP_DIRS):
+def tracked():
+    """Files Git tracks or has staged; local ignored files (a real .env) stay out of scope."""
+    try:
+        out = subprocess.run(
+            ["git", "ls-files", "-z", "--cached"], cwd=ROOT, capture_output=True, check=True
+        ).stdout.decode("utf-8")
+        paths = [ROOT / p for p in out.split("\0") if p]
+    except (OSError, subprocess.CalledProcessError):
+        paths = [p for p in ROOT.rglob("*") if not (set(p.relative_to(ROOT).parts) & SKIP_DIRS)]
+    return sorted(p for p in paths if p.is_file())
+
+
+def files(suffixes=None):
+    for path in tracked():
+        if suffixes is None or path.suffix in suffixes:
             yield path
+
+
+def text_of(path):
+    data = path.read_bytes()
+    if b"\0" in data[:8192]:
+        return None  # binary
+    return data.decode("utf-8", errors="replace")
 
 
 def slug(text, seen):
@@ -96,12 +117,39 @@ def check_links(problems):
                 if re.match(r"^[a-z][a-z0-9+.-]*:", target, re.I):
                     continue  # https:, mailto: and other schemes
                 ref, _, anchor = target.partition("#")
-                dest = md if not ref else (md.parent / ref).resolve()
+                ref = ref.split("?", 1)[0]
+                if not ref:
+                    dest = md
+                elif ref.startswith("/"):
+                    dest = (ROOT / ref.lstrip("/")).resolve()  # GitHub: from the repository root
+                else:
+                    dest = (md.parent / ref).resolve()
                 where = f"{md.relative_to(ROOT)}:{n}"
-                if not dest.exists():
-                    problems.append(f"{where}: broken link {target}")
+                if ROOT not in dest.parents and dest != ROOT:
+                    problems.append(f"{where}: link leaves the repository")
+                elif not dest.exists():
+                    problems.append(f"{where}: broken link to {ref}")
                 elif anchor and dest.suffix == ".md" and anchor.lower() not in anchors(dest):
                     problems.append(f"{where}: no heading for #{anchor} in {dest.relative_to(ROOT)}")
+
+
+def yaml_scalar(raw):
+    """Read a one-line YAML scalar the way a YAML parser would; return (value, error)."""
+    if raw[:1] == '"':
+        if len(raw) < 2 or not raw.endswith('"') or re.search(r'(?<!\\)"', raw[1:-1]):
+            return None, 'the double-quoted value is not closed, or has an unescaped "'
+        return raw[1:-1], None
+    if raw[:1] == "'":
+        if len(raw) < 2 or not raw.endswith("'") or re.search(r"(?<!')'(?!')", raw[1:-1]):
+            return None, "the single-quoted value is not closed, or has an unescaped '"
+        return raw[1:-1].replace("''", "'"), None
+    if raw[:1] in ("|", ">"):
+        return None, "use a one-line value"
+    if raw[:1] in tuple("!&*[]{}#%@`,?-") and raw[:2] not in ("- ",):
+        return None, f"a plain value cannot start with {raw[:1]!r}; put it in quotes"
+    if ": " in raw or raw.endswith(":") or " #" in raw:
+        return None, 'a plain value cannot contain ": " or " #"; put it in double quotes'
+    return raw, None
 
 
 def check_skills(problems):
@@ -112,10 +160,14 @@ def check_skills(problems):
         if not m:
             problems.append(f"{where}: no front matter between --- lines")
             continue
-        meta = dict(
-            (k.strip(), v.strip()) for k, _, v in
-            (line.partition(":") for line in m.group(1).splitlines() if ":" in line)
-        )
+        meta = {}
+        for line in m.group(1).splitlines():
+            key, sep, raw = line.partition(":")
+            if sep and not line.startswith((" ", "\t", "#")) and key.strip() in ("name", "description"):
+                value, error = yaml_scalar(raw.strip())
+                if error:
+                    problems.append(f"{where}: {key.strip()} is not valid YAML: {error}")
+                meta[key.strip()] = (raw.strip() if error else value).strip()
         name, desc = meta.get("name", ""), meta.get("description", "")
         if name != skill.parent.name:
             problems.append(f"{where}: name '{name}' does not match the folder '{skill.parent.name}'")
@@ -128,10 +180,16 @@ def check_skills(problems):
 
 
 def check_public(problems):
-    for path in files(TEXT_SUFFIXES):
+    for path in files():
+        rel = path.relative_to(ROOT).as_posix()
+        if SECRET_PATHS.search(rel):
+            problems.append(f"{rel}: a file of this kind holds credentials and must not be tracked")
         if path == Path(__file__).resolve():
             continue
-        for n, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), 1):
+        text = text_of(path)
+        if text is None:
+            continue
+        for n, line in enumerate(text.splitlines(), 1):
             for label, pattern in FORBIDDEN:
                 for m in pattern.finditer(line):
                     value = m.group(0)
@@ -141,7 +199,7 @@ def check_public(problems):
                         value.lower() in ALLOWED_EMAILS or value.lower().endswith(ALLOWED_EMAIL_DOMAINS)
                     ):
                         continue
-                    problems.append(f"{path.relative_to(ROOT)}:{n}: {label} ({value[:12]}...)")
+                    problems.append(f"{rel}:{n}: {label}")  # never print the value
 
 
 def main():
