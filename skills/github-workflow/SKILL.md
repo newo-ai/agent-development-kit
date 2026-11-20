@@ -26,8 +26,8 @@ a second.
 ## 2. Remove private data
 
 Go through the title, the body, every attachment, and for a pull request every commit the push
-will publish, not only the final files: `git log -p upstream/main..HEAD` shows each commit's
-message and change. A key removed in a later commit is still public once the earlier commit is
+will publish, not only the final files: `git log -p --diff-merges=separate upstream/main..HEAD`
+shows each commit's message and change, merge commits included. A key removed in a later commit is still public once the earlier commit is
 pushed; clean the unpublished history first
 ([CONTRIBUTING.md](../../CONTRIBUTING.md#rules-for-every-contribution)):
 
