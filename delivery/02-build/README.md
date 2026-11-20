@@ -44,7 +44,8 @@ The skill [build-agent](../../skills/build-agent/SKILL.md) runs these steps with
    callers yet; that is [04-launch](../04-launch/README.md).
 7. **Change scenarios only for what is left.** Go through the criteria that settings, knowledge
    and tools did not cover, and change the conversation logic for those
-   ([docs/05-scenarios.md](../../docs/05-scenarios.md)).
+   ([docs/05-scenarios.md](../../docs/05-scenarios.md); skill:
+   [adjust-scenarios](../../skills/adjust-scenarios/SKILL.md)).
 8. **Run the health check** ([docs/07-health-check.md](../../docs/07-health-check.md)) and fix
    every critical finding.
 9. **Smoke-test in a sandbox chat.** For each `critical` criterion, have one short conversation

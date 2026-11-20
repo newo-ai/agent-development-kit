@@ -88,7 +88,8 @@ questions", never into a setting as a guess.
 ## 3. Build, one change at a time
 
 Follow the steps and rules of [02-build](../../delivery/02-build/README.md): settings, knowledge,
-systems (read-only tools first), the phone side without forwarding real callers, scenarios last.
+systems (read-only tools first), the phone side without forwarding real callers, scenarios last
+([adjust-scenarios](../adjust-scenarios/SKILL.md)).
 
 For every change:
 
