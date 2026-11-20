@@ -25,13 +25,16 @@ a second.
 
 ## 2. Remove private data
 
-Go through the title, the body, every changed file and every attachment
+Go through the title, the body, every attachment, and for a pull request every commit the push
+will publish, not only the final files: `git log -p upstream/main..HEAD` shows each commit's
+message and change. A key removed in a later commit is still public once the earlier commit is
+pushed; clean the unpublished history first
 ([CONTRIBUTING.md](../../CONTRIBUTING.md#rules-for-every-contribution)):
 
 - no keys, tokens, passwords, or links that carry a key;
 - no callers' names, phone numbers, emails, conversation text or health data;
-- no account IDs or business names unless the business agreed: write `C_XX_EXAMPLE` and "a
-  dental clinic in Germany";
+- no account IDs or business names: write `C_XX_EXAMPLE` and "a dental clinic in Germany".
+  Never in an issue; in a pull request only if the business agreed;
 - requests and responses as evidence are welcome with keys, IDs, names and numbers removed; no
   raw logs, transcripts, or screenshots that show any of the above.
 
@@ -69,16 +72,18 @@ in plain words, for example "Opening hours example uses the wrong day format".
      conversation, or "documentation only".
    - **Checklist**: tick only what you checked. A claim you did not verify is labeled
      "assumption" in the text.
-7. **Show the person** the title, the body and the list of changed files. On "yes": push the
-   branch, then `gh pr create --repo newo-ai/agent-development-kit --base main --title "<title>"
+7. **Show the person** the title, the body, the full change (`git diff upstream/main...HEAD`) and
+   any attachments; ask again if any of it changes after that. On "yes": push the branch, then `gh pr create --repo newo-ai/agent-development-kit --base main --title "<title>"
    --body-file <file>`. A body passed as a file keeps its formatting.
 
 ## 5. After it is open
 
 - Give the person the link. Newo reviews every pull request; answer the review in the same pull
   request.
-- If GitHub shows a conflict or the reviewer asks for an update, use the **Update branch** button,
-  or ask the reviewer. Never force-push a branch somebody else works on.
+- If the branch is behind `main` and the reviewer asks for an update, use the **Update branch**
+  button. If GitHub shows a conflict, the button is not there: use **Resolve conflicts** on the
+  pull request page for a simple one, or ask the reviewer for help. Never force-push a branch
+  somebody else works on.
 
 ## Newo team
 
