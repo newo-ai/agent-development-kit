@@ -12,7 +12,7 @@ keys or callers' personal data in these template emails.
 Hi [name], thanks for today's call. Here is what we agreed:
 
 - The agent will [main job].
-- First go-live: [first go-live mode, for example nights], target [date], starting with nights.
+- First go-live: [first go-live mode, for example nights only], target [date].
 - What we need from you by [date]: [inputs].
 
 I will send the requirements summary for you to confirm by [date].
@@ -23,7 +23,7 @@ I will send the requirements summary for you to confirm by [date].
 **Subject:** Please confirm: what your AI agent will do
 
 Hi [name], attached is the summary of what the agent will handle, what goes to your team, and what
-it must never say. Please reply "confirmed", or mark any changes, by [date]. Then we prepare the
+it must never say, with a one-page picture of what happens when someone calls. Please reply "confirmed", or mark any changes, by [date]. Then we prepare the
 statement of work and the list of behaviors we will test together before go-live.
 
 ## 3. Weekly status
@@ -41,9 +41,9 @@ statement of work and the list of behaviors we will test together before go-live
 **Subject:** Ready for you to test: [Business] AI agent
 
 Hi [name], the agent is ready for your testing. Please call [AI phone number] or use
-[chat link, if chat is set up] and try each item on the attached checklist. Mark each one pass
-or fail with a short note. There are [N] items, about [time]. Please finish by [date]. If
-something fails, we fix it and send you only the failed items to retest.
+[chat link, if chat is set up] and try each item on the attached checklist. Each item says what
+to do and what counts as right or wrong. Mark each one pass or fail with a short note. There are [N] items, about [time]. Please finish by [date]. If
+something fails, we fix it and send you only the items to retest.
 
 ## 5. Results of a test round
 
@@ -75,6 +75,8 @@ the launch. [Full form only: please sign the attached acceptance instead.]
 ## 8. Handover
 
 **Subject:** Your AI agent: what happens from here
+
+Attached: what happens when someone calls, as it works today.
 
 Partner runs it (usual):
 

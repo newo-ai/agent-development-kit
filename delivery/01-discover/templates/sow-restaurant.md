@@ -70,7 +70,8 @@ The agent books from stage 3 with no integration. Stages 4 and 5 upgrade how it 
 
 - Setting up the Google Business Profile or the booking widget itself
 - Deposits or card on file through the widget path
-- Card numbers spoken to the agent; prepayment happens through a payment link sent by SMS
+- Card numbers spoken to the agent; prepayment, if elected, uses the customer's payment
+  provider (method to confirm with Newo before signing)
 - Delivery dispatch and marketplaces
 - Loyalty, gift cards, CRM and marketing tools; outbound campaigns
 - Allergen, dietary or food-safety assurances

@@ -25,27 +25,35 @@ work from this file.
    after hours when they differ. Split channels when they differ.
 2. **Cover the limits.** Add a criterion for every "must never" item and every "goes to a person"
    case. These are usually `critical`.
-3. **Set the priority.**
+3. **Offer the baseline criteria** in
+   [baseline-criteria.md](../../delivery/01-discover/templates/baseline-criteria.md): transfers in
+   and outside transfer hours, unknown answers, a caller who will not leave details, ending the
+   call, test calls, language, and the report. Show which apply; drop or reword the rest with the
+   person. Add the ones kept after the agent's own criteria, with their "Correct if" and
+   "Wrong if" in the check's steps.
+4. **Set the priority.**
    - `critical`: failure harms a caller, the business or compliance, or loses revenue. The agent
      cannot go live while one fails.
    - `important`: visible, has a workaround.
    - `nice-to-have`: polish.
-4. **Add at least one check to each.** `scripted` (a scenario file run with `newo test`, see
+5. **Add at least one check to each.** `scripted` (a scenario file run with `newo test`, see
    [docs/testing/text-tests.md](../../docs/testing/text-tests.md)), `call` (steps for a real call and
    what must happen), or a check in the other system. If you cannot say how to test a criterion,
    rewrite it until you can.
-5. **Check the list.**
-   - 10 to 25 criteria. More means some are not distinct; fewer usually means limits are missing.
+6. **Check the list.**
+   - 10 to 25 criteria of the agent's own, plus the baseline ones kept. More means some are not
+     distinct; fewer usually means limits are missing.
    - No criterion uses "well", "friendly", "fast" or "correctly" without saying what that means.
    - No criterion holds two behaviors joined by "and".
    - Every critical criterion has a check that can fail.
-6. **Show the list** with ids, priorities and checks. Wait for a "yes" before writing.
-7. **Write the file.** Set `agreed_on` only when the customer agrees. From then on the ids are fixed.
+7. **Show the list** with ids, priorities and checks. Wait for a "yes" before writing.
+8. **Write the file.** Set `agreed_on` only when the customer agrees. From then on the ids are fixed.
 
 ## Done when
 
 - 100% of criteria have at least one check. This is the stage's measure.
 - Every "must never" and every handoff is covered.
+- Each baseline criterion is either in the file or dropped with the person's agreement.
 - Ids run `AC-001`, `AC-002`, … with no gaps or duplicates.
 
 ## Next

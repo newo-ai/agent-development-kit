@@ -26,8 +26,8 @@ A phone change affects real callers at once. Agree on the time of every step wit
 ## Steps
 
 1. **Acceptance test by the customer (UAT).**
-   - Give the customer the list of criteria in plain words, and how to reach the agent: the AI
-     phone number, the chat link.
+   - Give the customer the list of criteria in plain words, each with what counts as right and
+     wrong, and how to reach the agent: the AI phone number, the chat link.
    - The customer tests each criterion and says pass or fail. Do not test for them. If the
      customer will not test (common for small businesses), use the partner-led option in
      [run-uat](../../skills/run-uat/SKILL.md): the customer still decides on the critical criteria.

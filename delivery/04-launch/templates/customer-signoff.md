@@ -11,6 +11,7 @@ Form: **short** (the customer replies "approved" to an email; the partner fills 
 - Acceptance criteria tested: total / passed
 - Acceptance-test rounds:
 - Go-live mode: nights only / human first, AI second / AI first
+- How calls are handled: `call-flow.md`, final version attached
 
 ## Known limitations
 

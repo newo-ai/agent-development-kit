@@ -17,8 +17,11 @@ Stage: [04-launch](../../delivery/04-launch/README.md), steps 1 and 2. Produces
 
 ## Steps
 
-1. **Make the customer's checklist.** One line per criterion, in plain words, with what to do and
-   what should happen. Critical ones first. Add how to reach the agent: the AI phone number (read
+1. **Make the customer's checklist.** One line per criterion, in plain words: what to do or say,
+   **Correct if** (what should happen) and **Wrong if** (what counts as a failure). Critical ones
+   first. Include the [baseline criteria](../../delivery/01-discover/templates/baseline-criteria.md)
+   the customer agreed to; they already carry both lines. Attach `call-flow.md` so the customer
+   sees what each call should do. Add how to reach the agent: the AI phone number (read
    it from the setting, not from memory), and the chat link if chat is in scope. Show it; wait
    for a "yes", then write the checklist to `work/<agent-name>/uat-checklist.md`.
 2. **Agree who tests.** Best: the customer tests, because they know their callers. Many small
@@ -34,8 +37,8 @@ Stage: [04-launch](../../delivery/04-launch/README.md), steps 1 and 2. Produces
    `integration`, `telephony`, `platform`, `other`. One sentence of description and the fix.
    A `platform` cause is also a bug report ([docs/support/](../../docs/support/README.md#bug-report)).
 5. **Fix and retest.** After fixes, run all scripted tests again
-   ([03-test](../../delivery/03-test/README.md)), then ask the customer to retest only the failed
-   criteria. That is a new `uat_attempt`. Offer the UAT round-results email
+   ([03-test](../../delivery/03-test/README.md)), then ask the customer to retest the failed criteria
+   plus any passed criteria the fixes could affect. That is a new `uat_attempt`. Offer the UAT round-results email
    ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 5).
 
 ## Done when
