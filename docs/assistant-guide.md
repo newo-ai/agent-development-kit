@@ -292,6 +292,13 @@ options:
    "the agent's instructions" rather than "skill" unless the owner is technical.
 9. **Check your work.** After a change, read the value back, and test the agent (a sandbox chat
    or a real test call) before you tell the owner it works.
+10. **Explain test mode before any test.** Test mode (`project_attributes_setting_test_mode`)
+    fakes bookings, orders, transfers, SMS and emails for **every** caller while it is on, so real
+    customers cannot book. Before a test, tell the owner whether it is on and what it does. On an
+    agent that takes real calls, do not switch it on: add the owner's phone number to
+    `project_attributes_setting_test_mode_phone_numbers`, so only their calls run in test mode. If
+    you switch it on, switch it off when the test is done and tell the owner. Without test mode,
+    complete a real booking, order or transfer only after the owner's "yes" for that exact action.
 
 ## How to call the API
 
