@@ -95,7 +95,10 @@ For every change:
 1. Show the old value and the new value in plain words. Wait for "yes".
 2. Check the account again, the same way the change will be made: `newo profile` from the same
    folder before a CLI change; `GET /api/v1/customer/profile` with the same token before an API
-   change. One check does not prove the other.
+   change. One check does not prove the other. If the folder's `.env` holds keys for several
+   accounts, a command without `--customer <idn>` goes to the default account: pass the same
+   `--customer` to `newo profile` as to the change, and before a change callers will notice
+   (publish, test mode, phone, transfers) say the account's name back to the partner.
 3. Make the change. For a setting, send the whole attribute, not only the value
    ([docs/03](../../docs/03-configure-and-customize.md#changing-an-attribute)).
 4. Read it back.
