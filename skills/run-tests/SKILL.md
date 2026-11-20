@@ -47,8 +47,8 @@ Show the plan; write the files after a "yes".
 - **Fail:** the agent answered, and the answer or the result is wrong.
 - **Not tested:** a timeout, a skipped turn, an error of the test tool, no logs. Not a fail of the
   agent: run it again, but if the check books or sends something, first look whether the first
-  run already did it, so it does not happen twice. If it repeats, look in the logs; an empty reply with no error often means
-  a change was not published.
+  run already did it, so it does not happen twice. If it repeats, look in the logs; an empty reply
+  with no error often means a change was not published.
 - Repeat calls from the same phone reuse the caller: wait about five minutes between them, or a
   result may carry over from the previous call.
 
