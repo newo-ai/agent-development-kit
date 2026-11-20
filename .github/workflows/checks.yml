@@ -1,0 +1,23 @@
+# Repository checks: links and anchors, SKILL.md format, secrets and customer data.
+# Public repository: GitHub-hosted runner only, no secrets, read-only token, pull_request only.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  checks:
+    name: Repository checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - run: python3 scripts/check.py
