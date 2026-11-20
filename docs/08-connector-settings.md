@@ -61,6 +61,13 @@ Content-Type: application/json
 - This is the request the portal's own **Edit Settings** form sends (seen in the portal code on
   2026-11-12). The form sends every setting of the connector. Sending the full list read in
   step 2, with your values changed, is the safest form.
+- **Send the full list, not just the settings you change.** A body holding one pair was observed
+  to answer `200`, keep the setting count unchanged, and still reset other settings to their
+  defaults — provider, voice mode, recognizer and the initial instruction all moved
+  (observed 2026-08-21 on a `newo_voice_connector_web`; the count stays the same, so only a diff
+  against the values you saved in step 2 shows it). Always diff after writing (section 4).
+  Some settings the `GET` returns are no longer accepted and answer `400` with
+  `idns - ... not found`; drop exactly the ones named and send again.
 - **Do not use** `PATCH /api/v1/integrations/connectors/{connector_id}` for settings. It changes
   only the connector's title and idn (`connector_idn`); a connector's status (running or stopped)
   is changed only by the `run` and `stop` requests (section 4). Settings sent to PATCH are
@@ -147,6 +154,66 @@ recommended for them (source: the Newo voice team, 2026-11-12).
 
 When you switch an agent to Grok or Gemini 3.8, also set `None` on both voice connectors, and
 make a test call in the agent's main language (see section 4).
+
+## 8. Which language the recognizer listens for
+
+Choosing the recognizer (section 7) is only half the setting. Each recognizer also has a
+**language**, and the default is automatic detection:
+
+| Recognizer (`v2v_mode_user_stt`) | Language setting | Default |
+|---|---|---|
+| `elevenlabs` | `elevenlabs_stt_language_code` | `auto` |
+| `google` | `google_stt_language_codes` | `auto` |
+| `deepgram` | `deepgram_stt_language` | `multi` |
+
+Automatic detection is a reasonable default for an English agent and a **common failure for every
+other language**. On a telephone line (narrow band, elderly or hard-of-hearing callers, background
+noise) the detector can lock onto the wrong language and transcribe a whole call phonetically into
+it. Verified 2026-11-16 on a German hearing-care agent: with `elevenlabs` on `auto`, every caller
+turn of a German call arrived as Cyrillic — German words spelled out in Ukrainian — and other
+turns of the same call arrived as Dutch and as English.
+
+What it looks like from the outside, and why it is so often misdiagnosed:
+
+- the agent still **speaks** correctly, because in voice-to-voice the model hears the raw audio;
+- but every **text** step works on the garbled transcript: the caller's name, the fields, the
+  appointment date, the report to the owner, the session summary;
+- so the owner reports "the agent invents names", "it got my gender wrong", "it wrote down the
+  wrong day", and an assistant that only reads settings goes looking in the prompt, where the
+  cause is not;
+- the quality metric `asrRecognition` in the session can read `100.0` through all of it. It does
+  not detect this. Do not rely on it;
+- worse, if the wrongly detected language is one of the agent's **secondary languages**, the
+  instruction "if the user speaks one of these languages, switch to it" is now firing on noise,
+  and the agent starts answering in a language the caller never used.
+
+**Set the language explicitly** for any agent that is not English-only: the agent's main language
+on both voice connectors. Keep the secondary-language list to languages the business really
+serves; every extra language is one more thing a noisy line can be mistaken for.
+
+If the agent's model supports good native recognition (section 7), setting
+`v2v_mode_user_stt` = `None` removes this whole class of problem: there is no separate recognizer
+and no second language guess.
+
+## 9. The connector is not the live prompt
+
+`genai_v2v_initial_system_instruction` (and its `openai_`, `grok_` and `sts_` twins) looks like the
+system prompt the agent is using. It is not. It is a **snapshot** that NAF writes when it sets the
+account up, so it can be days behind the agent's current settings.
+
+For voice-to-voice, the prompt is rebuilt from the current settings during the call and sent with
+`update_session` (NAF: `v2v_update_current_prompt_*` -> `prompt_build_base` ->
+`prompt_get_header_main_instruction`, which reads the speaking style with `GetCustomerAttribute`).
+The snapshot governs only the start of the connection, before the first `update_session`, and any
+reconnection of the call leg. The exception is
+`project_attributes_setting_v2v_prompt_once_per_session` = `True`: then the instruction is sent
+once per connection.
+
+So **never** conclude from that snapshot that a change did or did not reach the agent. Prove it in
+the logs instead: [improve and fix, "Prove a change is live"](../playbooks/improve-and-fix.md#prove-a-change-is-live).
+(Verified 2026-11-16: the snapshot, written when the account was created, was missing a block that
+had since been added to the speaking style, while the logs showed that same block in the
+instruction sent on every turn of a live call.)
 
 If something here is wrong or a request behaves differently, trust the platform, tell the person,
 and propose a correction ([CONTRIBUTING.md](../CONTRIBUTING.md)).

@@ -3,6 +3,30 @@
 How an AI assistant reaches a Newo account, and what to tell a person so they can give you access
 safely.
 
+## Which assistant to use
+
+Prefer a **desktop or terminal** assistant: Claude Code, Codex, Cursor, or the ChatGPT or Claude
+desktop apps. They can fetch this repository, so they work from the current playbooks.
+
+A **browser chat with a custom MCP server turned on cannot read this repository.** ChatGPT's page
+fetch ends with `DisabledError` whenever a custom MCP server is on in that chat (observed
+2026-11-13; the same link opens in a chat without the server). The assistant then has the tools to
+change a live agent but none of the practices for changing it safely, and neither it nor the person
+can tell: it still answers confidently, from memory.
+
+This is temporary. Once the Newo plugin and the Newo connector are published in the OpenAI and
+Claude stores, the published versions carry the playbooks and practices with them, and a browser
+chat becomes a full place to work again. Until then:
+
+| If the person is in... | Do this |
+|---|---|
+| a browser chat, and the work is one small setting | continue, but say plainly that you cannot read the playbooks and that a desktop assistant is safer |
+| a browser chat, and the work is diagnosis or several changes | ask them to move to a desktop assistant ([A](#a-terminal-assistants) or [D](#d-newo-customer-mcp-server)) before you change anything |
+| a desktop or terminal assistant | read [AGENTS.md](../AGENTS.md) and the playbook for the task first |
+
+The older Newo plugin ([B](#b-the-older-newo-plugin)) has a `read_guide` tool; in a browser chat it
+is the only way in, and it reaches the setup guide, not this repository.
+
 ## Which path
 
 | The person uses | You reach Newo through | Section |
