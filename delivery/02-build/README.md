@@ -16,6 +16,8 @@ If the customer has no agent yet, create it first:
 
 ## Steps
 
+The skill [build-agent](../../skills/build-agent/SKILL.md) runs these steps with the person.
+
 1. **Read first, and keep a copy.** Read all settings once and save them to a local file
    ([health check, step 1](../../docs/07-health-check.md#step-1-read-everything-once)); with the
    CLI, `newo pull` downloads the settings and the code. This copy is how you put a value back.
