@@ -22,6 +22,7 @@ go in the partner's own folder, for example `work/<agent-name>/`, never into thi
 | 01-discover | [plan-project](plan-project/SKILL.md) | `project-plan.md` with the partner checklist | Dates, and the Newo support and vendor requests to send |
 | 01-discover | [check-discovery-gate](check-discovery-gate/SKILL.md) | A pass or fail report | Before building |
 | [02-build](../delivery/02-build/README.md) | [build-agent](build-agent/SKILL.md) | `build-notes.md`, the configured agent, a "ready for testing" report | The discovery gate passed |
+| 02-build | [adjust-scenarios](adjust-scenarios/SKILL.md) | Changed scenario cards, noted in `build-notes.md` | A criterion that settings, knowledge and tools did not cover |
 | [03-test](../delivery/03-test/README.md) | [run-tests](run-tests/SKILL.md) | `tests/` scenario files, `test-report.md` | The build is ready for testing |
 | [04-launch](../delivery/04-launch/README.md) | [run-uat](run-uat/SKILL.md) | `uat-report.yaml` | The test report says "ready" |
 | 04-launch | [prepare-go-live](prepare-go-live/SKILL.md) | `go-live-checklist.md`, a launch schedule | UAT passed |
