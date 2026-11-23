@@ -13,9 +13,12 @@ them and how to judge a result. Produces `work/<agent-name>/tests/` (scenario fi
 
 - Read `acceptance-criteria.yaml` and `build-notes.md`. If the build notes show critical
   health-check findings or a failed smoke test, say so and let the partner decide.
-- Work in the agent's folder (the one with its `.env`). Run `newo profile` there and compare the
-  Customer IDN with `Account idn` in `build-notes.md`. If the `.env` holds keys for several
-  accounts, pass the same `--customer <idn>` to `newo profile` and to every command after it.
+- Work in the agent's folder, `work/<agent-name>/`, the one with its `.env`. Run the
+  [setup check](../../docs/setup-check.md) there: it compares the Customer IDN from
+  `newo profile` with `Account idn` in `build-notes.md`, and checks a sandbox round trip. Repeat
+  `newo profile` before every change you make while fixing. If the `.env` holds keys for several
+  accounts (not recommended), pass the same `--customer <idn>` to `newo profile` and to every
+  command after it.
 - Test data: for each criterion that books or changes something in another system, a test
   account, test mode that covers it, or the live-test procedure agreed in discovery. Otherwise
   test only what reads. Turning test mode on is a change: ask first, note it, and list it in the

@@ -12,6 +12,50 @@ If you are a person: point your coding assistant at this repository (for example
 https://github.com/newo-ai/agent-development-kit and help me set up my Newo agent"). The assistant
 does the technical work; you make the decisions.
 
+## Set up
+
+New to Newo? The ADK is a set of instructions for an AI assistant. You open it in the assistant,
+connect the assistant to your Newo account, and the assistant does the work. You set up two things
+at most: a way in to Newo, and (for the CLI) a folder for each agent.
+
+**Step 0: pick your path.** It depends on the assistant app you use.
+
+| You use | Set up | What you get | Start with |
+|---|---|---|---|
+| **Not sure yet** | the Claude desktop app with the CLI (the first row below) | everything, with the fewest steps | [Quick start for the desktop app](docs/quick-start-desktop.md) |
+| Claude desktop app (Code tab), Claude Code, Codex or Cursor | the **Newo CLI** and one API key per agent | the whole ADK: the assistant reads these pages, downloads and uploads the agent, runs test chats and scripted tests | the steps below, then the [setup check](docs/setup-check.md) |
+| Claude Code or Codex, and you would rather sign in than handle a key | the **Newo Customer MCP server** (sign in with your Newo account) | reading and changing the agent without a key; add the CLI later for scripted tests | [docs/02, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server) |
+| ChatGPT, or Claude in the browser or on a phone | the **Newo Customer MCP server** | reading and changing the agent in a chat. In ChatGPT the assistant cannot open these pages while the server is on | [docs/02, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server) |
+
+The full comparison is in [docs/02, "Which path"](docs/02-access-and-tools.md#which-path).
+
+The rest of this section is for the CLI path.
+
+**Folder layout.** Keep this repository as it is, and do all agent work in `work/`, one folder per
+agent:
+
+```
+agent-development-kit/          this repository; read it, do not edit it for one agent
+└── work/                       your agents; Git ignores this folder
+    ├── northfield-hvac/        one agent = one folder
+    │   ├── .env                this agent's API key, and nothing else
+    │   ├── build-notes.md      the agent's notes; "Account idn" says which account it is
+    │   └── newo_customers/     what `newo pull` downloads
+    └── <next-agent>/
+```
+
+**One API key per agent.** Each agent folder has its own `.env` with one line,
+`NEWO_API_KEY=...`. The person types the key into that file, never into a chat. Run every `newo`
+command from inside the agent's folder: the CLI reads the `.env` of the folder you are in. One
+`.env` with keys for several accounts (`NEWO_API_KEYS`) works, but it is not recommended: a
+command without `--customer` then goes to the default account.
+
+**Check the account before every change.** Run `newo profile` in the agent's folder and compare
+`Customer IDN` with `Account idn` in `build-notes.md`. If they differ, stop.
+
+**Setup check.** Run [docs/setup-check.md](docs/setup-check.md) on first setup and whenever
+something stops working. It only reads, so you can run it again at any time.
+
 ## Map
 
 Read top to bottom for a new agent; jump to the block you need for a single task.

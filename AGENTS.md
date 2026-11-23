@@ -111,6 +111,25 @@ agent-development-kit/
 
 ## 4. How you reach the platform
 
+**Setup, the short version** (full text: [README.md, "Set up"](README.md#set-up)):
+
+- **Pick the path first:** if the person has not set up anything yet, ask which assistant app they
+  use and follow the path table in [README.md, "Set up"](README.md#set-up). Not sure: the Claude
+  desktop app with the CLI.
+- **Folder layout:** `agent-development-kit/` → `work/` → one folder per agent, for example
+  `work/northfield-hvac/`. Git ignores `work/`. Never put an agent's files anywhere else in this
+  repository.
+- **One API key per agent:** each agent folder has its own `.env` with `NEWO_API_KEY`. Run `newo`
+  only from inside that folder. Several keys in one `.env` (`NEWO_API_KEYS`) is not recommended.
+- **Account check before every change:** run `newo profile` in the agent's folder (or
+  `GET /api/v1/customer/profile` with the same token before an API change) and compare
+  `Customer IDN` with `Account idn` in `build-notes.md`. Different, or no `build-notes.md` yet:
+  stop and ask.
+- **Setup check:** run [docs/setup-check.md](docs/setup-check.md) at the start of a new setup and
+  whenever a command fails in a way you do not understand. It only reads.
+- **Non-technical person in the Claude desktop app:**
+  [docs/quick-start-desktop.md](docs/quick-start-desktop.md).
+
 - **Terminal assistants** (Claude Code, Codex, Cursor): the Newo HTTP API with the account's API
   key, or the Newo CLI. See [docs/02-access-and-tools.md](docs/02-access-and-tools.md).
 - **Connector settings** are written with `POST /api/v1/integrations/connectors/{id}/settings`,

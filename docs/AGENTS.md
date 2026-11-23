@@ -13,6 +13,8 @@ Topical platform docs. One-task procedures live in ../playbooks/, exact formats 
 - `06-knowledge.md` — AKB, Knowledge Studio, search services, personal-data rules
 - `07-health-check.md` — level A/B review procedure and reporting
 - `08-connector-settings.md` — read, write and verify connector settings
+- `setup-check.md` — four read-only checks: CLI, key, account, sandbox round trip
+- `quick-start-desktop.md` — setup for a non-technical person in the Claude desktop app (ZIP)
 - `assistant-guide.md` — long-form guide for working with an owner (the most linked page)
 - `debugging/` — conversation logs, search answers, Studio troubleshooting, common issues
 - `telephony/` — forwarding, go-live, phone numbers, transfers, WebSocket voice API

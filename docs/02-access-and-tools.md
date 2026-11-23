@@ -20,8 +20,11 @@ safely.
    example `newo-cli`. Save it.
 3. Open the connector again and copy the key. It appears only after saving.
 
-The person puts the key into a `.env` file in the project folder **themselves**, for example
-`NEWO_API_KEY=...`, and `.env` must be in `.gitignore`. Never ask them to paste the key into a chat.
+The person puts the key into the `.env` file of the agent's folder **themselves**, for example
+`work/northfield-hvac/.env` with the line `NEWO_API_KEY=...`, and `.env` must be in `.gitignore`.
+Never ask them to paste the key into a chat. One agent, one folder, one key: see the
+[folder layout](../README.md#set-up). Several keys in one `.env` (`NEWO_API_KEYS`) works but is not
+recommended. Then run the [setup check](setup-check.md).
 
 **The API.**
 - Base URL: `https://app.newo.ai`.
@@ -32,15 +35,18 @@ The person puts the key into a `.env` file in the project folder **themselves**,
   ```
 - Send `Authorization: Bearer <access_token>` with every request. On 401 or 403, get a new token
   and retry once.
-- First call of every session: `GET /api/v1/customer/profile`. Check that its `idn` is the account
-  the person means.
+- First call of every session, and again before every change: `GET /api/v1/customer/profile`.
+  Check that its `idn` equals `Account idn` in the agent's `build-notes.md`.
 - Full reference: [reference/api.md](../reference/api.md) (Flow Designer V2) and
   [reference/api-v1.md](../reference/api-v1.md) (old designer, V1).
 - Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
   does not change them.
 
-**The CLI.** `npm i -g newo`, then run `newo init` in an empty folder. It writes instructions and
-skills for coding assistants, an empty `.env` and a `.gitignore`. Useful commands:
+**The CLI.** `npm i -g newo` (needs Node.js 22.12 or later), then run `newo init` in the agent's
+folder. It writes instructions and skills for coding assistants, an empty `.env` and a
+`.gitignore`. The CLI reads the `.env` of the folder you run it in, so run every command there.
+Useful commands:
+- `newo profile` — which account the key opens; run it before every change.
 - `newo pull` / `newo push` — download / upload the projects and the customer attributes (the
   agent's code and settings); works for Flow Designer V2.
 - `newo sandbox` — test chat.
