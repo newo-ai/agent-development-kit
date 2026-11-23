@@ -25,6 +25,9 @@ This repository grows from real cases. AI coding assistants and people may propo
 
 ## Review
 
+Before you open a pull request, run `python3 scripts/check.py` from the repository root. It checks
+links and headings, the skill format, and keys, emails and account IDs.
+
 Newo reviews pull requests. Accepted learnings may be generalized into the main docs, into the
 industry pages, or into the Newo platform itself. If a pull request is not accepted, the review
 says why.
