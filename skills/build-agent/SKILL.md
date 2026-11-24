@@ -32,19 +32,12 @@ time; collect the rest under "Open questions".
 2. **Health data.** If the business handles health data, the agreement the SOW requires is in
    place before you read conversations or connect a system
    ([health data](../../docs/integrations/README.md#health-data)).
-3. **The setup check passes.** Run [docs/setup-check.md](../../docs/setup-check.md) in the
-   agent's folder: CLI, key, account, sandbox. The key stays in `.env`, never in the chat. Say
-   the account's name and `idn` back to the partner.
-4. **One folder per agent.** `work/<agent-name>/` holds this agent's `.env` (one key), its
-   `build-notes.md`, the `newo pull` files and the copy of the settings
-   ([folder layout](../../README.md#set-up)). Run `newo` only there. Several keys in one `.env` is
-   not recommended. Never swap the key inside a folder: the CLI keeps using the old account's
-   sign-in for a while. If the account check shows the wrong account, stop. Delete only the
-   sign-in file, `.newo/<account idn>/tokens.json` (or `.newo/tokens.json`), and check again.
-   Never delete the whole `.newo/`: it also holds what `newo push` needs to match your files to
-   the platform.
-5. **The agent exists.** If not, create it first:
+3. **Setup checks 1 to 3 pass.** Work in the agent's folder, `work/<agent-name>/`, and run
+   checks 1 to 3 of the [setup check](../../docs/setup-check.md) there: CLI, key, account. The
+   folder, key and account rules are in [README.md, "Set up"](../../README.md#set-up).
+4. **The agent exists.** If not, create it first:
    [assistant guide, "Create the agent"](../../docs/assistant-guide.md#create-the-agent).
+5. **Setup check 4 passes** (the sandbox round trip), now that the agent exists.
 6. **Designer version.** `GET /api/v1/customer/settings/name/projects_v2_enabled`. On V2 never
    use the old V1 requests ([reference/api.md](../../reference/api.md#which-designer)).
 
@@ -99,10 +92,9 @@ For every change:
 2. Check the account again, the same way the change will be made: `newo profile` from the same
    folder before a CLI change; `GET /api/v1/customer/profile` with the same token before an API
    change. One check does not prove the other. Compare the IDN with `Account idn` in
-   `build-notes.md`; if they differ, stop. Before a change callers will notice (publish, test
-   mode, phone, transfers), say the account's name back to the partner. If the `.env` holds keys
-   for several accounts (not recommended), a command without `--customer <idn>` goes to the
-   default account: pass the same `--customer` to `newo profile` as to the change.
+   `build-notes.md` ([setup check, check 3](../../docs/setup-check.md#3-the-right-account)); if
+   they differ, stop. Before a change callers will notice (publish, test mode, phone, transfers),
+   say the account's name back to the partner.
 3. Make the change. For a setting, send the whole attribute, not only the value
    ([docs/03](../../docs/03-configure-and-customize.md#changing-an-attribute)).
 4. Read it back.

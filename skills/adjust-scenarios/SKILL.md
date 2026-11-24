@@ -28,8 +28,8 @@ it in the portal.
    also has to change. If nothing is left, stop: no scenario change is needed. After launch, with
    no build notes, the partner's request is the criterion.
 2. **The same account everywhere.** Check the account you read (`newo profile` in the agent's
-   folder, or `GET /api/v1/customer/profile`), compare it with `Account idn` in `build-notes.md`
-   ([setup check](../../docs/setup-check.md#3-the-right-account)) and say its name back. The
+   folder, or `GET /api/v1/customer/profile`) as in
+   [setup check, check 3](../../docs/setup-check.md#3-the-right-account), and say its name back. The
    partner edits and publishes in a separate portal session: before each edit and each publish,
    ask them to confirm the portal shows that same account.
 3. **Read the canvas** and keep a dated copy: read (never write)

@@ -5,12 +5,15 @@ safely.
 
 ## Which path
 
-| The person uses | You reach Newo through | Section |
+Do not ask the person to choose a tool. Follow this rule:
+
+| For | You reach Newo through | Section |
 |---|---|---|
-| Claude Code, Codex, Cursor or another assistant with a terminal | the Newo HTTP API or the Newo CLI, with the account's API key in an environment variable; Claude Code and Codex can also sign in to the **Newo Customer MCP server** | [A](#a-terminal-assistants), or [D](#d-newo-customer-mcp-server) for Claude Code and Codex |
-| ChatGPT or Claude in the browser (or the Claude apps) | the **Newo Customer MCP server**: the person signs in with their Newo account | [D](#d-newo-customer-mcp-server) |
-| ChatGPT or Claude, for an agent the older Newo plugin created in that same chat | the older **Newo plugin** (a custom MCP server without sign-in) | [B](#b-the-older-newo-plugin) |
-| Any assistant, for knowledge only | **Newo Knowledge Studio** | [C](#c-newo-knowledge-studio) |
+| **Everything the MCP can do (the default)** | the **Newo Customer MCP server**, connected through the **Newo Agent Builder plugin**: the person signs in with their Newo account. Which tools it has: **to confirm** against the live tool list | [D](#d-newo-customer-mcp-server) |
+| Only what the MCP can't do: saved `newo test` files and CI, export or backup of an agent, work without a sign-in | the **Newo CLI** (or the HTTP API) with one API key per agent; you set it up | [A](#a-terminal-assistants) |
+| An agent the older Newo plugin created in that same chat | the older **Newo plugin** (a custom MCP server without sign-in) | [B](#b-the-older-newo-plugin) |
+| Knowledge only | **Newo Knowledge Studio** | [C](#c-newo-knowledge-studio) |
+| Editing scenarios | neither: the person edits them by hand in the Workflow Builder | [05-scenarios.md](05-scenarios.md) |
 
 ## A. Terminal assistants
 
@@ -37,15 +40,18 @@ recommended. Then run the [setup check](setup-check.md).
 - Send `Authorization: Bearer <access_token>` with every request. On 401 or 403, get a new token
   and retry once.
 - First call of every session, and again before every change: `GET /api/v1/customer/profile`.
-  Check that its `idn` equals `Account idn` in the agent's `build-notes.md`.
+  If the agent has a `build-notes.md`, check that its `idn` equals `Account idn` there; otherwise
+  say the account's name and `idn` back and get a "yes" once per session.
 - Full reference: [reference/api.md](../reference/api.md) (Flow Designer V2) and
   [reference/api-v1.md](../reference/api-v1.md) (old designer, V1).
 - Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
   does not change them.
 
-**The CLI.** `npm i -g newo` (needs Node.js 22.12 or later), then run `newo init` in the agent's
-folder. It writes instructions and skills for coding assistants, an empty `.env` and a
-`.gitignore`. The CLI reads the `.env` of the folder you run it in, so run every command there.
+**The CLI.** `npm i -g newo`, version 5.3.0 or later (needs Node.js 22.12 or later). Do not run
+`newo init` inside `work/`: it writes its own assistant instructions and skills there, which
+compete with the ADK's. Create the agent's folder and its `.env` directly; the root `.gitignore`
+already ignores `work/` and `.env`. The CLI reads the `.env` of the folder you run it in, so run
+every command there.
 Useful commands:
 - `newo profile` — which account the key opens; run it before every change.
 - `newo pull` / `newo push` — download / upload the projects and the customer attributes (the

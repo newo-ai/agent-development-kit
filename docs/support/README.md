@@ -3,7 +3,9 @@
 One standard for every assistant and every partner, so Newo can act fast and learn from every
 case.
 
-## Where (November 2026)
+## Where
+
+As of November 2026:
 
 - **Now:** Newo support at https://help.newo.ai (chat), or the partner's Newo contact. Copy the
   matching template below into the request.

@@ -38,8 +38,9 @@ different, tell your assistant what you see.
    4. Open the connector again and copy the key. It appears only after saving.
 6. **Paste the key into the key field, not into the chat.** The assistant opens a field for the
    Newo API key above the prompt. The first time, Claude asks whether to turn on the mods written in
-   this session: allow it. Paste the key into the field and press Enter. The key goes straight into
-   a file, the assistant never sees it, and you get a message with the account's name. You don't
+   this session: choose **Turn them on** **(to confirm)**. Paste the key into the field and press
+   Enter. The key goes straight into a file, the assistant never sees it, and you get a message
+   with the account's name. You don't
    need a code editor. Never paste the key into the chat.
 
    Only if the field cannot load, the assistant tells you why and opens the key file in TextEdit
