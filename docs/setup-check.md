@@ -37,17 +37,19 @@ The command prints a count, never the key. Do not run `cat .env`, `env` or `prin
 - `No such file`: there is no `.env` in this folder. Check that you are in the agent's folder
   (`pwd`). If you are, `newo init` creates an empty `.env` and a `.gitignore`.
 - `0`: the file has no key yet. Ask the person to create the key
-  ([docs/02, section A](02-access-and-tools.md#a-terminal-assistants)), then use the first way
-  that works. Never ask for the key in the chat.
-  1. **The key field (Claude desktop app).** The Newo CLI ships a field for the key, the
-     `newo-key` mod. Read the CLI's setup skill,
+  ([docs/02, section A](02-access-and-tools.md#a-terminal-assistants): the connector IDN is
+  lowercase, with `_` instead of spaces). Never ask for the key in the chat.
+  1. **The key field (Claude desktop app), always first.** The Newo CLI ships a field for the
+     key, the `newo-key` mod. Read the CLI's setup skill,
      `$(npm root -g)/newo/assistant-kit/skills/newo-setup/SKILL.md`, and follow its section
      "In the Claude Code desktop app: a field for the key". The field saves `.env` in the folder
      the session was opened in, usually the repository root, not the agent's folder. After the
      message that names the account, move the file without reading it:
      `mv .env work/<agent-name>/.env`. If `work/<agent-name>/.env` already holds a key, stop and
      ask first.
-  2. **A text editor.** Offer to open the file for the person: `open -e work/<agent-name>/.env`
+  2. **A text editor, only if the field cannot load** (the mod is off, the person chose
+     **Not now**, or another app). Say why, then offer to open the file for the person:
+     `open -e work/<agent-name>/.env`
      (Mac, TextEdit) or `notepad work\<agent-name>\.env` (Windows). Create the file first if it is
      missing. They paste the key after `NEWO_API_KEY=`, save and close. No code editor is needed.
      The file name starts with a dot, so Finder and File Explorer hide it.

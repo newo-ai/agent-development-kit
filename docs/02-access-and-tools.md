@@ -16,9 +16,10 @@ safely.
 
 **The API key.** The owner (or a partner with access) creates it once:
 1. Sign in at https://app.newo.ai, choose the account, open **Builder**.
-2. Go to **Integrations**, find **API Integration**, and create a connector with any name, for
-   example `newo-cli`. Save it.
-3. Open the connector again and copy the key. It appears only after saving.
+2. Go to **Integrations** and open **API Integration**.
+3. Create a connector. Its IDN must be all lowercase, with no spaces: use `_` instead of a
+   space, for example `newo_cli`. Save it.
+4. Open the connector again and copy the key. It appears only after saving.
 
 The person puts the key into the `.env` file of the agent's folder **themselves**, for example
 `work/<agent-name>/.env` with the line `NEWO_API_KEY=...`, and `.env` must be in `.gitignore`.

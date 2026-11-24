@@ -30,17 +30,20 @@ different, tell your assistant what you see.
 4. **Let the assistant install the tools.** It checks Node.js and the Newo CLI and installs what
    is missing. Allow the commands it asks for. If it asks you to install Node.js yourself, take
    the LTS version from https://nodejs.org, then quit and reopen the Claude app.
-5. **Create the API key in Newo.** Sign in at https://app.newo.ai, choose the account, open
-   **Builder** → **Integrations** → **API Integration**, create a connector (any name, for
-   example `newo-cli`) and save it. Open it again and copy the key.
+5. **Create the API key in Newo.**
+   1. Sign in at https://app.newo.ai, choose the account and open **Builder**.
+   2. Go to **Integrations** and open **API Integration**.
+   3. Create a connector. Its IDN must be all lowercase, with no spaces: use `_` instead of a
+      space, for example `newo_cli`. Save it.
+   4. Open the connector again and copy the key. It appears only after saving.
 6. **Paste the key into the key field, not into the chat.** The assistant opens a field for the
    Newo API key above the prompt. The first time, Claude asks whether to turn on the mods written in
    this session: allow it. Paste the key into the field and press Enter. The key goes straight into
    a file, the assistant never sees it, and you get a message with the account's name. You don't
-   need a code editor.
-   - If the field does not appear, the assistant opens the key file in TextEdit (Mac) or Notepad
-     (Windows) instead. Paste the key after `NEWO_API_KEY=`, save, close the file and type "done".
-   - Never paste the key into the chat.
+   need a code editor. Never paste the key into the chat.
+
+   Only if the field cannot load, the assistant tells you why and opens the key file in TextEdit
+   (Mac) or Notepad (Windows) instead.
 7. **Read the setup check.** The assistant runs the [setup check](setup-check.md) and gives you
    four lines. It says the account name: check that it is the right business. All four pass: you
    are ready.
