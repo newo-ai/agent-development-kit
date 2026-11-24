@@ -10,6 +10,7 @@ Do not ask the person to choose a tool. Pick it from this table, say which one y
 | Task | Use | Section |
 |---|---|---|
 | Find the account and its IDN (the account check) | the **Newo Customer MCP** (`get_customers`) | [D](#d-newo-customer-mcp-server) |
+| Create a new agent from a website or Google Maps link | the MCP (`create_customer`, then `get_run`) | [D](#d-newo-customer-mcp-server) |
 | Read conversations and logs | the MCP | [D](#d-newo-customer-mcp-server) |
 | Read and change project files, versions; activate a version | the MCP | [D](#d-newo-customer-mcp-server) |
 | A practice chat with the agent (sandbox) | the MCP | [D](#d-newo-customer-mcp-server) |
@@ -20,6 +21,7 @@ Do not ask the person to choose a tool. Pick it from this table, say which one y
 | Export or backup of an agent | the CLI **(to confirm)** | [A](#a-terminal-assistants) |
 | Work without a sign-in (scripts, automation) | the CLI or the HTTP API **(to confirm)** | [A](#a-terminal-assistants) |
 | An agent the older Newo plugin created in that same chat | the older **Newo plugin** | [B](#b-the-older-newo-plugin) |
+| Phone numbers, porting, SIP allowlist | Newo only: [draft-support-request](../skills/draft-support-request/SKILL.md) | [support](support/README.md) |
 | Edit a scenario card | neither: the person, by hand in the Workflow Builder ([SOP](sop/edit-a-scenario.md)) | [05](05-scenarios.md) |
 
 MCP column: from the server's live tool list, November 2026; to confirm with the Newo platform

@@ -37,11 +37,17 @@ Show the plan; write the files after a "yes".
   exit 1 covers a failed turn, a timeout, skipped turns and a setup error alike. Do not save the
   JSON in `work/`: it holds the conversation text.
 - **Through the MCP** (no CLI): run each chat check as a practice chat through the MCP's sandbox
-  connector **(to confirm: how a sandbox connector is named in `get_connectors`)**. Start a new
-  conversation for every check **(to confirm: how the MCP starts one)**. Send the check's turns in
-  order, then read the replies and that session's logs, and judge them as in step 3. Note in the
-  report that the check ran through the MCP. Saved `newo test` files need the CLI
-  ([docs/02, "Which path"](../../docs/02-access-and-tools.md#which-path)).
+  connector **(to confirm: how a sandbox connector is named in `get_connectors`)**.
+  - Start a new conversation for every run **(to confirm: how the MCP starts one)**.
+  - Send each turn with `send_message`. Read the reply with `search_conversations`; if it is not
+    there yet, look again for up to a minute before you mark the check "Not tested".
+  - Check whether a tool ran: the conversation's events (`search_conversations`) and its logs
+    (`search_logs`).
+  - Run each critical check three times, each in a new conversation, as with `newo test`. Keep
+    each run's `session_id` for the report.
+  - Judge as in step 3, and note in the report that the check ran through the MCP. Saved
+    `newo test` files need the CLI
+    ([docs/02, "Which path"](../../docs/02-access-and-tools.md#which-path)).
 - **Calls:** you cannot call. Give the person each call check's `steps`, ask when and from which
   number they called, then find that conversation among the newest ones
   (`GET /api/v1/bff/conversations/user-personas?page=1&per=10`, then

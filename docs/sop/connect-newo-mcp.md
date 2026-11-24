@@ -32,3 +32,5 @@ is yours. If yours is not there:
 ## Next
 
 Tell your assistant what you want to do with the agent.
+
+Stuck? Tell your assistant "I'm stuck".

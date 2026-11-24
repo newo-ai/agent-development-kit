@@ -29,7 +29,16 @@ One agent, one key. Never paste the key into a chat: anyone who reads the chat c
 You pasted it into a chat, an email or a file someone else can read: tell your assistant. Newo
 support can replace the key.
 
+## If it goes wrong
+
+- **No Builder or no Integrations:** your Newo user lacks permission. Ask the account owner, or
+  have your assistant draft a request to Newo.
+- **The setup check names another business:** the key is from another account. Repeat the steps
+  in the right one.
+
 ## Next
 
 Tell your assistant "the key is in". It runs the [setup check](../setup-check.md) and tells you
 the account's name. Check that it is the right business.
+
+Stuck? Tell your assistant "I'm stuck".

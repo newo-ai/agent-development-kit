@@ -31,6 +31,7 @@ different, tell your assistant what you see.
 5. **Check the account.** Ask your assistant "List my Newo businesses". It names your business.
    If not, see
    [SOP: connect the Newo MCP, "Check it worked"](sop/connect-newo-mcp.md#check-it-worked).
+
 **Only if your assistant asks for an API key** (a few tasks need the Newo CLI):
 [SOP: get an API key](sop/get-api-key.md). The assistant installs the tools that task needs and
 asks before each command. If it asks you to install Node.js yourself, take the LTS version from

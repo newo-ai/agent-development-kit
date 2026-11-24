@@ -15,6 +15,7 @@ mailbox. The templates and where to send are in
 |---|---|
 | Something on the platform is broken | [Bug report](../../docs/support/README.md#bug-report) |
 | A phone number, porting, SIP allowlisting, a SIP registration check | [Operations request](../../docs/support/README.md#operations-request) |
+| Access or a role on an account; removing an agent, connector, webhook or number ([rule 2](../../AGENTS.md#3-rules-always)) | [Operations request](../../docs/support/README.md#operations-request), `Request: other` |
 | NAF code was changed for this account | [NAF change notice](../../docs/support/README.md#naf-change-notice) |
 | A mistake in this repository, or a learning | Not Newo support: [github-workflow](../github-workflow/SKILL.md) |
 
