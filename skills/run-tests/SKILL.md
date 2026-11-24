@@ -35,8 +35,10 @@ Show the plan; write the files after a "yes".
   exit 1 covers a failed turn, a timeout, skipped turns and a setup error alike. Do not save the
   JSON in `work/`: it holds the conversation text.
 - **Calls:** you cannot call. Give the person each call check's `steps`, ask when and from which
-  number they called, then find that conversation (`newo conversations`) and read its logs. If
-  more than one conversation matches, the check is not tested.
+  number they called, then find that conversation among the newest ones
+  (`GET /api/v1/bff/conversations/user-personas?page=1&per=10`, then
+  `newo session <last_session_id> --json`) and read its logs. Not `newo conversations`: it
+  downloads the whole history. If more than one conversation matches, the check is not tested.
 - **Assessor** only if the account already uses it
   ([voice tests](../../docs/testing/voice-tests.md#automated-voice-tests)).
 - After a publish, wait 2 to 5 minutes before testing.

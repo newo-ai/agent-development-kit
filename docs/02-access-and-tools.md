@@ -53,7 +53,9 @@ Useful commands:
 - `newo sandbox` — test chat.
 - `newo test <scenario.yaml>` — scripted chat tests.
 - `newo logs --session-id <id>` — the logs of one conversation.
-- `newo conversations` — transcripts.
+- `newo session <id> --json` — one conversation's transcript.
+- `newo conversations` — every transcript of the account, with no limit: slow on a busy agent and
+  full of callers' personal data. For one conversation use `newo session`.
 
 The CLI masks secrets in its output. Changing framework (NAF) code needs explicit confirmation
 (`NEWO_UNRESTRICTED`, default off); see [04-naf-change-policy.md](04-naf-change-policy.md).
