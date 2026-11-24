@@ -56,3 +56,4 @@ First version (November 2026). These skills are early: run them, check the outpu
 what was wrong or missing ([CONTRIBUTING.md](../CONTRIBUTING.md)). Packaging as a Claude Code or
 Codex plugin is planned; until then, open this repository in your coding assistant and ask for
 the task by name ("run gather-requirements on my call notes").
+
