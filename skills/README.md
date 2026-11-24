@@ -30,6 +30,11 @@ go in the partner's own folder, for example `work/<agent-name>/`, never into thi
 | 04-launch | [collect-signoff](collect-signoff/SKILL.md) | `customer-signoff.md` (short form: an email reply), handover | Live in the agreed mode |
 | Any | [export-docx](export-docx/SKILL.md) | A `.docx` copy of a markdown file | The customer needs a Word document |
 | Any | [github-workflow](github-workflow/SKILL.md) | An issue or a pull request in this repository | Reporting a mistake, sharing a learning, a NAF change notice, proposing a change |
+| Any | [get-unstuck](get-unstuck/SKILL.md) | The next step, or a drafted request | The person is stuck |
+| Any | [draft-support-request](draft-support-request/SKILL.md) | A request for the person to send | Only Newo can do it |
+
+Steps the person does by hand (connect the MCP, get an API key, edit a scenario):
+[docs/sop/README.md](../docs/sop/README.md).
 
 The order in 01-discover:
 

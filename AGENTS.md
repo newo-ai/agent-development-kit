@@ -26,6 +26,10 @@ agent-development-kit/
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
 2. Identify **what** they want. Typical requests and where to read:
+   - "I'm stuck", "what now", "I don't know what to do", a step failed twice the same way:
+     [get-unstuck](skills/get-unstuck/SKILL.md).
+   - "Contact Newo", "open a ticket", anything only Newo can do (a number, porting, SIP
+     allowlisting, a platform bug): [draft-support-request](skills/draft-support-request/SKILL.md).
    - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
      [delivery/](delivery/README.md), the stages from requirements to production.
    - "Start discovery", "write the SOW", "acceptance criteria", "check feasibility", "plan the
@@ -108,6 +112,8 @@ agent-development-kit/
       switch it off, read it back, and remind the person.
     - Without test mode the agent's actions are real. Complete a booking, order or transfer to a
       real business only after a "yes" for that exact action, and cancel test bookings afterwards.
+11. **Never leave the person stuck.** When they are lost or a step fails twice the same way,
+    follow [get-unstuck](skills/get-unstuck/SKILL.md): one next step, or a drafted request to Newo.
 
 ## 4. How you reach the platform
 
@@ -155,7 +161,8 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 - Tell the person what changed, how to undo it and what to watch.
 - If you found something other assistants should know (a pitfall, a working integration recipe),
   propose a learning: [learnings/README.md](learnings/README.md).
-- If you found a platform bug, file it: [docs/support/README.md](docs/support/README.md).
+- If you found a platform bug, draft it with
+  [draft-support-request](skills/draft-support-request/SKILL.md) for the person to send.
 - **Filing an issue in this repository from a terminal** (`gh issue create`, the API): the issue
   forms apply only in the browser, so nothing checks your text. Do it by hand:
   1. Open the form you need in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) and write every

@@ -49,6 +49,7 @@ The command prints a count, never the key. Do not run `cat .env`, `env` or `prin
   writes its own `AGENTS.md`, `CLAUDE.md` and skills into the folder, and they compete with the
   ADK's. The root `.gitignore` already ignores `work/` and `.env`.
 - `0`: no key yet. Give the person the ADK's key steps,
+  [SOP: get an API key](sop/get-api-key.md), also in
   [docs/02, section A](02-access-and-tools.md#a-terminal-assistants) (the connector IDN is
   lowercase, with `_` instead of spaces), not the key steps in the CLI's `newo-setup` skill. Never
   ask for the key in the chat.
