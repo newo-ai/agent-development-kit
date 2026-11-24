@@ -13,7 +13,10 @@ them and how to judge a result. Produces `work/<agent-name>/tests/` (scenario fi
 
 - Read `acceptance-criteria.yaml` and `build-notes.md`. If the build notes show critical
   health-check findings or a failed smoke test, say so and let the partner decide.
-- Work in the agent's folder, `work/<agent-name>/`, and run the
+- **On the MCP path** (the default): the account check is the customer and its IDN from
+  `get_customers`, said back once per session
+  ([AGENTS.md, section 4](../../AGENTS.md#4-how-you-reach-the-platform)).
+- **On the CLI path:** work in the agent's folder, `work/<agent-name>/`, and run the
   [setup check](../../docs/setup-check.md) there (rules: [README.md, "Set up"](../../README.md#set-up)).
   Repeat `newo profile` before every change you make while fixing. If the `.env` holds keys for
   several accounts (not recommended), pass the same `--customer <idn>` to `newo profile` as to the
@@ -33,6 +36,12 @@ Show the plan; write the files after a "yes".
 - **Scripted:** `newo test tests/<file>.yaml --json`. Read the JSON, not only the exit code:
   exit 1 covers a failed turn, a timeout, skipped turns and a setup error alike. Do not save the
   JSON in `work/`: it holds the conversation text.
+- **Through the MCP** (no CLI): run each chat check as a practice chat through the MCP's sandbox
+  connector **(to confirm: how a sandbox connector is named in `get_connectors`)**. Start a new
+  conversation for every check **(to confirm: how the MCP starts one)**. Send the check's turns in
+  order, then read the replies and that session's logs, and judge them as in step 3. Note in the
+  report that the check ran through the MCP. Saved `newo test` files need the CLI
+  ([docs/02, "Which path"](../../docs/02-access-and-tools.md#which-path)).
 - **Calls:** you cannot call. Give the person each call check's `steps`, ask when and from which
   number they called, then find that conversation among the newest ones
   (`GET /api/v1/bff/conversations/user-personas?page=1&per=10`, then

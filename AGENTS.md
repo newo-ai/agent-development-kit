@@ -30,11 +30,35 @@ agent-development-kit/
      [get-unstuck](skills/get-unstuck/SKILL.md).
    - "Contact Newo", "open a ticket", anything only Newo can do (a number, porting, SIP
      allowlisting, a platform bug): [draft-support-request](skills/draft-support-request/SKILL.md).
-   - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
+   - "Deliver an agent for my customer", "what do we do first":
      [delivery/](delivery/README.md), the stages from requirements to production.
-   - "Start discovery", "write the SOW", "acceptance criteria", "check feasibility", "plan the
-     project", "start UAT", "prepare go-live", "email the customer", "get sign-off": the
-     matching skill in [skills/](skills/README.md).
+   - Delivery skills ([skills/](skills/README.md)), with their stage. The person need not name
+     the skill:
+     - "Here are my call notes", "start a new agent", "start discovery":
+       [gather-requirements](skills/gather-requirements/SKILL.md) (01).
+     - "Write the acceptance criteria", "what will we test":
+       [write-acceptance-criteria](skills/write-acceptance-criteria/SKILL.md) (01).
+     - "Can the agent do X", "is this possible":
+       [check-feasibility](skills/check-feasibility/SKILL.md) (01).
+     - "Write the SOW", "the customer wants a quote", "send them a proposal":
+       [draft-sow](skills/draft-sow/SKILL.md) (01).
+     - "The customer approved", "when can we launch", "timeline", "what do I need to request":
+       [plan-project](skills/plan-project/SKILL.md) (01).
+     - "Are we ready to build", "is the SOW complete":
+       [check-discovery-gate](skills/check-discovery-gate/SKILL.md) (01).
+     - "Build it", "set up the agent from the SOW": [build-agent](skills/build-agent/SKILL.md) (02).
+     - "The agent should ask X before booking", "add a flow":
+       [adjust-scenarios](skills/adjust-scenarios/SKILL.md) (02).
+     - "Is it ready for the customer", "run the tests": [run-tests](skills/run-tests/SKILL.md) (03).
+     - "Start UAT", "the customer wants to try it": [run-uat](skills/run-uat/SKILL.md) (04).
+     - "Go live", "forward the calls", "is it ready to go live":
+       [prepare-go-live](skills/prepare-go-live/SKILL.md) (04).
+     - "Get sign-off", "hand it over": [collect-signoff](skills/collect-signoff/SKILL.md) (04).
+     - "Email the customer", "update the customer":
+       [draft-customer-comms](skills/draft-customer-comms/SKILL.md) (any).
+     - "Make a Word file": [export-docx](skills/export-docx/SKILL.md) (any).
+     - "Report a mistake in the kit", "share what we learned":
+       [github-workflow](skills/github-workflow/SKILL.md) (any).
    - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
      (how to talk to the owner, how to create an agent, rules, how to call the API).
    - "Create an agent": [docs/assistant-guide.md, "Create the agent"](docs/assistant-guide.md#create-the-agent).
@@ -43,7 +67,8 @@ agent-development-kit/
    - What a setting means, its format, examples: [reference/attributes/index.md](reference/attributes/index.md).
    - The exact API request: [reference/api.md](reference/api.md) (Flow Designer V2) or
      [reference/api-v1.md](reference/api-v1.md) (old designer).
-   - "Put the agent to work", "forward calls at night", "forward after two rings": [playbooks/night-launch.md](playbooks/night-launch.md),
+   - "Put the agent to work" outside a delivery, "forward calls at night", "forward after two
+     rings": [playbooks/night-launch.md](playbooks/night-launch.md),
      [docs/telephony/go-live.md](docs/telephony/go-live.md).
      Forward FROM the business number TO the AI phone number (`project_representative_agent_voice_phone_number`).
    - "Keep my phone number", "SIP": [playbooks/connect-phone-line.md](playbooks/connect-phone-line.md),
@@ -58,7 +83,7 @@ agent-development-kit/
    - "The agent does not know X", Knowledge Studio does not work: [docs/debugging/search-debug.md](docs/debugging/search-debug.md),
      [docs/debugging/studio-troubleshooting.md](docs/debugging/studio-troubleshooting.md).
    - "Check my agent", "why does it say X", "how do I make it do Y": [docs/07-health-check.md](docs/07-health-check.md).
-   - "Test it": [docs/testing](docs/testing/README.md).
+   - "Test it" outside a delivery: [docs/testing](docs/testing/README.md).
    - "Change the voice model / voice / speech recognizer", any connector setting: [docs/08](docs/08-connector-settings.md).
      Every setting the portal can change, the API can change. Never say "not possible through the API" before reading that page.
    - "Add our documents / FAQ / price list": [docs/06-knowledge.md](docs/06-knowledge.md).
@@ -114,12 +139,16 @@ agent-development-kit/
       real business only after a "yes" for that exact action, and cancel test bookings afterwards.
 11. **Never leave the person stuck.** When they are lost or a step fails twice the same way,
     follow [get-unstuck](skills/get-unstuck/SKILL.md): one next step, or a drafted request to Newo.
+12. **Act on the closest match.** Pick the skill or stage page that fits best, say which one you
+    are using, and go. Ask only when two paths would change different things. Not being sure is
+    no reason to stop: when nothing fits, use [get-unstuck](skills/get-unstuck/SKILL.md).
 
 ## 4. How you reach the platform
 
 - **Setup:** follow [README.md, "Set up"](README.md#set-up) and the
   [setup check](docs/setup-check.md). The Newo Customer MCP by default, the CLI only for what the
-  MCP can't do, one folder and one key per agent in `work/`. Don't ask the person to pick a tool.
+  MCP can't do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path)), one folder and
+  one key per agent in `work/`. Don't ask the person to pick a tool.
 - **Account check before every change:** compare with `Account idn` in `build-notes.md` when that
   file exists; otherwise say the account's name and IDN back and get one "yes" per session
   ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any

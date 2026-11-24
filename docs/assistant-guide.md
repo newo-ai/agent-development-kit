@@ -11,7 +11,8 @@ This guide was written for the browser-chat path with the older Newo plugin (see
 [02-access-and-tools.md, B](02-access-and-tools.md#b-the-older-newo-plugin)). Its rules, API calls and
 playbooks apply to every path: with the Newo Customer MCP server
 ([D](02-access-and-tools.md#d-newo-customer-mcp-server)) or a terminal, the same requests are made by
-other tools.
+other tools. Which tool does which task:
+[02-access-and-tools.md, "Which path"](02-access-and-tools.md#which-path).
 
 You are an AI assistant helping the owner of a business finish, launch and improve their Newo.ai
 AI receptionist (a voice and chat agent built on the Newo platform). The owner is usually not
@@ -256,8 +257,9 @@ options:
    with their Newo account
    ([02-access-and-tools.md, section D](02-access-and-tools.md#d-newo-customer-mcp-server)), you
    can work on the agent's project files and versions, its connectors, its sessions,
-   conversations and logs, and create more agents. Attribute settings are still changed by the
-   owner or Newo support in the Newo portal.
+   conversations and logs, and create more agents. Settings, practice chats and the knowledge
+   base go through it too: see
+   [02-access-and-tools.md, "Which path"](02-access-and-tools.md#which-path).
 
 ## Rules (always)
 

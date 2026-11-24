@@ -25,6 +25,9 @@ time; collect the rest under "Open questions".
 
 ## Before you start
 
+Use the tool that [docs/02, "Which path"](../../docs/02-access-and-tools.md#which-path) picks
+for each task. Never ask the person which tool.
+
 1. **The discovery gate passed.** Read in `work/<agent-name>/`: `requirements.md`,
    `acceptance-criteria.yaml`, `sow.md`, and `feasibility.md` if there is one. If the gate was not
    checked, offer to run [check-discovery-gate](../check-discovery-gate/SKILL.md) first. Without

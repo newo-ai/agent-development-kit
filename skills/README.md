@@ -58,6 +58,7 @@ The rules in [AGENTS.md](../AGENTS.md) apply. In particular:
 ## Status
 
 First version (November 2026). These skills are early: run them, check the output, and report
-what was wrong or missing ([CONTRIBUTING.md](../CONTRIBUTING.md)). Packaging as a Claude Code or
-Codex plugin is planned; until then, open this repository in your coding assistant and ask for
-the task by name ("run gather-requirements on my call notes").
+what was wrong or missing ([CONTRIBUTING.md](../CONTRIBUTING.md)). Open this repository in your
+coding assistant and say what you need ("here are my call notes"): the assistant picks the skill
+from what you ask ([AGENTS.md, section 2](../AGENTS.md#2-find-your-path)). Packaging as a Claude
+Code or Codex plugin is planned.
