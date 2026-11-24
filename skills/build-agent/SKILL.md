@@ -94,7 +94,8 @@ For every change:
    change. One check does not prove the other. Compare the IDN with `Account idn` in
    `build-notes.md` ([setup check, check 3](../../docs/setup-check.md#3-the-right-account)); if
    they differ, stop. Before a change callers will notice (publish, test mode, phone, transfers),
-   say the account's name back to the partner.
+   say the account's name back to the partner. If the `.env` holds keys for several accounts (not
+   recommended), pass the same `--customer <idn>` to `newo profile` as to the change.
 3. Make the change. For a setting, send the whole attribute, not only the value
    ([docs/03](../../docs/03-configure-and-customize.md#changing-an-attribute)).
 4. Read it back.

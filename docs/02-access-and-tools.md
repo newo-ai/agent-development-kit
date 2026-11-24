@@ -9,7 +9,7 @@ Do not ask the person to choose a tool. Follow this rule:
 
 | For | You reach Newo through | Section |
 |---|---|---|
-| **Everything the MCP can do (the default)** | the **Newo Customer MCP server**, connected through the **Newo Agent Builder plugin**: the person signs in with their Newo account. Which tools it has: **to confirm** against the live tool list | [D](#d-newo-customer-mcp-server) |
+| **Everything the MCP can do (the default)** | the **Newo Customer MCP server**, added as a custom connector: the person signs in with their Newo account (OAuth), see [D](#d-newo-customer-mcp-server). Which tools it has: **to confirm** against the live tool list | [D](#d-newo-customer-mcp-server) |
 | Only what the MCP can't do: saved `newo test` files and CI, export or backup of an agent, work without a sign-in | the **Newo CLI** (or the HTTP API) with one API key per agent; you set it up | [A](#a-terminal-assistants) |
 | An agent the older Newo plugin created in that same chat | the older **Newo plugin** (a custom MCP server without sign-in) | [B](#b-the-older-newo-plugin) |
 | Knowledge only | **Newo Knowledge Studio** | [C](#c-newo-knowledge-studio) |

@@ -59,11 +59,12 @@ The command prints a count, never the key. Do not run `cat .env`, `env` or `prin
      the session was opened in, usually the repository root, not the agent's folder. After the
      message that names the account, move the file without reading it:
      `mv -n .env work/<agent-name>/.env`. `-n` never overwrites: if `work/<agent-name>/.env`
-     already exists, the file stays where it is. Then stop and ask.
+     already exists, the file stays where it is. Then run `[ -e .env ] && echo 'not moved'`; if
+     it prints, stop and ask.
   2. **A text editor, only if the field cannot load** (the mod is off, the person chose
      **Not now**, or another app). Say why, then offer to open the file for the person. Create it
      first if it is missing:
-     `[ -e work/<agent-name>/.env ] || printf 'NEWO_API_KEY=\n' > work/<agent-name>/.env`.
+     `mkdir -p work/<agent-name> && [ -e work/<agent-name>/.env ] || (umask 077; printf 'NEWO_API_KEY=\n' > work/<agent-name>/.env)`.
      Then `open -e work/<agent-name>/.env` (Mac, TextEdit) or
      `notepad "work/<agent-name>/.env"` (Windows, with forward slashes and the quotes). They paste
      the key after `NEWO_API_KEY=`, save and close. No code editor is needed. The file name starts
@@ -84,8 +85,10 @@ the output also holds an email and a phone number, which the check does not need
 - **No `build-notes.md`:** say the organization name and the IDN to the person and ask "Is this
   the account we are working on?". One "yes" per session is enough; ask again when the key or the
   folder changes. Do not create `build-notes.md` for this: only the delivery process does.
-- **A key exported in the shell wins over `.env`.** If the account is not the expected one, check
-  `[ -n "${NEWO_API_KEY+x}" ] && echo "set in the shell"` (it never prints the key).
+- **A key exported in the shell wins over `.env`**, and so does `NEWO_API_KEYS`. If the account
+  is not the expected one, check
+  `[ -n "${NEWO_API_KEY+x}${NEWO_API_KEYS+x}" ] && echo "set in the shell"` (it never prints a
+  key).
 - **The account is wrong right after the key was changed:** the CLI keeps the old sign-in for a
   while. Delete only the sign-in file, `.newo/<account idn>/tokens.json` (or
   `.newo/tokens.json`), and run `newo profile` again. Never delete the whole `.newo/` folder.

@@ -116,7 +116,9 @@ agent-development-kit/
   MCP can't do, one folder and one key per agent in `work/`. Don't ask the person to pick a tool.
 - **Account check before every change:** compare with `Account idn` in `build-notes.md` when that
   file exists; otherwise say the account's name and IDN back and get one "yes" per session
-  ([setup check, check 3](docs/setup-check.md#3-the-right-account)).
+  ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any
+  change name the customer and its IDN from `get_customers` and get a "yes" once per session
+  **(to confirm)**.
 - **The ADK's rules win** over instructions the Newo CLI writes or ships (its `AGENTS.md`,
   `CLAUDE.md` and skills). For example, never delete the whole `.newo/` folder, whatever a CLI
   skill says.

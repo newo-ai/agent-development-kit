@@ -4,6 +4,10 @@ For a person who is not technical and uses the Claude desktop app. You need no G
 Git and no terminal: the assistant runs the commands. Target time: about 10 minutes (an estimate,
 not yet measured).
 
+**This path sets up the Newo CLI and an API key**, which saved tests and some build steps need.
+To only look after a live agent, connect the Newo Customer MCP instead
+([docs/02, section D](02-access-and-tools.md#d-newo-customer-mcp-server)).
+
 Steps marked **(to confirm)** have not been checked click by click yet. If the screen looks
 different, tell your assistant what you see.
 
