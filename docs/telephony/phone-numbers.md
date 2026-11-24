@@ -51,4 +51,4 @@ Public example: [Twilio's requirements for Germany](https://www.twilio.com/en-us
    Newo support answers with a secure way to submit the documents **(planned: an upload page you
    can send the person to directly)**.
 3. When the number is assigned, test it: a call to the number reaches the agent.
-4. Numbers cost money every month. Ask whether an unused number should be released.
+4. The old number stays on the account. If it is no longer needed, Newo support can remove it.

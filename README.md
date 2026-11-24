@@ -37,7 +37,7 @@ agent:
 ```
 agent-development-kit/          this repository; read it, do not edit it for one agent
 └── work/                       your agents; Git ignores this folder
-    ├── northfield-hvac/        one agent = one folder
+    ├── <agent-name>/           one agent = one folder
     │   ├── .env                this agent's API key, and nothing else
     │   ├── build-notes.md      the agent's notes; "Account idn" says which account it is
     │   └── newo_customers/     what `newo pull` downloads
@@ -45,7 +45,8 @@ agent-development-kit/          this repository; read it, do not edit it for one
 ```
 
 **One API key per agent.** Each agent folder has its own `.env` with one line,
-`NEWO_API_KEY=...`. The person types the key into that file, never into a chat. Run every `newo`
+`NEWO_API_KEY=...`. The person puts the key there through the key field in the Claude desktop app
+or a text editor, never through a chat ([setup check, step 2](docs/setup-check.md#2-key-found)). Run every `newo`
 command from inside the agent's folder: the CLI reads the `.env` of the folder you are in. One
 `.env` with keys for several accounts (`NEWO_API_KEYS`) works, but it is not recommended: a
 command without `--customer` then goes to the default account.

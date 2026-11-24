@@ -117,7 +117,7 @@ agent-development-kit/
   use and follow the path table in [README.md, "Set up"](README.md#set-up). Not sure: the Claude
   desktop app with the CLI.
 - **Folder layout:** `agent-development-kit/` → `work/` → one folder per agent, for example
-  `work/northfield-hvac/`. Git ignores `work/`. Never put an agent's files anywhere else in this
+  `work/<agent-name>/`. Git ignores `work/`. Never put an agent's files anywhere else in this
   repository.
 - **One API key per agent:** each agent folder has its own `.env` with `NEWO_API_KEY`. Run `newo`
   only from inside that folder. Several keys in one `.env` (`NEWO_API_KEYS`) is not recommended.

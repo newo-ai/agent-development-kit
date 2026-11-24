@@ -21,7 +21,7 @@ safely.
 3. Open the connector again and copy the key. It appears only after saving.
 
 The person puts the key into the `.env` file of the agent's folder **themselves**, for example
-`work/northfield-hvac/.env` with the line `NEWO_API_KEY=...`, and `.env` must be in `.gitignore`.
+`work/<agent-name>/.env` with the line `NEWO_API_KEY=...`, and `.env` must be in `.gitignore`.
 Never ask them to paste the key into a chat. One agent, one folder, one key: see the
 [folder layout](../README.md#set-up). Several keys in one `.env` (`NEWO_API_KEYS`) works but is not
 recommended. Then run the [setup check](setup-check.md).

@@ -22,7 +22,7 @@ different, tell your assistant what you see.
 3. **Paste the starter message.** Change the business name:
 
    ```text
-   Read AGENTS.md. I want to work on the Newo agent for Northfield HVAC. Make a folder for it
+   Read AGENTS.md. I want to work on the Newo agent for [Business Name]. Make a folder for it
    in work/, help me put the API key in its .env file, and run the setup check. I am not
    technical: explain each step in plain words and ask before you change anything.
    ```
@@ -33,9 +33,14 @@ different, tell your assistant what you see.
 5. **Create the API key in Newo.** Sign in at https://app.newo.ai, choose the account, open
    **Builder** → **Integrations** → **API Integration**, create a connector (any name, for
    example `newo-cli`) and save it. Open it again and copy the key.
-6. **Put the key in the file, not in the chat.** The assistant creates the `.env` file in the
-   agent's folder and opens it for you **(to confirm)**. Paste the key after `NEWO_API_KEY=`, save,
-   close the file, and type "done". Never paste the key into the chat.
+6. **Paste the key into the key field, not into the chat.** The assistant opens a field for the
+   Newo API key above the prompt. The first time, Claude asks whether to turn on the mods written in
+   this session: allow it. Paste the key into the field and press Enter. The key goes straight into
+   a file, the assistant never sees it, and you get a message with the account's name. You don't
+   need a code editor.
+   - If the field does not appear, the assistant opens the key file in TextEdit (Mac) or Notepad
+     (Windows) instead. Paste the key after `NEWO_API_KEY=`, save, close the file and type "done".
+   - Never paste the key into the chat.
 7. **Read the setup check.** The assistant runs the [setup check](setup-check.md) and gives you
    four lines. It says the account name: check that it is the right business. All four pass: you
    are ready.

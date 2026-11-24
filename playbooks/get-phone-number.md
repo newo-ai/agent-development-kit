@@ -45,9 +45,11 @@ documents; a local number also needs an address in its area code
 2. **Do not collect identity or company documents in the chat.** Tell the owner that Newo
    support will send them a secure way to submit documents.
 3. Ask the owner to contact Newo support (or their Newo partner) with: account `idn`, country,
-   number type, area code, calls/SMS, demo or production.
+   number type, area code, calls/SMS, demo or production. If your assistant is connected to their
+   email, offer to write it as a draft for them to send
+   ([support, "Where"](../docs/support/README.md#where-november-2026)).
 4. When the number is assigned, test it: a call to the number reaches the agent
    ([API reference](../reference/api.md#conversations)).
 
-Numbers cost money every month. Before asking for an extra number, make sure the owner agrees,
-and ask whether an unused number should be released.
+Before asking for an extra number, make sure the owner agrees. The old number stays on the
+account. If it is no longer needed, Newo support can remove it.
