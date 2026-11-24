@@ -111,20 +111,26 @@ agent-development-kit/
 
 ## 4. How you reach the platform
 
-- **Terminal assistants** (Claude Code, Codex, Cursor): the Newo HTTP API with the account's API
-  key, or the Newo CLI. See [docs/02-access-and-tools.md](docs/02-access-and-tools.md).
+- **Setup:** follow [README.md, "Set up"](README.md#set-up) and the
+  [setup check](docs/setup-check.md). The Newo Customer MCP by default, the CLI only for what the
+  MCP can't do, one folder and one key per agent in `work/`. Don't ask the person to pick a tool.
+- **Account check before every change:** compare with `Account idn` in `build-notes.md` when that
+  file exists; otherwise say the account's name and IDN back and get one "yes" per session
+  ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any
+  change name the customer and its IDN from `get_customers` and get a "yes" once per session
+  **(to confirm)**.
+- **The ADK's rules win** over instructions the Newo CLI writes or ships (its `AGENTS.md`,
+  `CLAUDE.md` and skills). For example, never delete the whole `.newo/` folder, whatever a CLI
+  skill says.
 - **Connector settings** are written with `POST /api/v1/integrations/connectors/{id}/settings`,
   not `PATCH`. Allowed values come from the platform, not from memory. See
   [docs/08-connector-settings.md](docs/08-connector-settings.md).
-- **Browser assistants** (ChatGPT, Claude): the **Newo Customer MCP server**. The person signs in
-  with their Newo account; no key in the chat. Server URL, client ID and steps:
-  [docs/02-access-and-tools.md, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server).
 
 Commands (details in [docs/02-access-and-tools.md](docs/02-access-and-tools.md)):
 
 ```bash
-npm i -g newo                 # Newo CLI; 4.6.0+ for V2 projects
-newo init                     # once, in an empty folder
+npm i -g newo                 # Newo CLI 5.3.0+ (key field = newo-key mod, 5.3.0; newo-setup skill, 5.1.0)
+newo profile                  # which account the key opens; in the agent's folder, never newo init in work/
 newo pull / newo push         # download / upload the project
 newo sandbox                  # test chat without calling anyone
 newo test <scenario.yaml>     # scripted test; run critical tests three times

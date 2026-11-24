@@ -3,10 +3,16 @@
 One standard for every assistant and every partner, so Newo can act fast and learn from every
 case.
 
-## Where (November 2026)
+## Where
+
+As of November 2026:
 
 - **Now:** Newo support at https://help.newo.ai (chat), or the partner's Newo contact. Copy the
   matching template below into the request.
+- **By email:** `partner-support@newo.ai`. If the person's assistant is connected to their email
+  (for example Gmail or Outlook), offer to write the request as a **draft** in their own mailbox,
+  with the matching template below filled in. Never send it: the person reads the draft and sends
+  it. No keys, passwords or callers' personal data in the email.
 - **For public, non-confidential findings** about this knowledge base: an issue in this
   repository with the matching template. **Never** put account-specific details, personal data or
   secrets into a public issue.

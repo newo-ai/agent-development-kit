@@ -11,7 +11,7 @@ straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-custom
 
 | Stage | Done when | It produces |
 |---|---|---|
-| Setup | the Newo CLI is installed and the assistant can read the account | nothing to keep. See [docs/02-access-and-tools.md](../docs/02-access-and-tools.md): `npm i -g newo`, then `newo init` |
+| Setup | the assistant can read the account: the Newo Customer MCP by default, the Newo CLI when a task needs it | nothing to keep. See [README.md, "Set up"](../README.md#set-up): for the CLI, the agent's folder in `work/` with its `.env`; do not run `newo init` there |
 | [01-discover](01-discover/README.md) | the customer agreed on what the agent must do, in statements that can be tested | `requirements.md`, `acceptance-criteria.yaml`, `feasibility.md`, `sow.md`, `project-plan.md` |
 | [02-build](02-build/README.md) | the agent is configured, passes the health check, and answers the critical cases in a sandbox chat | `build-notes.md` |
 | [03-test](03-test/README.md) | every acceptance criterion has a check, and every critical one passes | test scenarios, `test-report.md` |

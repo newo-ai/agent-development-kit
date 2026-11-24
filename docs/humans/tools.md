@@ -4,9 +4,14 @@ Give the person the steps for their tool in one message.
 
 ## Claude Code, Codex, Cursor (terminal or IDE)
 
+By default the assistant uses the Newo Customer MCP
+([02-access-and-tools.md, section D](../02-access-and-tools.md#d-newo-customer-mcp-server)). Set up
+the CLI as below when a task needs it.
+
 1. Install Node.js. Then: `npm i -g newo`.
-2. Make a folder for the business (or one per partner), open a terminal there and run `newo init`.
-   It writes instructions and skills for coding assistants, an empty `.env` and a `.gitignore`.
+2. In this repository, make the agent's folder in `work/`, for example `work/<agent-name>/`, and
+   create its `.env` there ([README.md, "Set up"](../../README.md#set-up)). Do not run `newo init`
+   in it: it writes its own assistant instructions, which compete with this repository's.
 3. The person creates an API key in the Newo portal (Builder → Integrations → API Integration →
    new connector → copy the key) and pastes it into `.env` themselves. See
    [02-access-and-tools.md](../02-access-and-tools.md#a-terminal-assistants).
