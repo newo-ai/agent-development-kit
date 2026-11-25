@@ -6,6 +6,19 @@ them anywhere except back to the owner.
 
 ## 1. Collect the conversations
 
+**Default size.** If the owner names no period and no number, review the **10 most recent
+conversations**. Take more only when the owner asks. Do not download the whole history
+(`newo conversations`) for a review: it has no limit, on a busy agent it runs for minutes, and it
+copies every caller's personal data to your machine.
+
+**Quick path for the newest conversations:**
+`GET /api/v1/bff/conversations/user-personas?page=1&per=10` (newest first) gives each person's
+`last_session_id`. Read each session with `newo session <id> --json`, or with the chat history in
+step 3. A text-message session can hold the person's older history too: split it into
+conversations as in step 4 and keep only the newest one.
+
+For a period the owner names:
+
 1. `GET /api/v1/bff/conversations/user-personas?page=1&per=50` (newest first). Keep personas
    whose `last_act_time` falls in the period the owner asked about. Page on while the last item
    is still inside the period.
@@ -48,3 +61,6 @@ Keep it short:
    (missing information, wrong setting, agent behavior).
 4. Proposed fixes, each as a concrete setting change. Ask which ones to apply, then follow
    [Improve and fix](improve-and-fix.md).
+
+When the report is done, delete the transcripts you downloaded to your machine. This is about
+local files only; nothing on the platform is deleted.

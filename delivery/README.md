@@ -11,7 +11,7 @@ straight to [docs/03-configure-and-customize.md](../docs/03-configure-and-custom
 
 | Stage | Done when | It produces |
 |---|---|---|
-| Setup | the Newo CLI is installed and the assistant can read the account | nothing to keep. See [docs/02-access-and-tools.md](../docs/02-access-and-tools.md): `npm i -g newo`, then `newo init` |
+| Setup | the assistant can read the account: the Newo Customer MCP by default, the Newo CLI when a task needs it | nothing to keep. See [README.md, "Set up"](../README.md#set-up): for the CLI, the agent's folder in `work/` with its `.env`; do not run `newo init` there |
 | [01-discover](01-discover/README.md) | the customer agreed on what the agent must do, in statements that can be tested | `requirements.md`, `acceptance-criteria.yaml`, `sow.md`; optional `feasibility.md`, `project-plan.md` |
 | [02-build](02-build/README.md) | the agent is configured, passes the health check, and answers the critical cases in a sandbox chat | `build-notes.md` |
 | [03-test](03-test/README.md) | every acceptance criterion has a check, and every critical one passes | test scenarios, `test-report.md` |
@@ -22,7 +22,7 @@ Each stage page says what to do, links to the pages and the [playbooks](../playb
 of this repository that explain how, and has templates for what it produces. A playbook is one
 task on one agent, step by step; a stage says when to run it and what must be true after it.
 
-Stages 01-discover and 04-launch have skills that run each step: see [skills/](../skills/README.md).
+Stages 01-discover to 04-launch have skills that run each step: see [skills/](../skills/README.md).
 
 ## How to use the stages
 

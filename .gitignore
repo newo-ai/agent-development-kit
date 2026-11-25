@@ -4,7 +4,10 @@
 *.key
 *.pem
 
-# Per-agent working files and exports: they belong in the partner's own repository
+# Per-agent working files and exports: kept out of this repository (work/ is where agent work
+# happens, see README "Set up"; make it its own repository or a synced folder for backups).
+# First add a .gitignore in work/ with .env, .env.* and .newo/, and keep that repository
+# private. A synced folder (iCloud, Dropbox, OneDrive) also syncs the keys.
 work/
 exports/
 newo_customers/

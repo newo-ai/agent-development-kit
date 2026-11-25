@@ -1,3 +1,6 @@
-# Managed by Terraform — do not edit manually
-* @newo-ai/pd-sas
-/.github/ @newo-ai/DevOps
+# Code owners: one approval from an owner of every changed path is needed to merge into main.
+# The last matching line wins, so a team that must approve everywhere is repeated on each line.
+*          @newo-ai/ai-agent-engineering
+/skills/   @newo-ai/ai-agent-engineering @newo-ai/pd-sas
+/delivery/ @newo-ai/ai-agent-engineering @newo-ai/pd-sas
+/.github/  @newo-ai/DevOps

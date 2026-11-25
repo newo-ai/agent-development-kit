@@ -15,6 +15,8 @@ to test and in which order.
 
 ## Steps
 
+The skill [run-tests](../../skills/run-tests/SKILL.md) runs these steps with the person.
+
 1. **Turn each criterion into checks.**
    - What the agent **says** (facts, rules, refusals, the booking dialog): a scripted chat test.
      One scenario file per criterion, named after it: `tests/AC-001-booking.yaml`. The format is

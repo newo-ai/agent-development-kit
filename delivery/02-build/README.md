@@ -16,6 +16,8 @@ If the customer has no agent yet, create it first:
 
 ## Steps
 
+The skill [build-agent](../../skills/build-agent/SKILL.md) runs these steps with the person.
+
 1. **Read first, and keep a copy.** Read all settings once and save them to a local file
    ([health check, step 1](../../docs/07-health-check.md#step-1-read-everything-once)); with the
    CLI, `newo pull` downloads the settings and the code. This copy is how you put a value back.
@@ -42,7 +44,8 @@ If the customer has no agent yet, create it first:
    callers yet; that is [04-launch](../04-launch/README.md).
 7. **Change scenarios only for what is left.** Go through the criteria that settings, knowledge
    and tools did not cover, and change the conversation logic for those
-   ([docs/05-scenarios.md](../../docs/05-scenarios.md)).
+   ([docs/05-scenarios.md](../../docs/05-scenarios.md); skill:
+   [adjust-scenarios](../../skills/adjust-scenarios/SKILL.md)).
 8. **Run the health check** ([docs/07-health-check.md](../../docs/07-health-check.md)) and fix
    every critical finding.
 9. **Smoke-test in a sandbox chat.** For each `critical` criterion, have one short conversation

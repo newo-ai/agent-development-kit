@@ -1,8 +1,6 @@
 # reference/ — exact API and attribute formats
 
-Earned its own file: score 10 (28 files, 77% of the repository's bytes, 100 inbound links).
-Guides and procedures live in ../docs/ and ../playbooks/; this tree is the source of exact
-formats.
+The source of exact formats. Guides and procedures live in ../docs/ and ../playbooks/.
 
 ## WHERE TO LOOK
 

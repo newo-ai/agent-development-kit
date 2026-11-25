@@ -6,8 +6,9 @@
   the agent, most recent first, with their actors. Then
   `GET /api/v1/chat/history?user_actor_id=<actor>` returns the messages, newest first. See
   [API reference, Conversations](../../reference/api.md#conversations).
-- **CLI:** `newo conversations`, or `newo conversations --session-id <uuid>` for one session's
-  transcript.
+- **CLI:** `newo session <uuid> --json` for one session's transcript (the session id is
+  `last_session_id` from the request above). Not `newo conversations` without `--session-id`: it
+  downloads the whole history, with no limit.
 - Real callers are often named `User`: the name tells you nothing. Use the time and the number.
 - Skip internal personas: `Assessor`, `ConvoAgent`, `vibe_...`, `newo-cli-...`, `setup-test-...`.
   A burst of many calls within minutes with scripted questions is usually an automated test.
