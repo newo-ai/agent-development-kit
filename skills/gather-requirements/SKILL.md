@@ -29,15 +29,16 @@ Stage: [01-discover](../../delivery/01-discover/README.md), steps 1 and 2. Produ
 1. **Read what exists.** If the agent was already created from the website, read its current
    settings first (see [docs/02-access-and-tools.md](../../docs/02-access-and-tools.md)). Much of
    the business information may already be there.
-2. **Map the notes to the template.** Fill each section of `requirements.md` from the notes. Use
-   the person's words for what callers want. Where the notes do not answer a question, leave the
-   field empty and add the question to "Open questions and risks". Never fill a gap with a guess.
-   Mark a statement the business makes about itself that you cannot check ("we answer every call
-   within a minute") as the customer's claim, and leave out numbers that contradict each other
-   until the customer confirms them.
-3. **List what the agent handles.** One numbered item per caller intent: what the caller wants,
-   how the agent handles it (puts them through, takes details and passes them on, or answers
-   itself), what "done" looks like, and who gets the report. Mark which ones differ after hours.
+2. **Map the notes to the template.** Fill each section of `requirements.md` from the notes. Use the
+   person's words for what callers want. Where the notes do not answer a question, leave the field
+   empty and add the question to "Open questions and risks". Never fill a gap with a guess. Mark a
+   statement the business makes about itself that you cannot check ("we answer every call within a
+   minute") as the customer's claim. List numbers that contradict each other under "Open questions
+   and risks" and ask the customer which is right.
+3. **List what the agent handles.** One numbered item per caller intent: what the caller wants, how
+   the agent handles it (puts them through, takes details and passes them on, answers itself, or
+   books or orders itself), what "done" looks like, and who gets the report. Mark which ones differ
+   after hours.
 4. **List what goes to a person** and what the agent must never do or say. These become critical
    acceptance criteria later, so be specific: "never quote a price for implants", not "be careful
    with prices". Ask for the hours someone actually answers a transfer, which are often shorter
@@ -69,7 +70,7 @@ Stage: [01-discover](../../delivery/01-discover/README.md), steps 1 and 2. Produ
 - Every section is filled or its gap is listed under "Open questions and risks".
 - Every system has its access type, owner and test-account answer.
 - Every red flag has an owner.
-- Every case in "What the agent handles" has one of the three ways and a report recipient, and
+- Every case in "What the agent handles" has one of the four ways and a report recipient, and
   appears in `call-flow.md`.
 - The file contains no personal data, keys or passwords.
 

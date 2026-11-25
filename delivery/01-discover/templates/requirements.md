@@ -21,11 +21,12 @@ No callers' personal data, API keys or passwords in this file.
 ## What the agent handles
 
 For each case: what the caller wants, how the agent handles it, what "done" looks like, and
-who gets the report. How the agent handles it is one of three ways: **puts them through** to a
-person, **takes details and passes them on**, or **answers itself** from approved information.
+who gets the report. How the agent handles it is one of four ways: **puts them through** to a
+person, **takes details and passes them on**, **answers itself** from approved information, or
+**books or orders itself** in the business's system.
 
-1. [What the caller wants] · [puts through / takes details / answers itself] · done when: [ ] ·
-   report to: [ ]
+1. [What the caller wants] · [puts through / takes details / answers itself / books itself] ·
+   done when: [ ] · report to: [ ]
 2.
 3.
 

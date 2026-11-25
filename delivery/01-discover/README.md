@@ -47,7 +47,7 @@ Worked examples (fictional): [orthodontic practice](examples/orthodontic-practic
    - Add the [baseline criteria](templates/baseline-criteria.md) that apply: transfers in and
      outside transfer hours, unknown answers, ending the call, the report.
    - Give each a priority. `critical` means the agent cannot go live without it.
-   - Keep the list short. 10 to 25 criteria cover most agents.
+   - Keep the list short: 10 to 25 criteria in total, the baseline ones included.
 4. **Check that every criterion can be tested.** For each one, note how: a scripted chat test, a
    phone call, or a check in the other system. If you cannot say how to test it, rewrite it.
 5. **Check that the platform can do it.** For each criterion, find the lowest step of the ladder

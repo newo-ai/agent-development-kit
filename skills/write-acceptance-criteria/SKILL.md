@@ -1,6 +1,6 @@
 ---
 name: write-acceptance-criteria
-description: Turn confirmed requirements into 10 to 25 testable acceptance criteria with stable ids, priorities and at least one check each, in acceptance-criteria.yaml. Use when requirements are confirmed, or when a partner says "write the acceptance criteria", "what will we test", or an agent was built without criteria.
+description: Turn confirmed requirements into 10 to 25 testable acceptance criteria in total (the kept baseline ones included) with stable ids, priorities and at least one check each, in acceptance-criteria.yaml. Use when requirements are confirmed, or when a partner says "write the acceptance criteria", "what will we test", or an agent was built without criteria.
 ---
 
 # Write acceptance criteria
@@ -41,10 +41,12 @@ work from this file.
    what must happen), or a check in the other system. If you cannot say how to test a criterion,
    rewrite it until you can.
 6. **Check the list.**
-   - 10 to 25 criteria of the agent's own, plus the baseline ones kept. More means some are not
-     distinct; fewer usually means limits are missing.
+   - 10 to 25 criteria in total, the kept baseline ones included: a customer can test that many in
+     one UAT round. More means some are not distinct, or baseline ones that do not apply were
+     kept; fewer usually means limits are missing.
    - No criterion uses "well", "friendly", "fast" or "correctly" without saying what that means.
-   - No criterion holds two behaviors joined by "and".
+   - No criterion holds two behaviors joined by "and". One behavior with its expected outcome
+     ("takes a callback request and says someone will call back") is one criterion.
    - Every critical criterion has a check that can fail.
 7. **Show the list** with ids, priorities and checks. Wait for a "yes" before writing.
 8. **Write the file.** Set `agreed_on` only when the customer agrees. From then on the ids are fixed.

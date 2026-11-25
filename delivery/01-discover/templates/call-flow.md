@@ -8,23 +8,24 @@ section 3A, and the final version is part of the handover.
 Write it for a business owner who has never seen the Newo platform:
 - Say "the assistant", not "agent", "intent", "scenario", "procedure" or "attribute".
 - One row per reason people call, in the order of how often they call.
-- Every row uses one of the three ways below, and names the details the assistant collects.
+- Every row uses one of the four ways below, and names the details the assistant collects.
 - Nothing here that is not in `requirements.md` and `acceptance-criteria.yaml`.
 
-## The three ways the assistant handles a call
+## The four ways the assistant handles a call
 
 | Way | What it means for the caller |
 |---|---|
 | **Puts them through** | Connects the caller to a person right away, without extra questions. |
 | **Takes details and passes them on** | Collects what your team needs, sends it to the right person, and tells the caller someone will get back to them. |
 | **Answers itself** | Answers from the information you approved. If it does not know, it says so and takes details instead. |
+| **Books or orders itself** | Makes the booking or takes the order in your booking or ordering system (or sends your booking link), and confirms it to the caller. If it cannot, it says so and takes details instead. |
 
 ## When someone calls
 
 | When someone calls about… | The assistant… | Then… |
 |---|---|---|
 | [Reason 1, e.g. "No heat or no cooling"] | [Way, and what it collects, e.g. "Takes details and passes them on: name, address, what is wrong"] | [Who gets it and how, e.g. "The on-call technician gets a text and an email"] |
-| [Reason 2, e.g. "Booking a tune-up"] | [ ] | [ ] |
+| [Reason 2, e.g. "Booking a tune-up"] | [Books itself: name, phone, address, a time that is free] | [The booking is in your calendar; the caller gets a text confirmation] |
 | [Reason 3, e.g. "Prices, hours, service area"] | [Answers itself] | [If the answer is not in its information: takes details, the office calls back] |
 | Wants to talk to a person | During [hours someone answers]: puts them through. Other times: takes details and passes them on | [Who calls back, e.g. "The office calls back the next working day"] |
 

@@ -34,7 +34,8 @@ A phone change affects real callers at once. Agree on the time of every step wit
    - Record the round in [templates/uat-report.yaml](templates/uat-report.yaml): which criteria
      failed and why.
 2. **Fix what failed, then repeat.** Fix, run all scripted tests again
-   ([03-test](../03-test/README.md), step 6), and let the customer re-test the failed criteria.
+   ([03-test](../03-test/README.md), step 6), and let the customer re-test the failed criteria
+   and the passed ones the fixes could affect.
    Each round is a new `uat_attempt`.
 3. **Go through the go-live checklist:**
    [templates/go-live-checklist.md](templates/go-live-checklist.md).

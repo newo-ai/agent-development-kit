@@ -51,13 +51,13 @@ Stages marked "elected" are optional upgrades the customer chooses.
 ### 3A. Use cases
 
 Every use case lists the acceptance criteria that prove it. A use case without criteria is not in
-scope. "How" is one of three ways: puts them through to a person, takes details and passes them
-on, or answers itself. The customer's plain-language version is the call flow
+scope. "How" is one of four ways: puts them through to a person, takes details and passes them on,
+answers itself, or books or orders itself. The customer's plain-language version is the call flow
 (`call-flow.md`), attached to this SOW.
 
 | Id | What the caller wants | How | Working hours | After hours | Report to | Criteria |
 |---|---|---|---|---|---|---|
-| UC-01 | [New appointment / reservation / order] | [Answers itself / takes details] | [Book / transfer] | [Book / send link / capture] | [ ] | [AC-001, AC-002] |
+| UC-01 | [New appointment / reservation / order] | [Books or orders itself / takes details] | [Book / take the order] | [Book / send link / take details] | [ ] | [AC-001, AC-002] |
 | UC-02 | [Change or cancel] | [ ] | [ ] | [ ] | [ ] | [ ] |
 | UC-03 | [General questions] | [Answers itself] | [Answer from knowledge] | [Same] | [ ] | [ ] |
 | UC-04 | [Speak to a person] | [Puts them through] | [Transfer to …] | [Message to …] | [ ] | [ ] |

@@ -11,7 +11,8 @@ reviewing its output.
 - Says when (working hours, after hours) and on which channel.
 - Includes what the agent must **not** do.
 - Has at least one check: a scripted test, a phone call, or a check in the other system.
-- 10 to 25 per agent. `critical` means the agent cannot go live while it fails.
+- 10 to 25 per agent, the baseline ones included. `critical` means the agent cannot go live while
+  it fails.
 
 ## Pairs
 
