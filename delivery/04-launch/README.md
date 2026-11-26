@@ -26,15 +26,16 @@ A phone change affects real callers at once. Agree on the time of every step wit
 ## Steps
 
 1. **Acceptance test by the customer (UAT).**
-   - Give the customer the list of criteria in plain words, and how to reach the agent: the AI
-     phone number, the chat link.
+   - Give the customer the list of criteria in plain words, each with what counts as right and
+     wrong, and how to reach the agent: the AI phone number, the chat link.
    - The customer tests each criterion and says pass or fail. Do not test for them. If the
      customer will not test (common for small businesses), use the partner-led option in
      [run-uat](../../skills/run-uat/SKILL.md): the customer still decides on the critical criteria.
    - Record the round in [templates/uat-report.yaml](templates/uat-report.yaml): which criteria
      failed and why.
 2. **Fix what failed, then repeat.** Fix, run all scripted tests again
-   ([03-test](../03-test/README.md), step 6), and let the customer re-test the failed criteria.
+   ([03-test](../03-test/README.md), step 6), and let the customer re-test the failed criteria
+   and the passed ones the fixes could affect.
    Each round is a new `uat_attempt`.
 3. **Go through the go-live checklist:**
    [templates/go-live-checklist.md](templates/go-live-checklist.md).

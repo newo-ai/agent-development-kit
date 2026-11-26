@@ -29,14 +29,20 @@ Stage: [01-discover](../../delivery/01-discover/README.md), steps 1 and 2. Produ
 1. **Read what exists.** If the agent was already created from the website, read its current
    settings first (see [docs/02-access-and-tools.md](../../docs/02-access-and-tools.md)). Much of
    the business information may already be there.
-2. **Map the notes to the template.** Fill each section of `requirements.md` from the notes. Use
-   the person's words for what callers want. Where the notes do not answer a question, leave the
-   field empty and add the question to "Open questions and risks". Never fill a gap with a guess.
-3. **List what the agent handles.** One numbered item per caller intent: what the caller wants,
-   what the agent does, what "done" looks like. Mark which ones differ after hours.
+2. **Map the notes to the template.** Fill each section of `requirements.md` from the notes. Use the
+   person's words for what callers want. Where the notes do not answer a question, leave the field
+   empty and add the question to "Open questions and risks". Never fill a gap with a guess. Mark a
+   statement the business makes about itself that you cannot check ("we answer every call within a
+   minute") as the customer's claim. List numbers that contradict each other under "Open questions
+   and risks" and ask the customer which is right.
+3. **List what the agent handles.** One numbered item per caller intent: what the caller wants, how
+   the agent handles it (puts them through, takes details and passes them on, answers itself, or
+   books or orders itself), what "done" looks like, and who gets the report. Mark which ones differ
+   after hours.
 4. **List what goes to a person** and what the agent must never do or say. These become critical
    acceptance criteria later, so be specific: "never quote a price for implants", not "be careful
-   with prices".
+   with prices". Ask for the hours someone actually answers a transfer, which are often shorter
+   than the opening hours, and what happens when nobody answers.
 5. **Check every system.** For each system named, record the answers from
    [integrations, "Ask first"](../../docs/integrations/README.md#ask-first): MCP server, REST API or
    web only; who grants access; whether a test account exists. A missing test account is a risk.
@@ -50,16 +56,22 @@ Stage: [01-discover](../../delivery/01-discover/README.md), steps 1 and 2. Produ
    - health data with no BAA;
    - anything only Newo can do (a number in a given country, SIP allowlisting:
      [operations request](../../docs/support/README.md#operations-request)).
-8. **Show the draft.** Show the filled sections and the open questions. Wait for a "yes" before
-   writing the file.
-9. **Write the file** to `work/<agent-name>/requirements.md` and offer a short confirmation email
-   for the customer ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 2).
+8. **Draft the call flow for the customer** from
+   [call-flow.md](../../delivery/01-discover/templates/call-flow.md): one row per reason people
+   call, in plain words, no platform terms. It is how a non-technical owner checks the agent.
+9. **Show the draft.** Show the filled sections, the call flow and the open questions. Wait for a
+   "yes" before writing the files.
+10. **Write the files** to `work/<agent-name>/requirements.md` and `work/<agent-name>/call-flow.md`,
+    and offer a short confirmation email for the customer with the call flow attached
+    ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 2).
 
 ## Done when
 
 - Every section is filled or its gap is listed under "Open questions and risks".
 - Every system has its access type, owner and test-account answer.
 - Every red flag has an owner.
+- Every case in "What the agent handles" has one of the four ways and a report recipient, and
+  appears in `call-flow.md`.
 - The file contains no personal data, keys or passwords.
 
 ## Next

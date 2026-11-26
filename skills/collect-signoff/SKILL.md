@@ -41,7 +41,9 @@ business, the partner writes everything and the customer only replies "approved"
 5. **Record the answer.** When the customer replies, write it in the confirmation section:
    "approved by email on YYYY-MM-DD by (name, role)". Quote the reply or save the email. No
    signature is needed for the short form.
-6. **Hand over** with template 8, written for the customer's real role.
+6. **Hand over** with template 8, written for the customer's real role. Attach the final
+   `call-flow.md`, updated for anything that changed during testing, so the customer keeps a
+   one-page picture of what the agent does.
 
 ## Done when
 
