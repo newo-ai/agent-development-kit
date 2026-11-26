@@ -9,27 +9,29 @@ Do not ask the person to choose a tool. Pick it from this table, say which one y
 
 | Task | Use | Section |
 |---|---|---|
-| Find the account and its IDN (the account check) | the **Newo Customer MCP** (`get_customers`) | [D](#d-newo-customer-mcp-server) |
-| Create a new agent from a website or Google Maps link | the MCP (`create_customer`, then `get_run`) | [D](#d-newo-customer-mcp-server) |
-| Read conversations and logs | the MCP | [D](#d-newo-customer-mcp-server) |
-| Read and change project files, versions; activate a version | the MCP | [D](#d-newo-customer-mcp-server) |
-| A practice chat with the agent (sandbox) | the MCP | [D](#d-newo-customer-mcp-server) |
-| Read and change settings (attributes) | the MCP | [D](#d-newo-customer-mcp-server) |
-| The knowledge base | the MCP; search debugging in Knowledge Studio | [D](#d-newo-customer-mcp-server), [C](#c-newo-knowledge-studio) |
-| Connector settings | the MCP | [D](#d-newo-customer-mcp-server), [08](08-connector-settings.md) |
-| Saved `newo test` files and CI | the **Newo CLI**, one API key per agent **(to confirm)** | [A](#a-terminal-assistants) |
-| Export or backup of an agent | the CLI **(to confirm)** | [A](#a-terminal-assistants) |
-| Work without a sign-in (scripts, automation) | the CLI or the HTTP API **(to confirm)** | [A](#a-terminal-assistants) |
+| Find the account and its IDN (the account check) | the **Newo Customer MCP** (`get_customers`) **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| Create a new agent from a website or Google Maps link | the MCP (`create_customer`, then `get_run`) **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| Read conversations and logs | the MCP **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| Read and change project files, versions; activate a version. Project files include NAF code: rule 6 and [04](04-naf-change-policy.md) apply | the MCP **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| A practice chat with the agent (sandbox) | the MCP **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| Read and change settings (attributes) | the MCP **(to confirm)** | [D](#d-newo-customer-mcp-server) |
+| The knowledge base | the MCP **(to confirm)**; search debugging in Knowledge Studio | [D](#d-newo-customer-mcp-server), [C](#c-newo-knowledge-studio) |
+| Connector settings | the MCP **(to confirm)** | [D](#d-newo-customer-mcp-server), [08](08-connector-settings.md) |
+| Saved `newo test` files and CI | the **Newo CLI**; sign in with `newo login` | [A](#a-terminal-assistants) |
+| Export or backup of an agent | the CLI; sign in with `newo login` | [A](#a-terminal-assistants) |
+| Work without a sign-in (scripts, automation) | the CLI or the HTTP API with an API key; key sign-in is deprecated, use it only where `newo login` is refused | [A](#a-terminal-assistants) |
 | An agent the older Newo plugin created in that same chat | the older **Newo plugin** | [B](#b-the-older-newo-plugin) |
 | Phone numbers, porting, SIP allowlist | Newo only: [draft-support-request](../skills/draft-support-request/SKILL.md) | [support](support/README.md) |
 | Edit a scenario card | neither: the person, by hand in the Workflow Builder ([SOP](sop/edit-a-scenario.md)) | [05](05-scenarios.md) |
 
-MCP column: from the server's live tool list, November 2026; to confirm with the Newo platform
-team. After connecting, the server's own tool list is the source of truth.
+MCP rows: checked against the live tool list on: **(to confirm)**. Until a date is here, treat each
+MCP row as a plan, not a fact. Section [D](#d-newo-customer-mcp-server) lists what the server is
+known to cover. After connecting, the server's own tool list is the source of truth: if a row's
+tool is missing, say so and use the CLI for that task.
 
-- The MCP is the default. A CLI row marked **(to confirm)** has not been checked yet.
-- Use the CLI only for a task the MCP can't do. Then set it up for that task. The person creates a
-  key only when you ask ([SOP: get an API key](sop/get-api-key.md)).
+- The MCP is the default. Use the CLI only for saved `newo test` files, CI, export or backup, or
+  when the MCP has no tool for the task. Then set it up for that task: the person signs in with
+  their Newo account ([SOP: sign in to the CLI](sop/get-api-key.md)).
 - If an MCP tool for a row fails, say so, try once more, then follow
   [get-unstuck](../skills/get-unstuck/SKILL.md).
 

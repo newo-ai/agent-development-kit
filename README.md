@@ -20,7 +20,7 @@ tool: the assistant follows this rule.
 
 | | The assistant uses | For |
 |---|---|---|
-| **By default** | the **Newo Customer MCP server**, added as a custom connector; you sign in with your Newo account (OAuth), no key ([docs/02, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server)) | everything the MCP can do (which tools it has: **to confirm** against the live tool list) |
+| **By default** | the **Newo Customer MCP server**, added as a custom connector; you sign in with your Newo account (OAuth), no key ([docs/02, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server)) | everything the MCP can do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path); each MCP row **to confirm** against the live tool list) |
 | **Only when needed** | the **Newo CLI**, with one API key per agent. The assistant sets it up | what the MCP can't do: saved `newo test` files and CI, export or backup of an agent, work without a sign-in |
 | **Neither** | the Workflow Builder, by hand | editing scenarios ([docs/05](docs/05-scenarios.md)) |
 

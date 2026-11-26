@@ -54,5 +54,6 @@ Topical platform docs. One-task procedures live in ../playbooks/, exact formats 
   parallel structure next to the existing one ([07](07-health-check.md)).
 - Never answer a settings question from memory — read the live value ([08](08-connector-settings.md)).
 - No account details, personal data or secrets in public issues ([support/](support/README.md)).
-- Create agents with `create_agent`; never send the owner to agent.newo.ai/creator
-  ([assistant-guide.md](assistant-guide.md)).
+- Create agents with the MCP's `create_customer` **(to confirm)**; the older plugin's `create_agent`
+  only in that plugin's own chat. Never send the owner to agent.newo.ai/creator
+  ([02, "Which path"](02-access-and-tools.md#which-path), [assistant-guide.md](assistant-guide.md)).
