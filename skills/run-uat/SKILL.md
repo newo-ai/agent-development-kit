@@ -38,8 +38,8 @@ Stage: [04-launch](../../delivery/04-launch/README.md), steps 1 and 2. Produces
    A `platform` cause is also a bug report ([docs/support/](../../docs/support/README.md#bug-report)).
 5. **Fix and retest.** After fixes, run all scripted tests again
    ([03-test](../../delivery/03-test/README.md)), then ask the customer to retest the failed criteria
-   plus any passed criteria the fixes could affect. That is a new `uat_attempt`. Offer the UAT round-results email
-   ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 5).
+   plus any passed criteria the fixes could affect. That is a new `uat_attempt`. Offer the UAT
+   round-results email ([draft-customer-comms](../draft-customer-comms/SKILL.md), template 5).
 
 ## Done when
 
