@@ -31,26 +31,29 @@ tool is missing, say so and use the CLI for that task.
 
 - The MCP is the default. Use the CLI only for saved `newo test` files, CI, export or backup, or
   when the MCP has no tool for the task. Then set it up for that task: the person signs in with
-  their Newo account ([SOP: sign in to the CLI](sop/get-api-key.md)).
+  their Newo account with `newo login` ([SOP: sign in to the CLI](sop/sign-in-cli.md)).
 - If an MCP tool for a row fails, say so, try once more, then follow
   [get-unstuck](../skills/get-unstuck/SKILL.md).
 
 ## A. Terminal assistants
 
-**The API key.** The owner (or a partner with access) creates it once:
-1. Sign in at https://app.newo.ai, choose the account, open **Builder**.
-2. Go to **Integrations** and open **API Integration**.
-3. Create a connector. Its IDN must be all lowercase, with no spaces: use `_` instead of a
-   space, for example `newo_cli`. Save it.
-4. Open the connector again and copy the key. It appears only after saving.
+**Sign-in.** The person signs in to the CLI with their Newo account in the browser; no API key
+(the person's steps: [SOP: sign in to the CLI](sop/sign-in-cli.md)):
+- `newo login` opens the browser and keeps the session on this computer. EU accounts
+  (app.eu.newo.ai): `NEWO_BASE_URL=https://app.eu.newo.ai newo login`, and the same
+  `NEWO_BASE_URL` line in the folder's `.env` (from the CLI's `newo-setup` skill, 5.4.1).
+- `newo auth status` says, offline, whether the person is signed in: exit 0 yes, exit 1 run
+  `newo login` first.
+- `newo customer switch <idn>`, run in the agent's folder, checks that the sign-in can open the
+  account and saves it in that folder's `.env` (`NEWO_DEFAULT_CUSTOMER`). One agent, one folder,
+  one account: see the [folder layout](../README.md#set-up).
+- **A key in `.env` (or in the shell) turns the browser login off.** Signing in with a key is
+  deprecated. Use one only where the browser login is refused: a viewer or contractor role, or an
+  account with a signed BAA. The key steps are in the SOP; never ask for a key in a chat.
 
-The person puts the key into the `.env` file of the agent's folder **themselves**, for example
-`work/<agent-name>/.env` with the line `NEWO_API_KEY=...`, and `.env` must be in `.gitignore`.
-Never ask them to paste the key into a chat. One agent, one folder, one key: see the
-[folder layout](../README.md#set-up). Several keys in one `.env` (`NEWO_API_KEYS`) works but is not
-recommended. Then run the [setup check](setup-check.md).
+Then run the [setup check](setup-check.md).
 
-**The API.**
+**The API.** The HTTP API takes an API key (the key steps: [SOP](sop/sign-in-cli.md)).
 - Base URL: `https://app.newo.ai`.
 - Exchange the key for a 15-minute token:
   ```bash
@@ -67,13 +70,13 @@ recommended. Then run the [setup check](setup-check.md).
 - Connector settings: [08-connector-settings.md](08-connector-settings.md). The CLI's `newo push`
   does not change them.
 
-**The CLI.** `npm i -g newo`, version 5.3.0 or later (needs Node.js 22.12 or later). Do not run
+**The CLI.** `npm i -g newo`, version 5.4.1 or later (needs Node.js 22.12 or later). Do not run
 `newo init` inside `work/`: it writes its own assistant instructions and skills there, which
-compete with the ADK's. Create the agent's folder and its `.env` directly; the root `.gitignore`
-already ignores `work/` and `.env`. The CLI reads the `.env` of the folder you run it in, so run
-every command there.
+compete with the ADK's. Create the agent's folder and run `newo customer switch <idn>` there; the
+root `.gitignore` already ignores `work/` and `.env`. The CLI reads the `.env` of the folder you
+run it in, so run every command there.
 Useful commands:
-- `newo profile` — which account the key opens; run it before every change.
+- `newo profile` — which account this folder opens; run it before every change.
 - `newo pull` / `newo push` — download / upload the projects and the customer attributes (the
   agent's code and settings); works for Flow Designer V2.
 - `newo sandbox` — test chat.

@@ -32,15 +32,15 @@ different, tell your assistant what you see.
    If not, see
    [SOP: connect the Newo MCP, "Check it worked"](sop/connect-newo-mcp.md#check-it-worked).
 
-**Only if your assistant asks for an API key** (a few tasks need the Newo CLI):
-[SOP: get an API key](sop/get-api-key.md). The assistant installs the tools that task needs and
-asks before each command. If it asks you to install Node.js yourself, take the LTS version from
+**The CLI only when your assistant asks** (a few tasks need the Newo CLI). You sign in with your
+Newo account, no key: [SOP: sign in to the CLI](sop/sign-in-cli.md). The assistant installs the
+tools that task needs and asks before each command. If it asks you to install Node.js yourself, take the LTS version from
 https://nodejs.org, then quit and reopen the Claude app.
 
 ## After that
 
-- For the next agent, repeat steps 4 and 5 with its name. If it needs a key, it gets its own
-  folder in `work/` and its own key.
+- For the next agent, repeat steps 4 and 5 with its name. If it needs the CLI, it gets its own
+  folder in `work/`, switched to its own account.
 - **Updating the kit:** download the ZIP again, unzip it, and move your `work/` folder from the
   old copy into the new one before you delete the old copy. `work/` holds your agents' files and
   keys.

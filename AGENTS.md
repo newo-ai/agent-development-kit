@@ -148,8 +148,10 @@ agent-development-kit/
 
 - **Setup:** follow [README.md, "Set up"](README.md#set-up) and the
   [setup check](docs/setup-check.md). The Newo Customer MCP by default, the CLI only for what the
-  MCP can't do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path)), one folder and
-  one key per agent in `work/`. Don't ask the person to pick a tool.
+  MCP can't do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path)). For the CLI, the
+  person signs in with `newo login`, and each agent has one folder in `work/`, with
+  `newo customer switch <idn>` run there. A key in `.env` or in the shell overrides the login:
+  flag a leftover one. Don't ask the person to pick a tool.
 - **Account check before every change:** compare with `Account idn` in `build-notes.md` when that
   file exists; otherwise say the account's name and IDN back and get one "yes" per session
   ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any
@@ -165,14 +167,15 @@ agent-development-kit/
 Commands (details in [docs/02-access-and-tools.md](docs/02-access-and-tools.md)):
 
 ```bash
-npm i -g newo                 # Newo CLI 5.3.0+ (key field = newo-key mod, 5.3.0; newo-setup skill, 5.1.0)
-newo profile                  # which account the key opens; in the agent's folder, never newo init in work/
+npm i -g newo                 # Newo CLI 5.4.1+ (newo login 5.4.0; auth status, customer switch 5.4.1)
+newo login                    # the person signs in in the browser; no key
+newo auth status              # signed in? exit 0 yes, 1 run newo login
+newo customer switch <idn>    # in the agent's folder: this folder's account; never newo init in work/
+newo profile                  # which account this folder opens; before every change
 newo pull / newo push         # download / upload the project
 newo sandbox                  # test chat without calling anyone
 newo test <scenario.yaml>     # scripted test; run critical tests three times
 newo logs --session-id <id>   # analytics logs for one session
-curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
-  -H "x-api-key: $NEWO_API_KEY" -H "accept: application/json"   # key -> bearer token
 ```
 
 ## 5. Gotchas

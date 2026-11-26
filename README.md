@@ -21,19 +21,19 @@ tool: the assistant follows this rule.
 | | The assistant uses | For |
 |---|---|---|
 | **By default** | the **Newo Customer MCP server**, added as a custom connector; you sign in with your Newo account (OAuth), no key ([docs/02, section D](docs/02-access-and-tools.md#d-newo-customer-mcp-server)) | everything the MCP can do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path); each MCP row **to confirm** against the live tool list) |
-| **Only when needed** | the **Newo CLI**, with one API key per agent. The assistant sets it up | what the MCP can't do: saved `newo test` files and CI, export or backup of an agent, work without a sign-in |
+| **Only when needed** | the **Newo CLI**, only when the assistant asks; you sign in with your Newo account (`newo login`). The assistant sets it up | saved `newo test` files and CI, export or backup of an agent, or a task the MCP has no tool for |
 | **Neither** | the Workflow Builder, by hand | editing scenarios ([docs/05](docs/05-scenarios.md)) |
 
 1. **Connect the Newo MCP first:** [SOP](docs/sop/connect-newo-mcp.md). In ChatGPT the assistant
    cannot open these pages while the server is on.
-2. **The CLI and an API key only when the assistant says a task needs them:**
-   [SOP: get an API key](docs/sop/get-api-key.md). Which task needs which tool:
+2. **The CLI only when the assistant asks; you sign in with your Newo account:**
+   [SOP: sign in to the CLI](docs/sop/sign-in-cli.md). Which task needs which tool:
    [docs/02, "Which path"](docs/02-access-and-tools.md#which-path).
 
-Stuck at any point? Tell your assistant "I'm stuck".
+In the Claude desktop app without Git: [quick start](docs/quick-start-desktop.md). Stuck at any
+point? Tell your assistant "I'm stuck".
 
-The rest of this section is for when the assistant sets up the CLI. In the Claude desktop app
-without Git: [quick start](docs/quick-start-desktop.md).
+The rest of this section is for when the assistant sets up the CLI.
 
 **Folder layout.** Keep this repository as it is, and do all agent work in `work/`, one folder per
 agent:
@@ -42,7 +42,7 @@ agent:
 agent-development-kit/          this repository; read it, do not edit it for one agent
 └── work/                       your agents; Git ignores this folder
     ├── <agent-name>/           one agent = one folder
-    │   ├── .env                this agent's API key, and nothing else
+    │   ├── .env                this agent's account, from `newo customer switch`; no key
     │   ├── build-notes.md      delivery only: the build notes; "Account idn" says which account it is
     │   └── newo_customers/     what `newo pull` downloads
     └── <next-agent>/
@@ -52,14 +52,15 @@ agent-development-kit/          this repository; read it, do not edit it for one
 First add a `.gitignore` in `work/` with `.env`, `.env.*` and `.newo/`, and keep that repository
 private. A synced folder (iCloud, Dropbox, OneDrive) also syncs the keys.
 
-**One API key per agent.** Each agent folder has its own `.env` with one line,
-`NEWO_API_KEY=...`. The person puts the key there through the key field in the Claude desktop app
-or a text editor, never through a chat ([setup check, step 2](docs/setup-check.md#2-key-found)). Run every `newo`
-command from inside the agent's folder: the CLI reads the `.env` of the folder you are in. One
-`.env` with keys for several accounts (`NEWO_API_KEYS`) works, but it is not recommended: a
-command without `--customer` then goes to the default account.
+**One account per agent folder.** The person signs in once with `newo login` (their Newo
+account, in the browser). In each agent's folder, `newo customer switch <idn>` saves that agent's
+account in the folder's `.env`. Run every `newo` command from inside the agent's folder: the CLI
+reads the `.env` of the folder you are in. A key in `.env` turns the browser login off: use one
+only where the login is refused ([SOP: sign in to the CLI](docs/sop/sign-in-cli.md)), and never
+through a chat.
 
-Don't run `newo init` inside `work/`: create the agent's folder and its `.env` directly. The root
+Don't run `newo init` inside `work/`: create the agent's folder and run `newo customer switch`
+there. The root
 `.gitignore` already ignores `work/` and `.env`.
 
 **Check the account before every change.** Run `newo profile` in the agent's folder. If the agent
