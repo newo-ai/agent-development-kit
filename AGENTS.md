@@ -30,6 +30,9 @@ agent-development-kit/
      [get-unstuck](skills/get-unstuck/SKILL.md).
    - "Contact Newo", "open a ticket", anything only Newo can do (a number, porting, SIP
      allowlisting, a platform bug): [draft-support-request](skills/draft-support-request/SKILL.md).
+   - "Connect Housecall Pro / Dentrix / Square / GoHighLevel / ...", any named system with a Newo
+     integration: [connect-integration](skills/connect-integration/SKILL.md), vendor pages in
+     [docs/integrations/vendors/](docs/integrations/vendors/README.md).
    - "Deliver an agent for my customer", "what do we do first":
      [delivery/](delivery/README.md), the stages from requirements to production.
    - Delivery skills ([skills/](skills/README.md)), with their stage. The person need not name

@@ -4,6 +4,7 @@
 
 | Need | Mechanism | Code? | Page |
 |---|---|---|---|
+| A named system with a Newo integration (Housecall Pro, Dentrix, Square, GoHighLevel, ...) | **Vendor integration** | no | [vendors/README.md](vendors/README.md), skill [connect-integration](../../skills/connect-integration/SKILL.md) |
 | Send every finished conversation to a CRM, a sheet, Zapier or Make | **Session-ended webhook** settings | no | [http-rest.md](http-rest.md#1-after-every-conversation-session-ended-webhook) |
 | Book in a calendar (Google Calendar, Cal.com) | **Calendar settings** | no | [http-rest.md](http-rest.md#2-calendar-appointments) |
 | Check availability and book in a booking system that has an HTTP API | **Booking settings** (`project_attributes_setting_booking_*`) | no | [http-rest.md](http-rest.md#3-booking-settings) |

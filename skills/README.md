@@ -32,6 +32,7 @@ go in the partner's own folder, for example `work/<agent-name>/`, never into thi
 | Any | [github-workflow](github-workflow/SKILL.md) | An issue or a pull request in this repository | Reporting a mistake, sharing a learning, a NAF change notice, proposing a change |
 | Any | [get-unstuck](get-unstuck/SKILL.md) | The next step, or a drafted request | The person is stuck |
 | Any | [draft-support-request](draft-support-request/SKILL.md) | A request for the person to send | Only Newo can do it |
+| 02-build, any | [connect-integration](connect-integration/SKILL.md) | A connected, tested integration, or a drafted request | The partner names a system with a Newo integration (CRM, PMS, POS, calendar, messaging) |
 
 Steps the person does by hand (connect the MCP, get an API key, edit a scenario):
 [docs/sop/README.md](../docs/sop/README.md).
