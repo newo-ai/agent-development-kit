@@ -88,8 +88,8 @@ exceptional case in [docs/04](../../docs/04-naf-change-policy.md).
 4. **On a fail,** find the cause in the logs and change the text, or ask the partner to put the old
    text back. Putting it back is a change too: it works only after a publish (step 2), then check
    that the old behavior is back. The card may stay custom even then; only Newo support can say
-   whether it can follow library updates again. Three failures the same way: stop and show the
-   partner.
+   whether it can follow library updates again. Two failures the same way: stop, show the
+   partner and follow [get-unstuck](../get-unstuck/SKILL.md).
 5. **Write it down** in `build-notes.md`: the criterion, the card, the new text, the test
    `session_id`s, and "custom card: no library updates".
 

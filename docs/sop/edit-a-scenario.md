@@ -36,7 +36,7 @@ different, tell your assistant what you see.
 - **No permission:** ask the account owner, or have your assistant draft a request to Newo.
 - **The test fails:** your assistant suggests new text. Or put the old text back and publish
   again.
-- **The same failure three times:** stop. Your assistant drafts a request to Newo.
+- **The same failure twice:** stop. Your assistant drafts a request to Newo.
 
 ## Next
 

@@ -31,14 +31,15 @@ Read what is there. Ask only what you cannot read.
 
 ## 2. Pick the one next step
 
-Take the first line that fits:
+Go down the table and take the first line that fits. The rows are in order, most specific
+first, so a step that failed twice never comes back to "retry once".
 
 | The situation | The next step |
 |---|---|
+| The same step failed twice the same way | Stop retrying. First rule out the person's side: no permission in Builder, the wrong account, a wrong or old sign-in. If one of these is the cause, give that fix as the step. Otherwise go to [draft-support-request](../draft-support-request/SKILL.md) |
 | You cannot reach the account at all | Connect the Newo MCP: [SOP](../../docs/sop/connect-newo-mcp.md) |
 | A task needs the CLI and there is no key | [SOP: get an API key](../../docs/sop/get-api-key.md) |
-| A command or tool fails | Read the error, then the [setup check](../../docs/setup-check.md) or the [debugging pages](../../docs/debugging/README.md). Retry once with the fix |
-| The same step failed twice the same way | Stop retrying. Go to [draft-support-request](../draft-support-request/SKILL.md) |
+| A command or tool fails for the first time | Read the error, then the [setup check](../../docs/setup-check.md) or the [debugging pages](../../docs/debugging/README.md). Retry once with the fix |
 | Only Newo can do it (a phone number, porting, SIP allowlisting, a platform bug) | [draft-support-request](../draft-support-request/SKILL.md) |
 | A scenario card must change | [SOP: edit a scenario](../../docs/sop/edit-a-scenario.md) |
 | A delivery is under way | The skill for the stage the work is in ([skills/README.md](../README.md)) |
