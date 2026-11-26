@@ -15,6 +15,14 @@ right level, and do not come back.
 Review every call of the first nights ([go-live, stage 2](../../docs/telephony/go-live.md#stage-2-review-two-or-three-nights)),
 then weekly, and again after every change of mode.
 
+Skills that run it through the Newo Customer MCP ([skills/](../../skills/README.md)):
+- [agent-session-audit](../../skills/agent-session-audit/SKILL.md): the week's numbers for each
+  agent (calls, leads, units used, calls where the caller's goal wasn't reached);
+- [review-agent](../../skills/review-agent/SKILL.md): one agent's failed calls grouped by reason,
+  with the dialogue and logs behind the top reasons;
+- [fix-issue](../../skills/fix-issue/SKILL.md): one fix at a time, after a "yes", then a check of
+  new calls.
+
 1. **Read the conversations** of the period: the playbook
    [review conversations](../../playbooks/review-conversations.md), with the details in
    [conversation-debug.md](../../docs/debugging/conversation-debug.md). Skip test conversations.
@@ -51,12 +59,17 @@ a change in behavior, or after a release you know about:
 - run the scripted tests;
 - run the health check ([docs/07-health-check.md](../../docs/07-health-check.md)).
 
-## What is not available yet
+## Where the numbers are
 
-Health scores for agents are **(planned)**. Performance metrics are available already: the
-Report page (the dashboard) in the Newo customer portal shows, over a chosen date range,
-sessions, leads, revenue, opportunity value, and breakdowns by channel and type. The review
-above is still the measure for quality: calls reviewed, issues found, issues that came back.
+- **Through the Newo MCP:** calls with their channel, duration, result and summary, leads, and
+  units used. [agent-session-audit](../../skills/agent-session-audit/SKILL.md) counts them.
+- **Sessions page** in the Newo customer portal: CSS, LSS and goal reached for each call. The
+  partner reads them there; the skills do not compute them.
+- **Report page** (the dashboard) in the portal: over a chosen date range, sessions, leads,
+  revenue, opportunity value, and breakdowns by channel and type.
+
+The review above is still the measure for quality: calls reviewed, issues found, issues that came
+back.
 
 ## Share what you learned
 
