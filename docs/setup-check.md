@@ -60,8 +60,8 @@ does.
 
 #### Only when the browser login is refused: an API key
 
-The person's key steps are in the [SOP](sop/sign-in-cli.md#only-when-the-login-is-refused-an-api-key)
-(the connector IDN is lowercase, with `_` instead of spaces). Never ask for the key in the chat.
+The person's key steps are in the
+[SOP](sop/sign-in-cli.md#only-when-the-login-is-refused-an-api-key) (the connector IDN is lowercase, with `_` instead of spaces). Never ask for the key in the chat.
 One key per folder: if the count above is more than `1`, the file holds keys for several accounts;
 pass `--customer <idn>` to every command until the person keeps one.
 

@@ -167,10 +167,10 @@ agent-development-kit/
 Commands (details in [docs/02-access-and-tools.md](docs/02-access-and-tools.md)):
 
 ```bash
-npm i -g newo                 # Newo CLI 5.4.1+ (newo login 5.4.0; auth status, customer switch 5.4.1)
+npm i -g newo                 # Newo CLI 5.4.1+ (auth status and customer switch came in 5.4.1)
 newo login                    # the person signs in in the browser; no key
 newo auth status              # signed in? exit 0 yes, 1 run newo login
-newo customer switch <idn>    # in the agent's folder: this folder's account; never newo init in work/
+newo customer switch <idn>    # this folder's account; in work/<agent>, never newo init there
 newo profile                  # which account this folder opens; before every change
 newo pull / newo push         # download / upload the project
 newo sandbox                  # test chat without calling anyone

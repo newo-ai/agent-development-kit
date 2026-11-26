@@ -34,8 +34,8 @@ different, tell your assistant what you see.
 
 **The CLI only when your assistant asks** (a few tasks need the Newo CLI). You sign in with your
 Newo account, no key: [SOP: sign in to the CLI](sop/sign-in-cli.md). The assistant installs the
-tools that task needs and asks before each command. If it asks you to install Node.js yourself, take the LTS version from
-https://nodejs.org, then quit and reopen the Claude app.
+tools that task needs and asks before each command. If it asks you to install Node.js yourself,
+take the LTS version from https://nodejs.org, then quit and reopen the Claude app.
 
 ## After that
 
