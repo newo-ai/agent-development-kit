@@ -30,10 +30,10 @@ work from this file.
      cannot go live while one fails.
    - `important`: visible, has a workaround.
    - `nice-to-have`: polish.
-4. **Add at least one check to each.** `scripted` (a scenario file run with `newo test`, see
-   [docs/testing/text-tests.md](../../docs/testing/text-tests.md)), `call` (steps for a real call and
-   what must happen), or a check in the other system. If you cannot say how to test a criterion,
-   rewrite it until you can.
+4. **Add at least one check to each.** `scripted` (a scenario file, run through the MCP or with
+   `newo test`, see [docs/testing/text-tests.md](../../docs/testing/text-tests.md)), `call` (steps
+   for a real call and what must happen), or a check in the other system. If you cannot say how
+   to test a criterion, rewrite it until you can.
 5. **Check the list.**
    - 10 to 25 criteria. More means some are not distinct; fewer usually means limits are missing.
    - No criterion uses "well", "friendly", "fast" or "correctly" without saying what that means.

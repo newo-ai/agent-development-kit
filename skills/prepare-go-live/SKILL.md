@@ -17,8 +17,8 @@ person's "yes" for that exact step and time ([AGENTS.md](../../AGENTS.md), rule 
 
 1. **Check UAT.** `uat-report.yaml` has a round with `passed: true`. UAT has not passed (no
    `uat-report.yaml`, or it says not accepted): say so and go to [run-uat](../run-uat/SKILL.md).
-2. **Save the agent's settings** to a local file today, with `newo pull` (or the API): the copy
-   to go back to (rule 3).
+2. **Save the agent's settings** to a local file today, read through the MCP **(to confirm)**,
+   or with `newo pull` when the CLI is already set up: the copy to go back to (rule 3).
 3. **Go through "Before real callers"** in the checklist, item by item. Read each value from the
    platform; do not tick from memory. Show what is not yet true.
 4. **Agree the schedule** with the person:

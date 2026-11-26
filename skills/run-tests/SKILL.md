@@ -16,11 +16,10 @@ them and how to judge a result. Produces `work/<agent-name>/tests/` (scenario fi
 - **On the MCP path** (the default): the account check is the customer and its IDN from
   `get_customers`, said back once per session
   ([AGENTS.md, section 4](../../AGENTS.md#4-how-you-reach-the-platform)).
-- **On the CLI path:** work in the agent's folder, `work/<agent-name>/`, and run the
-  [setup check](../../docs/setup-check.md) there (rules: [README.md, "Set up"](../../README.md#set-up)).
-  Repeat `newo profile` before every change you make while fixing. If the `.env` holds keys for
-  several accounts (not recommended), pass the same `--customer <idn>` to `newo profile` as to the
-  change.
+- **On the CLI path** (only for saved `newo test` files, CI, export or backup): work in the
+  agent's folder, `work/<agent-name>/`, and run the [setup check](../../docs/setup-check.md) there
+  (rules: [README.md, "Set up"](../../README.md#set-up)). Repeat `newo profile` before every change
+  you make while fixing.
 - Test data: for each criterion that books or changes something in another system, a test
   account, test mode that covers it, or the live-test procedure agreed in discovery. Otherwise
   test only what reads. Turning test mode on is a change: ask first, note it, and list it in the
@@ -33,11 +32,8 @@ Show the plan; write the files after a "yes".
 
 ## 2. Run
 
-- **Scripted:** `newo test tests/<file>.yaml --json`. Read the JSON, not only the exit code:
-  exit 1 covers a failed turn, a timeout, skipped turns and a setup error alike. Do not save the
-  JSON in `work/`: it holds the conversation text.
-- **Through the MCP** (no CLI): run each chat check as a practice chat through the MCP's sandbox
-  connector **(to confirm: how a sandbox connector is named in `get_connectors`)**.
+- **Through the MCP** (the default): run each chat check as a practice chat through the MCP's
+  sandbox connector **(to confirm: how a sandbox connector is named in `get_connectors`)**.
   - Start a new conversation for every run **(to confirm: how the MCP starts one)**.
   - Send each turn with `send_message`. Read the reply with `search_conversations`; if it is not
     there yet, look again for up to a minute before you mark the check "Not tested".
@@ -45,14 +41,18 @@ Show the plan; write the files after a "yes".
     (`search_logs`).
   - Run each critical check three times, each in a new conversation, as with `newo test`. Keep
     each run's `session_id` for the report.
-  - Judge as in step 3, and note in the report that the check ran through the MCP. Saved
-    `newo test` files need the CLI
-    ([docs/02, "Which path"](../../docs/02-access-and-tools.md#which-path)).
+  - Judge as in step 3, and note in the report that the check ran through the MCP. Keep each
+    check's turns and expectations in `tests/` so the same checks can be run again after a fix.
+- **Saved `newo test` files** (CLI; when the partner keeps them or runs CI):
+  `newo test tests/<file>.yaml --json`. Read the JSON, not only the exit code: exit 1 covers a
+  failed turn, a timeout, skipped turns and a setup error alike. Do not save the JSON in `work/`:
+  it holds the conversation text.
 - **Calls:** you cannot call. Give the person each call check's `steps`, ask when and from which
-  number they called, then find that conversation among the newest ones
-  (`GET /api/v1/bff/conversations/user-personas?page=1&per=10`, then
-  `newo session <last_session_id> --json`) and read its logs. Not `newo conversations`: it
-  downloads the whole history. If more than one conversation matches, the check is not tested.
+  number they called, then find that conversation among the newest ones with
+  `search_conversations` and read its logs with `search_logs` **(to confirm: the filters for the
+  newest conversations)**. On the CLI path: `newo session <session_id> --json` and
+  `newo logs --session-id <id>`. Not `newo conversations`: it downloads the whole history. If
+  more than one conversation matches, the check is not tested.
 - **Assessor** only if the account already uses it
   ([voice tests](../../docs/testing/voice-tests.md#automated-voice-tests)).
 - After a publish, wait 2 to 5 minutes before testing.

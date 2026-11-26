@@ -35,12 +35,17 @@ for each task. Never ask the person which tool.
 2. **Health data.** If the business handles health data, the agreement the SOW requires is in
    place before you read conversations or connect a system
    ([health data](../../docs/integrations/README.md#health-data)).
-3. **Setup checks 1 to 3 pass.** Work in the agent's folder, `work/<agent-name>/`, and run
-   checks 1 to 3 of the [setup check](../../docs/setup-check.md) there: CLI, key, account. The
-   folder, key and account rules are in [README.md, "Set up"](../../README.md#set-up).
+3. **The account check passes.** On the MCP path (the default): name the customer and its IDN
+   from `get_customers`, compare the IDN with `Account idn` in `build-notes.md` when it exists,
+   and get a "yes" once per session
+   ([AGENTS.md, section 4](../../AGENTS.md#4-how-you-reach-the-platform)). Set up the CLI only for
+   what the MCP can't do (saved `newo test` files, CI, export or backup): then work in
+   `work/<agent-name>/` and run checks 1 to 3 of the [setup check](../../docs/setup-check.md)
+   there. Folder and account rules: [README.md, "Set up"](../../README.md#set-up).
 4. **The agent exists.** If not, create it first:
    [assistant guide, "Create the agent"](../../docs/assistant-guide.md#create-the-agent).
-5. **Setup check 4 passes** (the sandbox round trip), now that the agent exists.
+5. **A first practice chat works**, now that the agent exists: through the MCP's sandbox
+   connector **(to confirm)**, or setup check 4 on the CLI path.
 6. **Designer version.** `GET /api/v1/customer/settings/name/projects_v2_enabled`. On V2 never
    use the old V1 requests ([reference/api.md](../../reference/api.md#which-designer)).
 
@@ -48,9 +53,10 @@ for each task. Never ask the person which tool.
 
 - Save everything [health check, step 1](../../docs/07-health-check.md#step-1-read-everything-once)
   lists (settings with secrets masked, canvas items, industry, designer version, automatic
-  updates) to a dated folder in the partner's folder, for example `baseline-YYYY-MM-DD/`. The
-  CLI's `newo pull` helps, but a later pull overwrites its files: copy them into the dated folder
-  and never pull over it. Save the connector settings too
+  updates) to a dated folder in the partner's folder, for example `baseline-YYYY-MM-DD/`. Read
+  them through the MCP (settings and project files) **(to confirm)**. If the CLI is set up for
+  another task, `newo pull` helps too, but a later pull overwrites its files: copy them into the
+  dated folder and never pull over it. Save the connector settings too
   ([docs/08](../../docs/08-connector-settings.md)); `newo pull` does not include them. This copy is
   how you put any value back.
 - Read the [industry page](../../industries/README.md). If the agent's industry does not match the
@@ -92,13 +98,14 @@ systems (read-only tools first), the phone side without forwarding real callers,
 For every change:
 
 1. Show the old value and the new value in plain words. Wait for "yes".
-2. Check the account again, the same way the change will be made: `newo profile` from the same
-   folder before a CLI change; `GET /api/v1/customer/profile` with the same token before an API
-   change. One check does not prove the other. Compare the IDN with `Account idn` in
+2. Check the account again, the same way the change will be made: the customer and IDN the MCP
+   tool will act on before an MCP change; `newo profile` from the same folder before a CLI change;
+   `GET /api/v1/customer/profile` with the same token before an API change. One check does not
+   prove the other. Compare the IDN with `Account idn` in
    `build-notes.md` ([setup check, check 3](../../docs/setup-check.md#3-the-right-account)); if
    they differ, stop. Before a change callers will notice (publish, test mode, phone, transfers),
-   say the account's name back to the partner. If the `.env` holds keys for several accounts (not
-   recommended), pass the same `--customer <idn>` to `newo profile` as to the change.
+   say the account's name back to the partner. On the CLI path, if the folder's account is not
+   the one to change, pass the same `--customer <idn>` to `newo profile` as to the change.
 3. Make the change. For a setting, send the whole attribute, not only the value
    ([docs/03](../../docs/03-configure-and-customize.md#changing-an-attribute)).
 4. Read it back.
