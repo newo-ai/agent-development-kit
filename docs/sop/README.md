@@ -11,4 +11,5 @@ the other way round: steps for the assistant.
 | [Sign in to the CLI](sign-in-cli.md) | Only when your assistant asks: you sign in with your Newo account, no key |
 | [Edit a scenario](edit-a-scenario.md) | The agent must handle a conversation differently and no setting does it |
 
-Stuck at any point? Tell your assistant "I'm stuck".
+Stuck at any point? Tell your assistant "I'm stuck". In ChatGPT with the Newo server on, the
+assistant cannot open these pages: use Claude for that help, or paste the page into the chat.

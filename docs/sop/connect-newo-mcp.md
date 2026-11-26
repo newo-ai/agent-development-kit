@@ -26,7 +26,8 @@ is yours. If yours is not there:
   adds it once; then you press **Connect**.
 - **A work ChatGPT account** may block custom MCP servers. Use a personal account or Claude.
 - **ChatGPT cannot open web pages** while the Newo server is on in that chat. Paste what the
-  assistant needs into the chat.
+  assistant needs into the chat. "I'm stuck" works there only from what is in the chat: for the
+  full help, use Claude, or ChatGPT without the Newo server.
 - Anything else: tell your assistant "I'm stuck".
 
 ## Next

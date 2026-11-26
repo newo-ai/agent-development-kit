@@ -11,9 +11,9 @@ Deeper maps: [docs/AGENTS.md](docs/AGENTS.md), [reference/AGENTS.md](reference/A
 agent-development-kit/
 ├── AGENTS.md        # this file: routing + rules (CLAUDE.md just points here)
 ├── docs/            # platform docs: 00-08 topical pages + telephony/, integrations/,
-│                    # debugging/, testing/ — has its own AGENTS.md
+│                    # debugging/, testing/, sop/ — has its own AGENTS.md
 ├── reference/       # exact API and attribute formats; the largest part — has its own AGENTS.md
-├── playbooks/       # step-by-step procedures for one task (finish setup, night launch, ...)
+├── playbooks/       # one-task procedures for the assistant (finish setup, night launch, ...)
 ├── delivery/        # partner delivery process: 01-discover ... 05-operate, with templates
 ├── skills/          # SKILL.md procedures per delivery task (discover, launch); see skills/README.md
 ├── industries/      # industry setup pages (restaurant, dental, home services, ...)

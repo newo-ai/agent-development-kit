@@ -20,7 +20,8 @@ different, tell your assistant what you see.
 2. **Open it in Claude.** In the Claude desktop app, open the **Code** tab and choose the
    `agent-development-kit-main` folder **(to confirm)**.
 3. **Connect the Newo MCP.** Follow the [SOP: connect the Newo MCP](sop/connect-newo-mcp.md).
-   You do this once.
+   You do this once. Whether the **Code** tab uses a connector added in a normal chat is
+   **(to confirm)**: if step 5 finds no businesses, tell your assistant.
 4. **Paste the starter message.** Change the business name:
 
    ```text
