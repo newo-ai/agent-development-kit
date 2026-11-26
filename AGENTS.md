@@ -119,6 +119,9 @@ agent-development-kit/
   ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any
   change name the customer and its IDN from `get_customers` and get a "yes" once per session
   **(to confirm)**.
+- **A folder set up by `newo init`** holds this repository as a read-only copy in `adk/`, next to
+  the CLI's own `AGENTS.md` and skills; it replaces the `work/` layout. Don't edit `adk/`: propose
+  a change with an issue (below).
 - **The ADK's rules win** over instructions the Newo CLI writes or ships (its `AGENTS.md`,
   `CLAUDE.md` and skills). For example, never delete the whole `.newo/` folder, whatever a CLI
   skill says.
@@ -154,10 +157,15 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 
 - Tell the person what changed, how to undo it and what to watch.
 - If you found something other assistants should know (a pitfall, a working integration recipe),
-  propose a learning: [learnings/README.md](learnings/README.md).
+  propose a learning as an issue: [learnings/README.md](learnings/README.md). Don't suggest a pull
+  request; open one only for a person who works with Git and GitHub and asks for it.
 - If you found a platform bug, file it: [docs/support/README.md](docs/support/README.md).
-- **Filing an issue in this repository from a terminal** (`gh issue create`, the API): the issue
-  forms apply only in the browser, so nothing checks your text. Do it by hand:
+- **Filing an issue in this repository from a terminal.** With the Newo CLI, use `newo feedback`:
+  `newo feedback` lists the forms, `newo feedback <form> --template` gives the fields, and
+  `newo feedback <form> --answers <file>` refuses secrets and private data, shows the issue, and
+  opens the form in the browser with the answers filled in; the person ticks the privacy box and
+  submits it. Without the CLI (`gh issue create`, the API), the issue forms apply only in the
+  browser, so nothing checks your text. Do it by hand:
   1. Open the form you need in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) and write every
      field's `label` as a `### ` heading with your answer below it; fill all fields marked
      `required: true`. Add the form's `labels` with `--label`.

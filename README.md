@@ -44,6 +44,12 @@ agent-development-kit/          this repository; read it, do not edit it for one
     └── <next-agent>/
 ```
 
+**A folder from `newo init`.** The Newo CLI's `newo init` sets up a folder for an agent and
+downloads this repository into its `adk/` folder as a read-only copy (`newo adk update` gets the
+newest version). That folder takes the place of `work/<agent-name>/`, and the rules in
+[AGENTS.md](AGENTS.md) apply there as well. Don't run `newo init` inside this repository or its
+`work/`.
+
 `work/` has no history: make it its own Git repository or a synced folder if you want backups.
 First add a `.gitignore` in `work/` with `.env`, `.env.*` and `.newo/`, and keep that repository
 private. A synced folder (iCloud, Dropbox, OneDrive) also syncs the keys.
