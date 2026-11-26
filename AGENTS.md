@@ -142,6 +142,7 @@ agent-development-kit/
 12. **Act on the closest match.** Pick the skill or stage page that fits best, say which one you
     are using, and go. Ask only when two paths would change different things. Not being sure is
     no reason to stop: when nothing fits, use [get-unstuck](skills/get-unstuck/SKILL.md).
+    Picking a path is not permission to change anything; rule 1 still applies.
 
 ## 4. How you reach the platform
 
