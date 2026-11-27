@@ -15,9 +15,13 @@ on the exact text.
 | A problem with one account, one phone number, or anything that needs customer data to explain | **Newo support**, not GitHub ([docs/support/README.md](../../docs/support/README.md)) |
 | A security problem | The private route in [SECURITY.md](../../SECURITY.md), never a public issue |
 | A mistake or a gap in these docs, and no fix yet | Issue, form **Documentation correction** |
-| A case others can learn from | Pull request with a file in [learnings/](../../learnings/README.md); an issue with the form **Learning** if a pull request is not possible |
+| A case others can learn from | Issue, form **Learning**; Newo turns an accepted one into a file in [learnings/](../../learnings/README.md) |
 | A change to the agent's framework (NAF) code | Issue, form **NAF change notice** ([docs/04-naf-change-policy.md](../../docs/04-naf-change-policy.md)). The account ID goes to Newo support with the issue number, never into the issue |
-| A fix or a new page | Pull request |
+| A fix or a new page | Issue, form **Documentation correction**, with the suggested text |
+
+**Pull requests are optional.** Every case above starts as an issue, and Newo turns accepted issues
+into pull requests. Don't suggest a pull request. Open one only when the person says they work with
+Git and GitHub and asks for one; then follow section 4.
 
 Before you write, search what is already open (`gh issue list --search "<words>"`,
 `gh pr list --search "<words>"`, or the GitHub search). Add to an existing one instead of opening
@@ -44,11 +48,15 @@ deleting it is not enough: follow
 
 ## 3. An issue
 
-In a browser, use the form: it checks the required fields and the privacy box. From a terminal,
-follow [AGENTS.md, "Before you finish"](../../AGENTS.md#6-before-you-finish). Title: what is wrong,
+In a browser, use the form: it checks the required fields and the privacy box. From a terminal with
+the Newo CLI, `newo feedback <form> --answers <file>` checks the text for private data and opens the
+form filled in, for the person to submit; without the CLI, follow
+[AGENTS.md, "Before you finish"](../../AGENTS.md#6-before-you-finish). Title: what is wrong,
 in plain words, for example "Opening hours example uses the wrong day format".
 
 ## 4. A pull request
+
+Only for a person who works with Git and GitHub and asked for a pull request (section 1).
 
 1. **Access.** If the person cannot push to this repository, fork it: `gh repo fork --remote`
    makes `origin` their fork and `upstream` this repository. Otherwise `upstream` below is

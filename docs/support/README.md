@@ -14,7 +14,7 @@ As of November 2026:
   with the matching template below filled in. Never send it: the person reads the draft and sends
   it. No keys, passwords or callers' personal data in the email.
 - **For public, non-confidential findings** about this knowledge base: an issue in this
-  repository with the matching template. **Never** put account-specific details, personal data or
+  repository with the matching template (`newo feedback` in the Newo CLI fills it in). **Never** put account-specific details, personal data or
   secrets into a public issue.
 - **(Planned)** A ticket tool for coding assistants, available through the Newo MCP server.
   Requests will then go straight into Newo's helpdesk.
