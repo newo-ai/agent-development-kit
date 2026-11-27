@@ -6,14 +6,14 @@ Topical platform docs. One-task procedures live in ../playbooks/, exact formats 
 
 - `00-how-the-ecosystem-works.md` — why this repository exists, the shared framework (NAF)
 - `01-platform-concepts.md` — accounts, attributes, connectors, conversations, V1/V2 designers
-- `02-access-and-tools.md` — API key, CLI, plugin, Knowledge Studio, Customer MCP, secrets
+- `02-access-and-tools.md` — which path, CLI sign-in, plugin, Knowledge Studio, Customer MCP, secrets
 - `03-configure-and-customize.md` — customization ladder, when a change takes effect
 - `04-naf-change-policy.md` — exceptional framework changes: alternatives, consent, notice
 - `05-scenarios.md` — Workflow Builder scenarios, system-managed compiled state
 - `06-knowledge.md` — AKB, Knowledge Studio, search services, personal-data rules
 - `07-health-check.md` — level A/B review procedure and reporting
 - `08-connector-settings.md` — read, write and verify connector settings
-- `setup-check.md` — four checks: CLI, key, account, sandbox round trip
+- `setup-check.md` — four checks: CLI, sign-in, account, sandbox round trip
 - `quick-start-desktop.md` — setup for a non-technical person in the Claude desktop app (ZIP)
 - `assistant-guide.md` — long-form guide for working with an owner (the most linked page)
 - `debugging/` — conversation logs, search answers, Studio troubleshooting, common issues
@@ -22,13 +22,16 @@ Topical platform docs. One-task procedures live in ../playbooks/, exact formats 
 - `testing/` — scripted text tests, voice tests
 - `humans/` — how to talk to the owner
 - `support/` — bug reports and operations requests
+- `sop/` — SOPs (standard operating procedures): steps the person does by hand (connect the MCP,
+  sign in to the CLI, edit a scenario). `../playbooks/` holds steps for the assistant
 - `images/` — ChatGPT setup screenshots used by assistant-guide.md
 
 ## WHERE TO LOOK
 
 | Task | Go to |
 |---|---|
-| API key, CLI install, MCP setup, secrets | [02-access-and-tools.md](02-access-and-tools.md) |
+| Which tool for a task, CLI sign-in, MCP setup, secrets | [02-access-and-tools.md](02-access-and-tools.md) |
+| Steps the person does by hand | [sop/](sop/README.md) |
 | Change a setting; when it takes effect | [03-configure-and-customize.md](03-configure-and-customize.md) |
 | Knowledge base, search quality | [06-knowledge.md](06-knowledge.md), [debugging/search-debug.md](debugging/search-debug.md) |
 | Check an agent's health | [07-health-check.md](07-health-check.md) |
@@ -54,5 +57,6 @@ Topical platform docs. One-task procedures live in ../playbooks/, exact formats 
   parallel structure next to the existing one ([07](07-health-check.md)).
 - Never answer a settings question from memory — read the live value ([08](08-connector-settings.md)).
 - No account details, personal data or secrets in public issues ([support/](support/README.md)).
-- Create agents with `create_agent`; never send the owner to agent.newo.ai/creator
-  ([assistant-guide.md](assistant-guide.md)).
+- Create agents with the MCP's `create_customer` **(to confirm)**; the older plugin's `create_agent`
+  only in that plugin's own chat. Never send the owner to agent.newo.ai/creator
+  ([02, "Which path"](02-access-and-tools.md#which-path), [assistant-guide.md](assistant-guide.md)).
