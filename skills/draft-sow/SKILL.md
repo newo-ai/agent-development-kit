@@ -60,7 +60,9 @@ Do not send the partner to other skills. Collect what is needed inside this skil
 3. **Fill the cover and section 1** from `requirements.md`: the business, locations, channels,
    languages, systems, target go-live. Write the objectives so they can be measured.
 4. **Fill section 2 (stages)** from the vertical section. Keep only the stages in scope.
-5. **Fill section 3A (use cases).** Every use case lists the criteria ids that prove it.
+5. **Fill section 3A (use cases).** Every use case lists how the agent handles it, who gets the
+   report, and the criteria ids that prove it. Attach `call-flow.md`; if it does not exist, draft
+   it from [call-flow.md](../../delivery/01-discover/templates/call-flow.md) with the same rows.
 6. **Fill sections 4 to 7** (knowledge, integrations, telephony, handoff). Integrations stay at
    the business level: no endpoints, keys or field mappings.
 7. **Section 8 (out of scope).** Start from the vertical section's list. Add anything
