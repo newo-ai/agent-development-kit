@@ -2,7 +2,9 @@
 
 For a person who is not technical and uses the Claude desktop app. You need no GitHub account, no
 Git and no terminal: the assistant does the work. You sign in with your Newo account; you need no
-API key to start. Target time: about 10 minutes (an estimate, not yet measured).
+API key to start. If a step marked (to confirm) stalls on the MCP, the assistant switches to the
+CLI for that step (sign in with `newo login`; no API key). Target time: about 10 minutes (an
+estimate, not yet measured).
 
 Steps marked **(to confirm)** have not been checked click by click yet. If the screen looks
 different, tell your assistant what you see.

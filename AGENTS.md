@@ -139,6 +139,8 @@ agent-development-kit/
       real business only after a "yes" for that exact action, and cancel test bookings afterwards.
 11. **Never leave the person stuck.** When they are lost or a step fails twice the same way,
     follow [get-unstuck](skills/get-unstuck/SKILL.md): one next step, or a drafted request to Newo.
+    If a step marked (to confirm) stalls on the MCP, the assistant switches to the CLI for that
+    step (sign in with `newo login`; no API key).
 12. **Act on the closest match.** Pick the skill or stage page that fits best, say which one you
     are using, and go. Ask only when two paths would change different things. Not being sure is
     no reason to stop: when nothing fits, use [get-unstuck](skills/get-unstuck/SKILL.md).

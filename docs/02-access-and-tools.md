@@ -34,6 +34,8 @@ tool is missing, say so and use the CLI for that task.
   their Newo account with `newo login` ([SOP: sign in to the CLI](sop/sign-in-cli.md)).
 - If an MCP tool for a row fails, say so, try once more, then follow
   [get-unstuck](../skills/get-unstuck/SKILL.md).
+- If a step marked (to confirm) stalls on the MCP, the assistant switches to the CLI for that
+  step (sign in with `newo login`; no API key).
 
 ## A. Terminal assistants
 

@@ -25,7 +25,8 @@ tool: the assistant follows this rule.
 | **Neither** | the Workflow Builder, by hand | editing scenarios ([docs/05](docs/05-scenarios.md)) |
 
 1. **Connect the Newo MCP first:** [SOP](docs/sop/connect-newo-mcp.md). In ChatGPT the assistant
-   cannot open these pages while the server is on.
+   cannot open these pages while the server is on. If a step marked (to confirm) stalls on the
+   MCP, the assistant switches to the CLI for that step (sign in with `newo login`; no API key).
 2. **The CLI only when the assistant asks; you sign in with your Newo account:**
    [SOP: sign in to the CLI](docs/sop/sign-in-cli.md). Which task needs which tool:
    [docs/02, "Which path"](docs/02-access-and-tools.md#which-path).
