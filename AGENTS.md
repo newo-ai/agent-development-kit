@@ -11,9 +11,9 @@ Deeper maps: [docs/AGENTS.md](docs/AGENTS.md), [reference/AGENTS.md](reference/A
 agent-development-kit/
 ├── AGENTS.md        # this file: routing + rules (CLAUDE.md just points here)
 ├── docs/            # platform docs: 00-08 topical pages + telephony/, integrations/,
-│                    # debugging/, testing/ — has its own AGENTS.md
+│                    # debugging/, testing/, sop/ — has its own AGENTS.md
 ├── reference/       # exact API and attribute formats; the largest part — has its own AGENTS.md
-├── playbooks/       # step-by-step procedures for one task (finish setup, night launch, ...)
+├── playbooks/       # one-task procedures for the assistant (finish setup, night launch, ...)
 ├── delivery/        # partner delivery process: 01-discover ... 05-operate, with templates
 ├── skills/          # SKILL.md procedures per delivery task (discover, launch); see skills/README.md
 ├── industries/      # industry setup pages (restaurant, dental, home services, ...)
@@ -26,11 +26,39 @@ agent-development-kit/
 1. Identify **who** you work for: a business owner (usually not technical), a partner or agency
    (technical, often many agents), or a developer.
 2. Identify **what** they want. Typical requests and where to read:
-   - "Deliver an agent for my customer", "what do we do first", "is it ready to go live":
+   - "I'm stuck", "what now", "I don't know what to do", a step failed twice the same way:
+     [get-unstuck](skills/get-unstuck/SKILL.md).
+   - "Contact Newo", "open a ticket", anything only Newo can do (a number, porting, SIP
+     allowlisting, a platform bug): [draft-support-request](skills/draft-support-request/SKILL.md).
+   - "Deliver an agent for my customer", "what do we do first":
      [delivery/](delivery/README.md), the stages from requirements to production.
-   - "Start discovery", "write the SOW", "acceptance criteria", "check feasibility", "plan the
-     project", "start UAT", "prepare go-live", "email the customer", "get sign-off": the
-     matching skill in [skills/](skills/README.md).
+   - Delivery skills ([skills/](skills/README.md)), with their stage. The person need not name
+     the skill:
+     - "Here are my call notes", "start a new agent", "start discovery":
+       [gather-requirements](skills/gather-requirements/SKILL.md) (01).
+     - "Write the acceptance criteria", "what will we test":
+       [write-acceptance-criteria](skills/write-acceptance-criteria/SKILL.md) (01).
+     - "Can the agent do X", "is this possible":
+       [check-feasibility](skills/check-feasibility/SKILL.md) (01).
+     - "Write the SOW", "the customer wants a quote", "send them a proposal":
+       [draft-sow](skills/draft-sow/SKILL.md) (01).
+     - "The customer approved", "when can we launch", "timeline", "what do I need to request":
+       [plan-project](skills/plan-project/SKILL.md) (01).
+     - "Are we ready to build", "is the SOW complete":
+       [check-discovery-gate](skills/check-discovery-gate/SKILL.md) (01).
+     - "Build it", "set up the agent from the SOW": [build-agent](skills/build-agent/SKILL.md) (02).
+     - "The agent should ask X before booking", "add a flow":
+       [adjust-scenarios](skills/adjust-scenarios/SKILL.md) (02).
+     - "Is it ready for the customer", "run the tests": [run-tests](skills/run-tests/SKILL.md) (03).
+     - "Start UAT", "the customer wants to try it": [run-uat](skills/run-uat/SKILL.md) (04).
+     - "Go live", "forward the calls", "is it ready to go live":
+       [prepare-go-live](skills/prepare-go-live/SKILL.md) (04).
+     - "Get sign-off", "hand it over": [collect-signoff](skills/collect-signoff/SKILL.md) (04).
+     - "Email the customer", "update the customer":
+       [draft-customer-comms](skills/draft-customer-comms/SKILL.md) (any).
+     - "Make a Word file": [export-docx](skills/export-docx/SKILL.md) (any).
+     - "Report a mistake in the kit", "share what we learned":
+       [github-workflow](skills/github-workflow/SKILL.md) (any).
    - Working with a non-technical owner in a chat: [docs/assistant-guide.md](docs/assistant-guide.md)
      (how to talk to the owner, how to create an agent, rules, how to call the API).
    - "Create an agent": [docs/assistant-guide.md, "Create the agent"](docs/assistant-guide.md#create-the-agent).
@@ -39,7 +67,8 @@ agent-development-kit/
    - What a setting means, its format, examples: [reference/attributes/index.md](reference/attributes/index.md).
    - The exact API request: [reference/api.md](reference/api.md) (Flow Designer V2) or
      [reference/api-v1.md](reference/api-v1.md) (old designer).
-   - "Put the agent to work", "forward calls at night", "forward after two rings": [playbooks/night-launch.md](playbooks/night-launch.md),
+   - "Put the agent to work" outside a delivery, "forward calls at night", "forward after two
+     rings": [playbooks/night-launch.md](playbooks/night-launch.md),
      [docs/telephony/go-live.md](docs/telephony/go-live.md).
      Forward FROM the business number TO the AI phone number (`project_representative_agent_voice_phone_number`).
    - "Keep my phone number", "SIP": [playbooks/connect-phone-line.md](playbooks/connect-phone-line.md),
@@ -54,7 +83,7 @@ agent-development-kit/
    - "The agent does not know X", Knowledge Studio does not work: [docs/debugging/search-debug.md](docs/debugging/search-debug.md),
      [docs/debugging/studio-troubleshooting.md](docs/debugging/studio-troubleshooting.md).
    - "Check my agent", "why does it say X", "how do I make it do Y": [docs/07-health-check.md](docs/07-health-check.md).
-   - "Test it": [docs/testing](docs/testing/README.md).
+   - "Test it" outside a delivery: [docs/testing](docs/testing/README.md).
    - "Change the voice model / voice / speech recognizer", any connector setting: [docs/08](docs/08-connector-settings.md).
      Every setting the portal can change, the API can change. Never say "not possible through the API" before reading that page.
    - "Add our documents / FAQ / price list": [docs/06-knowledge.md](docs/06-knowledge.md).
@@ -108,12 +137,23 @@ agent-development-kit/
       switch it off, read it back, and remind the person.
     - Without test mode the agent's actions are real. Complete a booking, order or transfer to a
       real business only after a "yes" for that exact action, and cancel test bookings afterwards.
+11. **Never leave the person stuck.** When they are lost or a step fails twice the same way,
+    follow [get-unstuck](skills/get-unstuck/SKILL.md): one next step, or a drafted request to Newo.
+    If a step marked (to confirm) stalls on the MCP, the assistant switches to the CLI for that
+    step (sign in with `newo login`; no API key).
+12. **Act on the closest match.** Pick the skill or stage page that fits best, say which one you
+    are using, and go. Ask only when two paths would change different things. Not being sure is
+    no reason to stop: when nothing fits, use [get-unstuck](skills/get-unstuck/SKILL.md).
+    Picking a path is not permission to change anything; rule 1 still applies.
 
 ## 4. How you reach the platform
 
 - **Setup:** follow [README.md, "Set up"](README.md#set-up) and the
   [setup check](docs/setup-check.md). The Newo Customer MCP by default, the CLI only for what the
-  MCP can't do, one folder and one key per agent in `work/`. Don't ask the person to pick a tool.
+  MCP can't do ([docs/02, "Which path"](docs/02-access-and-tools.md#which-path)). For the CLI, the
+  person signs in with `newo login`, and each agent has one folder in `work/`, with
+  `newo customer switch <idn>` run there. A key in `.env` or in the shell overrides the login:
+  flag a leftover one. Don't ask the person to pick a tool.
 - **Account check before every change:** compare with `Account idn` in `build-notes.md` when that
   file exists; otherwise say the account's name and IDN back and get one "yes" per session
   ([setup check, check 3](docs/setup-check.md#3-the-right-account)). On the MCP path, before any
@@ -129,14 +169,15 @@ agent-development-kit/
 Commands (details in [docs/02-access-and-tools.md](docs/02-access-and-tools.md)):
 
 ```bash
-npm i -g newo                 # Newo CLI 5.3.0+ (key field = newo-key mod, 5.3.0; newo-setup skill, 5.1.0)
-newo profile                  # which account the key opens; in the agent's folder, never newo init in work/
+npm i -g newo                 # Newo CLI 5.4.1+ (auth status and customer switch came in 5.4.1)
+newo login                    # the person signs in in the browser; no key
+newo auth status              # signed in? exit 0 yes, 1 run newo login
+newo customer switch <idn>    # this folder's account; in work/<agent>, never newo init there
+newo profile                  # which account this folder opens; before every change
 newo pull / newo push         # download / upload the project
 newo sandbox                  # test chat without calling anyone
 newo test <scenario.yaml>     # scripted test; run critical tests three times
 newo logs --session-id <id>   # analytics logs for one session
-curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
-  -H "x-api-key: $NEWO_API_KEY" -H "accept: application/json"   # key -> bearer token
 ```
 
 ## 5. Gotchas
@@ -155,7 +196,8 @@ curl -s -X POST https://app.newo.ai/api/v1/auth/api-key/token \
 - Tell the person what changed, how to undo it and what to watch.
 - If you found something other assistants should know (a pitfall, a working integration recipe),
   propose a learning: [learnings/README.md](learnings/README.md).
-- If you found a platform bug, file it: [docs/support/README.md](docs/support/README.md).
+- If you found a platform bug, draft it with
+  [draft-support-request](skills/draft-support-request/SKILL.md) for the person to send.
 - **Filing an issue in this repository from a terminal** (`gh issue create`, the API): the issue
   forms apply only in the browser, so nothing checks your text. Do it by hand:
   1. Open the form you need in [.github/ISSUE_TEMPLATE/](.github/ISSUE_TEMPLATE/) and write every

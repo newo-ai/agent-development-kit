@@ -27,8 +27,8 @@ it in the portal.
    gets its settings first (where to transfer, what to send), and the card only if the trigger
    also has to change. If nothing is left, stop: no scenario change is needed. After launch, with
    no build notes, the partner's request is the criterion.
-2. **The same account everywhere.** Check the account you read (`newo profile` in the agent's
-   folder, or `GET /api/v1/customer/profile`) as in
+2. **The same account everywhere.** Check the account you read (the customer and IDN from the
+   MCP's `get_customers`; on the CLI path `newo profile` in the agent's folder) as in
    [setup check, check 3](../../docs/setup-check.md#3-the-right-account), and say its name back. The
    partner edits and publishes in a separate portal session: before each edit and each publish,
    ask them to confirm the portal shows that same account.
@@ -88,8 +88,8 @@ exceptional case in [docs/04](../../docs/04-naf-change-policy.md).
 4. **On a fail,** find the cause in the logs and change the text, or ask the partner to put the old
    text back. Putting it back is a change too: it works only after a publish (step 2), then check
    that the old behavior is back. The card may stay custom even then; only Newo support can say
-   whether it can follow library updates again. Three failures the same way: stop and show the
-   partner.
+   whether it can follow library updates again. Two failures the same way: stop, show the
+   partner and follow [get-unstuck](../get-unstuck/SKILL.md).
 5. **Write it down** in `build-notes.md`: the criterion, the card, the new text, the test
    `session_id`s, and "custom card: no library updates".
 

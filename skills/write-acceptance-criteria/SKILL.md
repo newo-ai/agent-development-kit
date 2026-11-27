@@ -36,10 +36,10 @@ work from this file.
      cannot go live while one fails.
    - `important`: visible, has a workaround.
    - `nice-to-have`: polish.
-5. **Add at least one check to each.** `scripted` (a scenario file run with `newo test`, see
-   [docs/testing/text-tests.md](../../docs/testing/text-tests.md)), `call` (steps for a real call and
-   what must happen), or a check in the other system. If you cannot say how to test a criterion,
-   rewrite it until you can.
+5. **Add at least one check to each.** `scripted` (a scenario file, run through the MCP or with
+   `newo test`, see [docs/testing/text-tests.md](../../docs/testing/text-tests.md)), `call` (steps
+   for a real call and what must happen), or a check in the other system. If you cannot say how
+   to test a criterion, rewrite it until you can.
 6. **Check the list.**
    - 10 to 25 criteria in total, the kept baseline ones included: a customer can test that many in
      one UAT round. More means some are not distinct, or baseline ones that do not apply were

@@ -8,12 +8,13 @@ By default the assistant uses the Newo Customer MCP
 ([02-access-and-tools.md, section D](../02-access-and-tools.md#d-newo-customer-mcp-server)). Set up
 the CLI as below when a task needs it.
 
-1. Install Node.js. Then: `npm i -g newo`.
-2. In this repository, make the agent's folder in `work/`, for example `work/<agent-name>/`, and
-   create its `.env` there ([README.md, "Set up"](../../README.md#set-up)). Do not run `newo init`
-   in it: it writes its own assistant instructions, which compete with this repository's.
-3. The person creates an API key in the Newo portal (Builder → Integrations → API Integration →
-   new connector → copy the key) and pastes it into `.env` themselves. See
+1. Install Node.js. Then: `npm i -g newo` (5.4.1 or later).
+2. In this repository, make the agent's folder in `work/`, for example `work/<agent-name>/`
+   ([README.md, "Set up"](../../README.md#set-up)). Do not run `newo init` in it: it writes its own
+   assistant instructions, which compete with this repository's.
+3. The person signs in with their Newo account: `newo login`, then `newo customer switch <idn>` in
+   the agent's folder ([SOP: sign in to the CLI](../sop/sign-in-cli.md)). An API key only where the
+   browser login is refused; see
    [02-access-and-tools.md](../02-access-and-tools.md#a-terminal-assistants).
 4. Open the assistant in that folder. Point it to this repository:
    > Read https://github.com/newo-ai/agent-development-kit (start with AGENTS.md) and help me with

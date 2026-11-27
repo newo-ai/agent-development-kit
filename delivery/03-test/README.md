@@ -19,8 +19,9 @@ The skill [run-tests](../../skills/run-tests/SKILL.md) runs these steps with the
 
 1. **Turn each criterion into checks.**
    - What the agent **says** (facts, rules, refusals, the booking dialog): a scripted chat test.
-     One scenario file per criterion, named after it: `tests/AC-001-booking.yaml`. The format is
-     in [text tests](../../docs/testing/text-tests.md#scripted-tests-newo-test).
+     One scenario file per criterion, named after it: `tests/AC-001-booking.yaml`, with the turns
+     and what must and must not be said. The format is in
+     [text tests](../../docs/testing/text-tests.md#scripted-tests-newo-test).
    - What depends on the **call** (greeting, voice, language, transfers, after-hours behavior,
      how numbers and dates are spoken): a phone call. Write the steps and what must happen into
      the criterion's `checks`.
@@ -29,8 +30,11 @@ The skill [run-tests](../../skills/run-tests/SKILL.md) runs these steps with the
 2. **Add the hard cases.** For each `critical` criterion, add at least one difficult version: the
    caller changes their mind, gives an incomplete answer, asks for a slot that is not free, or
    switches language.
-3. **Run the scripted tests:** `newo test <file>` for each scenario. Prefer expectations on key
-   facts and on what must never be said; exact wording changes between runs.
+3. **Run the scripted tests.** By default as practice chats through the Newo MCP, one new
+   conversation per run ([run-tests](../../skills/run-tests/SKILL.md), "Through the MCP"). Use
+   `newo test <file>` (the CLI) only when the partner keeps saved test files or runs them in CI.
+   Either way passes this stage. Prefer expectations on key facts and on what must never be said;
+   exact wording changes between runs.
 4. **Run a test more than once** before you trust it. The same question can pass once and fail
    the next time. Run each `critical` scripted test three times; a criterion passes when all
    three pass. (The number is a starting point, not a platform rule.)
@@ -40,7 +44,8 @@ The skill [run-tests](../../skills/run-tests/SKILL.md) runs these steps with the
 6. **Fix and re-run.** Fix failures at the lowest step of the ladder
    ([02-build, "Rules"](../02-build/README.md#rules); the playbook is
    [improve and fix](../../playbooks/improve-and-fix.md)). After every fix, run **all** scripted
-   tests again: a fix for one case can break another.
+   tests again, the same way you ran them (through the MCP from the files in `tests/`, or
+   `newo test`): a fix for one case can break another.
 7. **Write the report:** [templates/test-report.md](templates/test-report.md). Set `status` for
    each criterion in `acceptance-criteria.yaml`.
 
@@ -57,5 +62,5 @@ interruptions. A criterion about any of these is not passed until a call showed 
 - Use the other system's test account, or the agent's test mode
   ([voice tests, "Test mode"](../../docs/testing/voice-tests.md#test-mode)). Switch test mode
   **off** before go-live.
-- Test conversations stay in the conversation list. Their names (`newo-cli-...`) tell them apart
-  from real callers.
+- Test conversations stay in the conversation list. Their names (`newo-cli-...` for CLI runs;
+  MCP runs: **to confirm**) tell them apart from real callers.
