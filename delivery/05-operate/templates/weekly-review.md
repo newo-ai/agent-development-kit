@@ -12,6 +12,27 @@ fine.
 - Transfers to a person:
 - Bookings or other actions completed:
 
+## Numbers
+
+From [agent-session-audit](../../../skills/agent-session-audit/SKILL.md). CSS, LSS and goal
+reached: see the Sessions page in the Newo portal.
+
+| Calls (phone / web / chat / text) | Leads | Units used | Goal not reached | Null result |
+|---|---|---|---|---|
+| | | | | |
+
+## Failed calls by reason
+
+From [review-agent](../../../skills/review-agent/SKILL.md). One group per call; tags can overlap.
+
+| Group or tag | Calls | Pattern | Session ids |
+|---|---|---|---|
+| Spam or sales call | | | |
+| Caller declined or ended | | | |
+| Other / needs review | | | |
+| Tag: Technical problem | | | |
+| Tag: Agent mistake | | | |
+
 ## What went well
 
 -
